@@ -5,6 +5,40 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+    .wrap>div{width: 100%;}
+    #header>div{height: 100%; float: left;}
+    #header_1{width: 20%;}
+    #header_2{width: 65%;}
+    #header_3{width: 15%;}
+
+            /* 검색창 스타일 */
+            #header_2{position: relative;} /*기준! 이라는 뜻*/
+
+#search_form{width: 80%; height: 20%;}
+
+#search_form{
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;/* 상하좌우로 극단으로 가려고 해서 결국 가운대 배치*/
+
+}
+
+#search_form>div{
+    height: 100%;
+    float: left;
+}
+
+#search_text{width: 80%;}
+#search_btn{width: 20%;}
+
+#search_form input{width: 100%; height: 100%;}
+
+
+</style>
 </head>
 <body>
 
