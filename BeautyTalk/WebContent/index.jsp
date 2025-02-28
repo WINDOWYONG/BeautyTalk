@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- 이거되냐?? 제바루
+ 
 </body>
 </html>
