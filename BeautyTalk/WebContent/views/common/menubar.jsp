@@ -292,6 +292,7 @@
             
                 <div id="header3">
                     <div id="header3_top">
+
                         <a href=""><img src="../../resources/images/2.PNG" alt="메시지"></a>
                         <a href=""><img src="../../resources/images/3.PNG" alt="알림"></a>
                         <a href="">로그아웃</a>
