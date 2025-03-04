@@ -178,7 +178,7 @@
         .category-menu{
             position: absolute;
             top: 29px;
-            left: 75;
+            left: 75px;
             width: 120px;
             background: white;
             border: 1px solid palevioletred;
@@ -276,7 +276,7 @@
             <div id="header">
         
                 <div id="header1">
-                    <img src="../assets/image2/bono.jpg" alt="로고">
+                    <img src="../../resources/images/현존최강로고.jpg" alt="로고">
                 </div>
             
                 <div id="header2">
@@ -292,8 +292,8 @@
             
                 <div id="header3">
                     <div id="header3_top">
-                        <a href=""><img src="../assets/image2/reply.png" alt="메시지"></a>
-                        <a href=""><img src="../assets/image2/alert.png" alt="알림"></a>
+                        <a href=""><img src="../../resources/images/2.PNG" alt="메시지"></a>
+                        <a href=""><img src="../../resources/images/3.PNG" alt="알림"></a>
                         <a href="">로그아웃</a>
                         <span>|</span>
                         <a href="">마이페이지</a>
@@ -329,7 +329,7 @@
             <div class="content">
                 <div class="main_banner">
                     <a href="" class="banner_link">
-                        <img class="img_content" src="../../99_overwatch/resources/images/제목 없음.jpg" alt=""></div>
+                        <img class="img_content" src="../../resources/images/mainbaner.png" alt=""></div>
                     </a>
                 </div>
         <script>
