@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -297,7 +300,7 @@
                         <a href=""><img src="../../resources/images/3.PNG" alt="알림"></a>
                         <a href="">로그아웃</a>
                         <span>|</span>
-                        <a href="">마이페이지</a>
+                        <a href="<%= contextPath %>/view/member/memberEnrollForm.jsp">마이페이지</a>
                     </div>
                     <div id="header3_bottom">
                         <span class="username"><strong>차은우</strong><strong>님</strong>,</span>
