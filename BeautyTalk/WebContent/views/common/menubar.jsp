@@ -8,9 +8,13 @@
     <style>
     
         div,input{box-sizing: border-box;}
-        .wrap{width: 1400px; height: 800px; margin: auto;}
+        .wrap{width: 1100px; height: 120px; margin: auto;}
+
+        img{
+            width: 100%;
+        }
     
-        #header{width: 100%; height: 10%;}
+        #header{width: 100%; height: 100%;}
     
         /* #header, #header1, #header2, #header3{
             border: 1px solid red;
@@ -18,8 +22,8 @@
     
         #header>div{height: 100%; float: left; box-sizing: border-box;}
     
-        #header1{width: 20%;}
-        #header2{width: 60%;}
+        #header1{height: 100%;width: 20%;}
+        #header2{height: 100%;width: 60%;}
         #header3{width: 20%;}
     
         #header1 {
@@ -127,6 +131,142 @@
             border-radius: 50%; /* 동그랗게 만들기 */
             object-fit: cover;
         }
+        * {
+        box-sizing: border-box;
+    }
+        #bnavigator{
+            position: relative;
+            width: 100%;
+            min-width: 1020px;
+            height: 47px;
+            background: #fff;
+            border-top: 1px solid #ddd;
+            border-bottom: 2px solid palevioletred;
+            z-index: 10;
+        }
+        
+        #navigator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1020px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        #category{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            width: 120px;
+            height: 44px;
+            padding-left: 10px;
+            line-height: 44px;
+            color: black;
+            font-size: 15px;
+            font-weight: 700;
+            text-align: left;
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        #category:hover {
+            background: palevioletred;
+            color: white;
+        }
+
+        .category-menu{
+            position: absolute;
+            top: 29px;
+            left: 75;
+            width: 120px;
+            background: white;
+            border: 1px solid palevioletred;
+            display: none;
+            padding: 10px;
+            z-index: 100;
+
+        }
+
+        .category-menu a{
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: black;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .category-menu a:hover{
+            background: palevioletred;
+            color: white;
+        }
+        
+        #navi {
+            margin-left: auto;
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #navi>li{
+            width: 150px;
+            text-align: center;
+        }
+        
+        #navi a{
+            text-decoration: none;
+            color: black;
+            font-size: 15px;
+            font-weight: 900;
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 44px;
+        }
+
+        #navi a:hover{
+            color: palevioletred;
+        }
+
+        .category-menu>li{
+            list-style: none;
+        }
+        .content{
+            width: 1020px;
+            height: 100%;
+            margin: 0 auto;
+        }
+        .main_banner{
+            width: 100%;
+            height: 450px;
+            position: relative;
+            float: left;
+            display: block;
+        }
+        .banner_link{
+            height: 450px;
+        }
+        .img_content{
+            margin: 0 auto;
+            box-sizing: border-box;
+            position: absolute;
+            width: 100%;
+            height: 450px
+
+            
+        }
+        .banner_link{
+            text-decoration: none;
+            height: 450px;
+            width: 100%;
+            color: #666;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            display: block;
+        }
     
     </style>
     </head>
@@ -169,5 +309,45 @@
     
         </div>
     
+        <div id="bnavigator">
+            <div id="navigator">
+                <a href="#" id="category">☰ 카테고리</a>
+                <ul class="category-menu">
+                    <li><a href="skincare.html">스킨케어</a></li>
+                    <li><a href="makeup.html">메이크업</a></li>
+                    <li><a href="haircare.html">헤어케어</a></li>
+                </ul>
+                <ul id="navi">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="posts.html">Posts</a></li>
+                    <li><a href="people.html">People</a></li>
+                    <li><a href="ranking.html">상품 랭킹</a></li>
+                </ul>
+            </div>
+        </div>
+            <div class="content">
+                <div class="main_banner">
+                    <a href="" class="banner_link">
+                        <img class="img_content" src="../../99_overwatch/resources/images/제목 없음.jpg" alt=""></div>
+                    </a>
+                </div>
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const categoryBtn = document.querySelector("#category");
+            const categoryMenu = document.querySelector(".category-menu");
+          
+            categoryBtn.addEventListener("click", function (event) {
+              event.preventDefault();
+              categoryMenu.style.display = categoryMenu.style.display === "block" ? "none" : "block";
+            });
+          
+            document.addEventListener("click", function (event) {
+              if (!categoryBtn.contains(event.target) && !categoryMenu.contains(event.target)) {
+                categoryMenu.style.display = "none";
+              }
+            });
+          });
+        </script>
     </body>
     </html>
