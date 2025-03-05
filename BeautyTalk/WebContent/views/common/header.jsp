@@ -12,7 +12,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-		#header{width: 100%; height: 100%;}
+		#header{
+            width: 1024px; 
+            height: 100%;
+            margin: auto;
+            margin-top: 50px;
+        }
     
         /* #header, #header1, #header2, #header3{
             border: 1px solid red;
@@ -129,6 +134,7 @@
             border-radius: 50%; /* 동그랗게 만들기 */
             object-fit: cover;
         }
+
 </style>
 </head>
 <body>
@@ -148,7 +154,7 @@
                  <div id="search_btn">
                      <input type="submit" value="Search">
                  </div>
- 
+ 						</form>
          </div>
      
          <div id="header3">

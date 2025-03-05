@@ -298,17 +298,27 @@
                         <div id="search_btn">
                             <input type="submit" value="Search">
                         </div>
-        
+        						</form>
                 </div>
             
                 <div id="header3">
                 <% if(loginUser == null) { %>
         			<!-- case1. 로그인 전-->
         			<div id="header3_top">
-                        <a href="">로그인</a>
+                        <a href="views/member/loginForm.jsp">로그인</a>
                         <span>|</span>
-                        <a href="">회원가입</a>
-                    </div> 
+                        <a onclick="enrollPage()">회원가입</a>
+              </div> 
+              
+           		<script>
+            			function enrollPage() {
+									// location.href = "<%= contextPath %>/views/member/memberEnrollForm.jsp";
+									// 웹 애플리케이션의 디렉토리 구조가 url 노출되면 보안에 취약
+					
+									// 단순한 페이지 요청도 servlet 호출해서 servlet을 거쳐서 간다.
+									location.href = "<%= contextPath %>/enrollForm.me"
+            	}
+            </script>
 
 
 					<% }else { %>
@@ -326,8 +336,9 @@
                         <span>환영합니다!</span>
                         <a href=""><img src="" alt="프로필 사진"></a>
                     </div>
+                    <% } %>
                 </div>
-        		<% } %>
+        		
         
             </div>
     
@@ -353,8 +364,9 @@
             <div class="content">
                 <div class="main_banner">
                     <a href="" class="banner_link">
-                        <img class="img_content" src="resources/images/mainbaner.png" alt=""></div>
+                        <img class="img_content" src="resources/images/mainbaner.png" alt="">
                     </a>
+                        </div>
                 </div>
         <script>
         document.addEventListener("DOMContentLoaded", function () {

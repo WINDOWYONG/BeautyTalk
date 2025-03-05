@@ -132,11 +132,30 @@
         object-fit: cover;
     }
 
+
     .member{
         margin: 0 auto;
         margin-top: 100px;
         height: 800px;
         width: 600px;
+    }
+
+    #enroll-form table{
+        margin: 0 auto;
+        font-size: large;
+        font-weight: 600
+    }
+
+    #enroll-form input{
+        margin: 5px;
+        box-sizing: border-box;
+        height: 30px;
+        width: 250px;
+    }
+
+    h1{
+        font-size: xx-large;
+        font-variant: small-caps;
     }
     </style>
 </head>
@@ -156,12 +175,44 @@
                 <table>
                     <tr>
                         <td>* 아이디</td>
-                        <td><input type="text" name="userId"></td>
+                        <td><input type="text" name="userId" maxlength="12" required></td>
+                        <td><button type="button">중복확인</button></td>
+                    </tr>
+                    <tr>
+                        <td>* 비밀번호</td>
+                        <td><input type="password" name="userPwd" maxlength="15" required></td>
                         <td></td>
                     </tr>
+                    <tr>
+                        <td>* 비밀번호 확인</td>
+                        <td><input type="password" maxlength="15" required></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>* 이름</td>
+                        <td><input type="text" name="userName" maxlength="6" required></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;전화번호</td>
+                        <td><input type="text" name="phone" placeholder="  ㅡ 빼고 입력하세요"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;이메일</td>
+                        <td><input type="email" name="email"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;주소</td>
+                        <td><input type="text" name="address"></td>
+                        <td></td>
+                    </tr>
+                    <button type="submit">회원가입</button>
+
+                    <br>
                 </table>
             </form>
-            </div>
         </div>
 
 </body>

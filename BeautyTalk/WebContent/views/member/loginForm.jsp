@@ -7,18 +7,20 @@
 <title>로그인</title>
 <style>
     .outer {
-        width: 500px;
+        width: 100%;
+        height: 100%;
         margin: auto;
-        margin-top: 80px;
+        margin-top: 50px;
         background-color: #fff;
-        padding: 30px 25px;
         border-radius: 10px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         text-align: center;
+        display: block;
     }
 
     h2 {
-        margin-bottom: 20px;
+        margin: auto;
+        margin-top: 100px;
     }
 
     input[type="text"], input[type="password"] {
@@ -75,6 +77,12 @@
         text-decoration: none;
         color: black;
     }
+
+    .inner{
+        height: 2000px;
+        width: 500px;
+        margin: auto;
+    }
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -82,45 +90,46 @@
 </head>
 <body>
 
-	<%@ include file="../common/menubar.jsp" %>
+	<%@ include file="../common/header.jsp" %>
 
-    <div class="outer">
-        <h2>로그인</h2>
-        
-        <form action="" id="login-form" method="post">
-            <input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required>
-            <div class="error-message" id="userIdError">아이디는 최소 6자 이상 입력해야 합니다.</div>
-
-            <input type="password" name="userPwd" id="userPwd" minlength="8" maxlength="16" placeholder="비밀번호를 입력하세요. (8~16자, 영문+숫자+특수문자)" required>
-            <div class="error-message" id="userPwdError">비밀번호는 최소 8자 이상 입력해야 합니다.</div>
+        <div class="outer">
+            <div class="inner">
+            <h2>로그인</h2>
             
-            <div style="text-align: left; margin-top: 10px;">
-                <input type="checkbox" name="rememId" id="rememId">
-                <label for="rememId">아이디 저장</label>
+            <form action="" id="login-form" method="post">
+                <input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required>
+                <div class="error-message" id="userIdError">아이디는 최소 6자 이상 입력해야 합니다.</div>
+
+                <input type="password" name="userPwd" id="userPwd" minlength="8" maxlength="16" placeholder="비밀번호를 입력하세요. (8~16자, 영문+숫자+특수문자)" required>
+                <div class="error-message" id="userPwdError">비밀번호는 최소 8자 이상 입력해야 합니다.</div>
+                
+                <div style="text-align: left; margin-top: 10px;">
+                    <input type="checkbox" name="rememId" id="rememId">
+                    <label for="rememId">아이디 저장</label>
+                </div>
+
+                <button type="submit" class="btn btn-login">로그인</button>
+            </form>
+
+            <br>
+            <button type="button" class="btn btn-kakao">
+                <img src="resources/images/kakao.png" alt="Kakao"> 카카오톡 로그인
+            </button>
+
+            <button type="button" class="btn btn-insta">
+                <img src="resources/images/Instagram.png" alt="Instagram"> 인스타그램 로그인
+            </button>
+
+            <br>
+
+            <div id="login-etc">
+                <a href="">아이디 찾기</a>
+                <span>|</span>
+                <a href="">비밀번호 찾기</a>
+                <span>|</span>
+                <a href="">회원가입</a>
             </div>
-
-            <button type="submit" class="btn btn-login">로그인</button>
-        </form>
-
-        <br>
-        <button type="button" class="btn btn-kakao">
-            <img src="resources/images/kakao.png" alt="Kakao"> 카카오톡 로그인
-        </button>
-
-        <button type="button" class="btn btn-insta">
-            <img src="resources/images/Instagram.png" alt="Instagram"> 인스타그램 로그인
-        </button>
-
-        <br>
-
-        <div id="login-etc">
-            <a href="">아이디 찾기</a>
-            <span>|</span>
-            <a href="">비밀번호 찾기</a>
-            <span>|</span>
-            <a href="">회원가입</a>
         </div>
-        
     </div>
 
     <script>
