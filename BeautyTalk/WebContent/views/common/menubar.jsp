@@ -40,8 +40,8 @@
         }
     
         #header1 img {
-            height: 100%; /* 부모 div의 높이에 맞게 */
-            object-fit: contain; /* 이미지 비율 유지하면서 축소 */
+        	width: 200px;
+            height: 200px;
         }
     
         #header_2{position: relative;}
@@ -139,7 +139,12 @@
         }
         * {
         box-sizing: border-box;
-    }
+    	}
+    	
+    	#header3_bottom span {
+	    white-space: nowrap; /* 개별 요소 줄 바꿈 방지 */
+		}
+		
         #bnavigator{
             position: relative;
             width: 100%;
@@ -282,7 +287,7 @@
             <div id="header">
         
                 <div id="header1">
-                    <img src="../../resources/images/현존최강로고.jpg" alt="로고">
+                    <img src="resources/images/현존최강로고.jpg" alt="로고">
                 </div>
             
                 <div id="header2">
@@ -297,10 +302,21 @@
                 </div>
             
                 <div id="header3">
+                <% if(loginUser == null) { %>
+        			<!-- case1. 로그인 전-->
+        			<div id="header3_top">
+                        <a href="">로그인</a>
+                        <span>|</span>
+                        <a href="">회원가입</a>
+                    </div> 
+
+
+					<% }else { %>
+        			<!-- case2. 로그인 후 -->
                     <div id="header3_top">
 
-                        <a href=""><img src="../../resources/images/2.PNG" alt="메시지"></a>
-                        <a href=""><img src="../../resources/images/3.PNG" alt="알림"></a>
+                        <a href=""><img src="resources/images/2.PNG" alt="메시지"></a>
+                        <a href=""><img src="resources/images/3.PNG" alt="알림"></a>
                         <a href="">로그아웃</a>
                         <span>|</span>
                         <a href="<%= contextPath %>/views/member/memberEnrollForm.jsp">마이페이지</a>
@@ -308,9 +324,10 @@
                     <div id="header3_bottom">
                         <span class="username"><strong>차은우</strong><strong>님</strong>,</span>
                         <span>환영합니다!</span>
-                        <a href=""><img src="../assets/image2/eunwoo.png" alt="프로필 사진"></a>
+                        <a href=""><img src="" alt="프로필 사진"></a>
                     </div>
                 </div>
+        		<% } %>
         
             </div>
     
@@ -336,7 +353,7 @@
             <div class="content">
                 <div class="main_banner">
                     <a href="" class="banner_link">
-                        <img class="img_content" src="../../resources/images/mainbaner.png" alt=""></div>
+                        <img class="img_content" src="resources/images/mainbaner.png" alt=""></div>
                     </a>
                 </div>
         <script>

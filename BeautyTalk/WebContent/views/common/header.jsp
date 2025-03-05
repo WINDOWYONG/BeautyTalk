@@ -1,8 +1,10 @@
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%
-String contextPath = request.getContextPath();
+	String contextPath = request.getContextPath();
+	Member loginUser = (Member)session.getAttribute("loginUser");
  %>
 <!DOCTYPE html>
 <html>
@@ -10,7 +12,7 @@ String contextPath = request.getContextPath();
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-		        #header{width: 100%; height: 100%;}
+		#header{width: 100%; height: 100%;}
     
         /* #header, #header1, #header2, #header3{
             border: 1px solid red;
@@ -135,7 +137,7 @@ String contextPath = request.getContextPath();
      <div id="header">
  
          <div id="header1">
-             <img src="../../resources/images/현존최강로고.jpg" alt="로고">
+             <img src="resources/images/현존최강로고.jpg" alt="로고">
          </div>
      
          <div id="header2">
@@ -152,8 +154,8 @@ String contextPath = request.getContextPath();
          <div id="header3">
              <div id="header3_top">
 
-                 <a href=""><img src="../../resources/images/2.PNG" alt="메시지"></a>
-                 <a href=""><img src="../../resources/images/3.PNG" alt="알림"></a>
+                 <a href=""><img src="resources/images/2.PNG" alt="메시지"></a>
+                 <a href=""><img src="resources/images/3.PNG" alt="알림"></a>
                  <a href="">로그아웃</a>
                  <span>|</span>
                  <a href="<%= contextPath %>/views/member/memberEnrollForm.jsp">마이페이지</a>
@@ -161,7 +163,7 @@ String contextPath = request.getContextPath();
              <div id="header3_bottom">
                  <span class="username"><strong>차은우</strong><strong>님</strong>,</span>
                  <span>환영합니다!</span>
-                 <a href=""><img src="../assets/image2/eunwoo.png" alt="프로필 사진"></a>
+                 <a href=""><img src="" alt="프로필 사진"></a>
              </div>
          </div>
  
