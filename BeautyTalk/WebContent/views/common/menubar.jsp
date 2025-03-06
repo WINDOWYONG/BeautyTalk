@@ -287,7 +287,7 @@
             <div id="header">
         
                 <div id="header1">
-                    <img src="resources/images/현존최강로고.jpg" alt="로고">
+                    <img src="resources/images/현존최강로고2.JPG" alt="로고">
                 </div>
             
                 <div id="header2">
