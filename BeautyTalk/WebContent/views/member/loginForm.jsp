@@ -10,17 +10,14 @@
         width: 100%;
         height: 100%;
         margin: auto;
-        margin-top: 50px;
         background-color: #fff;
         border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         text-align: center;
         display: block;
     }
 
     h2 {
         margin: auto;
-        margin-top: 100px;
     }
 
     input[type="text"], input[type="password"] {
@@ -77,11 +74,14 @@
         text-decoration: none;
         color: black;
     }
+    
+
 
     .inner{
         height: 2000px;
         width: 500px;
         margin: auto;
+        margin-top: 50px;
     }
 </style>
 
@@ -91,6 +91,9 @@
 <body>
 
 	<%@ include file="../common/header.jsp" %>
+	
+		<br><br><br><br><br>
+		
 
         <div class="outer">
             <div class="inner">

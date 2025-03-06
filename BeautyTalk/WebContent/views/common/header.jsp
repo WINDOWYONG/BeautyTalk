@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 <style>
 		#header{
-            width: 1024px; 
+            width: 1000px; 
             height: 100%;
             margin: auto;
             margin-top: 50px;
@@ -158,19 +158,7 @@
          </div>
      
          <div id="header3">
-             <div id="header3_top">
-
-                 <a href=""><img src="resources/images/2.PNG" alt="메시지"></a>
-                 <a href=""><img src="resources/images/3.PNG" alt="알림"></a>
-                 <a href="">로그아웃</a>
-                 <span>|</span>
-                 <a href="<%= contextPath %>/views/member/memberEnrollForm.jsp">마이페이지</a>
-             </div>
-             <div id="header3_bottom">
-                 <span class="username"><strong>차은우</strong><strong>님</strong>,</span>
-                 <span>환영합니다!</span>
-                 <a href=""><img src="" alt="프로필 사진"></a>
-             </div>
+             
          </div>
  
      </div>

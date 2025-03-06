@@ -307,7 +307,7 @@
         			<div id="header3_top">
                         <a href="views/member/loginForm.jsp">로그인</a>
                         <span>|</span>
-                        <a onclick="enrollPage()">회원가입</a>
+                        <a href="views/member/memberEnrollForm.jsp">회원가입</a>
               </div> 
               
            		<script>

@@ -4,216 +4,177 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <style>
-    
-    div,input{box-sizing: border-box;}
-    .wrap{width: 1100px; height: 120px; margin: auto;}
-
-    img{
-        width: 100%;
-    }
-
-    #header{width: 100%; height: 100%;}
-
-    /* #header, #header1, #header2, #header3{
-        border: 1px solid red;
-    } */
-
-    #header>div{height: 100%; float: left; box-sizing: border-box;}
-
-    #header1{height: 100%;width: 20%;}
-    #header2{height: 100%;width: 60%;}
-    #header3{width: 20%;}
-
-    #header1 {
-    width: 20%;
-    display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
-    justify-content: center; /* 가로 중앙 정렬 */
-    }
-
-    #header1 img {
-        height: 100%; /* 부모 div의 높이에 맞게 */
-        object-fit: contain; /* 이미지 비율 유지하면서 축소 */
-    }
-
-    #header_2{position: relative;}
-
-    #header2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-
-    #search_form {
-    width: 80%;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    border: 2px solid rgb(232, 97, 140);
-    border-radius: 25px;
-    overflow: hidden;
-    }
-
-    #search_text {
-        flex: 1;
-    }
-
-    #search_text input {
+    .outer {
         width: 100%;
         height: 100%;
+        margin: auto;
+        background-color: #fff;
+        border-radius: 10px;
+        text-align: center;
+        display: block;
+    }
+
+    h2 {
+        margin: auto;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin: 0;
+        border: 1px solid #ddd;
+        border-radius: 7px;
+        font-size: 13px;
+        box-sizing: border-box;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
         border: none;
-        padding: 0 15px;
-        outline: none;
-    }
-
-    #search_btn {
-        width: 100px;
-        height: 100%;
-    }
-
-    #search_btn input {
-        width: 100%;
-        height: 100%;
-        background-color: rgb(232, 97, 140);
-        border: none;
-        color: white;
-        font-weight: bold;
+        border-radius: 30px;
+        font-size: 16px;
         cursor: pointer;
-    }
-
-    #header3 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    }
-
-    #header3_top {
         display: flex;
         align-items: center;
-        gap: 10px; /* 아이콘 및 텍스트 간격 */
-        color: gray;
-        font-size: 14px;
+        justify-content: center;
     }
 
-    #header3_top img {
-        width: 20px; /* 아이콘 크기 */
-        height: 20px;
+    .btn-login {
+        background-color: #000;
+        color: white;
     }
 
-    #header3_top a {
-        text-decoration: none;
-        color: gray;
+    .btn-kakao-insert {
+        background-color: #FEE500;
+        color: black;
     }
 
-    #header3_top span {
-        color: lightgray;
+    .btn-insta-insert {
+        background-color: #FF007F;
+        color: white;
     }
 
-    #header3_bottom {
-        display: flex;
-        align-items: center;
-        gap: 8px; /* 텍스트와 프로필 사진 간격 */
-        margin-top: 5px;
+    .btn img {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
     }
 
-    #header3_bottom .username {
-        color: rgb(232, 97, 140);
-        font-weight: bold;
+    .error-message {
+        color: red;
+        font-size: 12px;
+        display: none;
     }
-
-    #header3_bottom img {
-        width: 40px; /* 프로필 사진 크기 */
-        height: 40px;
-        border-radius: 50%; /* 동그랗게 만들기 */
-        object-fit: cover;
-    }
+    
 
 
     .member{
-        margin: 0 auto;
-        margin-top: 100px;
-        height: 800px;
-        width: 600px;
+        height: 2000px;
+        width: 500px;
+        margin: auto;
+        margin-top: 50px;
     }
 
-    #enroll-form table{
-        margin: 0 auto;
-        font-size: large;
-        font-weight: 600
-    }
 
-    #enroll-form input{
-        margin: 5px;
-        box-sizing: border-box;
-        height: 30px;
-        width: 250px;
+    #mainTitle{
+        margin-bottom: 5px;
+        color: #e8618c;
+        font-weight: 800;
+        font-size: 250%;
     }
+    pre{
+        text-decoration: underline;
+    }
+    pre{
+        color: #e8618c;
+        text-decoration-thickness: 3px;
+    }
+</style>
 
-    h1{
-        font-size: xx-large;
-        font-variant: small-caps;
-    }
-    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 </head>
-
-
-
 <body>
 
-		<%@ include file="../common/header.jsp" %>
+	<%@ include file="../common/header.jsp" %>
+	
+		<br><br><br><br><br>
+		
 
-        <div class="member">
-            <br><br>
-            <h1 align="center" style="color: #E8618C; text-decoration:underline">Beauty Talk</h1>
+        <div class="outer">
+            <div class="member">
 
-            <form id="enroll-form" action="<%= contextPath %>/insert.me" method="post">
+            <h1 align="left" id="mainTitle">Beauty Talk</h1>       
+            <div id="line">
+                <pre align="left">                                                                       </pre>
+            </div>
 
-                <table>
-                    <tr>
-                        <td>* 아이디</td>
-                        <td><input type="text" name="userId" maxlength="12" required></td>
-                        <td><button type="button">중복확인</button></td>
-                    </tr>
-                    <tr>
-                        <td>* 비밀번호</td>
-                        <td><input type="password" name="userPwd" maxlength="15" required></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>* 비밀번호 확인</td>
-                        <td><input type="password" maxlength="15" required></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>* 이름</td>
-                        <td><input type="text" name="userName" maxlength="6" required></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;전화번호</td>
-                        <td><input type="text" name="phone" placeholder="  ㅡ 빼고 입력하세요"></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;이메일</td>
-                        <td><input type="email" name="email"></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;주소</td>
-                        <td><input type="text" name="address"></td>
-                        <td></td>
-                    </tr>
-                    <button type="submit">회원가입</button>
 
-                    <br>
-                </table>
+            
+            
+            <form action="" id="insert-form" method="post">
+                <input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required>
+                <div class="error-message" id="userIdError">아이디는 최소 6자 이상 입력해야 합니다.</div>
+
+                <input type="password" name="userPwd" id="userPwd" minlength="8" maxlength="16" placeholder="비밀번호를 입력하세요. (8~16자, 영문+숫자+특수문자)" required>
+                <div class="error-message" id="userPwdError">비밀번호는 최소 8자 이상 입력해야 합니다.</div>
+                
+
+
             </form>
+
         </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // 저장된 아이디가 있으면 자동 입력
+            let savedUserId = localStorage.getItem("savedUserId");
+            if (savedUserId) {
+                $("#userId").val(savedUserId);
+                $("#rememId").prop("checked", true);
+            }
+
+            // 로그인 폼 제출 이벤트
+            $("#insert-form").submit(function(event) {
+                let userId = $("#userId").val();
+                let userPwd = $("#userPwd").val();
+                let isValid = true;
+
+                // 아이디 최소 길이 확인
+                if (userId.length < 6) {
+                    $("#userIdError").show();
+                    isValid = false;
+                } else {
+                    $("#userIdError").hide();
+                }
+
+                // 비밀번호 최소 길이 확인
+                if (userPwd.length < 8) {
+                    $("#userPwdError").show();
+                    isValid = false;
+                } else {
+                    $("#userPwdError").hide();
+                }
+
+                // 최소 길이를 충족하지 않으면 제출 방지
+                if (!isValid) {
+                    event.preventDefault();
+                } else {
+                    // 아이디 저장 여부 확인
+                    if ($("#rememId").is(":checked")) {
+                        localStorage.setItem("savedUserId", userId); // 아이디 저장
+                    } else {
+                        localStorage.removeItem("savedUserId"); // 저장된 아이디 삭제
+                    }
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
