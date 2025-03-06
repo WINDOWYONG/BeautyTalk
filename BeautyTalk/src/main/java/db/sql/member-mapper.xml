@@ -2,8 +2,24 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-<entry key="loginMember">
-
-</entry>
+	<entry key="loginMember">
+		SELECT
+		       MEM_NO
+		     , MEM_ID
+		     , MEM_PWD
+		     , MEM_NAME
+		     , EMAIL
+		     , NICKNAME
+		     , BIRTHDAY
+		     , PHONE
+		     , ENROLL_DATE
+		     , STATUS
+		     , AGREE_YN
+		     , GENDER
+		  FROM MEMBER
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
+		   AND STATUS = 'Y'
+	</entry>
 
 </properties>

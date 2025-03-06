@@ -1,26 +1,25 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.member.model.service.MemberService;
-import com.kh.member.model.vo.Member;
-
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class LoginFormController
  */
-@WebServlet("/login.me")
-public class LoginController extends HttpServlet {
+@WebServlet("/loginForm.me")
+public class LoginFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public LoginFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +29,9 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
-		
-		Member loginUser = new MemberService().loginMember(userId, userPwd);
-		
-		if(loginUser == null) {
-			request.getSession().setAttribute("alertMsg", "로그인에 실패하였습니다.");
-			response.sendRedirect(request.getContextPath() + "/loginForm.me");
-		}else {
-			request.getSession().setAttribute("loginUser", loginUser);
-			response.sendRedirect(request.getContextPath());
-		}
+		// 응답페이지 (로그인 페이지)
+		RequestDispatcher view = request.getRequestDispatcher("views/member/loginForm.jsp");
+		view.forward(request, response);
 		
 	}
 
