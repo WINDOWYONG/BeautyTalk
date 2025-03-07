@@ -35,6 +35,20 @@ public class Member {
 		this.gender = gender;
 	}
 
+	
+
+	public Member(String userId, String userPwd, String userName, String email, String nickName, String phone,
+			String agreeYN, String gender) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.email = email;
+		this.nickName = nickName;
+		this.phone = phone;
+		this.agreeYN = agreeYN;
+		this.gender = gender;
+	}
 
 	public int getUserNo() {
 		return userNo;
