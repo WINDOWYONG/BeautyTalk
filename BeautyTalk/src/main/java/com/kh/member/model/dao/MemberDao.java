@@ -48,7 +48,6 @@ public class MemberDao {
 							   rset.getString("mem_name"),
 							   rset.getString("email"),
 							   rset.getString("nickname"),
-							   rset.getDate("birthday"),
 							   rset.getString("phone"),
 							   rset.getDate("enroll_date"),
 							   rset.getString("status"),
