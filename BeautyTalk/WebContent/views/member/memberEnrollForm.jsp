@@ -12,7 +12,6 @@
         margin: auto;
         background-color: #fff;
         border-radius: 10px;
-        text-align: center;
         display: block;
     }
 
@@ -54,8 +53,12 @@
     }
 
     .btn-insta-insert {
-        background-color: #FF007F;
+        background-color: #e8618c;
         color: white;
+        width: 500px;
+        height: 40px;
+        border-radius: 7px;
+        margin-top: 40px;
     }
 
     .btn img {
@@ -93,6 +96,68 @@
         color: #e8618c;
         text-decoration-thickness: 3px;
     }
+    #insert-form :nth-child(4){
+        margin-top: 20px;
+    }
+
+    #insert-form :nth-child(7){
+        margin-top: 20px;
+    }
+
+    #agree1{
+        margin-top: 10px;
+    }
+
+    #agree2{
+        border: 1px solid #c6c6c6;
+        border-radius: 7px;
+    }
+
+    #agree3{
+        padding: 9px 5px 9px 5px;
+        position: relative;
+    }
+    div{
+        display: block;
+    }
+
+    #agreeAll{
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #333;
+    border-radius: 50%; /* 동그랗게 만듦 */
+    display: inline-block;
+    position: relative;
+    }
+
+    #agreeAll:checked{
+        background-color: #e8618c
+    }
+
+    .hidden {
+        display: none;
+    }
+    #toggleTerms{
+    background-color: #e8618c; /* 초록색 버튼 */
+    color: white;
+    border: none;
+    margin-left: 220px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    }
+
+    #gender{
+        width: 100%;
+        height: 20px;
+        margin-top: 10px;
+    }
+    
+    
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -108,72 +173,126 @@
         <div class="outer">
             <div class="member">
 
-            <h1 align="left" id="mainTitle">Beauty Talk</h1>       
+            <h1 align="left" id="mainTitle">Beauty Talk</h1>      
             <div id="line">
-                <pre align="left">                                                                       </pre>
+                <pre align="left">                                                                              </pre>
             </div>
 
 
             
             
-            <form action="" id="insert-form" method="post">
+            <form action="<%= contextPath %>/insert.me" id="insert-form" method="post">
                 <input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required>
-                <div class="error-message" id="userIdError">아이디는 최소 6자 이상 입력해야 합니다.</div>
-
-                <input type="password" name="userPwd" id="userPwd" minlength="8" maxlength="16" placeholder="비밀번호를 입력하세요. (8~16자, 영문+숫자+특수문자)" required>
-                <div class="error-message" id="userPwdError">비밀번호는 최소 8자 이상 입력해야 합니다.</div>
                 
 
+                <input type="password" name="userPwd" id="userPwd" minlength="8" maxlength="16" placeholder="비밀번호를 입력하세요. (8~16자, 영문+숫자+특수문자)" required>
+        
 
+                <input type="text" name="userName" id="userName" maxlength="16" placeholder="이름을 입력하세요." required>
+
+
+                <input type="text" name="email" id="email" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required>
+
+
+                <input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요" required>
+
+
+                <input type="text" name="birthDate" id="birthDate" minlength="8" maxlength="8" placeholder="생년월일 ex) 19990812" required>
+
+
+                <input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222" required>
+
+                <div id="gender">
+                    
+                        <input type="checkbox" name="gender" value="M"> 남자
+
+                        <input type="checkbox" name="gender" value="F"> 여자
+
+                </div>
+                
+
+                <div id="agree1">
+                    <div id="agree2">
+                        <div id="agree3">
+                            <div>
+                                <!-- 전체 동의 체크박스 -->
+                                <input type="checkbox" id="agreeAll" name="agree" style="vertical-align: bottom" value="Y" required>
+                                <label for="agreeAll">
+                                    <b style="color: #e8618c; vertical-align: 4px">[필수]</b>
+                                    <span style="font-weight: 800; vertical-align: 3px">이용 약관 전체동의</span>
+                                </label>
+                                
+                                <!-- 펼치기 버튼 -->
+                                <button type="button" id="toggleTerms">∨</button>
+                
+                                <!-- 약관 세부 내용 -->
+                                <div id="termsContainer" class="hidden">
+                                    <label><input type="checkbox" class="term-checkbox required"> [필수] 서비스 이용약관 동의</label><br>
+                                    <label><input type="checkbox" class="term-checkbox required"> [필수] 개인정보 처리방침 동의</label><br>
+                                    <label><input type="checkbox" class="term-checkbox"> [선택] 마케팅 정보 수신 동의</label><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-insta-insert" style="font-size: large; font-weight: 600;">회원가입</button>
             </form>
+
 
         </div>
     </div>
 
+
+
+
     <script>
-        $(document).ready(function() {
-            // 저장된 아이디가 있으면 자동 입력
-            let savedUserId = localStorage.getItem("savedUserId");
-            if (savedUserId) {
-                $("#userId").val(savedUserId);
-                $("#rememId").prop("checked", true);
-            }
-
-            // 로그인 폼 제출 이벤트
-            $("#insert-form").submit(function(event) {
-                let userId = $("#userId").val();
-                let userPwd = $("#userPwd").val();
-                let isValid = true;
-
-                // 아이디 최소 길이 확인
-                if (userId.length < 6) {
-                    $("#userIdError").show();
-                    isValid = false;
-                } else {
-                    $("#userIdError").hide();
-                }
-
-                // 비밀번호 최소 길이 확인
-                if (userPwd.length < 8) {
-                    $("#userPwdError").show();
-                    isValid = false;
-                } else {
-                    $("#userPwdError").hide();
-                }
-
-                // 최소 길이를 충족하지 않으면 제출 방지
-                if (!isValid) {
-                    event.preventDefault();
-                } else {
-                    // 아이디 저장 여부 확인
-                    if ($("#rememId").is(":checked")) {
-                        localStorage.setItem("savedUserId", userId); // 아이디 저장
-                    } else {
-                        localStorage.removeItem("savedUserId"); // 저장된 아이디 삭제
-                    }
-                }
+        $(document).ready(function () {
+            // 약관 펼치기/숨기기
+            $("#toggleTerms").click(function () {
+            $("#termsContainer").toggleClass("hidden");
             });
+
+            // 전체 동의 체크 시 모든 체크박스 체크
+            $("#agreeAll").change(function () {
+            $(".term-checkbox").prop("checked", $(this).prop("checked"));
+            checkRequired();
+            });
+
+            // 개별 체크박스 상태 변경 시 전체 동의 체크박스 상태 업데이트
+            $(".term-checkbox").change(function () {
+            $("#agreeAll").prop(
+                "checked",
+                $(".term-checkbox").length === $(".term-checkbox:checked").length
+            );
+            checkRequired();
+            });
+
+            // 필수 항목 체크 여부 확인 후 가입 버튼 활성화
+            function checkRequired() {
+            const allRequiredChecked =
+                $(".required").length === $(".required:checked").length;
+            $("#submitButton").prop("disabled", !allRequiredChecked);
+            }
         });
+
+    </script>
+
+<script>
+    $(document).ready(function() {
+        // 체크박스 하나만 선택 가능하도록 설정
+        $('input[name="gender"]').on('change', function() {
+            $('input[name="gender"]').not(this).prop('checked', false);
+        });
+    
+        // 폼 제출 시 필수 체크 검증
+        $('#signupForm').on('submit', function(event) {
+            if (!$('input[name="gender"]:checked').length) {
+                alert("성별을 선택해주세요.");
+                event.preventDefault(); // 폼 제출 방지
+            }
+        });
+    });
     </script>
 
 </body>

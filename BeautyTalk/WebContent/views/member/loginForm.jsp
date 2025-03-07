@@ -116,11 +116,11 @@
 
             <br>
             <button type="button" class="btn btn-kakao">
-                <img src="resources/images/kakao.png" alt="Kakao"> 카카오톡 로그인
+                <img src="/beautyTalk/resources/images/kakao.png" alt="Kakao"> 카카오톡 로그인
             </button>
 
             <button type="button" class="btn btn-insta">
-                <img src="resources/images/Instagram.png" alt="Instagram"> 인스타그램 로그인
+                <img src="/beautyTalk/resources/images/Instagram.png" alt="Instagram"> 인스타그램 로그인
             </button>
 
             <br>

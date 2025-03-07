@@ -39,6 +39,7 @@
         #header1 img {
             height: 100%; /* 부모 div의 높이에 맞게 */
             object-fit: contain; /* 이미지 비율 유지하면서 축소 */
+            width: 200px;
         }
     
         #header_2{position: relative;}
@@ -143,7 +144,7 @@
      <div id="header">
  
          <div id="header1">
-             <img src="resources/images/현존최강로고.jpg" alt="로고">
+             <img src="resources/images/현존최강로고.JPG" alt="로고">
          </div>
      
          <div id="header2">

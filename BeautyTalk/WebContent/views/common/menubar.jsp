@@ -41,7 +41,6 @@
     
         #header1 img {
         	width: 200px;
-            height: 200px;
         }
     
         #header_2{position: relative;}
@@ -287,7 +286,7 @@
             <div id="header">
         
                 <div id="header1">
-                    <img src="resources/images/현존최강로고2.JPG" alt="로고">
+                    <img src="resources/images/현존최강로고.JPG" alt="로고">
                 </div>
             
                 <div id="header2">
@@ -305,20 +304,11 @@
                 <% if(loginUser == null) { %>
         			<!-- case1. 로그인 전-->
         			<div id="header3_top">
-                        <a href="views/member/loginForm.jsp">로그인</a>
+                        <a href="loginForm.me">로그인</a>
                         <span>|</span>
-                        <a href="views/member/memberEnrollForm.jsp">회원가입</a>
+                        <a href="enrollForm.me">회원가입</a>
               </div> 
-              
-           		<script>
-            			function enrollPage() {
-									// location.href = "<%= contextPath %>/views/member/memberEnrollForm.jsp";
-									// 웹 애플리케이션의 디렉토리 구조가 url 노출되면 보안에 취약
-					
-									// 단순한 페이지 요청도 servlet 호출해서 servlet을 거쳐서 간다.
-									location.href = "<%= contextPath %>/enrollForm.me"
-            	}
-            </script>
+            
 
 
 					<% }else { %>

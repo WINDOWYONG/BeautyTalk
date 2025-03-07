@@ -10,19 +10,20 @@ public class Member {
 	private String userName;
 	private String email;
 	private String nickName;
-	private Date birthday;
 	private String phone;
-	private Date enrollDate;
+	private String enrollDate;
 	private String status;
 	private String agreeYN;
 	private String gender;
 	
 	
+	
 	public Member () {}
 
 
+
 	public Member(int userNo, String userId, String userPwd, String userName, String email, String nickName,
-			Date birthday, String phone, Date enrollDate, String status, String agreeYN, String gender) {
+			String phone, String enrollDate, String status, String agreeYN, String gender) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
@@ -30,13 +31,28 @@ public class Member {
 		this.userName = userName;
 		this.email = email;
 		this.nickName = nickName;
-		this.birthday = birthday;
 		this.phone = phone;
 		this.enrollDate = enrollDate;
 		this.status = status;
 		this.agreeYN = agreeYN;
 		this.gender = gender;
 	}
+
+
+
+	public Member(String userId, String userPwd, String userName, String email, String nickName,
+			String phone, String agreeYN, String gender) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.email = email;
+		this.nickName = nickName;
+		this.phone = phone;
+		this.agreeYN = agreeYN;
+		this.gender = gender;
+	}
+
 
 
 	public int getUserNo() {
@@ -44,9 +60,11 @@ public class Member {
 	}
 
 
+
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
+
 
 
 	public String getUserId() {
@@ -54,9 +72,11 @@ public class Member {
 	}
 
 
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
 
 
 	public String getUserPwd() {
@@ -64,9 +84,11 @@ public class Member {
 	}
 
 
+
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
+
 
 
 	public String getUserName() {
@@ -74,9 +96,11 @@ public class Member {
 	}
 
 
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 
 
 	public String getEmail() {
@@ -84,9 +108,11 @@ public class Member {
 	}
 
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 
 	public String getNickName() {
@@ -94,19 +120,11 @@ public class Member {
 	}
 
 
+
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
 
-
-	public Date getBirthday() {
-		return birthday;
-	}
-
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
 
 
 	public String getPhone() {
@@ -114,19 +132,23 @@ public class Member {
 	}
 
 
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
 
-	public Date getEnrollDate() {
+
+	public String getEnrollDate() {
 		return enrollDate;
 	}
 
 
-	public void setEnrollDate(Date enrollDate) {
+
+	public void setEnrollDate(String enrollDate) {
 		this.enrollDate = enrollDate;
 	}
+
 
 
 	public String getStatus() {
@@ -134,9 +156,11 @@ public class Member {
 	}
 
 
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 
 
 	public String getAgreeYN() {
@@ -144,9 +168,11 @@ public class Member {
 	}
 
 
+
 	public void setAgreeYN(String agreeYN) {
 		this.agreeYN = agreeYN;
 	}
+
 
 
 	public String getGender() {
@@ -154,18 +180,20 @@ public class Member {
 	}
 
 
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
-				+ ", email=" + email + ", nickName=" + nickName + ", birthday=" + birthday + ", phone=" + phone
-				+ ", enrollDate=" + enrollDate + ", status=" + status + ", agreeYN=" + agreeYN + ", gender=" + gender
-				+ "]";
+				+ ", email=" + email + ", nickName=" + nickName + ", phone=" + phone + ", enrollDate=" + enrollDate
+				+ ", status=" + status + ", agreeYN=" + agreeYN + ", gender=" + gender + "]";
 	}
+
 
 	
 }
