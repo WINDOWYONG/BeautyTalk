@@ -294,7 +294,7 @@
             <div id="header">
         
                 <div id="header1">
-                    <img src="resources/images/현존최강로고.JPG" alt="로고">
+                    <img src="resources/images/현존최강로고.jpg" alt="로고">
                 </div>
             
                 <div id="header2">
@@ -312,11 +312,7 @@
                 <% if(loginUser == null) { %>
         			<!-- case1. 로그인 전-->
         			<div id="header3_top">
-<<<<<<< HEAD
-                        <a href="loginForm.me">로그인</a>
-=======
                         <a href="<%= contextPath %>/loginForm.me">로그인</a>
->>>>>>> a00f9e1ff4b7494d878106b4412638e5e25f8182
                         <span>|</span>
                         <a href="enrollForm.me">회원가입</a>
               </div> 
