@@ -281,6 +281,14 @@
     </style>
     </head>
     <body>
+    
+	    <% if(alertMsg != null) { %>
+			<script>
+				alert("<%= alertMsg %>")			
+			</script>
+			<% session.removeAttribute("alertMsg"); %>
+		<% } %>
+		
         <div class="wrap">
     
             <div id="header">
@@ -304,7 +312,11 @@
                 <% if(loginUser == null) { %>
         			<!-- case1. 로그인 전-->
         			<div id="header3_top">
+<<<<<<< HEAD
                         <a href="loginForm.me">로그인</a>
+=======
+                        <a href="<%= contextPath %>/loginForm.me">로그인</a>
+>>>>>>> a00f9e1ff4b7494d878106b4412638e5e25f8182
                         <span>|</span>
                         <a href="enrollForm.me">회원가입</a>
               </div> 
@@ -322,7 +334,7 @@
                         <a href="<%= contextPath %>/views/member/memberEnrollForm.jsp">마이페이지</a>
                     </div>
                     <div id="header3_bottom">
-                        <span class="username"><strong>차은우</strong><strong>님</strong>,</span>
+                        <span class="username"><b><%= loginUser.getUserName() %></b><b>님</b>,</span>
                         <span>환영합니다!</span>
                         <a href=""><img src="" alt="프로필 사진"></a>
                     </div>

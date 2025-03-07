@@ -10,7 +10,6 @@
 		     , MEM_NAME
 		     , EMAIL
 		     , NICKNAME
-		     , BIRTHDAY
 		     , PHONE
 		     , ENROLL_DATE
 		     , STATUS

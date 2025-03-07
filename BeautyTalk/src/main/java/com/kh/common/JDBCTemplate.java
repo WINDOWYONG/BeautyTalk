@@ -30,8 +30,13 @@ public class JDBCTemplate {
 			Class.forName(prop.getProperty("driver"));
 			try {
 				conn = DriverManager.getConnection(prop.getProperty("url"),
+<<<<<<< HEAD
 												   prop.getProperty("username"),
 											       prop.getProperty("password"));
+=======
+											prop.getProperty("username"),
+											prop.getProperty("password"));
+>>>>>>> a00f9e1ff4b7494d878106b4412638e5e25f8182
 				conn.setAutoCommit(false);
 			} catch (SQLException e) {
 				e.printStackTrace();

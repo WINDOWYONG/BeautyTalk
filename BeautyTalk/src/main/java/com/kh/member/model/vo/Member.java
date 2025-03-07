@@ -20,10 +20,15 @@ public class Member {
 	
 	public Member () {}
 
+<<<<<<< HEAD
 
 
 	public Member(int userNo, String userId, String userPwd, String userName, String email, String nickName,
 			String phone, String enrollDate, String status, String agreeYN, String gender) {
+=======
+	public Member(int userNo, String userId, String userPwd, String userName, String email, String nickName,
+			String phone, Date enrollDate, String status, String agreeYN, String gender) {
+>>>>>>> a00f9e1ff4b7494d878106b4412638e5e25f8182
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
@@ -126,7 +131,10 @@ public class Member {
 	}
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a00f9e1ff4b7494d878106b4412638e5e25f8182
 	public String getPhone() {
 		return phone;
 	}
@@ -190,8 +198,14 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
+<<<<<<< HEAD
 				+ ", email=" + email + ", nickName=" + nickName + ", phone=" + phone + ", enrollDate=" + enrollDate
 				+ ", status=" + status + ", agreeYN=" + agreeYN + ", gender=" + gender + "]";
+=======
+				+ ", email=" + email + ", nickName=" + nickName + ", phone=" + phone
+				+ ", enrollDate=" + enrollDate + ", status=" + status + ", agreeYN=" + agreeYN + ", gender=" + gender
+				+ "]";
+>>>>>>> a00f9e1ff4b7494d878106b4412638e5e25f8182
 	}
 
 

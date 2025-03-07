@@ -99,7 +99,7 @@
             <div class="inner">
             <h2>로그인</h2>
             
-            <form action="" id="login-form" method="post">
+            <form action="<%= contextPath %>/login.me" id="login-form" method="post">
                 <input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required>
                 <div class="error-message" id="userIdError">아이디는 최소 6자 이상 입력해야 합니다.</div>
 
