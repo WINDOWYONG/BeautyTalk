@@ -24,9 +24,27 @@ public class MemberService {
 		if(result > 0) {
 			commit(conn);
 			
+		} else {
+			rollback(conn);
 		}
 		return result;
 	}
+	
+	public int deleteMember(String userPwd, String userId) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().deleteMember(conn, userPwd, userId);
+		
+		Member deleteMem = null;
+		if(result > 0) { //실패
+			commit(conn);
+		} else { //성공
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
 	
 
 }
