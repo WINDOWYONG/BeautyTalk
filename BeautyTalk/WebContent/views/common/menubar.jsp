@@ -367,7 +367,7 @@
                         </div>
                 </div>
         <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        	document.addEventListener("DOMContentLoaded", function () {
             const categoryBtn = document.querySelector("#category");
             const categoryMenu = document.querySelector(".category-menu");
           
