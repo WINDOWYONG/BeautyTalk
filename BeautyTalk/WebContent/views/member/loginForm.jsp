@@ -86,6 +86,7 @@
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body>
 
@@ -114,7 +115,7 @@
             </form>
 
             <br>
-            <button type="button" class="btn btn-kakao">
+            <button type="button" class="btn btn-kakao" onclick="kakaoLogin()">
                 <img src="/beautyTalk/resources/images/kakao.png" alt="Kakao"> 카카오톡 로그인
             </button>
 
@@ -180,6 +181,62 @@
         });
     </script>
     
+<<<<<<< HEAD
+=======
+	<script>
+	    // 카카오 SDK 초기화
+	    Kakao.init('59fed56fbad84e6ce2251947508fca03'); // ★ 여기에 본인의 카카오 앱 키 입력 ★
+	    
+	    function kakaoLogin() {
+	        Kakao.Auth.login({
+	            success: function(authObj) {
+	                console.log("로그인 성공:", authObj);
+	
+	                // 로그인 성공 시 사용자 정보 가져오기
+	                Kakao.API.request({
+	                    url: '/v2/user/me',
+	                    success: function(res) {
+	                        console.log("사용자 정보:", res);
+	                        
+	                        const kakaoEmail = res.kakao_account.email; // 카카오 email
+	                        const kakaoNickname = res.kakao_account.profile.nickname; // 카카오 닉네임
+	                        
+	                        $.ajax({
+	                            type: "POST",
+	                            url: "<%= contextPath %>/kakaoCheckUser.me", // 백엔드 API
+	                            data: JSON.stringify({ email: kakaoEmail }),
+	                            contentType: "application/json",
+	                            success: function(response) {
+	                                if (response.exists) {
+	                                    // 기존 사용자 → 메인 페이지로 이동
+	                                    alert("카카오 로그인 성공!\n" + res.kakao_account.profile.nickname + "님 환영합니다~");
+	                                    window.location.href = "<%= contextPath %>";
+	                                } else {
+	                                    // 신규 사용자 → 회원가입(추가 정보 입력) 페이지로 이동
+	                                    alert("회원가입 페이지로 이동합니다.")
+	                                    window.location.href = "<%= contextPath %>/enrollForm.me?email=" + encodeURIComponent(kakaoEmail) + "&nickname=" + encodeURIComponent(kakaoNickname);
+	                                }
+	                            },
+	                            error: function(error) {
+	                                console.error("사용자 정보 가져오기 실패:", error);
+	                            }
+	                        });
+	                    },
+	                    fail: function(error) {
+	                        console.error("사용자 정보 가져오기 실패:", error);
+	                    }
+	                });
+	            },
+	            fail: function(err) {
+	                console.error("로그인 실패:", err);
+	                alert("카카오 로그인 실패!");
+	            }
+	        });
+	    }
+	</script>
+	
+	
+>>>>>>> kakaoLogin
 
 </body>
 </html>

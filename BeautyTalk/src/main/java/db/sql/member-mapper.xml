@@ -48,5 +48,30 @@
        , ?
        )
 	</entry>
+	
+	<entry key="kakaoCheckUser">
+		SELECT
+		       COUNT(*) "COUNT"
+		  FROM MEMBER
+		 WHERE EMAIL = ?
+	</entry>
+	
+	<entry key="kakaoLoginMember">
+		SELECT
+		       MEM_NO
+		     , MEM_ID
+		     , MEM_PWD
+		     , MEM_NAME
+		     , EMAIL
+		     , NICKNAME
+		     , PHONE
+		     , ENROLL_DATE
+		     , STATUS
+		     , AGREE_YN
+		     , GENDER
+		  FROM MEMBER
+		 WHERE EMAIL = ?
+		   AND STATUS = 'Y'
+	</entry>
 
 </properties>
