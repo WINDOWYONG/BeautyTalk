@@ -294,6 +294,23 @@
         });
     });
     </script>
+    
+    <script>
+    // URL에서 이메일과 닉네임을 가져와서 자동 입력
+    $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email'); // 이메일 가져오기
+        const nickname = urlParams.get('nickname'); // 닉네임 가져오기
+
+        if (email) {
+            $("#email").val(email).attr("readonly", true); // 이메일 입력란에 자동 입력
+            
+        }
+        if (nickname) {
+            $("#userName").val(nickname); // 닉네임 입력란에 자동 입력
+        }
+    });
+	</script>
 
 </body>
 </html>

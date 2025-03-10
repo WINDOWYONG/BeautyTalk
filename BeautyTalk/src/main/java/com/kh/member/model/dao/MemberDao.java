@@ -93,7 +93,69 @@ public class MemberDao {
 		return result;
 		
 	}
+	
+	public int kakaoCheckUser(Connection conn, String kakaoEmail) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("kakaoCheckUser");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, kakaoEmail);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("COUNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
 
+	
+	public Member kakaoLoginMember(Connection conn, String kakaoEmail) {
+		// select문 => ResultSet 객체(한행) => Member 객체
+		Member m = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("kakaoLoginMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, kakaoEmail);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member(
+							   rset.getString("mem_id"),
+							   rset.getString("mem_pwd"),
+							   rset.getString("mem_name"),
+							   rset.getString("email"),
+							   rset.getString("nickname"),
+							   rset.getString("phone"),
+							   rset.getString("agree_yn"),
+							   rset.getString("gender"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
 }
 
 
