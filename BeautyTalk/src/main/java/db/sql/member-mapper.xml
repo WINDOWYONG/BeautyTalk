@@ -49,13 +49,13 @@
        )
 	</entry>
 	
-<<<<<<< HEAD
 	<entry key="deleteMember">
 			 UPDATE MEMBER
 			    SET STATUS = 'N'
 			  WHERE USER_ID = ?
 			    AND USER_PWD = ?
-=======
+	</entry>
+
 	<entry key="kakaoCheckUser">
 		SELECT
 		       COUNT(*) "COUNT"
@@ -79,7 +79,6 @@
 		  FROM MEMBER
 		 WHERE EMAIL = ?
 		   AND STATUS = 'Y'
->>>>>>> 55075f95964fa8d9c1cff08fae19f789bc30628f
 	</entry>
 
 </properties>

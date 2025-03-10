@@ -94,7 +94,6 @@ public class MemberDao {
 		
 	}
 	
-<<<<<<< HEAD
 	
 	public int deleteMember(Connection conn, String userPwd, String userId) {
 		
@@ -102,15 +101,26 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteMember");
 		
-		try {
-			pstmt = conn.prepareStatement(sql);
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, userId);
+				pstmt.setString(2, userPwd);
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			return result;
 			
-			pstmt.setString(1, userId);
-			pstmt.setString(2, userPwd);
 			
-			result = pstmt.executeUpdate();
-			
-=======
+
+		
+	}
+
+		
 	public int kakaoCheckUser(Connection conn, String kakaoEmail) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -127,15 +137,14 @@ public class MemberDao {
 			if(rset.next()) {
 				result = rset.getInt("COUNT");
 			}
->>>>>>> 55075f95964fa8d9c1cff08fae19f789bc30628f
+
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-<<<<<<< HEAD
-=======
+
 			close(rset);
->>>>>>> 55075f95964fa8d9c1cff08fae19f789bc30628f
+
 			close(pstmt);
 		}
 		return result;
@@ -177,6 +186,8 @@ public class MemberDao {
 		}
 		return m;
 	}
+	
+
 }
 
 
