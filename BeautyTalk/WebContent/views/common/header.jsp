@@ -320,9 +320,33 @@
             
 
 
+
 					<% }else { %>
         			<!-- case2. 로그인 후 -->
                     <div id="header3_top">
+
+     <div id="header">
+ 
+         <div id="header1">
+            <a href="<%= contextPath %>"><img src="resources/images/현존최강로고.jpg" alt="로고"></a>
+         </div>
+     
+         <div id="header2">
+             <form action="" id="search_form">
+                 <div id="search_text">
+                     <input type="text" name="keyword" placeholder="검색 키워드를 입력하세요.">
+                 </div>
+                 <div id="search_btn">
+                     <input type="submit" value="Search">
+                 </div>
+ 						</form>
+         </div>
+     
+         <div id="header3">
+             
+         </div>
+ 
+     </div>
 
                         <a href=""><img src="<%= contextPath %>/resources/images/2.PNG" alt="메시지"></a>
                         <a href=""><img src="<%= contextPath %>/resources/images/3.PNG" alt="알림"></a>
