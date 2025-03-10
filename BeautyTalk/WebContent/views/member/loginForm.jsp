@@ -181,8 +181,6 @@
         });
     </script>
     
-<<<<<<< HEAD
-=======
 	<script>
 	    // 카카오 SDK 초기화
 	    Kakao.init('59fed56fbad84e6ce2251947508fca03'); // ★ 여기에 본인의 카카오 앱 키 입력 ★
@@ -236,7 +234,6 @@
 	</script>
 	
 	
->>>>>>> kakaoLogin
 
 </body>
 </html>

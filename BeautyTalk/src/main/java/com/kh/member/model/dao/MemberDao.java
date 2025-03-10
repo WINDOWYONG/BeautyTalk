@@ -94,8 +94,6 @@ public class MemberDao {
 		
 	}
 	
-<<<<<<< HEAD
-	
 	public int deleteMember(Connection conn, String userPwd, String userId) {
 		
 		int result = 0;
@@ -110,7 +108,15 @@ public class MemberDao {
 			
 			result = pstmt.executeUpdate();
 			
-=======
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+			
+	}
+			
 	public int kakaoCheckUser(Connection conn, String kakaoEmail) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -127,15 +133,11 @@ public class MemberDao {
 			if(rset.next()) {
 				result = rset.getInt("COUNT");
 			}
->>>>>>> 55075f95964fa8d9c1cff08fae19f789bc30628f
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-<<<<<<< HEAD
-=======
 			close(rset);
->>>>>>> 55075f95964fa8d9c1cff08fae19f789bc30628f
 			close(pstmt);
 		}
 		return result;
