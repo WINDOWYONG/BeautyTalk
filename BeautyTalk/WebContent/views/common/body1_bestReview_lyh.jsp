@@ -10,84 +10,335 @@
 <title>Insert title here</title>
 <style>
 <!-- bestReview -->
-    #form_bestReview{
-				width: 1100px;
-				height: 300px;
-				margin: auto;
+		#form_bestReview1{
+        width: 100%;
+        height: 100%;
     }
 
     #table_bestReview{
-        background-color: black;
-        width: 100%;
-        height: 330px;
-        margin-top: 50px;
+        /* background-color: black; */
+        width: 1000px;
+        min-width: 700px;
+        min-height: 300px;
+        margin: auto;
+        margin-top: 200px;
         box-sizing: border-box;
     }
 
-    #table_bestReview td{
-        border: 1px solid white;
-        color:black;
+    #table_bestReview span{
+        border: 1px solid gray;
     }
 
-    .prev_bestUser, .bestpost1_bestUser, .bestpost2_bestUser, .bestpost3_bestUser, .bestpost4_bestUser, .next_bestUser{
+		.bestReviewImg1{
+			width: 50px;
+			height: 50px;
+		}
+		.bestReviewImg2{
+			width: 150px;
+			height: 150px;
+		}
+		.bestReviewImg3{
+			width: 1100px;
+			height: 300px;
+			margin: auto;
+			margin-top: 40px;
+		}
+		.bestReviewBtn{
+			margin: auto;
+			margin-top: 20px;
+
+		}
+
+		.bestReview_11{
+			width: 150px;
+		}
+
+    .bestReviewImg1, .bestReviewImg2, .bestReviewImg3{
         cursor: pointer;
     }
+
+		.div_bestReview{
+			border: 1px solid black;
+		}
+
 
 </style>
 </head>
 <body>
 <!-- bestReview -->
- 	<form action="" id="form_bestReview" method="">
-	    <table id="table_bestReview">
-	        <tr>
-	            <td></td>
-	            <td colspan="8" align="center" style="height: 130px; color: white;"><h1>Today's Best User</h1></td>
-	            <td></td>
-	        </tr>
-	        <tr>
-	            <td></td>
-	
-	            <td colspan="2" class="user1_bestUser" style="height: 170px;">
-	            	<img src="resources/images/bestuser1.png">
-	            </td>
+	<div>
+		<form action="" id="form_bestReview1" method="">
+				<table id="table_bestReview">
+					<thead>
+						<tr>
+								<td colspan="15" align="center" style="height: 20px; color: black;"><h1>Best Review</h1></td>
+						</tr>	        <tr>
+												<td colspan="15" align="center" style="height: 20px; color: gray;"><h1></h1>유저들이 인정한 찐템 리뷰!!</td>
+								</tr>
+		<!-- 공백용 -->
+								<tr style="height: 40px;">
+										<td colspan="15"></td>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+								
+								</tr>
+					</thead>
+		<!-- 1번째 줄 -->
+					<tbody>
+								<tr>
+									<tbody>
+										<td onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+										</td>
+										<td class="bestReview_11">
+											<p>
+												메디큐브<br>
+												medicube
+											</p>
+										</td>
+										<td colspan="2">
+											<p>
+												[1+1/흔적미백] <br>
+												메디큐브 연어 PDRN 핑크앰블
+											</p>
+										</td>
+										<td style="width: 40px;"></td>
+									</span>
+								
+									<!--   -->
+									<div>
+										<td onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+										</td>
+										<td class="bestReview_11">
+											<p>
+												메디큐브<br>
+												medicube
+											</p>
+										</td>
+										<td colspan="2">
+											<p>
+												[1+1/흔적미백] <br>
+												메디큐브 연어 PDRN 핑크앰블
+											</p>
+										</td>
+										<td style="width: 40px;"></td>
+									</div>
+									<div style="display: black">
+										<td onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+										</td>
+										<td class="bestReview_11">
+											<p>
+												메디큐브<br>
+												medicube
+											</p>
+										</td>
+										<td colspan="2">
+											<p>
+												[1+1/흔적미백] <br>
+												메디큐브 연어 PDRN 핑크앰블
+											</p>
+										</td>
+										<td style="width: 40px;"></td>
+									</div>
+								</tr>
+		<!-- 2번째 줄이 필요하네 -->
+								<tr>
+										<td colspan="3">
+												<div style="color: gray;">
+														1 믿고 쓰는 메디큐브 <br>
+														2 어쩌고 저쩌고 <br>
+														3 3등 리뷰입니다. <br>
+												</div>
+										</td>
+										
+										
+										<td onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+										</td>
+										<td style="width: 40px;"></td>
+										<td colspan="3">
+												<div style="color: gray;">
+														1 믿고 쓰는 메디큐브 <br>
+														2 어쩌고 저쩌고 <br>
+														3 3등 리뷰입니다. <br>
+												</div>
+										</td>
+										
+										
+										<td onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+										</td>
+										<td style="width: 40px;"></td>
+										<td colspan="3">
+												<div style="color: gray;">
+														1 믿고 쓰는 메디큐브 <br>
+														2 어쩌고 저쩌고 <br>
+														3 3등 리뷰입니다. <br>
+												</div>
+										</td>
+										
+										
+										<td onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+										</td>
+								</tr>
 
-							<td></td>
-	            <td colspan="2" class="user2_bestUser" style="height: 170px;">
-	            	<img src="resources/images/bestuser2.png">
-	            </td>
-	            
-							<td></td>
-	            <td colspan="2"  class="user3_bestUser" style="height: 170px;">
-	            	<img src="resources/images/bestuser3.png">
-	            </td>
-	            <td></td>
+		<!-- 공백용 -->			
+								<tr style="height: 40px;">
+										<td colspan="15"></td>
+
+				
+										
+										
+										
+										
+										
+										
+										
+										
+										
+								</tr>
+		<!-- 3번째 줄 -->
+								<tr>
+										<td class="bestReviewImg1" onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+										</td>
+										<td class="bestReview_11">
+												<div>
+														메디큐브<br>
+														medicube
+												</div>
+										</td>
+										<td colspan="2">
+												<div>
+														[1+1/흔적미백] <br>
+														메디큐브 연어 PDRN 핑크앰블
+												</div>
+										</td>
+
+										<td style="width: 40px;"></td>
+										<td class="bestReviewImg1" onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+										</td>
+										<td class="bestReview_11">
+												<div>
+														메디큐브<br>
+														medicube
+												</div>
+										</td>
+										<td colspan="2">
+												<div>
+														[1+1/흔적미백] <br>
+														메디큐브 연어 PDRN 핑크앰블
+												</div>
+										</td>
+										<td style="width: 40px;"></td>
+										<td class="bestReviewImg1" onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+										</td>
+										<td class="bestReview_11">
+												<div>
+														메디큐브<br>
+														medicube
+												</div>
+										</td>
+										<td colspan="2">
+												<div>
+														[1+1/흔적미백] <br>
+														메디큐브 연어 PDRN 핑크앰블
+												</div>
+										</td>
+								</tr>
+		<!-- 4번째 줄이 필요하네 -->
+								<tr>
+										<td colspan="3">
+												<div style="color: gray;">
+														1 믿고 쓰는 메디큐브 <br>
+														2 어쩌고 저쩌고 <br>
+														3 3등 리뷰입니다. <br>
+												</div>
+										</td>
+										
+										
+										<td onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+										</td>
+										<td style="width: 40px;"></td>
+										<td colspan="3">
+												<div style="color: gray;">
+														1 믿고 쓰는 메디큐브 <br>
+														2 어쩌고 저쩌고 <br>
+														3 3등 리뷰입니다. <br>
+												</div>
+										</td>
+										
+										
+										<td onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+										</td>
+										<td style="width: 40px;"></td>
+										<td colspan="3">
+												<div style="color: gray;">
+														1 믿고 쓰는 메디큐브 <br>
+														2 어쩌고 저쩌고 <br>
+														3 3등 리뷰입니다. <br>
+												</div>
+										</td>
+										
+										
+										<td onclick="location.href='http://www.daum.net'">
+												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+										</td>
+								</tr>
+
+								<!-- 공백용 -->			
+								<tr style="height: 40px;">
+										<td colspan="15" align="center">
+												<button style="color: blueviolet;" onclick="location.href='https://www.naver.com'" class="bestReviewBtn">더보기</button>
+										</td>
 
 
-	        </tr>
-	        <tr>
-						<td></td>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+								</tr>
+								<tr style="height: 40px;">
+									<td colspan="15" align="center">
+										<img src="<%= contextPath %>/images/bestreview3.png" alt="" class="bestReviewImg3">
+									</td>
 
-						<td class="user1_bestUser" style="height: 170px;">
-							<img src="resources/images/bestuser1.png">
-						</td>
-						<td></td>
-						<td class="user2_bestUser" style="height: 170px;">
-							<img src="resources/images/bestuser2.png">
-						</td>
-						<td></td>
 
-						<td class="user3_bestUser" style="height: 170px;">
-							<img src="resources/images/bestuser3.png">
-						</td>
-						<td></td>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+							</tr>
+					</tbody>
+				</table>
 
-						<td></td>
-						<td></td>
-						<td></td>
-				</tr>
-
-	    </table>
-	</form>
+		</form>
+	</div>
 
 </body>
 </html>
