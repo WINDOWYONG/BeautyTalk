@@ -325,7 +325,7 @@
 
                         <a href=""><img src="<%= contextPath %>/resources/images/2.PNG" alt="메시지"></a>
                         <a href=""><img src="<%= contextPath %>/resources/images/3.PNG" alt="알림"></a>
-                        <a href="">로그아웃</a>
+                        <a href="<%= contextPath %>/logout.me">로그아웃</a>
                         <span>|</span>
                         <a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
                     </div>
