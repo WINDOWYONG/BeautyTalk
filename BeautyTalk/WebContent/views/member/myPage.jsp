@@ -13,12 +13,12 @@
         width: 100%;
         min-width: 1020px;
         margin: auto;
-        margin-top: 50px;
+        margin-top: 100px;
     }
     #Content2{
         width: 1020px;
         overflow: hidden;
-        margin: auto;
+        margin: 0 auto;
 
     }
     #Content3{
@@ -46,6 +46,7 @@
     #userprofile{
     	border-radius: 100%;
         height: 100%;
+        width: 100%;
     }
     
     #Content2 div{
@@ -101,6 +102,7 @@
 </style>
 <body>
 	<%@ include file="../common/header.jsp" %>
+    <br>
 	
 	    <div id="Content1">
             <div id="Content2">
