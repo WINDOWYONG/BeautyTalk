@@ -44,16 +44,17 @@ public class MemberService {
 		}
 		return result;
 	}
-		
 
+	
 	public int kakaoCheckUser(String kakaoEmail) {
 		Connection conn = getConnection();
 		int result = new MemberDao().kakaoCheckUser(conn, kakaoEmail);
-
 		close(conn);
 		return result;
 	}
 	
+
+
 
 
 	public Member kakaoLoginMember(String kakaoEmail) {

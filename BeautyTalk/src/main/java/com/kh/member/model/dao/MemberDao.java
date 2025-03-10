@@ -94,7 +94,7 @@ public class MemberDao {
 		
 	}
 	
-	
+
 	public int deleteMember(Connection conn, String userPwd, String userId) {
 		
 		int result = 0;
@@ -115,12 +115,8 @@ public class MemberDao {
 			}
 			return result;
 			
-			
-
-		
 	}
 
-		
 	public int kakaoCheckUser(Connection conn, String kakaoEmail) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -137,14 +133,11 @@ public class MemberDao {
 			if(rset.next()) {
 				result = rset.getInt("COUNT");
 			}
-
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-
 			close(rset);
-
 			close(pstmt);
 		}
 		return result;
