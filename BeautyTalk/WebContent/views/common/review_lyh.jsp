@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="views/common/menubar.jsp" %>
+
+	<%@ include file=./common/manubar.jsp %>
+	
+	
+
 </body>
 </html>
