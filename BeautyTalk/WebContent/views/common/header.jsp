@@ -153,7 +153,7 @@
      <div id="header">
  
          <div id="header1">
-             <img src="resources/images/현존최강로고.jpg" alt="로고">
+            <a href="<%= contextPath %>"><img src="resources/images/현존최강로고.jpg" alt="로고"></a>
          </div>
      
          <div id="header2">
