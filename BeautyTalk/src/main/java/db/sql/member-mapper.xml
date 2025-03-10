@@ -49,11 +49,37 @@
        )
 	</entry>
 	
+<<<<<<< HEAD
 	<entry key="deleteMember">
 			 UPDATE MEMBER
 			    SET STATUS = 'N'
 			  WHERE USER_ID = ?
 			    AND USER_PWD = ?
+=======
+	<entry key="kakaoCheckUser">
+		SELECT
+		       COUNT(*) "COUNT"
+		  FROM MEMBER
+		 WHERE EMAIL = ?
+	</entry>
+	
+	<entry key="kakaoLoginMember">
+		SELECT
+		       MEM_NO
+		     , MEM_ID
+		     , MEM_PWD
+		     , MEM_NAME
+		     , EMAIL
+		     , NICKNAME
+		     , PHONE
+		     , ENROLL_DATE
+		     , STATUS
+		     , AGREE_YN
+		     , GENDER
+		  FROM MEMBER
+		 WHERE EMAIL = ?
+		   AND STATUS = 'Y'
+>>>>>>> 55075f95964fa8d9c1cff08fae19f789bc30628f
 	</entry>
 
 </properties>

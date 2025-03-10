@@ -30,6 +30,7 @@ public class MemberService {
 		return result;
 	}
 	
+<<<<<<< HEAD
 	public int deleteMember(String userPwd, String userId) {
 		Connection conn = getConnection();
 		
@@ -41,10 +42,24 @@ public class MemberService {
 		} else { //성공
 			rollback(conn);
 		}
+=======
+	public int kakaoCheckUser(String kakaoEmail) {
+		Connection conn = getConnection();
+		int result = new MemberDao().kakaoCheckUser(conn, kakaoEmail);
+>>>>>>> 55075f95964fa8d9c1cff08fae19f789bc30628f
 		close(conn);
 		return result;
 	}
 	
+<<<<<<< HEAD
 	
+=======
+	public Member kakaoLoginMember(String kakaoEmail) {
+		Connection conn = getConnection();
+		Member m = new MemberDao().kakaoLoginMember(conn, kakaoEmail);
+		close(conn);
+		return m;
+	}
+>>>>>>> 55075f95964fa8d9c1cff08fae19f789bc30628f
 
 }
