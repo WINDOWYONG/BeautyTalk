@@ -14,7 +14,6 @@
 </style>
 </head>
 <body>
-	<%@ include file=./menubar.jsp %>
 	
 	<form>
         <table>

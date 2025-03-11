@@ -96,7 +96,7 @@
 								<tr>
 									<tbody>
 										<td onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+												<img src="<%= contextPath %>/resources/images/medicube.png" alt="" class="bestReviewImg1">
 										</td>
 										<td class="bestReview_11">
 											<p>
@@ -116,7 +116,7 @@
 									<!--   -->
 									<div>
 										<td onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+												<img src="<%= contextPath %>/resources/images/medicube.png" alt="" class="bestReviewImg1">
 										</td>
 										<td class="bestReview_11">
 											<p>
@@ -134,7 +134,7 @@
 									</div>
 									<div style="display: black">
 										<td onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+												<img src="<%= contextPath %>/resources/images/medicube.png" alt="" class="bestReviewImg1">
 										</td>
 										<td class="bestReview_11">
 											<p>
@@ -163,7 +163,7 @@
 										
 										
 										<td onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+												<img src="<%= contextPath %>/resources/images/bestreview1.png" alt="" class="bestReviewImg2">
 										</td>
 										<td style="width: 40px;"></td>
 										<td colspan="3">
@@ -176,7 +176,7 @@
 										
 										
 										<td onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+												<img src="<%= contextPath %>/resources/images/bestreview1.png" alt="" class="bestReviewImg2">
 										</td>
 										<td style="width: 40px;"></td>
 										<td colspan="3">
@@ -189,7 +189,7 @@
 										
 										
 										<td onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+												<img src="<%= contextPath %>/resources/images/bestreview1.png" alt="" class="bestReviewImg2">
 										</td>
 								</tr>
 
@@ -211,7 +211,7 @@
 		<!-- 3번째 줄 -->
 								<tr>
 										<td class="bestReviewImg1" onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+												<img src="<%= contextPath %>/resources/images/medicube.png" alt="" class="bestReviewImg1">
 										</td>
 										<td class="bestReview_11">
 												<div>
@@ -228,7 +228,7 @@
 
 										<td style="width: 40px;"></td>
 										<td class="bestReviewImg1" onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+												<img src="<%= contextPath %>/resources/images/medicube.png" alt="" class="bestReviewImg1">
 										</td>
 										<td class="bestReview_11">
 												<div>
@@ -244,7 +244,7 @@
 										</td>
 										<td style="width: 40px;"></td>
 										<td class="bestReviewImg1" onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/medicube.png" alt="" class="bestReviewImg1">
+												<img src="<%= contextPath %>/resources/images/medicube.png" alt="" class="bestReviewImg1">
 										</td>
 										<td class="bestReview_11">
 												<div>
@@ -271,7 +271,7 @@
 										
 										
 										<td onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+												<img src="<%= contextPath %>/resources/images/bestreview1.png" alt="" class="bestReviewImg2">
 										</td>
 										<td style="width: 40px;"></td>
 										<td colspan="3">
@@ -284,7 +284,7 @@
 										
 										
 										<td onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+												<img src="<%= contextPath %>/resources/images/bestreview1.png" alt="" class="bestReviewImg2">
 										</td>
 										<td style="width: 40px;"></td>
 										<td colspan="3">
@@ -297,14 +297,16 @@
 										
 										
 										<td onclick="location.href='http://www.daum.net'">
-												<img src="<%= contextPath %>/images/bestreview1.png" alt="" class="bestReviewImg2">
+												<img src="<%= contextPath %>/resources/images/bestreview1.png" alt="" class="bestReviewImg2">
 										</td>
 								</tr>
 
 								<!-- 공백용 -->			
 								<tr style="height: 40px;">
 										<td colspan="15" align="center">
-												<button style="color: blueviolet;" onclick="location.href='https://www.naver.com'" class="bestReviewBtn">더보기</button>
+												<a href="<%= contextPath %>/review.li">
+													<button class="bestReviewBtn">더보기</button>
+												</a>
 										</td>
 
 
@@ -318,9 +320,10 @@
 										
 										
 								</tr>
+								
 								<tr style="height: 40px;">
 									<td colspan="15" align="center">
-										<img src="<%= contextPath %>/images/bestreview3.png" alt="" class="bestReviewImg3">
+										<img src="<%= contextPath %>/resources/images/bestreview3.png" alt="" class="bestReviewImg3">
 									</td>
 
 
