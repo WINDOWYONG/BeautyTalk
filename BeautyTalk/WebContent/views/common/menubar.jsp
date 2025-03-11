@@ -332,7 +332,7 @@
                     <div id="header3_bottom">
                         <span class="username"><b><%= loginUser.getUserName() %></b><b>님</b>,</span>
                         <span>환영합니다!</span>
-                        <a href=""><img src="" alt="프로필 사진"></a>
+                        <a href="<%= contextPath %>/calendarMainpage.ca"><img src="" alt="프로필 사진"></a>
                     </div>
                     <% } %>
                 </div>
