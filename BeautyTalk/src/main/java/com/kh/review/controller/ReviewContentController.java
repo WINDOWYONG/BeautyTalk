@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ReviewListController
+ * Servlet implementation class ReviewContentController
  */
-@WebServlet("/review.li")
-public class ReviewListController extends HttpServlet {
+@WebServlet("/review.wr")
+public class ReviewContentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewListController() {
+    public ReviewContentController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,11 +29,9 @@ public class ReviewListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = request.getRequestDispatcher("views/bodyTestLYH/reviewMyPostlyh.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("views/common/reviewEnrollFormLyh.jsp");
 		rd.forward(request, response);
 		
-//		request.setAttribute("request","requestValue");
-//		response.sendRedirect("views/bodyTestLYH/reviewlyh.jsp");
 		
 	}
 
