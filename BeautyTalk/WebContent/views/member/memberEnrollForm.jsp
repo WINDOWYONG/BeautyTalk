@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-String Token = (String) session.getAttribute("accessToken");
+String Token = (String) session.getAttribute("naverId");
 String userName = (String) session.getAttribute("name");
 String email = (String) session.getAttribute("email");
 String gender = (String) session.getAttribute("gender");

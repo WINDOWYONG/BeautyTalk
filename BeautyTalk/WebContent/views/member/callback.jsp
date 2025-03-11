@@ -60,7 +60,7 @@
     String apiURL = "https://openapi.naver.com/v1/nid/me";
     URL userInfoUrl = new URL(apiURL);
     HttpURLConnection userInfoConn = (HttpURLConnection) userInfoUrl.openConnection();
-    userInfoConn.setRequestMethod("GET");
+    userInfoConn.setRequestMethod("POST");
     userInfoConn.setRequestProperty("Authorization", "Bearer " + accessToken);
 
     BufferedReader userInfoBr = new BufferedReader(new InputStreamReader(userInfoConn.getInputStream()));
@@ -73,6 +73,7 @@
     // ✅ 사용자 정보 JSON 파싱
     JSONObject userInfoJson = (JSONObject) parser.parse(userInfoResponse.toString());
     JSONObject responseObj = (JSONObject) userInfoJson.get("response");
+    
 
     // ✅ 네이버에서 받은 데이터 출력 (디버깅용)
 
@@ -86,18 +87,21 @@
 
     // ✅ "-"(하이픈) 제거 (예: "01099596587")
     mobile = (mobile != null) ? mobile.replace("-", "") : "";
+    
+    String naverId = (String) responseObj.get("id");
+
+    System.out.println("🔵 네이버 회원 ID: " + naverId);
 
 
 
     // ✅ 변환된 생일 값을 세션에 저장
     session.setAttribute("birthday", birthday);
+    session.setAttribute("naverId", naverId);
     session.setAttribute("name", (String) responseObj.get("name"));
     session.setAttribute("email", (String) responseObj.get("email"));
     session.setAttribute("gender", (String) responseObj.get("gender"));
     session.setAttribute("birthyear", (String) responseObj.get("birthyear"));
     session.setAttribute("mobile", mobile);
-    session.setAttribute("accessToken", accessToken);
-
 
 
     // ✅ 로그인 페이지로 이동

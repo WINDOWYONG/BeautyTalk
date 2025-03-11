@@ -32,7 +32,8 @@ public class NaverCheckUserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String Token = (String) session.getAttribute("accessToken");
+		String Token = (String) session.getAttribute("naverId");
+		System.out.println(Token);
 		
 		int result = new MemberService().NaverCheckUser(Token);
 		
