@@ -6,21 +6,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class NaverCheckUserController
  */
-@WebServlet("/login.me")
-public class LoginController extends HttpServlet {
+@WebServlet("/NaverCheckUser.me")
+public class NaverCheckUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public NaverCheckUserController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,22 +31,22 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		String Token = (String) session.getAttribute("accessToken");
 		
-
-			String userId = request.getParameter("userId");
-			String userPwd = request.getParameter("userPwd");
+		int result = new MemberService().NaverCheckUser(Token);
+		
+		Member loginUser = null;
+		if(result > 0) {
+			loginUser = new MemberService().NaverLoginMember(Token);
+			session.setAttribute("loginUser", loginUser);
+			response.sendRedirect(request.getContextPath());
 			
-			Member loginUser = new MemberService().loginMember(userId, userPwd);
 			
-			if(loginUser == null) {
-				request.getSession().setAttribute("alertMsg", "로그인에 실패하였습니다.");
-				response.sendRedirect(request.getContextPath() + "/loginForm.me");
-			}else {
-				request.getSession().setAttribute("loginUser", loginUser);
-				response.sendRedirect(request.getContextPath());
-			}
+		} else {
+			response.sendRedirect(request.getContextPath()+ "/views/member/memberEnrollForm.jsp");
 		}
-		
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

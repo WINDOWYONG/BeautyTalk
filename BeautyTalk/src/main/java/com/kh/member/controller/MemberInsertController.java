@@ -43,9 +43,10 @@ public class MemberInsertController extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
 		String agreeYN = request.getParameter("agree");
+		String Token = request.getParameter("Token");
 
 		// Member 객체 생성
-		Member m = new Member(userId, userPwd, userName, email, nickName, phone, gender, agreeYN);
+		Member m = new Member(userId, userPwd, userName, email, nickName, phone, gender, agreeYN, Token);
 
 		// DB에 회원 정보 삽입
 		int result = new MemberService().insertMember(m);

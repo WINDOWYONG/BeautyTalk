@@ -279,6 +279,7 @@
         }
     
     </style>
+
     </head>
     <body>
     
@@ -317,7 +318,7 @@
                         <a href="<%= contextPath %>/enrollForm.me">회원가입</a>
               </div> 
             
-
+	
 
 					<% }else { %>
         			<!-- case2. 로그인 후 -->

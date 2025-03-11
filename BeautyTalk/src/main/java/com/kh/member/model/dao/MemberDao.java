@@ -72,6 +72,7 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			
 			pstmt.setString(1, m.getUserId());
 			pstmt.setString(2, m.getUserPwd());
 			pstmt.setString(3, m.getUserName());
@@ -80,6 +81,7 @@ public class MemberDao {
 			pstmt.setString(6, m.getPhone());
 			pstmt.setString(7, m.getAgreeYN());
 			pstmt.setString(8, m.getGender());
+			pstmt.setString(9, m.getToken());
 			
 			result = pstmt.executeUpdate();
 			
@@ -169,6 +171,72 @@ public class MemberDao {
 							   rset.getString("phone"),
 							   rset.getString("agree_yn"),
 							   rset.getString("gender"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
+	
+	public int NaverCheckUser(Connection conn, String Token) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("NaverCheckUser");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, Token);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("COUNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+
+	}
+	
+	public Member NaverLoginMember(Connection conn, String Token) {
+		Member m = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("NaverLoginMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, Token);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member(
+							   rset.getString("mem_id"),
+							   rset.getString("mem_pwd"),
+							   rset.getString("mem_name"),
+							   rset.getString("email"),
+							   rset.getString("nickname"),
+							   rset.getString("phone"),
+							   rset.getString("agree_yn"),
+							   rset.getString("gender"),
+							   rset.getString("Token"));
 			}
 			
 		} catch (SQLException e) {

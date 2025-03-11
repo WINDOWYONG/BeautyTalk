@@ -1,3 +1,5 @@
+<%@page import="java.util.UUID"%>
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -42,6 +44,22 @@
         align-items: center;
         justify-content: center;
     }
+            #naver_id_login a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;  /* 원하는 가로 크기 */
+            height: 50px;  /* 고정된 세로 크기 */
+            margin: 8px 0;
+            margin-top: 35px; /* 위아래 여백 */
+            border: none;  /* 테두리 없음 */
+            border-radius: 30px;  /* 둥근 모서리 */
+            font-size: 16px;  /* 글자 크기 */
+            cursor: pointer;  /* 마우스 포인터 변경 */
+            background-color: #1ec800;  /* 버튼 배경색 */
+            color: white;  /* 글자 색상 */
+            text-decoration: none;  /* 링크 스타일 제거 */
+        }
 
     .btn-login {
         background-color: #000;
@@ -54,7 +72,7 @@
     }
 
     .btn-insta {
-        background-color: #FF007F;
+        background-color: #03c75a;
         color: white;
     }
 
@@ -87,9 +105,25 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 </head>
 <body>
+<%
+String clientId = "6VzT269VW306H2aC74fu";
+String redirectURI = "http://localhost:8123/beautyTalk/views/member/callback.jsp";
+String encodedRedirectURI = URLEncoder.encode(redirectURI, "UTF-8");
 
+// ✅ state 값을 세션에 저장
+String state = UUID.randomUUID().toString();
+session.setAttribute("state", state);
+
+// ✅ 네이버 로그인 요청 URL 생성
+String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code"
+               + "&client_id=" + clientId
+               + "&redirect_uri=" + encodedRedirectURI
+               + "&state=" + state
+               + "&scope=name,email,nickname,profile_image,gender,birthday,age,birthyear,mobile"; 
+%>
 	<%@ include file="../common/header.jsp" %>
 	
 		<br><br><br><br><br>
@@ -119,9 +153,29 @@
                 <img src="/beautyTalk/resources/images/kakao.png" alt="Kakao"> 카카오톡 로그인
             </button>
 
-            <button type="button" class="btn btn-insta">
-                <img src="/beautyTalk/resources/images/Instagram.png" alt="Instagram"> 인스타그램 로그인
-            </button>
+						<div id="naver_id_login"></div>
+<button id="naverLoginBtn" style="
+    width: 100%;
+    height: 45px;
+    background-color: #03C75A;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+">
+    <img src="/beautyTalk/resources/images/naver.jpg" 
+        alt="네이버 로고" width="24" height="24">
+    네이버 로그인
+</button>
+
+
 
             <br>
 
@@ -233,6 +287,30 @@
 	    }
 	</script>
 	
+	
+<script type="text/javascript">
+    var naverLogin = new naver_id_login("<%= clientId %>", "<%= redirectURI %>");
+    var state = "<%= state %>";
+
+    // ✅ 네이버 로그인 초기화 (필수)
+    naverLogin.setState(state);
+    naverLogin.init_naver_id_login();
+
+    // ✅ 네이버에서 자동 생성하는 버튼 숨기기
+    document.getElementById("naver_id_login").style.display = "none";
+
+    // ✅ JSP에서 JavaScript로 안전하게 URL 전달
+    var loginURL = "<%= naverLoginURL.replace("&", "&amp;") %>";  // '&' 문제 해결
+
+    // ✅ 콘솔에서 URL 확인 (디버깅용)
+    console.log("🔵 네이버 로그인 URL: ", loginURL);
+
+    // ✅ 사용자가 버튼 클릭 시 로그인 실행 (자동 실행 제거)
+    document.getElementById("naverLoginBtn").addEventListener("click", function() {
+        location.href = loginURL;
+    });
+</script>
+</script>
 	
 
 </body>

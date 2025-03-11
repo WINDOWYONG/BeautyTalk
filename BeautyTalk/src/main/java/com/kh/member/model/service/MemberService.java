@@ -63,6 +63,22 @@ public class MemberService {
 		close(conn);
 		return m;
 	}
+	
+	public int NaverCheckUser(String Token) {
+		Connection conn = getConnection();
+		int result = new MemberDao().NaverCheckUser(conn, Token);
+		
+		close(conn);
+		return result;
+		
+	}
+	
+	public Member NaverLoginMember(String Token) {
+		Connection conn = getConnection();
+		Member m = new MemberDao().NaverLoginMember(conn, Token);
+		close(conn);
+		return m;
+	}
 
 
 }

@@ -32,12 +32,14 @@
         , EMAIL
         , NICKNAME
         , PHONE
-        , GENDER
         , AGREE_YN
+        , GENDER
+        , TOKEN
        )
        VALUES
        (
          SEQ_MEM.NEXTVAL
+       , ?
        , ?
        , ?
        , ?
@@ -80,5 +82,33 @@
 		 WHERE EMAIL = ?
 		   AND STATUS = 'Y'
 	</entry>
+	
+		<entry key="NaverCheckUser">
+		SELECT
+		       COUNT(*) "COUNT"
+		  FROM MEMBER
+		 WHERE Token = ?
+		</entry>
+		
+			<entry key="NaverLoginMember">
+		SELECT
+		       MEM_NO
+		     , MEM_ID
+		     , MEM_PWD
+		     , MEM_NAME
+		     , EMAIL
+		     , NICKNAME
+		     , PHONE
+		     , ENROLL_DATE
+		     , STATUS
+		     , AGREE_YN
+		     , GENDER
+		     , Token
+		  FROM MEMBER
+		 WHERE Token = ?
+		   AND STATUS = 'Y'
+	</entry>
+	
+	
 
 </properties>
