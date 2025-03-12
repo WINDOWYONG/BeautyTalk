@@ -205,7 +205,6 @@
         var calendarEl = document.getElementById('calendar');
 
         if (!calendarEl) {
-            console.error("❌ 캘린더 요소를 찾을 수 없음");
             return;
         }
 
@@ -214,7 +213,7 @@
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                right: 'dayGridMonth,dayGridWeek,dayGridDay'
             },
             initialDate: '2025-03-11',
             navLinks: true,
