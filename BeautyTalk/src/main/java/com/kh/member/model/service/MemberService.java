@@ -24,9 +24,61 @@ public class MemberService {
 		if(result > 0) {
 			commit(conn);
 			
+		} else {
+			rollback(conn);
 		}
 		return result;
 	}
 	
+
+	public int deleteMember(String userPwd, String userId) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().deleteMember(conn, userPwd, userId);
+		
+		Member deleteMem = null;
+		if(result > 0) { //실패
+			commit(conn);
+		} else { //성공
+			rollback(conn);
+		}
+		return result;
+	}
+
+	
+	public int kakaoCheckUser(String kakaoEmail) {
+		Connection conn = getConnection();
+		int result = new MemberDao().kakaoCheckUser(conn, kakaoEmail);
+		close(conn);
+		return result;
+	}
+	
+
+
+
+
+	public Member kakaoLoginMember(String kakaoEmail) {
+		Connection conn = getConnection();
+		Member m = new MemberDao().kakaoLoginMember(conn, kakaoEmail);
+		close(conn);
+		return m;
+	}
+	
+	public int NaverCheckUser(String Token) {
+		Connection conn = getConnection();
+		int result = new MemberDao().NaverCheckUser(conn, Token);
+		
+		close(conn);
+		return result;
+		
+	}
+	
+	public Member NaverLoginMember(String Token) {
+		Connection conn = getConnection();
+		Member m = new MemberDao().NaverLoginMember(conn, Token);
+		close(conn);
+		return m;
+	}
+
 
 }

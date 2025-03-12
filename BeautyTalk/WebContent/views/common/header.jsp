@@ -3,9 +3,9 @@
     pageEncoding="UTF-8"%>
     
 <%
-	String contextPath = request.getContextPath();
-	Member loginUser = (Member)session.getAttribute("loginUser");
-	String alertMsg = (String)session.getAttribute("alertMsg");
+   String contextPath = request.getContextPath();
+   Member loginUser = (Member)session.getAttribute("loginUser");
+   String alertMsg = (String)session.getAttribute("alertMsg");
  %>
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-		#header{
+      #header{
             width: 1000px; 
             height: 100%;
             margin: auto;
@@ -141,19 +141,19 @@
 </head>
 <body>
 
-	<% if(alertMsg != null) { %>
-			<script>
-				alert("<%= alertMsg %>")			
-			</script>
-			<% session.removeAttribute("alertMsg"); %>
-	<% } %>
+   <% if(alertMsg != null) { %>
+         <script>
+            alert("<%= alertMsg %>")         
+         </script>
+         <% session.removeAttribute("alertMsg"); %>
+   <% } %>
 
    <div class="wrap">
 
      <div id="header">
  
          <div id="header1">
-             <img src="resources/images/현존최강로고.jpg" alt="로고">
+            <a href="<%= contextPath %>"><img src="<%= contextPath %>/resources/images/현존최강로고.jpg" alt="로고"></a>
          </div>
      
          <div id="header2">
@@ -164,7 +164,7 @@
                  <div id="search_btn">
                      <input type="submit" value="Search">
                  </div>
- 						</form>
+                   </form>
          </div>
      
          <div id="header3">

@@ -24,8 +24,20 @@
         margin-top: 50px;
     }
 
+    .outer h2{
+        color: palevioletred;
+        font-size: 30px;
+        font-weight: 900;
+    }
+
+    .outer th{
+        color: palevioletred;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
     #reviewPost_table1{
-        width: 1100px;
+        width: 1000px;
         height: 500px;
         min-width: 500px;
         min-height: 500px;
@@ -43,6 +55,11 @@
         font-weight: bold;
     }
 
+    .review_upfile1{
+        
+
+    }
+
 
 </style>
 </head>
@@ -51,8 +68,8 @@
     <div class="outer">
         <h2 align="center">리뷰 작성</h2>
         <p align="center" style="color: lightgray;">
-            ———————————————————————————————————————————————————————————————————————————<br>
-            ———————————————————————————————————————————————————————————————————————————
+            ———————————————————————————————————————————————————————————————<br>
+            ———————————————————————————————————————————————————————————————
         </p>
         <form action="" id="">
             <table id="reviewPost_table1" align="center">
@@ -64,6 +81,21 @@
                     <th width="75" >카테고리</th>
                     <td width="100">
                         <select class="reviewPost_category1">
+                            <option>
+                                옵션1
+                            </option>
+                            <option>
+                                옵션2
+                            </option>
+                            <option>
+                                옵션3
+                            </option>
+                            <option>
+                                옵션4
+                            </option>
+                            <option>
+                                옵션5
+                            </option>
                             <!--
                                 Category 테이블로부터 조회해올 것
                             for(Category c : list) { %>
@@ -72,16 +104,7 @@
                             -->
                     </td>
                 </tr>
-                <tr>
-                    <th style="height: 50px;" align="left">작성자</th>
-                    <td>
-                        loginUser
-                    </td>
-                    <th>작성일</th>
-                    <td>
-                        sysdate
-                    </td>
-                </tr>
+
                 <tr>
                     <th align="left">내용</th>
                     <td colspan="3" style="height: 200px;">

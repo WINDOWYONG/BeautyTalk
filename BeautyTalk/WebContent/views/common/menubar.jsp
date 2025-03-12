@@ -279,6 +279,7 @@
         }
     
     </style>
+
     </head>
     <body>
     
@@ -294,7 +295,7 @@
             <div id="header">
         
                 <div id="header1">
-                    <img src="resources/images/현존최강로고.jpg" alt="로고">
+                    <img src="<%= contextPath %>/resources/images/현존최강로고.jpg" alt="로고">
                 </div>
             
                 <div id="header2">
@@ -314,20 +315,20 @@
         			<div id="header3_top">
                         <a href="<%= contextPath %>/loginForm.me">로그인</a>
                         <span>|</span>
-                        <a href="enrollForm.me">회원가입</a>
+                        <a href="<%= contextPath %>/enrollForm.me">회원가입</a>
               </div> 
             
-
+	
 
 					<% }else { %>
         			<!-- case2. 로그인 후 -->
                     <div id="header3_top">
 
-                        <a href=""><img src="resources/images/2.PNG" alt="메시지"></a>
-                        <a href=""><img src="resources/images/3.PNG" alt="알림"></a>
-                        <a href="">로그아웃</a>
+                        <a href=""><img src="<%= contextPath %>/resources/images/2.PNG" alt="메시지"></a>
+                        <a href=""><img src="<%= contextPath %>/resources/images/3.PNG" alt="알림"></a>
+                        <a href="<%= contextPath %>/logout.me">로그아웃</a>
                         <span>|</span>
-                        <a href="<%= contextPath %>/views/member/memberEnrollForm.jsp">마이페이지</a>
+                        <a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
                     </div>
                     <div id="header3_bottom">
                         <span class="username"><b><%= loginUser.getUserName() %></b><b>님</b>,</span>
@@ -342,46 +343,6 @@
     
         </div>
     
-        <div id="bnavigator">
-            <div id="navigator">
-                <a href="#" id="category">☰ 카테고리</a>
-                <ul class="category-menu">
-                    <li><a href="skincare.html">스킨케어</a></li>
-                    <li><a href="makeup.html">메이크업</a></li>
-                    <li><a href="haircare.html">헤어케어</a></li>
-                </ul>
-                <ul id="navi">
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="reviews.html">Reviews</a></li>
-                    <li><a href="posts.html">Posts</a></li>
-                    <li><a href="people.html">People</a></li>
-                    <li><a href="ranking.html">상품 랭킹</a></li>
-                </ul>
-            </div>
-        </div>
-            <div class="content">
-                <div class="main_banner">
-                    <a href="" class="banner_link">
-                        <img class="img_content" src="resources/images/mainbaner.png" alt="">
-                    </a>
-                        </div>
-                </div>
-        <script>
-        	document.addEventListener("DOMContentLoaded", function () {
-            const categoryBtn = document.querySelector("#category");
-            const categoryMenu = document.querySelector(".category-menu");
-          
-            categoryBtn.addEventListener("click", function (event) {
-              event.preventDefault();
-              categoryMenu.style.display = categoryMenu.style.display === "block" ? "none" : "block";
-            });
-          
-            document.addEventListener("click", function (event) {
-              if (!categoryBtn.contains(event.target) && !categoryMenu.contains(event.target)) {
-                categoryMenu.style.display = "none";
-              }
-            });
-          });
-        </script>
+	<%@ include file="../common/content.jsp" %>
     </body>
     </html>

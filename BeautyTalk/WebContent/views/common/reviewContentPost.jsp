@@ -278,6 +278,22 @@
         display: block;
     }
 
+    #reviewForm_CP1{
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    #reviewTable_CP1{
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    .reviewMP_td1{
+        color: palevioletred;
+        font-size: 20px;
+        font-weight: 900;
+    }
+
 </style>
 </head>
 <body>
@@ -352,7 +368,7 @@
             </ul>
             <ul id="navi">
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="<%= contextPath %>/review.li">Reviews</a></li>
                 <li><a href="posts.html">Posts</a></li>
                 <li><a href="people.html">People</a></li>
                 <li><a href="ranking.html">상품 랭킹</a></li>
@@ -379,7 +395,356 @@
         });
     </script>
 
-    
+    <form action="" id="reviewForm_CP1" method="">
+        <table id="reviewTable_CP1" >
+            <tr>
+                <td height="50"></td>
+                <td colspan="5" class="reviewMP_td1">
+                    Review 리뷰
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" style="color: lightgray;" height="0">
+                    ————————————————————————————————————————————————————————————
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5"></td>
+                <td>
+                    <button type="button" style="width: 100px;">
+                        <a href="<%= contextPath %>/review.wr">
+                            + 리뷰 작성
+                        </a>
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
+                    <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
+                </td>
+                <td colspan="3">2025-02-18</td>
+
+
+                <td></td>
+                <td></td>
+
+
+            </tr>
+            <tr>
+
+                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b>리뷰 제목1</b></td>
+
+
+
+
+                
+                <td></td>
+            </tr>
+            <tr>
+
+                <td colspan="4" style="color: gray;">
+                    ———————————————————————————————————
+                </td>
+
+
+
+
+                <td></td>
+
+            </tr>
+            <tr>
+
+                <td colspan="4">
+                    <textarea cols="80" rows="10"
+                        style="resize: none; border-color: white;" readonly>어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
+                </td>
+
+
+
+
+                <td></td>
+
+            </tr>
+            <tr>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+
+            </tr>
+            <tr>
+
+                <td style="width: 50px;"><b>★ 4.7</b></td>
+                <td style="width: 100px;">가격 : ★★★★☆</td>
+                <td style="width: 100px;">성분 : ★★★★☆</td>
+                <td style="width: 100px;">재구매 : ★★★★☆</td>
+                <td style="width: 60px;"><b>👍50</b></td>
+
+
+            </tr>
+            <tr>
+                <td colspan="6" style="color: lightgray;">
+                    ————————————————————————————————————————————————————————————
+                </td>
+
+
+
+
+
+
+
+            </tr>
+
+            <tr>
+                <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
+                    <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
+                </td>
+                <td colspan="3">2025-02-18</td>
+
+
+                <td></td>
+                <td></td>
+
+
+            </tr>
+            <tr>
+
+                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b>리뷰 제목1</b></td>
+
+
+
+
+                
+                <td></td>
+            </tr>
+            <tr>
+
+                <td colspan="4" style="color: gray;">
+                    ———————————————————————————————————
+                </td>
+
+
+
+
+                <td></td>
+
+            </tr>
+            <tr>
+
+                <td colspan="4">
+                    <textarea cols="80" rows="10"
+                        style="resize: none; border-color: white;" readonly>어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
+                </td>
+
+
+
+
+                <td></td>
+
+            </tr>
+            <tr>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+
+            </tr>
+            <tr>
+
+                <td style="width: 50px;"><b>★ 4.7</b></td>
+                <td style="width: 100px;">가격 : ★★★★☆</td>
+                <td style="width: 100px;">성분 : ★★★★☆</td>
+                <td style="width: 100px;">재구매 : ★★★★☆</td>
+                <td style="width: 60px;"><b>👍50</b></td>
+
+
+            </tr>
+            <tr>
+                <td colspan="6" style="color: lightgray;">
+                    ————————————————————————————————————————————————————————————
+                </td>
+
+
+
+
+
+
+
+            </tr>
+
+            <tr>
+                <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
+                    <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
+                </td>
+                <td colspan="3">2025-02-18</td>
+
+
+                <td></td>
+                <td></td>
+
+
+            </tr>
+            <tr>
+
+                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b>리뷰 제목1</b></td>
+
+
+
+
+                
+                <td></td>
+            </tr>
+            <tr>
+
+                <td colspan="4" style="color: gray;">
+                    ———————————————————————————————————
+                </td>
+
+
+
+
+                <td></td>
+
+            </tr>
+            <tr>
+
+                <td colspan="4">
+                    <textarea cols="80" rows="10"
+                        style="resize: none; border-color: white;" readonly>어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
+                </td>
+
+
+
+
+                <td></td>
+
+            </tr>
+            <tr>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+
+            </tr>
+            <tr>
+
+                <td style="width: 50px;"><b>★ 4.7</b></td>
+                <td style="width: 100px;">가격 : ★★★★☆</td>
+                <td style="width: 100px;">성분 : ★★★★☆</td>
+                <td style="width: 100px;">재구매 : ★★★★☆</td>
+                <td style="width: 60px;"><b>👍50</b></td>
+
+
+            </tr>
+            <tr>
+                <td colspan="6" style="color: lightgray;">
+                    ————————————————————————————————————————————————————————————
+                </td>
+
+
+
+
+
+
+
+            </tr>
+
+            <tr>
+                <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
+                    <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
+                </td>
+                <td colspan="3">2025-02-18</td>
+
+
+                <td></td>
+                <td></td>
+
+
+            </tr>
+            <tr>
+
+                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b>리뷰 제목1</b></td>
+
+
+
+
+                
+                <td></td>
+            </tr>
+            <tr>
+
+                <td colspan="4" style="color: gray;">
+                    ———————————————————————————————————
+                </td>
+
+
+
+
+                <td></td>
+
+            </tr>
+            <tr>
+
+                <td colspan="4">
+                    <textarea cols="80" rows="10"
+                        style="resize: none; border-color: white;" readonly>어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
+                </td>
+
+
+
+
+                <td></td>
+
+            </tr>
+            <tr>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+
+            </tr>
+            <tr>
+
+                <td style="width: 50px;"><b>★ 4.7</b></td>
+                <td style="width: 100px;">가격 : ★★★★☆</td>
+                <td style="width: 100px;">성분 : ★★★★☆</td>
+                <td style="width: 100px;">재구매 : ★★★★☆</td>
+                <td style="width: 60px;"><b>👍50</b></td>
+
+
+            </tr>
+            <tr>
+                <td colspan="6" style="color: lightgray;">
+                    ————————————————————————————————————————————————————————————
+                </td>
+
+
+
+
+
+
+
+            </tr>
+
+
+        </table>
+
+
+    </form>
 
 
 

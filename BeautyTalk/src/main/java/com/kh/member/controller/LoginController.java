@@ -30,20 +30,22 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
 		
-		Member loginUser = new MemberService().loginMember(userId, userPwd);
-		
-		if(loginUser == null) {
-			request.getSession().setAttribute("alertMsg", "로그인에 실패하였습니다.");
-			response.sendRedirect(request.getContextPath() + "/loginForm.me");
-		}else {
-			request.getSession().setAttribute("loginUser", loginUser);
-			response.sendRedirect(request.getContextPath());
+
+			String userId = request.getParameter("userId");
+			String userPwd = request.getParameter("userPwd");
+			
+			Member loginUser = new MemberService().loginMember(userId, userPwd);
+			
+			if(loginUser == null) {
+				request.getSession().setAttribute("alertMsg", "로그인에 실패하였습니다.");
+				response.sendRedirect(request.getContextPath() + "/loginForm.me");
+			}else {
+				request.getSession().setAttribute("loginUser", loginUser);
+				response.sendRedirect(request.getContextPath());
+			}
 		}
 		
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

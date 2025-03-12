@@ -1,25 +1,27 @@
-package com.kh.review.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class ReviewListController
+ * Servlet implementation class NaverCheckUserController
  */
-@WebServlet("/review.li")
-public class ReviewListController extends HttpServlet {
+@WebServlet("/NaverCheckUser.me")
+public class NaverCheckUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewListController() {
+    public NaverCheckUserController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,12 +31,21 @@ public class ReviewListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = request.getRequestDispatcher("views/common/reviewContentPost.jsp");
-		rd.forward(request, response);
+		HttpSession session = request.getSession();
+		String Token = (String) session.getAttribute("accessToken");
 		
-//		request.setAttribute("request","requestValue");
-//		response.sendRedirect("views/bodyTestLYH/reviewlyh.jsp");
+		int result = new MemberService().NaverCheckUser(Token);
 		
+		Member loginUser = null;
+		if(result > 0) {
+			loginUser = new MemberService().NaverLoginMember(Token);
+			session.setAttribute("loginUser", loginUser);
+			response.sendRedirect(request.getContextPath());
+			
+			
+		} else {
+			response.sendRedirect(request.getContextPath()+ "/views/member/memberEnrollForm.jsp");
+		}
 	}
 
 	/**

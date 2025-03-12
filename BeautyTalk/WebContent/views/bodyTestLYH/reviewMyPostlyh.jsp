@@ -58,6 +58,7 @@
         height: 250px;
         cursor: pointer;
     }
+    
 </style>
 </head>
 <body>

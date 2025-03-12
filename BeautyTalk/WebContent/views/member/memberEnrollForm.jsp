@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String Token = (String) session.getAttribute("accessToken");
+String userName = (String) session.getAttribute("name");
+String email = (String) session.getAttribute("email");
+String gender = (String) session.getAttribute("gender");
+String birthday = (String) session.getAttribute("birthday");
+String birthyear = (String) session.getAttribute("birthyear");
+String phone = (String) session.getAttribute("mobile");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -182,25 +192,26 @@
             
             
             <form action="<%= contextPath %>/insert.me" id="insert-form" method="post">
+            		<input type="hidden" name="Token" value="<%= Token %>">
                 <input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required>
                 
 
                 <input type="password" name="userPwd" id="userPwd" minlength="8" maxlength="16" placeholder="비밀번호를 입력하세요. (8~16자, 영문+숫자+특수문자)" required>
         
 
-                <input type="text" name="userName" id="userName" maxlength="16" placeholder="이름을 입력하세요." required>
+                <input type="text" name="userName" id="userName" maxlength="16" placeholder="이름을 입력하세요." required value="<%= userName %>">
 
 
-                <input type="text" name="email" id="email" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required>
+                <input type="text" name="email" id="email" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required value="<%= email %>">
 
 
                 <input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요" required>
 
 
-                <input type="text" name="birthDate" id="birthDate" minlength="8" maxlength="8" placeholder="생년월일 ex) 19990812" required>
+                <input type="text" name="birthDate" id="birthDate" minlength="8" maxlength="8" placeholder="생년월일 ex) 19990812" required value="<%= birthyear + birthday %>">
 
 
-                <input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222" required>
+                <input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222" required value="<%= phone %>">
 
                 <div id="gender">
                     
@@ -294,6 +305,23 @@
         });
     });
     </script>
+    
+    <script>
+    // URL에서 이메일과 닉네임을 가져와서 자동 입력
+    $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email'); // 이메일 가져오기
+        const nickname = urlParams.get('nickname'); // 닉네임 가져오기
+
+        if (email) {
+            $("#email").val(email).attr("readonly", true); // 이메일 입력란에 자동 입력
+            
+        }
+        if (nickname) {
+            $("#userName").val(nickname); // 닉네임 입력란에 자동 입력
+        }
+    });
+	</script>
 
 </body>
 </html>
