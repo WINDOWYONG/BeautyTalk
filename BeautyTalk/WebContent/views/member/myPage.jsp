@@ -402,7 +402,7 @@
                         <a href="">왓츠인 마이백</a>
                     </div>
                     <div>
-                        <a href="">뷰티캘린더</a>
+                        <a href="<%= contextPath %>/calendarMainpage.ca">뷰티캘린더</a>
                     </div>
                     <div>
                         <a href="">알림내역</a>
