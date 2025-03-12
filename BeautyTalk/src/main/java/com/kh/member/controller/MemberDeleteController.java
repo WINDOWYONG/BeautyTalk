@@ -43,7 +43,7 @@ public class MemberDeleteController extends HttpServlet {
 			response.sendRedirect(request.getContextPath());
 		} else {
 			session.setAttribute("alertMsg", "회원탈퇴를 실패 하였습니다. 다시 시도해주세요.");
-			response.sendRedirect(request.getContextPath() + "/maPage.me");
+			response.sendRedirect(request.getContextPath() + "/myPage.me");
 		}
 		
 	}

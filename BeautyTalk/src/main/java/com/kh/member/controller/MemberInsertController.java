@@ -56,9 +56,9 @@ public class MemberInsertController extends HttpServlet {
 		    session.setAttribute("alertMsg", "성공적으로 회원가입 되었습니다.");
 		    response.sendRedirect(request.getContextPath());
 		} else {
-		    // request.setAttribute("errorMsg", "회원가입 실패했습니다.");
-		    // RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-		    // view.forward(request, response);
+			HttpSession session = request.getSession();
+		    session.setAttribute("alertMsg", "탈퇴한 아이디 혹은 잘못된 형식입니다.");
+		    response.sendRedirect(request.getContextPath());
 		}
 	}
 

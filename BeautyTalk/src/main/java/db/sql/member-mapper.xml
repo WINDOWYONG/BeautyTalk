@@ -2,27 +2,27 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="loginMember">
-		SELECT
-		       MEM_NO
-		     , MEM_ID
-		     , MEM_PWD
-		     , MEM_NAME
-		     , EMAIL
-		     , NICKNAME
-		     , PHONE
-		     , ENROLL_DATE
-		     , STATUS
-		     , AGREE_YN
-		     , GENDER
-		  FROM MEMBER
-		 WHERE MEM_ID = ?
-		   AND MEM_PWD = ?
-		   AND STATUS = 'Y'
-	</entry>
-	
-	<entry key="insertMember">
-			INSERT
+   <entry key="loginMember">
+      SELECT
+             MEM_NO
+           , MEM_ID
+           , MEM_PWD
+           , MEM_NAME
+           , EMAIL
+           , NICKNAME
+           , PHONE
+           , ENROLL_DATE
+           , STATUS
+           , AGREE_YN
+           , GENDER
+        FROM MEMBER
+       WHERE MEM_ID = ?
+         AND MEM_PWD = ?
+         AND STATUS = 'Y'
+   </entry>
+   
+   <entry key="insertMember">
+         INSERT
         INTO MEMBER
        (
           MEM_NO
@@ -32,8 +32,9 @@
         , EMAIL
         , NICKNAME
         , PHONE
-        , GENDER
         , AGREE_YN
+        , GENDER
+        , TOKEN
        )
        VALUES
        (
@@ -46,40 +47,69 @@
        , ?
        , ?
        , ?
+       , ?
        )
-	</entry>
-	
-	<entry key="deleteMember">
-			 UPDATE MEMBER
-			    SET STATUS = 'N'
-			  WHERE MEM_ID = ?
-			    AND MEM_PWD = ?
-	</entry>
+   </entry>
+   
+   <entry key="deleteMember">
+          UPDATE MEMBER
+             SET STATUS = 'N'
+           WHERE MEM_ID = ?
+             AND MEM_PWD = ?
+   </entry>
 
-	<entry key="kakaoCheckUser">
-		SELECT
-		       COUNT(*) "COUNT"
-		  FROM MEMBER
-		 WHERE EMAIL = ?
-		   AND STATUS = 'Y'
-	</entry>
-	
-	<entry key="kakaoLoginMember">
-		SELECT
-		       MEM_NO
-		     , MEM_ID
-		     , MEM_PWD
-		     , MEM_NAME
-		     , EMAIL
-		     , NICKNAME
-		     , PHONE
-		     , ENROLL_DATE
-		     , STATUS
-		     , AGREE_YN
-		     , GENDER
-		  FROM MEMBER
-		 WHERE EMAIL = ?
-		   AND STATUS = 'Y'
-	</entry>
+   <entry key="kakaoCheckUser">
+      SELECT
+             COUNT(*) "COUNT"
+        FROM MEMBER
+       WHERE EMAIL = ?
+         AND STATUS = 'Y'
+   </entry>
+   
+   <entry key="kakaoLoginMember">
+      SELECT
+             MEM_NO
+           , MEM_ID
+           , MEM_PWD
+           , MEM_NAME
+           , EMAIL
+           , NICKNAME
+           , PHONE
+           , ENROLL_DATE
+           , STATUS
+           , AGREE_YN
+           , GENDER
+        FROM MEMBER
+       WHERE EMAIL = ?
+         AND STATUS = 'Y'
+   </entry>
+   
+      <entry key="NaverCheckUser">
+      SELECT
+             COUNT(*) "COUNT"
+        FROM MEMBER
+       WHERE Token = ?
+      </entry>
+      
+         <entry key="NaverLoginMember">
+      SELECT
+             MEM_NO
+           , MEM_ID
+           , MEM_PWD
+           , MEM_NAME
+           , EMAIL
+           , NICKNAME
+           , PHONE
+           , ENROLL_DATE
+           , STATUS
+           , AGREE_YN
+           , GENDER
+           , Token
+        FROM MEMBER
+       WHERE Token = ?
+         AND STATUS = 'Y'
+   </entry>
+   
+   
 
 </properties>
