@@ -101,11 +101,10 @@ String phone = (String) session.getAttribute("mobile");
     }
     pre{
         text-decoration: underline;
-    }
-    pre{
         color: #e8618c;
         text-decoration-thickness: 3px;
     }
+
     #insert-form :nth-child(4){
         margin-top: 20px;
     }
