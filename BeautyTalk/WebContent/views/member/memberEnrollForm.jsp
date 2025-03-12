@@ -192,10 +192,28 @@ String phone = (String) session.getAttribute("mobile");
             
             <form action="<%= contextPath %>/insert.me" id="insert-form" method="post">
             		<input type="hidden" name="Token" value="<%= Token %>">
-                <input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required>
+            		<input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required>
                 
 
                 <input type="password" name="userPwd" id="userPwd" minlength="8" maxlength="16" placeholder="비밀번호를 입력하세요. (8~16자, 영문+숫자+특수문자)" required>
+            <% if(Token == null){ %>
+
+                <input type="text" name="userName" id="userName" maxlength="16" placeholder="이름을 입력하세요." required >
+
+
+                <input type="text" name="email" id="email" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required>
+
+
+                <input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요" required>
+
+
+                <input type="text" name="birthDate" id="birthDate" minlength="8" maxlength="8" placeholder="생년월일 ex) 19990812" required>
+
+
+                <input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222" required>
+            <% } else {%>
+            		
+                
         
 
                 <input type="text" name="userName" id="userName" maxlength="16" placeholder="이름을 입력하세요." required value="<%= userName %>">
@@ -211,7 +229,7 @@ String phone = (String) session.getAttribute("mobile");
 
 
                 <input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222" required value="<%= phone %>">
-
+						<% } %>
                 <div id="gender">
                     
                         <input type="checkbox" name="gender" value="M"> 남자
@@ -247,9 +265,9 @@ String phone = (String) session.getAttribute("mobile");
                 </div>
                 
                 <button type="submit" class="btn-insta-insert" style="font-size: large; font-weight: 600;">회원가입</button>
-            </form>
-
-
+            
+						
+					</form>
         </div>
     </div>
 
