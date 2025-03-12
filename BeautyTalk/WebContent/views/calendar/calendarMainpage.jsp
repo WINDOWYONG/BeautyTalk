@@ -1,5 +1,11 @@
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	String alertMsg = (String)session.getAttribute("alertMsg");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,12 +57,18 @@
     .R2{height: 90%;}
 
     .logo-container {
-      width: 100%;
-      height: 90px; /* 로고 자리 */
+      width: 230px;
+      height: 50px;
+      margin-top: 30px;
       margin-bottom: 20px;
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
+    }
+
+    .logo-container img{
+      width: 100%;
+      height: 100%;
     }
 
     .sidebar-menu {
@@ -277,8 +289,9 @@
 	    <div class="left">
 	      <div class="L1">
 	        <div class="logo-container">
-	          <img src="" alt=""> <!-- 로고 들어갈 자리 -->
+            <a href="<%= contextPath %>"><img src="<%= contextPath %>/resources/images/현존최강로고.jpg" alt="메인로고"></a>
 	        </div>
+	        <br><br>
 	          <nav class="sidebar-menu">
 	            <div class="menu-item active" data-page="views/calendar/beautyCalendar.jsp" id="default-menu">
 	              <i class="fas fa-calendar-alt"><!--로고1--></i> 뷰티 캘린더
@@ -334,17 +347,17 @@
 	      <div class="R1">
 	        <div class="R1-content">
 	          <div class="title">
-	            <strong>주현수</strong>님의 <span class="highlight">뷰티 캘린더</span> <i class="fa-regular fa-heart"></i>
+	            <strong><%= loginUser.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span><i class="fa-regular fa-heart"></i>
 	          </div>
 	          <div class="icons">
 	            <i class="fa-solid fa-magnifying-glass">
-	              <img src="../3.PNG" alt="">
+	              <img src="<%= contextPath %>/resources/images/3.PNG" alt="">
 	            </i>
 	            <i class="fa-regular fa-bell">
-	              <img src="../3.PNG" alt="">
+	              <img src="<%= contextPath %>/resources/images/3.PNG" alt="">
 	            </i>
 	            <div class="profile-img">
-	              <img src="../jwy.jpg" alt="">
+	              <img src="" alt="">
 	            </div>
 	            <i class="fa-solid fa-chevron-down"><!--로고3--></i>
 	          </div>
