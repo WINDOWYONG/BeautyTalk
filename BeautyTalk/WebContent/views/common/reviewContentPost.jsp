@@ -1,3 +1,6 @@
+<%@page import="com.kh.review.model.vo.Review"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.kh.common.model.vo.PageInfo"%>
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,6 +8,15 @@
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	String alertMsg = (String)session.getAttribute("alertMsg");
+	
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
+
+	
+	int currentPage = pi.getCurrentPage();
+	int starPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -419,12 +431,22 @@
                     </button>
                 </td>
             </tr>
-
+            <!-- 게시글이 없는 경우 -->
+						<% if(list.isEmpty()) { %>
+						
+						<tr>
+								<td rowspan="6" colspan="6">
+										<p>조회된 게시글이 없습니다.</p>
+								</td>
+						</tr>
+						<!-- 게시글이 있는 경우 -->
+						<% }else { %>
+						<% for(Review rv: list) %>
             <tr>
                 <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
                     <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
                 </td>
-                <td colspan="3">2025-02-18</td>
+                <td colspan="3">2025-03-05</td>
 
 
                 <td></td>
@@ -499,7 +521,7 @@
 
 
             </tr>
-
+						<% } %>
             <tr>
                 <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
                     <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
@@ -744,29 +766,26 @@
         </table>
 
         <div class="paging-area" align="center">
-			if(currentPage != 1) { %>
+					<% if(currentPage != 1) { %>
                 <!-- 이전버튼 -->
-            	<button onclick="location.href='<%= contextPath %>/list.bo?cpage=currentPage -1 %>'"> &lt; </button>
-            } %>
+            	<button onclick="location.href='<%= contextPath %>/review.li?cpage=<%= currentPage -1 %>'"> &lt; </button>
+          <% } %>
             
-			for(int p=starPage; p<=endPage; p++) { %>
-            	if(p == currentPage) { %>
-            		<button disabled>p %></button>
-           		else { %>
-           			<button onclick="location.href='<%= contextPath %>/list.bo?cpage=p %>'">p %></button>
-           		} %>
-            } %>
+					<% for(int p=starPage; p<=endPage; p++) { %>
+            	<% if(p == currentPage) { %>
+            		<button disabled><%= p %></button>
+           		<% }else { %>
+           			<button onclick="location.href='<%= contextPath %>/review.li?cpage=<%= p %>'"><%= p %></button>
+           		<% } %>
+          <% } %>
             
-            if(currentPage != maxPage) { %>
+          <% if(currentPage != maxPage) { %>
                 <!-- 다음버튼 -->
-            	<button onclick="location.href='<%= contextPath %>/list.bo?cpage=currentPage +1 %>'"> &gt; </button>
-			} %>
+            	<button onclick="location.href='<%= contextPath %>/review.li?cpage=<%= currentPage +1 %>'"> &gt; </button>
+					<% } %>
         </div>
 
     </form>
-
-
-
 
 </body>
 </html>

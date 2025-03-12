@@ -21,11 +21,13 @@ public class ReviewService {
 
 	}
 	
-	public void selectReviewArrayList(PageInfo pi) {
+	public ArrayList<Review> selectReviewArrayList(PageInfo pi) {
 		Connection conn = getConnection();
 		
 		ArrayList<Review> list = new ReviewDao().selectReviewArrayList(conn, pi);
 		
+		close(conn);
+		return list;
 		
 	}
 
