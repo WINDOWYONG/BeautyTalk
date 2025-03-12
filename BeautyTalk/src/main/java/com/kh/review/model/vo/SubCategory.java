@@ -1,4 +1,4 @@
-package com.kh.review.vo;
+package com.kh.review.model.vo;
 
 public class SubCategory {
 	

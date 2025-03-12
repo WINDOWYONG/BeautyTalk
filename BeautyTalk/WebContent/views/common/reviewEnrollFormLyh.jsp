@@ -96,12 +96,12 @@
                             <option>
                                 옵션5
                             </option>
-                            <!--
+                    <!--
                                 Category 테이블로부터 조회해올 것
                             for(Category c : list) { %>
                             <option value=" c.getCategoryNo() %>"> c.getCategoryName() %></option>
                             } %>
-                            -->
+                    -->
                     </td>
                 </tr>
 

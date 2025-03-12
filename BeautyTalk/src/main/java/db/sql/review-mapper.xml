@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectReviewList">
+			SELECT 
+		       COUNT(*) count
+		  FROM Review
+		 WHERE STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectReviewArrayList">
+		SELECT *
+		FROM (
+		            SELECT ROWNUM RNUM, A.*
+		            FROM (
+		                    SELECT
+		                          REVIEW_NO
+		                        , CREATE_DATE
+		                        , TITLE
+		                        , CONTENT
+		                        , PR_RATING
+		                        , P_RATING
+		                        , R_RATING
+		                        , LIKE_REVIEW
+		                    FROM REVIEW
+		                    WHERE STATUS = 'Y'
+		                    ORDER
+		                        BY  REVIEW_NO DESC
+		                ) A
+		    )
+		WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+	
+
+</properties>

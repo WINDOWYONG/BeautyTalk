@@ -743,6 +743,25 @@
 
         </table>
 
+        <div class="paging-area" align="center">
+			if(currentPage != 1) { %>
+                <!-- 이전버튼 -->
+            	<button onclick="location.href='<%= contextPath %>/list.bo?cpage=currentPage -1 %>'"> &lt; </button>
+            } %>
+            
+			for(int p=starPage; p<=endPage; p++) { %>
+            	if(p == currentPage) { %>
+            		<button disabled>p %></button>
+           		else { %>
+           			<button onclick="location.href='<%= contextPath %>/list.bo?cpage=p %>'">p %></button>
+           		} %>
+            } %>
+            
+            if(currentPage != maxPage) { %>
+                <!-- 다음버튼 -->
+            	<button onclick="location.href='<%= contextPath %>/list.bo?cpage=currentPage +1 %>'"> &gt; </button>
+			} %>
+        </div>
 
     </form>
 
