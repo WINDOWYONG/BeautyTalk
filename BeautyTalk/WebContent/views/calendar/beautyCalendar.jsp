@@ -4,71 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src='../dist/index.global.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
 <title>Insert title here</title>
-<script>
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      locale: 'ko',
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-      initialDate: '2025-03-11',
-      navLinks: true,
-      selectable: true,
-      selectMirror: true,
-
-      select: function(arg) {
-        var title = prompt('추가할 일정 제목:');
-        if (title) {
-          calendar.addEvent({
-            title: title,
-            start: arg.start,
-            end: arg.end,
-            allDay: arg.allDay
-          });
-        }
-        calendar.unselect();
-      },
-
-      eventClick: function(arg) {
-        if (confirm('해당 일정을 삭제하시겠습니까?')) {
-          arg.event.remove();
-        }
-      },
-
-      editable: true,
-      dayMaxEvents: true,
-
-      dayCellContent: function(info) {
-        return { html: `<span>${info.date.getDate()}</span>` };
-      },
-
-      events: [
-        { title: 'All Day Event', start: '2025-03-01' },
-        { title: 'Long Event', start: '2025-03-07', end: '2025-03-10' },
-        { groupId: 999, title: 'Repeating Event', start: '2025-03-09T16:00:00' },
-        { groupId: 999, title: 'Repeating Event', start: '2025-03-16T16:00:00' },
-        { title: 'Conference', start: '2025-03-11', end: '2025-03-13' },
-        { title: 'Meeting', start: '2025-03-12T10:30:00', end: '2025-03-12T12:30:00' },
-        { title: 'Lunch', start: '2025-03-12T12:00:00' },
-        { title: 'Meeting', start: '2025-03-12T14:30:00' },
-        { title: 'Happy Hour', start: '2025-03-12T17:30:00' },
-        { title: 'Dinner', start: '2025-03-12T20:00:00' },
-        { title: 'Birthday Party', start: '2025-03-13T07:00:00' },
-        { title: 'Click for Google', url: 'http://google.com/', start: '2025-03-28' }
-      ]
-    });
-
-    calendar.render();
-  });
-
-</script>
 <style>
   body {
     margin: 40px 10px;
@@ -262,6 +199,72 @@
 <body>
 
 	<div id="calendar"></div>
+	
+	<script>
+    function initializeCalendar() {
+        var calendarEl = document.getElementById('calendar');
+
+        if (!calendarEl) {
+            console.error("❌ 캘린더 요소를 찾을 수 없음");
+            return;
+        }
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'ko',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            initialDate: '2025-03-11',
+            navLinks: true,
+            selectable: true,
+            selectMirror: true,
+            select: function(arg) {
+                var title = prompt('추가할 일정 제목:');
+                if (title) {
+                    calendar.addEvent({
+                        title: title,
+                        start: arg.start,
+                        end: arg.end,
+                        allDay: arg.allDay
+                    });
+                }
+                calendar.unselect();
+            },
+            eventClick: function(arg) {
+                if (confirm('해당 일정을 삭제하시겠습니까?')) {
+                    arg.event.remove();
+                }
+            },
+            editable: true,
+            dayMaxEvents: true,
+            dayCellContent: function(info) {
+            	return info.date.getDate();
+            },
+            events: [
+                { title: 'All Day Event', start: '2025-03-01' },
+                { title: 'Long Event', start: '2025-03-07', end: '2025-03-10' },
+                { groupId: 999, title: 'Repeating Event', start: '2025-03-09T16:00:00' },
+                { groupId: 999, title: 'Repeating Event', start: '2025-03-16T16:00:00' },
+                { title: 'Conference', start: '2025-03-11', end: '2025-03-13' },
+                { title: 'Meeting', start: '2025-03-12T10:30:00', end: '2025-03-12T12:30:00' },
+                { title: 'Lunch', start: '2025-03-12T12:00:00' },
+                { title: 'Meeting', start: '2025-03-12T14:30:00' },
+                { title: 'Happy Hour', start: '2025-03-12T17:30:00' },
+                { title: 'Dinner', start: '2025-03-12T20:00:00' },
+                { title: 'Birthday Party', start: '2025-03-13T07:00:00' },
+                { title: 'Click for Google', url: 'http://google.com/', start: '2025-03-28' }
+            ]
+        });
+
+        calendar.render();
+    }
+
+    // 페이지가 직접 로드될 경우 실행
+    document.addEventListener('DOMContentLoaded', initializeCalendar);
+</script>
+	
 	
 </body>
 </html>

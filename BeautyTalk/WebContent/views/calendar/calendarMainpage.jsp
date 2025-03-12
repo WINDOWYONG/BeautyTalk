@@ -380,22 +380,42 @@
 
       // ✅ AJAX 함수
       function loadPage(page) {
-        $.ajax({
-          url: page,
-          type: "GET",
-          success: function (data) {
-            $("#content-area").html(data);
+    	    $.ajax({
+    	        url: page,
+    	        type: "GET",
+    	        success: function (data) {
+    	            console.log("✅ AJAX 요청 성공! 페이지 로드됨:", page);
+    	            $("#content-area").html(data);
 
-            // ✅ 캘린더 페이지 로드 시, 캘린더 초기화 실행
-            if (page === "views/calendar/beautyCalendar.jsp") {
-              initializeCalendar();
-            }
-          },
-          error: function () {
-            alert("페이지를 불러오는 데 실패했습니다.");
-          }
-        });
-      }
+    	            if (page.includes("beautyCalendar.jsp")) {
+    	                console.log("📌 beautyCalendar.jsp가 로드됨.");
+
+    	                // 🔹 beautyCalendar.jsp 내부의 <script> 태그 실행 보장
+    	                $("#content-area script").each(function() {
+    	                    var scriptTag = document.createElement("script");
+    	                    scriptTag.text = this.text;
+    	                    document.body.appendChild(scriptTag);
+    	                });
+
+    	                // 🔹 `initializeCalendar()`가 실행되는지 다시 확인
+    	                setTimeout(function() {
+    	                    if (typeof initializeCalendar === 'function') {
+    	                        initializeCalendar();
+    	                        console.log("✅ initializeCalendar 실행됨!");
+    	                    } else {
+    	                        console.error("❌ initializeCalendar가 정의되지 않음!");
+    	                    }
+    	                }, 100);
+    	            }
+    	        },
+    	        error: function (xhr, status, error) {
+    	            console.error("❌ AJAX 요청 실패!", status, error);
+    	            alert("페이지를 불러오는 데 실패했습니다: " + error);
+    	        }
+    	    });
+    	}
+
+
     });
   </script>
 
