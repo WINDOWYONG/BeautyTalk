@@ -32,14 +32,12 @@
         , EMAIL
         , NICKNAME
         , PHONE
-        , AGREE_YN
         , GENDER
-        , TOKEN
+        , AGREE_YN
        )
        VALUES
        (
          SEQ_MEM.NEXTVAL
-       , ?
        , ?
        , ?
        , ?
@@ -63,6 +61,7 @@
 		       COUNT(*) "COUNT"
 		  FROM MEMBER
 		 WHERE EMAIL = ?
+		   AND STATUS = 'Y'
 	</entry>
 	
 	<entry key="kakaoLoginMember">
@@ -82,33 +81,5 @@
 		 WHERE EMAIL = ?
 		   AND STATUS = 'Y'
 	</entry>
-	
-		<entry key="NaverCheckUser">
-		SELECT
-		       COUNT(*) "COUNT"
-		  FROM MEMBER
-		 WHERE Token = ?
-		</entry>
-		
-			<entry key="NaverLoginMember">
-		SELECT
-		       MEM_NO
-		     , MEM_ID
-		     , MEM_PWD
-		     , MEM_NAME
-		     , EMAIL
-		     , NICKNAME
-		     , PHONE
-		     , ENROLL_DATE
-		     , STATUS
-		     , AGREE_YN
-		     , GENDER
-		     , Token
-		  FROM MEMBER
-		 WHERE Token = ?
-		   AND STATUS = 'Y'
-	</entry>
-	
-	
 
 </properties>

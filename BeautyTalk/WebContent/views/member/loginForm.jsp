@@ -285,7 +285,7 @@ String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=c
 	            },
 	            fail: function(err) {
 	                console.error("로그인 실패:", err);
-	                alert("카카오 로그인 실패!");
+	                alert("카카오 로그인에 실패하였습니다.");
 	            }
 	        });
 	    }
