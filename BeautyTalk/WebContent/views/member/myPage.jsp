@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 </head>
@@ -222,6 +223,123 @@
         margin-top: 50px;
         align-content: center;
     }
+    #openModal {
+    display: inline-block;
+    margin-top: 50px;
+    text-decoration: none;
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    #openModal:hover{
+        color: #e8618c;
+    }
+
+
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* 모달 박스 */
+.modal-content {
+    background: white;
+    padding: 90px; /* 좌우 여백을 충분히 줌 */
+    box-sizing: border-box; /* padding 포함한 크기 유지 */
+    height: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid #5aa1f2; /* 파란색 테두리 추가 */
+}
+
+/* 입력 폼 스타일 */
+.modal-content input[id="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.modal-content input[id="userPwd"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* 버튼 스타일 */
+.modal-content .delete-btn {
+    background: #ff5f98;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0;
+    text-align: center;
+    width: 200px;
+}
+
+.modal-content .delete-btn:hover {
+    background: #e8618c;
+}
+
+/* 닫기 버튼 (X) */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-btn:hover {
+    color: red;
+}
+.password-container {
+    display: flex;
+    align-items: center; /* 세로 정렬 */
+    gap: 10px; /* 라벨과 입력 필드 사이 간격 */
+}
+.userId-container {
+    display: flex;
+    align-items: center; /* 세로 정렬 */
+    gap: 26px; /* 라벨과 입력 필드 사이 간격 */
+}
+
+.password-container label {
+    white-space: nowrap; /* 라벨 줄바꿈 방지 */
+}
+
+.password-container input {
+    flex: 1; /* 입력 필드가 남은 공간을 차지 */
+    max-width: 500px; /* 원하는 너비 설정 */
+}
+.userId-container label {
+    white-space: nowrap; /* 라벨 줄바꿈 방지 */
+}
+
+.userId-container input {
+    flex: 1; /* 입력 필드가 남은 공간을 차지 */
+    max-width: 500px; /* 원하는 너비 설정 */
+}
 
 </style>
 <body>
@@ -278,7 +396,7 @@
                         <a href="">회원정보 수정</a>
                     </div>
                     <div>
-                        <a href="<%= contextPath %>/delete.me">회원탈퇴</a>
+                        <a href="#" id="openModal">회원탈퇴</a>
                     </div>
                     <div>
                         <a href="">왓츠인 마이백</a>
@@ -369,6 +487,36 @@
                 
             </div>
         </div>
+
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <form action="<%= contextPath %>/delete.me" method="get">
+                    <!-- 닫기 버튼 (X) -->
+                    <span class="close-btn">&times;</span>
+            
+                    <h2 style="color: #e8618c;">회원 탈퇴</h2>
+                    <div id="line">
+                        <pre align="left">                                                                                                                       </pre>
+                    </div>
+                    <br>
+                    <h3 style="text-decoration: underline;">회원 탈퇴 유의 사항</h3>
+                    <p style="display: inline;">사용하고 계신 현재 아이디는 탈퇴할 경우 <p style="display: inline; color: red; font-size: 25px;">복구가 불가능합니다.</p></p>
+                    <br><br>
+                    <!-- 비밀번호 입력 -->
+                    <div class="userId-container">
+                        <label for="password">아이디 입력</label>
+                        <input name="userId" type="text" id="password" placeholder="아이디 입력">
+                    </div>
+                    <div class="password-container">
+                        <label for="password">비밀번호 입력</label>
+                        <input name="userPwd" type="password" id="userPwd" placeholder="비밀번호 입력">
+                    </div>
+
+                    <!-- 회원 탈퇴 버튼 -->
+                    <button class="delete-btn" type="submit">회원탈퇴</button>
+                </form>
+            </div>
+        </div>
         <!--
         <input type="password" name="userPwd" id="userPwd" minlength="8" maxlength="16" placeholder="비밀번호를 입력하세요. (8~16자, 영문+숫자+특수문자)" required>
                         
@@ -411,6 +559,27 @@
                 // 페이지 로드 시 첫 번째 탭에 언더라인 설정
                 moveUnderline(tabs[0]);
                 tabs[0].classList.add("active");
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+            // 모달 열기
+            $("#openModal").click(function (e) {
+                e.preventDefault();
+                $("#deleteModal").fadeIn();
+                });
+
+            // 모달 닫기 (X 버튼 클릭 시)
+            $(".close-btn").click(function () {
+                $("#deleteModal").fadeOut();
+                });
+
+            // 모달 바깥 영역 클릭 시 닫기
+            $(window).click(function (e) {
+                if ($(e.target).is("#deleteModal")) {
+                    $("#deleteModal").fadeOut();
+                    }
+                });
             });
         </script>
 </body>
