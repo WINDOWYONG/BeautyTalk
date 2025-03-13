@@ -328,7 +328,7 @@
                         <a href=""><img src="<%= contextPath %>/resources/images/3.PNG" alt="알림"></a>
                         <a href="<%= contextPath %>/logout.me">로그아웃</a>
                         <span>|</span>
-                        <a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
+                        <a href="<%= contextPath %>/myPage.me">마이페이지</a>
                     </div>
                     <div id="header3_bottom">
                         <span class="username"><b><%= loginUser.getUserName() %></b><b>님</b>,</span>

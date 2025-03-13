@@ -79,6 +79,32 @@ public class MemberService {
 		close(conn);
 		return m;
 	}
+	
+	public Member updateMember(Member m) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updateMember(conn, m);
+		System.out.println(result);
+		Member updateMem = null;
+		if(result > 0) {
+			commit(conn);
+			updateMem = new MemberDao().selectMember(conn, m.getUserNo());
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return updateMem;
+	}
+	
+	public int idCheck(String checkId) {
+		
+		Connection conn = getConnection();
+		int count = new MemberDao().idCheck(conn, checkId);
+		
+		close(conn);
+		return count;
+	}
+	
+	
 
 
 }

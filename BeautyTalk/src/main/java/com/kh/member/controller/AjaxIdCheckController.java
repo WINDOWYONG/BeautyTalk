@@ -6,22 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.service.MemberService;
-import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class NaverCheckUserController
+ * Servlet implementation class AjaxIdCheckController
  */
-@WebServlet("/NaverCheckUser.me")
-public class NaverCheckUserController extends HttpServlet {
+@WebServlet("/idCheck.me")
+public class AjaxIdCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NaverCheckUserController() {
+    public AjaxIdCheckController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,22 +28,16 @@ public class NaverCheckUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String checkId = request.getParameter("checkId");
+		System.out.println(checkId);
 		
-		HttpSession session = request.getSession();
-		String Token = (String) session.getAttribute("naverId"); 
-		
-		int result = new MemberService().NaverCheckUser(Token);
-		
-		Member loginUser = null;
-		if(result > 0) {
-			loginUser = new MemberService().NaverLoginMember(Token);
-			session.setAttribute("loginUser", loginUser);
-			System.out.println(loginUser);
-			response.sendRedirect(request.getContextPath());
-			
-			
+		int  count = new MemberService().idCheck(checkId);
+	
+		if(count > 0) {
+			response.getWriter().print("NNNNN");
 		} else {
-			response.sendRedirect(request.getContextPath()+ "/views/member/memberEnrollForm.jsp");
+			response.getWriter().print("NNNNY");
 		}
 	}
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
         width: 100%;
         min-width: 1200px;
         margin: auto;
-        margin-top: 100px;
+        margin-top: 50px;
     }
     #Content2{
         width: 1200px;
@@ -31,7 +32,7 @@
     }
     #Content3 table{
         height: auto;
-        width: 400px;
+        width: 350px;
         margin-bottom: 50px;
     }
     #Content3 div{
@@ -95,7 +96,6 @@
     #userBoard {
         display: flex;
         text-align: left;
-        width: 330px;
         gap: 33px;
         position: relative;
         border-bottom: 2px solid #ddd;
@@ -116,7 +116,7 @@
     .tab {
         font-size: 16px;
         font-weight: bold;
-        color: #ddd;
+        color: #5e5858;
         padding: 10px;
         cursor: pointer;
         position: relative;
@@ -156,44 +156,56 @@
         font-size: 13px;
         box-sizing: border-box;
     }
-
-    .btn {
-        width: 100%;
-        padding: 12px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 30px;
-        font-size: 16px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .check {
+    background-color: #e8618c;
+    color: white;
+    width: 80px;
+    height: 40px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer; /* 🔥 마우스 커서를 손가락 모양으로 변경 */
+    pointer-events: auto;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 3px 3px 5px #e8618c(0, 0, 0, 0.2);
+}
+    .check:hover {
+    background-color: #d9507a;
+    box-shadow: 3px 3px 5px #e8618c(0, 0, 0, 0.2);
     }
 
-    .btn-login {
-        background-color: #000;
-        color: white;
+    /* 클릭 시 버튼이 살짝 눌리는 효과 */
+    .check:active {
+        transform: scale(0.95);
+        box-shadow: 1px 1px 3px #e8618c(0, 0, 0, 0.2);
     }
-
-    .btn-kakao-insert {
-        background-color: #FEE500;
-        color: black;
-    }
-
     .btn-insta-insert {
-        background-color: #e8618c;
-        color: white;
-        width: 500px;
-        height: 40px;
-        border-radius: 7px;
-        margin-top: 40px;
+    background-color: #e8618c;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer; /* 🔥 마우스 커서를 손가락 모양으로 변경 */
+    pointer-events: auto;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 3px 3px 5px #e8618c(0, 0, 0, 0.2);
     }
-    .check{
-        background-color: #e8618c;
-        color: white;
-        width: 80px;
-        height: 40px;
-        border-radius: 7px;
+
+    /* 호버 시 */
+    .btn-insta-insert:hover {
+        background-color: #d9507a;
+    box-shadow: 3px 3px 5px #e8618c(0, 0, 0, 0.2);
+    }
+
+    /* 클릭 시 */
+    .btn-insta-insert:active {
+        transform: scale(0.95);
+        box-shadow: 1px 1px 3px #e8618c(0, 0, 0, 0.2);
     }
 
     .btn img {
@@ -225,7 +237,6 @@
     }
     #openModal {
     display: inline-block;
-    margin-top: 50px;
     text-decoration: none;
     color: black;
     text-decoration: none;
@@ -340,6 +351,15 @@
     flex: 1; /* 입력 필드가 남은 공간을 차지 */
     max-width: 500px; /* 원하는 너비 설정 */
 }
+table {
+    width: 100%;
+    table-layout: fixed; /* 테이블 셀 너비를 균등하게 */
+}
+
+button {
+    border-style: none;
+}
+
 
 </style>
 <body>
@@ -352,27 +372,23 @@
                     <img id="userprofile" src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
                 </div>
                 <div id="userName">
-                    <h2>userName</h2>
-                    <span style="font-size: x-small;">사용자 아이디</span>
+                    <h2><%= loginUser.getUserName() %></h2>
+                    <span style="font-size: x-small;"><%= loginUser.getUserId() %></span>
                 </div>
             </div>
             <div id="Content3">
                 <table>
                     <tr>
-                        <td>post</td>
-                        <td>Review</td>
-                        <td>Follows</td>
-                        <td>Following</td>
-                    </tr>
-                    <tr >
-                        <td style="font-weight: 800; font-size: medium;">포스트수</td>
-                        <td style="font-weight: 800; font-size: medium;">리뷰수</td>
-                        <td style="font-weight: 800; font-size: medium;">팔로우수</td>
-                        <td style="font-weight: 800; font-size: medium;">팔로잉수</td>
+                        <td>
+                            <a href="" style="font-weight: 800; font-size: larger;">게시글 <br><%= loginUser.getPost() %></a> <br>
+                        </td>
+                        <td><a href="" style="font-weight: 800; font-size: larger;">리뷰 <br><%= loginUser.getReview() %><br></a></td>
+                        <td><a href="" style="font-weight: 800; font-size: larger;">팔로우 <br><%= loginUser.getFollower() %><br></a></td>
+                        <td><a href="" style="font-weight: 800; font-size: larger;">팔로잉 <br><%= loginUser.getFollowing() %><br></a></td>
                     </tr>
                 </table>
                 <div id="userBoard">
-                    <div class="tab" onclick="Animation()">post</div>
+                    <div class="tab">post</div>
                     <div class="tab">Review</div>
                     <div class="tab">Beauty Profile</div>
                     <div class="underline"></div>
@@ -382,8 +398,7 @@
             <div id="Content4">
                 <div id="Content5">
                     <div>
-                        <span class="material-icons" style="font-size: 30px;">person
-                        <span style="font-size:25px;">마이페이지</span>
+                        <span class="material-icons" style="font-size: 30px;">person<a href="<%= contextPath %>/myPage.me"" style="font-size:25px;">마이페이지</a></span>
                     </div>
                     
                     <div>
@@ -446,47 +461,49 @@
                         <pre align="left">                                                                                                                                     </pre>
                     </div>
                     <div id="update">
+                    <form action="<%= contextPath %>/update.me" id="insert-form" method="post">
+                        <input type="hidden" name=userNo id="userNo" maxlength="16" value="<%= loginUser.getUserNo() %>">
                         <table>
-                            <form action="<%= contextPath %>/insert.me" id="insert-form" method="post"></form>
                                 <tr>
-                                    <td style="text-align: left;">이름</td>
-                                    <td><input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required></td>
-                                    <td><button class="check" style="">중복확인</button></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">아이디</td>
-                                    <td><input type="text" name="userName" id="userName" maxlength="16" placeholder="이름을 입력하세요." required value=""></td>
+                                    <td style="text-align: left;" width="110">아이디</td>
+                                    <td width="450"><input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required value="<%= loginUser.getUserId() %>"></td>
+                                    <td><button class="check" type="button" onclick="idCheck()">중복확인</button></td>
                                 </tr>
                                 <tr>
                                     <td style="text-align: left;">비밀번호</td>
-                                    <td><input type="text" name="email" id="email" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required value=""></td>
+                                    <td><input type="text" name="userPwd" id="userPwd" maxlength="16" placeholder="이름을 입력하세요." required value="<%= loginUser.getUserPwd() %>"></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: left;">이메일</td>
-                                    <td><input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required></td>
+                                    <td style="text-align: left;">이름</td>
+                                    <td><input type="text" name="userName" id="userName" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required value="<%= loginUser.getUserName() %>"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;" >이메일</td>
+                                    <td><input type="text" name="email" id="email" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required value="<%= loginUser.getEmail() %>"></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td style="text-align: left;">닉네임</td>
-                                    <td><input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요" required></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">생년월일</td>
-                                    <td><input type="text" name="birthDate" id="birthDate" minlength="8" maxlength="8" placeholder="생년월일 ex) 19990812" required value=""></td>
+                                    <td><input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요" required value="<%= loginUser.getNickName() %>"></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td style="text-align: left;">휴대전화번호</td>
-                                    <td><input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222" required value=""></td>
+                                    <td><input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222" required value="<%= loginUser.getPhone() %>"></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td><td><button type="submit" class="btn-insta-insert" style="font-size: large; font-weight: 600;">회원정보수정</button></td></td>
+                                    <td colspan="3"><button type="submit" class="btn-insta-insert" style="font-size: large; font-weight: 600; margin-left: 11px;">회원정보수정</button></td>
                                 </tr>
-                            </form>
                         </table>
-                    </div>
+                    </form>
                 </div>
-                
             </div>
+                
         </div>
+    </div>
 
         <div id="deleteModal" class="modal">
             <div class="modal-content">
@@ -581,6 +598,40 @@
                     }
                 });
             });
+        </script>
+        <script>
+            function idCheck() {
+                const $idInput = $("#userId");
+
+
+                    $.ajax({
+                        url:"idCheck.me",
+                        data:{checkId:$idInput.val()},
+                        success: function (result) {
+                            console.log(result);
+
+                            if(result == 'NNNNN'){
+                                alert("중복된 아이디입니다")
+                                $idInput.focus();
+                            } else{
+                                if(confirm("사용가능한 아이디입니다. 사용하시겠습니까?")){
+                                    $idInput.attr("readonly", true);
+                                    $("#userId :submit").removeAttr("disabled");
+                            } else {
+                                    $idInput.focus();
+                            }
+                        }
+                    
+                    	
+                        
+                    
+                        },
+                    error: function () {
+                    alert("서버 요청에 실패했습니다. 다시 시도해주세요.");
+                    },
+                    complete:function(){},
+                });
+            }
         </script>
 </body>
 </html>

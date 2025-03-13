@@ -8,20 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.member.model.service.MemberService;
-import com.kh.member.model.vo.Member;
-
 /**
- * Servlet implementation class NaverCheckUserController
+ * Servlet implementation class MyPageController
  */
-@WebServlet("/NaverCheckUser.me")
-public class NaverCheckUserController extends HttpServlet {
+@WebServlet("/myPage.me")
+public class MyPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NaverCheckUserController() {
+    public MyPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,22 +27,14 @@ public class NaverCheckUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession();
-		String Token = (String) session.getAttribute("naverId"); 
 		
-		int result = new MemberService().NaverCheckUser(Token);
-		
-		Member loginUser = null;
-		if(result > 0) {
-			loginUser = new MemberService().NaverLoginMember(Token);
-			session.setAttribute("loginUser", loginUser);
-			System.out.println(loginUser);
+		if(session.getAttribute("loginUser") == null) { // 로그인 전
+			session.setAttribute("alertMsg", "로그인 후 이용가능한 서비스 입니다!");
 			response.sendRedirect(request.getContextPath());
-			
-			
 		} else {
-			response.sendRedirect(request.getContextPath()+ "/views/member/memberEnrollForm.jsp");
+			request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
 		}
 	}
 
