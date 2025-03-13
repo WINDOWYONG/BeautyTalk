@@ -232,7 +232,6 @@
         margin: 7px;
     }
     #update{
-        margin-top: 50px;
         align-content: center;
     }
     #openModal {
@@ -388,9 +387,9 @@ button {
                     </tr>
                 </table>
                 <div id="userBoard">
-                    <div class="tab">post</div>
+                    <div class="tab" onclick="beautyProfile()">post</div>
                     <div class="tab">Review</div>
-                    <div class="tab">Beauty Profile</div>
+                    <div class="tab" id="beautyProfile">Beauty Profile</div>
                     <div class="underline"></div>
                 </div>
 
@@ -408,7 +407,7 @@ button {
                         <h2>내정보</h2>
                     </div>
                     <div>
-                        <a href="">회원정보 수정</a>
+                        <a href="#" id="updatePage">회원정보 수정</a>
                     </div>
                     <div>
                         <a href="#" id="openModal">회원탈퇴</a>
@@ -423,7 +422,7 @@ button {
                         <a href="">알림내역</a>
                     </div>
                     <div>
-                        <a href=" "></a>
+                        <a href=""></a>
                     </div>
                     <br>
                     <div>
@@ -454,53 +453,100 @@ button {
                     </div>
                 </div>
                 <div id="Content6">
-                    <div id="myPageTitle">
-                        <h2 id="Title">회원정보</h2>
-                    </div>
-                    <div id="line">
-                        <pre align="left">                                                                                                                                     </pre>
-                    </div>
+
                     <div id="update">
-                    <form action="<%= contextPath %>/update.me" id="insert-form" method="post">
-                        <input type="hidden" name=userNo id="userNo" maxlength="16" value="<%= loginUser.getUserNo() %>">
-                        <table>
-                                <tr>
-                                    <td style="text-align: left;" width="110">아이디</td>
-                                    <td width="450"><input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required value="<%= loginUser.getUserId() %>"></td>
-                                    <td><button class="check" type="button" onclick="idCheck()">중복확인</button></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">비밀번호</td>
-                                    <td><input type="text" name="userPwd" id="userPwd" maxlength="16" placeholder="이름을 입력하세요." required value="<%= loginUser.getUserPwd() %>"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">이름</td>
-                                    <td><input type="text" name="userName" id="userName" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required value="<%= loginUser.getUserName() %>"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;" >이메일</td>
-                                    <td><input type="text" name="email" id="email" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required value="<%= loginUser.getEmail() %>"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">닉네임</td>
-                                    <td><input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요" required value="<%= loginUser.getNickName() %>"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">휴대전화번호</td>
-                                    <td><input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222" required value="<%= loginUser.getPhone() %>"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><button type="submit" class="btn-insta-insert" style="font-size: large; font-weight: 600; margin-left: 11px;">회원정보수정</button></td>
-                                </tr>
-                        </table>
-                    </form>
+                        <div id="myPageTitle">
+                            <h2 id="Title">회원정보</h2>
+                        </div>
+                        <div id="line">
+                            <pre align="left">                                                                                                                                               </pre>
+                        </div>
+                        <form action="<%= contextPath %>/update.me" id="insert-form" method="post">
+                            <input type="hidden" name=userNo id="userNo" maxlength="16" value="<%= loginUser.getUserNo() %>">
+                            <table style="margin-top: 50px; margin-left: 50px;">
+                                    <tr>
+                                        <td style="text-align: left;" width="110">아이디</td>
+                                        <td width="450"><input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required value="<%= loginUser.getUserId() %>"></td>
+                                        <td><button class="check" type="button" onclick="idCheck()">중복확인</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;">비밀번호</td>
+                                        <td><input type="text" name="userPwd" id="userPwd" maxlength="16" placeholder="이름을 입력하세요." required value="<%= loginUser.getUserPwd() %>"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;">이름</td>
+                                        <td><input type="text" name="userName" id="userName" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required value="<%= loginUser.getUserName() %>"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;" >이메일</td>
+                                        <td><input type="text" name="email" id="email" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required value="<%= loginUser.getEmail() %>"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;">닉네임</td>
+                                        <td><input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요" required value="<%= loginUser.getNickName() %>"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;">휴대전화번호</td>
+                                        <td><input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222" required value="<%= loginUser.getPhone() %>"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><button type="submit" class="btn-insta-insert" style="font-size: large; font-weight: 600; margin-left: 11px;">회원정보수정</button></td>
+                                    </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div id="update2">
+                        <div id="myPageTitle">
+                            <h2 id="Title">Beauty Profile</h2>
+                        </div>
+                        <div id="line">
+                            <pre align="left">                                                                                                                           </pre>
+                        </div>
+                        <form action="" id="insert-form" method="post">
+                            <input type="hidden" name=userNo id="userNo" maxlength="16" value="<%= loginUser.getUserNo() %>">
+                            <table style="margin-top: 50px; margin-left: 50px;">
+                                    <tr>
+                                        <td style="text-align: left;" width="110">아이디</td>
+                                        <td width="450"><input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;">비밀번호</td>
+                                        <td><input type="text" name="userPwd" id="userPwd" maxlength="16" placeholder="이름을 입력하세요."></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;">이름</td>
+                                        <td><input type="text" name="userName" id="userName" minlength="8" maxlength="20" placeholder="이메일을 입력하세요."></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;" >이메일</td>
+                                        <td><input type="text" name="email" id="email" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;">닉네임</td>
+                                        <td><input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;">휴대전화번호</td>
+                                        <td><input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><button type="submit" class="btn-insta-insert" style="font-size: large; font-weight: 600; margin-left: 11px;">뷰티 프로필 저장</button></td>
+                                    </tr>
+                            </table>
+                        </form>
+                    </div>
                 </div>
-            </div>
                 
         </div>
     </div>
@@ -632,6 +678,61 @@ button {
                     complete:function(){},
                 });
             }
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                const $tabs = $(".tab");
+                const $underline = $(".underline");
+                const $updateSection = $("#update"); // 회원정보 수정 폼
+                const $beautyProfileSection = $("#update2"); // 뷰티 프로파일 폼
+                const $beautyProfileTab = $(".tab:nth-child(3)"); // 뷰티 프로파일 탭
+                const $updatePage = $("#updatePage"); // 회원정보 수정 버튼 (a 태그)
+
+                // **초기 로드시 뷰티 프로파일 숨기기**
+                $beautyProfileSection.hide();
+
+                function moveUnderline($element) {
+                    $underline.css({
+                        "width": $element.outerWidth() + "px",
+                        "left": $element.position().left + "px",
+                        "opacity": 1
+                    });
+                }
+
+                function hideUnderline() {
+                    $underline.css("opacity", 0); // 언더라인 숨기기
+                }
+
+                // 페이지 로드 시 첫 번째 탭에 언더라인 설정
+                moveUnderline($tabs.first());
+                $tabs.first().addClass("active");
+
+                // 탭 클릭 시 언더라인 이동 + 폼 전환
+                $tabs.click(function () {
+                    $tabs.removeClass("active");
+                    $(this).addClass("active");
+                    moveUnderline($(this));
+
+                    if ($(this).is($beautyProfileTab)) {
+                        $updateSection.fadeOut(function () {
+                            $beautyProfileSection.fadeIn();
+                        });
+                    }
+                });
+
+                // 회원정보 수정 버튼 클릭 시 폼 다시 보이고 언더라인 숨김
+                $updatePage.click(function (e) {
+                    e.preventDefault(); // a 태그의 기본 동작 방지 (페이지 이동 X)
+                    $beautyProfileSection.fadeOut(function () {
+                        $updateSection.fadeIn();
+                    });
+                    hideUnderline(); // 언더라인 숨기기
+                    $tabs.removeClass("active"); // 모든 탭 비활성화
+                });
+            });
+
+
         </script>
 </body>
 </html>
