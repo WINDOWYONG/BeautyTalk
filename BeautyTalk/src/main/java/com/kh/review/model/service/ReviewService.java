@@ -31,10 +31,10 @@ public class ReviewService {
 		
 	}
 	
-	public int selectReviewCpage() {
+	public int selectReviewCpage(int cpage1) {
 		Connection conn = getConnection();
 		
-		int result = new ReviewDao().selectReviewCpage(conn);
+		int result = new ReviewDao().selectReviewCpage(conn, cpage1);
 		
 		close(conn);
 		return result;

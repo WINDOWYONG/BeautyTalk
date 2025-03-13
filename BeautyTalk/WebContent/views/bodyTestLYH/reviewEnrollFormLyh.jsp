@@ -12,22 +12,22 @@
         border: 1px solid gray;
     } */
 
-    .outer{
+    .review_Enrollouter{
         width: 1300px;
         height: auto;
         margin: auto;
-        margin-top: 50px;
+        margin-top: 440px;
     }
 
-    .outer h2{
+    .review_Enrollouter h2{
         color: palevioletred;
         font-size: 30px;
         font-weight: 900;
     }
 
-    .outer th{
+    .review_Enrollouter th{
         color: palevioletred;
-        font-size: 15px;
+        font-size: 20px;
         font-weight: 700;
     }
 
@@ -49,10 +49,29 @@
         font-size: medium;
         font-weight: bold;
     }
-
-    .review_upfile1{
-        
-
+    .review_EnrollTh{
+        z-index: 0;
+        position: relative;
+    }
+    .review_EnrollTh::before{
+        z-index: -1;
+        content: attr(data-content);
+        position: absolute;
+        left: 0;
+        /* 글자 바깥쪽으로 나갔으면 하는 테두리 크기의 두 배 */
+        -webkit-text-stroke: 0.3px black;
+    }
+    .review_EnrollTh2{
+        z-index: 0;
+        position: relative;
+    }
+    .review_EnrollTh2::before{
+        z-index: -1;
+        content: attr(data-content);
+        position: absolute;
+        left: 10;
+        /* 글자 바깥쪽으로 나갔으면 하는 테두리 크기의 두 배 */
+        -webkit-text-stroke: 0.3px black;
     }
 
 
@@ -62,21 +81,27 @@
 
     <%@ include file="../common/menubar.jsp" %>
 
+    <br>
+    <br>
+
 <!-- ReviewEnrollForm -->
-    <div class="outer">
+    <div class="review_Enrollouter">
         <h2 align="center">리뷰 작성</h2>
         <p align="center" style="color: lightgray;">
-            ———————————————————————————————————————————————————————————————<br>
             ———————————————————————————————————————————————————————————————
         </p>
         <form action="" id="">
             <table id="reviewPost_table1" align="center">
                 <tr>
-                    <th width="75" height="50" align="left">제목</th>
+                    <th width="75" height="50" align="left" class="review_EnrollTh" data-content="제목">
+                        제목
+                    </th>
                     <td width="350">
                         <input type="text">
                     </td>
-                    <th width="75" >카테고리</th>
+                    <th width="75" class="review_EnrollTh2" data-content="카테고리">
+                        카테고리
+                    </th>
                     <td width="100">
                         <select class="reviewPost_category1">
                             <option>
@@ -104,14 +129,18 @@
                 </tr>
 
                 <tr>
-                    <th align="left">내용</th>
+                    <th align="left" class="review_EnrollTh" data-content="내용">
+                        내용
+                    </th>
                     <td colspan="3" style="height: 200px;">
                         <textarea id="reviewPost_textarea1" style="resize: none;"></textarea>
                         <!-- 높낮이를 고정시키기 위해서 style 부여 -->
                     </td>
                 </tr>
                 <tr>
-                    <th style="height: 50px;" align="left">첨부파일</th>
+                    <th style="height: 50px;" align="left" class="review_EnrollTh" data-content="첨부파일">
+                        첨부파일
+                    </th>
                     <td colspan="3" align="center">
                         <input type="file" class="review_upfile1">
                     </td>

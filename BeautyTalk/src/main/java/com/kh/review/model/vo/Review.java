@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Review {
 	
-	private int reviewNo;
+	private String reviewNo;
 	private String pcode;
 	private int memNo;
 	private String title;
@@ -18,7 +18,7 @@ public class Review {
 	
 	public Review () {}
 
-	public Review(int reviewNo, String pcode, int memNo, String title, String content, String createDate, int pRating,
+	public Review(String reviewNo, String pcode, int memNo, String title, String content, String createDate, int pRating,
 			int rRating, int prRating, int likeReview, String status) {
 		super();
 		this.reviewNo = reviewNo;
@@ -34,11 +34,11 @@ public class Review {
 		this.status = status;
 	}
 
-	public int getReviewNo() {
+	public String getReviewNo() {
 		return reviewNo;
 	}
 
-	public void setReviewNo(int reviewNo) {
+	public void setReviewNo(String reviewNo) {
 		this.reviewNo = reviewNo;
 	}
 

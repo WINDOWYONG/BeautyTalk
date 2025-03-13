@@ -26,7 +26,7 @@
 		                    FROM REVIEW RV
 		                    WHERE STATUS = 'Y'
 		                    ORDER
-		                        BY  REVIEW_NO DESC
+		                        BY  REVIEW_NO
 		                ) A
 		    )
 		WHERE RNUM BETWEEN ? AND ?
@@ -34,9 +34,13 @@
 	</entry>
 	
 	<entry key="selectReviewCpage">
-		
-		
+		SELECT
+        REVIEW_NO
+		FROM
+    		REVIEW A
+		WHERE STATUS = 'Y';
 	</entry>
+	
 	
 
 </properties>

@@ -319,7 +319,7 @@
         position: absolute;
         left: 0;
         /* 글자 바깥쪽으로 나갔으면 하는 테두리 크기의 두 배 */
-        -webkit-text-stroke: 0.1px gray;
+        -webkit-text-stroke: 0.2px black;
     }
     
 
@@ -551,23 +551,23 @@
         </table>
 
         <div class="paging-area" align="center">
-					<% if(currentPage != 1) { %>
+			<% if(currentPage != 1) { %>
                 <!-- 이전버튼 -->
-            	<button onclick="location.href='<%= contextPath %>/review.li?cpage=<%= currentPage -1 %>'"> &lt; </button>
-          <% } %>
+            	<button onclick="location.href='<%= contextPath %>/review.li?currentPage=<%= currentPage -1 %>'"> &lt; </button>
+            <% } %>
             
-					<% for(int p=starPage; p<=endPage; p++) { %>
+            <% for(int p=starPage; p<=endPage; p++) { %>
             	<% if(p == currentPage) { %>
             		<button disabled><%= p %></button>
            		<% }else { %>
-           			<button onclick="location.href='<%= contextPath %>/review.li?cpage=<%= p %>'"><%= p %></button>
+           			<button onclick="location.href='<%= contextPath %>/review.li?currentPage=<%= p %>'"><%= p %></button>
            		<% } %>
-          <% } %>
+            <% } %>
             
-          <% if(currentPage != maxPage) { %>
+            <% if(currentPage != maxPage) { %>
                 <!-- 다음버튼 -->
-            	<button onclick="location.href='<%= contextPath %>/review.li?cpage=<%= currentPage +1 %>'"> &gt; </button>
-					<% } %>
+            	<button onclick="location.href='<%= contextPath %>/review.li?currentPage=<%= currentPage +1 %>'"> &gt; </button>
+		    <% } %>
         </div>
 
     </form>

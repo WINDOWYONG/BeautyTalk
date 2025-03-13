@@ -57,17 +57,27 @@ public class ReviewListController extends HttpServlet {
 		// * listCount : 총 게시글 개수
 		listCount = new ReviewService().selectReviewList();
 
-		// * currentPage : 현재 페이지(즉, 사용자가 요청한 페이지)
-		int cpage = new ReviewService().selectReviewCpage();
+//		int cpage1 = 0;
+//	    int cpage = new ReviewService().selectReviewCpage(cpage1);
+//	    cpage = (listCount - reviewLimit) + 1;
+	 // * currentPage : 현재 페이지(즉, 사용자가 요청한 페이지)
 		
-		if("cpage" != null || !"null".equals("cpage")) {
-			currentPage = Integer.parseInt(request.getParameter("cpage"));
+		
+		
+		currentPage = 1;
+		
+		if(request.getParameter("currentPage") != null && !request.getParameter("currentPage").equals("")) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
+
 		// * pageLimit : 페이징바의 페이지 최대 개수(단위) ㅡ 개발자가 지정
-		pageLimit = 2;
+		pageLimit = 5;
 		
 		// * reviewLitmit : 게시글 최대 개수(단위) ㅡ 개발자가 지정
-		reviewLimit = 2;
+		reviewLimit = 3;
+		
+
+
 		
 		/* 공식을 외우란 것이 아닌,, 원리를 이해하기!!
 		 * * maxPage : 제일 마지막 페이지 수 (총 페이지 수)
@@ -170,7 +180,6 @@ public class ReviewListController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

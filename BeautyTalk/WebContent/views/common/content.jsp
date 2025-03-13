@@ -17,7 +17,7 @@
                 </ul>
                 <ul id="navi">
                     <li><a href="index.html">HOME</a></li>
-                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="./review.li">Reviews</a></li>
                     <li><a href="posts.html">Posts</a></li>
                     <li><a href="people.html">People</a></li>
                     <li><a href="ranking.html">상품 랭킹</a></li>

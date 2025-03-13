@@ -90,7 +90,7 @@ public class ReviewDao {
 			
 			while(rset.next()) {
 				Review rv = new Review();
-				rv.setReviewNo(rset.getInt("REVIEW_NO"));
+				rv.setReviewNo(rset.getString("REVIEW_NO"));
 				rv.setCreateDate(rset.getString("CREATE_DATE"));
 				rv.setTitle(rset.getString("TITLE"));
 				rv.setContent(rset.getString("CONTENT"));
@@ -113,7 +113,7 @@ public class ReviewDao {
 
 	}
 	
-	public int selectReviewCpage(Connection conn) {
+	public int selectReviewCpage(Connection conn, int cpage1) {
 		// int인데 조회를 해야 해
 		int result = 0;
 		
@@ -122,10 +122,31 @@ public class ReviewDao {
 		
 		String sql = prop.getProperty("selectReviewCpage");
 		
-		
-		
-		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성
+			
+			pstmt.setInt(1, cpage1);
+			
+			rset = pstmt.executeQuery();
+			
+			result = pstmt.executeUpdate();
+			
+			if(rset.next()) {
+				Review a = new Review();
+				a.setReviewNo(rset.getString("REVIEW_NO"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+
 	}
+	
+	
 	
 	
 
