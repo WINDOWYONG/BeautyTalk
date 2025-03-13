@@ -9,7 +9,7 @@ public class Review {
 	private int memNo;
 	private String title;
 	private String content;
-	private Date createDate;
+	private String createDate;
 	private int pRating;
 	private int rRating;
 	private int prRating;
@@ -18,7 +18,7 @@ public class Review {
 	
 	public Review () {}
 
-	public Review(int reviewNo, String pcode, int memNo, String title, String content, Date createDate, int pRating,
+	public Review(int reviewNo, String pcode, int memNo, String title, String content, String createDate, int pRating,
 			int rRating, int prRating, int likeReview, String status) {
 		super();
 		this.reviewNo = reviewNo;
@@ -74,11 +74,11 @@ public class Review {
 		this.content = content;
 	}
 
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 

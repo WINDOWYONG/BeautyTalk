@@ -11,7 +11,7 @@
 	
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
-
+	Review review = (Review)request.getAttribute("review");
 	
 	int currentPage = pi.getCurrentPage();
 	int starPage = pi.getStartPage();
@@ -441,12 +441,12 @@
 						</tr>
 						<!-- 게시글이 있는 경우 -->
 						<% }else { %>
-						<% for(Review rv: list) %>
+								<% for(Review rv: list) { %>
             <tr>
                 <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
                     <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
                 </td>
-                <td colspan="3">2025-03-05</td>
+                <td colspan="3"><%= review.getCreateDate() %> 2025-03-05</td>
 
 
                 <td></td>
@@ -456,7 +456,7 @@
             </tr>
             <tr>
 
-                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b>리뷰 제목1</b></td>
+                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b><%= review.getReviewNo() %><%= review.getTitle() %> 리뷰 제목1</b></td>
 
 
 
@@ -480,7 +480,7 @@
 
                 <td colspan="4">
                     <textarea cols="80" rows="10"
-                        style="resize: none; border-color: white;" readonly>어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
+                        style="resize: none; border-color: white;" readonly><%= review.getContent() %> 어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
                 </td>
 
 
@@ -502,10 +502,10 @@
             <tr>
 
                 <td style="width: 50px;"><b>★ 4.7</b></td>
-                <td style="width: 100px;">가격 : ★★★★☆</td>
-                <td style="width: 100px;">성분 : ★★★★☆</td>
-                <td style="width: 100px;">재구매 : ★★★★☆</td>
-                <td style="width: 60px;"><b>👍50</b></td>
+                <td style="width: 100px;"><%= review.getPrRating() %> 가격 : ★★★★☆</td>
+                <td style="width: 100px;"><%= review.getpRating() %>  성분 : ★★★★☆</td>
+                <td style="width: 100px;"><%= review.getrRating() %> 재구매 : ★★★★☆</td>
+                <td style="width: 60px;"><b><%= review.getLikeReview() %>  👍50</b></td>
 
 
             </tr>
@@ -522,247 +522,7 @@
 
             </tr>
 						<% } %>
-            <tr>
-                <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
-                    <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
-                </td>
-                <td colspan="3">2025-02-18</td>
-
-
-                <td></td>
-                <td></td>
-
-
-            </tr>
-            <tr>
-
-                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b>리뷰 제목1</b></td>
-
-
-
-
-                
-                <td></td>
-            </tr>
-            <tr>
-
-                <td colspan="4" style="color: gray;">
-                    ———————————————————————————————————
-                </td>
-
-
-
-
-                <td></td>
-
-            </tr>
-            <tr>
-
-                <td colspan="4">
-                    <textarea cols="80" rows="10"
-                        style="resize: none; border-color: white;" readonly>어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
-                </td>
-
-
-
-
-                <td></td>
-
-            </tr>
-            <tr>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-
-            </tr>
-            <tr>
-
-                <td style="width: 50px;"><b>★ 4.7</b></td>
-                <td style="width: 100px;">가격 : ★★★★☆</td>
-                <td style="width: 100px;">성분 : ★★★★☆</td>
-                <td style="width: 100px;">재구매 : ★★★★☆</td>
-                <td style="width: 60px;"><b>👍50</b></td>
-
-
-            </tr>
-            <tr>
-                <td colspan="6" style="color: lightgray;">
-                    ————————————————————————————————————————————————————————————
-                </td>
-
-
-
-
-
-
-
-            </tr>
-
-            <tr>
-                <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
-                    <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
-                </td>
-                <td colspan="3">2025-02-18</td>
-
-
-                <td></td>
-                <td></td>
-
-
-            </tr>
-            <tr>
-
-                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b>리뷰 제목1</b></td>
-
-
-
-
-                
-                <td></td>
-            </tr>
-            <tr>
-
-                <td colspan="4" style="color: gray;">
-                    ———————————————————————————————————
-                </td>
-
-
-
-
-                <td></td>
-
-            </tr>
-            <tr>
-
-                <td colspan="4">
-                    <textarea cols="80" rows="10"
-                        style="resize: none; border-color: white;" readonly>어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
-                </td>
-
-
-
-
-                <td></td>
-
-            </tr>
-            <tr>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-
-            </tr>
-            <tr>
-
-                <td style="width: 50px;"><b>★ 4.7</b></td>
-                <td style="width: 100px;">가격 : ★★★★☆</td>
-                <td style="width: 100px;">성분 : ★★★★☆</td>
-                <td style="width: 100px;">재구매 : ★★★★☆</td>
-                <td style="width: 60px;"><b>👍50</b></td>
-
-
-            </tr>
-            <tr>
-                <td colspan="6" style="color: lightgray;">
-                    ————————————————————————————————————————————————————————————
-                </td>
-
-
-
-
-
-
-
-            </tr>
-
-            <tr>
-                <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
-                    <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
-                </td>
-                <td colspan="3">2025-02-18</td>
-
-
-                <td></td>
-                <td></td>
-
-
-            </tr>
-            <tr>
-
-                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b>리뷰 제목1</b></td>
-
-
-
-
-                
-                <td></td>
-            </tr>
-            <tr>
-
-                <td colspan="4" style="color: gray;">
-                    ———————————————————————————————————
-                </td>
-
-
-
-
-                <td></td>
-
-            </tr>
-            <tr>
-
-                <td colspan="4">
-                    <textarea cols="80" rows="10"
-                        style="resize: none; border-color: white;" readonly>어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
-                </td>
-
-
-
-
-                <td></td>
-
-            </tr>
-            <tr>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-
-            </tr>
-            <tr>
-
-                <td style="width: 50px;"><b>★ 4.7</b></td>
-                <td style="width: 100px;">가격 : ★★★★☆</td>
-                <td style="width: 100px;">성분 : ★★★★☆</td>
-                <td style="width: 100px;">재구매 : ★★★★☆</td>
-                <td style="width: 60px;"><b>👍50</b></td>
-
-
-            </tr>
-            <tr>
-                <td colspan="6" style="color: lightgray;">
-                    ————————————————————————————————————————————————————————————
-                </td>
-
-
-
-
-
-
-
-            </tr>
-
-
+				<% } %>
         </table>
 
         <div class="paging-area" align="center">

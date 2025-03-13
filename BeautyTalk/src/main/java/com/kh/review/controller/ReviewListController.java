@@ -2,7 +2,12 @@ package com.kh.review.controller;
 
 import java.io.Console;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Formatter;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.crypto.dsig.Transform;
 
 import com.kh.common.model.vo.PageInfo;
 import com.kh.review.model.service.ReviewService;
@@ -155,6 +161,35 @@ public class ReviewListController extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("views/common/reviewContentPost.jsp");
 		rd.forward(request, response);
+		
+		
+		
+		// 리뷰 attribute
+		int reviewNo = 1;
+		if(request.getParameter("REVIEW_NO") != null && !request.getParameter("REVIEW_NO").equals("")) {
+			reviewNo = Integer.parseInt(request.getParameter("REVIEW_NO"));
+		}else {
+			reviewNo = Integer.parseInt(request.getParameter("REVIEW_NO"));
+		}
+		
+        String createDate = request.getParameter("create_date");
+		String title = request.getParameter("TITLE");
+		String content = request.getParameter("CONTENT");
+		int prRating = Integer.parseInt(request.getParameter("PR_RATING"));
+		int pRating = Integer.parseInt(request.getParameter("P_RATING"));
+		int rRating = Integer.parseInt(request.getParameter("R_RATING"));
+		int likeReview = Integer.parseInt(request.getParameter("LIKE_REVIEW"));
+		
+		Review review = new Review();
+		review.setReviewNo(reviewNo);
+		review.setCreateDate(createDate);
+		review.setTitle(title);
+		review.setContent(content);
+		review.setPrRating(prRating);
+		review.setpRating(pRating);
+		review.setrRating(rRating);
+		review.setLikeReview(likeReview);
+		
 		
 //		request.setAttribute("request","requestValue");
 //		response.sendRedirect("views/bodyTestLYH/reviewlyh.jsp");

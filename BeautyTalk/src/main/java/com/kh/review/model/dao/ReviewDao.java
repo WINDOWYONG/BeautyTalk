@@ -94,7 +94,7 @@ public class ReviewDao {
 			while(rset.next()) {
 				rv = new Review();
 				rv.setReviewNo(rset.getInt("reviewNo"));
-				rv.setCreateDate(rset.getDate("createDate"));
+				rv.setCreateDate(rset.getString("createDate"));
 				rv.setTitle(rset.getString("title"));
 				rv.setContent(rset.getString("content"));
 				rv.setPrRating(rset.getInt("prRating"));
