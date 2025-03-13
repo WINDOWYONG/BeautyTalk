@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
-import java.util.Set;
 
 import com.kh.common.model.vo.PageInfo;
 import com.kh.review.model.vo.Review;
@@ -89,25 +88,22 @@ public class ReviewDao {
 			
 			rset = pstmt.executeQuery();
 			
-			Review rv = new Review();
-			
 			while(rset.next()) {
-				rv = new Review();
-				rv.setReviewNo(rset.getInt("reviewNo"));
-				rv.setCreateDate(rset.getString("createDate"));
-				rv.setTitle(rset.getString("title"));
-				rv.setContent(rset.getString("content"));
-				rv.setPrRating(rset.getInt("prRating"));
-				rv.setpRating(rset.getInt("pRating"));
-				rv.setrRating(rset.getInt("rRating"));
-				rv.setLikeReview(rset.getInt("likeReview"));
+				Review rv = new Review();
+				rv.setReviewNo(rset.getInt("REVIEW_NO"));
+				rv.setCreateDate(rset.getString("CREATE_DATE"));
+				rv.setTitle(rset.getString("TITLE"));
+				rv.setContent(rset.getString("CONTENT"));
+				rv.setPrRating(rset.getInt("PR_RATING"));
+				rv.setpRating(rset.getInt("P_RATING"));
+				rv.setrRating(rset.getInt("R_RATING"));
+				rv.setLikeReview(rset.getInt("LIKE_REVIEW"));
 				
 				list.add(rv);
 
 			}
 			
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
 			close(rset);
@@ -115,6 +111,20 @@ public class ReviewDao {
 		}
 		return list;
 
+	}
+	
+	public int selectReviewCpage(Connection conn) {
+		// int인데 조회를 해야 해
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectReviewCpage");
+		
+		
+		
+		
 	}
 	
 	

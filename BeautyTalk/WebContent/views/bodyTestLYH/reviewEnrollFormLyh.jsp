@@ -1,11 +1,6 @@
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String contextPath = request.getContextPath();
-	Member loginUser = (Member)session.getAttribute("loginUser");
-	String alertMsg = (String)session.getAttribute("alertMsg");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,6 +60,9 @@
 </head>
 <body>
 
+    <%@ include file="../common/menubar.jsp" %>
+
+<!-- ReviewEnrollForm -->
     <div class="outer">
         <h2 align="center">리뷰 작성</h2>
         <p align="center" style="color: lightgray;">

@@ -11,7 +11,6 @@
 	
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
-	Review review = (Review)request.getAttribute("review");
 	
 	int currentPage = pi.getCurrentPage();
 	int starPage = pi.getStartPage();
@@ -148,6 +147,7 @@
         border-radius: 50%; /* 동그랗게 만들기 */
         object-fit: cover;
     }
+
     * {
     box-sizing: border-box;
     }
@@ -302,9 +302,26 @@
 
     .reviewMP_td1{
         color: palevioletred;
-        font-size: 20px;
+        font-size: 25px;
         font-weight: 900;
     }
+
+    .review_rating{
+        color: palevioletred;
+        font-size: 15px;
+        font-weight: 900;
+        z-index: 0;
+        position: relative;
+    }
+    .review_rating::before{
+        z-index: -1;
+        content: attr(data-content);
+        position: absolute;
+        left: 0;
+        /* 글자 바깥쪽으로 나갔으면 하는 테두리 크기의 두 배 */
+        -webkit-text-stroke: 0.1px gray;
+    }
+    
 
 </style>
 </head>
@@ -407,7 +424,7 @@
         });
     </script>
 
-    <form action="" id="reviewForm_CP1" method="">
+    <form action="" id="reviewForm_CP1" method="post">
         <table id="reviewTable_CP1" >
             <tr>
                 <td height="50"></td>
@@ -446,7 +463,7 @@
                 <td rowspan="6" align="center" style="width: 250px; height: 250px;" onclick="location.href='http://www.yahoo.co.jp'">
                     <img src="<%= contextPath %>/resources/images/medicube.png" class="review_img2">
                 </td>
-                <td colspan="3"><%= review.getCreateDate() %> 2025-03-05</td>
+                <td colspan="3"><%= rv.getCreateDate() %></td>
 
 
                 <td></td>
@@ -456,7 +473,7 @@
             </tr>
             <tr>
 
-                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b><%= review.getReviewNo() %><%= review.getTitle() %> 리뷰 제목1</b></td>
+                <td colspan="4" class="review_title1" onclick="location.href='https://www.daum.net/'"><b><%= rv.getReviewNo() %> <%= rv.getTitle() %></b></td>
 
 
 
@@ -480,7 +497,7 @@
 
                 <td colspan="4">
                     <textarea cols="80" rows="10"
-                        style="resize: none; border-color: white;" readonly><%= review.getContent() %> 어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
+                        style="resize: none; border-color: white;" readonly><%= rv.getContent() %> 어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</textarea>
                 </td>
 
 
@@ -501,11 +518,19 @@
             </tr>
             <tr>
 
-                <td style="width: 50px;"><b>★ 4.7</b></td>
-                <td style="width: 100px;"><%= review.getPrRating() %> 가격 : ★★★★☆</td>
-                <td style="width: 100px;"><%= review.getpRating() %>  성분 : ★★★★☆</td>
-                <td style="width: 100px;"><%= review.getrRating() %> 재구매 : ★★★★☆</td>
-                <td style="width: 60px;"><b><%= review.getLikeReview() %>  👍50</b></td>
+                <td style="width: 50px;"></td>
+                <td class="review_rating" style="width: 100px;" data-content="가격 : <%= rv.getPrRating() %>">
+                    가격 : <%= rv.getPrRating() %>
+                </td>
+                <td class="review_rating" style="width: 100px;" data-content="성분 : <%= rv.getpRating() %>">
+                    성분 : <%= rv.getpRating() %>
+                </td>
+                <td class="review_rating" style="width: 100px;" data-content="재구매 : <%= rv.getrRating() %>">
+                    재구매 : <%= rv.getrRating() %>
+                </td>
+                <td class="review_rating" style="width: 60px;" data-content="👍 : <%= rv.getLikeReview() %>">
+                     👍 : <%= rv.getLikeReview() %>
+                </td>
 
 
             </tr>

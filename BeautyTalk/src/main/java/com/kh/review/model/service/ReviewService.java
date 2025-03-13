@@ -30,5 +30,14 @@ public class ReviewService {
 		return list;
 		
 	}
+	
+	public int selectReviewCpage() {
+		Connection conn = getConnection();
+		
+		int result = new ReviewDao().selectReviewCpage(conn);
+		
+		close(conn);
+		return result;
+	}
 
 }

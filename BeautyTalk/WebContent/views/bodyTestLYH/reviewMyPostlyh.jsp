@@ -153,8 +153,7 @@
             </tr>
 
             <tr>
-                <td class="td_review1" onclick="location.href='https://www.daum.net/'" td
-                    style="border-bottom: 1px solid gray;">
+                <td class="td_review1" onclick="location.href='https://www.daum.net/'" style="border-bottom: 1px solid gray;">
                     <pre>  댓글내역</pre>
                 </td>
             </tr>

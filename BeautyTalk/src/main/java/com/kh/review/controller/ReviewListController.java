@@ -42,7 +42,7 @@ public class ReviewListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
+		
 		// ------------- 페이징 처리 -------------
 		int listCount;		// 현재 총 게시글 개수
 		int currentPage;	// 현재 페이지 (즉, 사용자가 요청한 페이지)
@@ -58,18 +58,16 @@ public class ReviewListController extends HttpServlet {
 		listCount = new ReviewService().selectReviewList();
 
 		// * currentPage : 현재 페이지(즉, 사용자가 요청한 페이지)
-		int cpage = 1;
-		if(request.getParameter("cpage") != null && !request.getParameter("cpage").equals("")) {
-			currentPage = Integer.parseInt(request.getParameter("cpage"));
-		}else {
-			currentPage = 1;
-		}
+		int cpage = new ReviewService().selectReviewCpage();
 		
+		if("cpage" != null || !"null".equals("cpage")) {
+			currentPage = Integer.parseInt(request.getParameter("cpage"));
+		}
 		// * pageLimit : 페이징바의 페이지 최대 개수(단위) ㅡ 개발자가 지정
-		pageLimit = 4;
+		pageLimit = 2;
 		
 		// * reviewLitmit : 게시글 최대 개수(단위) ㅡ 개발자가 지정
-		reviewLimit = 4;
+		reviewLimit = 2;
 		
 		/* 공식을 외우란 것이 아닌,, 원리를 이해하기!!
 		 * * maxPage : 제일 마지막 페이지 수 (총 페이지 수)
@@ -126,7 +124,7 @@ public class ReviewListController extends HttpServlet {
 		 * 				ㄴ n을 구하려면 이런 공식을 도출.. 나눴을 때의 몫 * pageLimit + 1
 		 * 
 		 */
-		startPage = (currentPage - 1 ) / pageLimit * pageLimit + 1;
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 		
 		/*
 		 * * endPage : 페이징바의 끝 수
@@ -159,38 +157,10 @@ public class ReviewListController extends HttpServlet {
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("views/common/reviewContentPost.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("views/bodyTestLYH/reviewContentPost.jsp");
 		rd.forward(request, response);
 		
-		
-		
-		// 리뷰 attribute
-		int reviewNo = 1;
-		if(request.getParameter("REVIEW_NO") != null && !request.getParameter("REVIEW_NO").equals("")) {
-			reviewNo = Integer.parseInt(request.getParameter("REVIEW_NO"));
-		}else {
-			reviewNo = Integer.parseInt(request.getParameter("REVIEW_NO"));
-		}
-		
-        String createDate = request.getParameter("create_date");
-		String title = request.getParameter("TITLE");
-		String content = request.getParameter("CONTENT");
-		int prRating = Integer.parseInt(request.getParameter("PR_RATING"));
-		int pRating = Integer.parseInt(request.getParameter("P_RATING"));
-		int rRating = Integer.parseInt(request.getParameter("R_RATING"));
-		int likeReview = Integer.parseInt(request.getParameter("LIKE_REVIEW"));
-		
-		Review review = new Review();
-		review.setReviewNo(reviewNo);
-		review.setCreateDate(createDate);
-		review.setTitle(title);
-		review.setContent(content);
-		review.setPrRating(prRating);
-		review.setpRating(pRating);
-		review.setrRating(rRating);
-		review.setLikeReview(likeReview);
-		
-		
+
 //		request.setAttribute("request","requestValue");
 //		response.sendRedirect("views/bodyTestLYH/reviewlyh.jsp");
 		

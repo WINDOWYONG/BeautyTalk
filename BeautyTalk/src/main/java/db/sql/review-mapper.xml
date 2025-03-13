@@ -23,7 +23,7 @@
 		                        , P_RATING
 		                        , R_RATING
 		                        , LIKE_REVIEW
-		                    FROM REVIEW
+		                    FROM REVIEW RV
 		                    WHERE STATUS = 'Y'
 		                    ORDER
 		                        BY  REVIEW_NO DESC
@@ -31,6 +31,11 @@
 		    )
 		WHERE RNUM BETWEEN ? AND ?
 	
+	</entry>
+	
+	<entry key="selectReviewCpage">
+		
+		
 	</entry>
 	
 
