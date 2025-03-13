@@ -8,19 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.member.model.service.MemberService;
-
 /**
- * Servlet implementation class MemberDeleteController
+ * Servlet implementation class MyPageController
  */
-@WebServlet("/delete.me")
-public class MemberDeleteController extends HttpServlet {
+@WebServlet("/myPage.me")
+public class MyPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberDeleteController() {
+    public MyPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,24 +28,15 @@ public class MemberDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String userPwd = request.getParameter("userPwd");
-		String userId = request.getParameter("userId");
-		
-		int result = new MemberService().deleteMember(userPwd, userId);
-	
 		HttpSession session = request.getSession();
 		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "성공적으로 회원탈퇴 되었습니다.");
-			session.removeAttribute("loginUser");
+		if(session.getAttribute("loginUser") == null) { // 로그인 전
+			session.setAttribute("alertMsg", "로그인 후 이용가능한 서비스 입니다!");
 			response.sendRedirect(request.getContextPath());
 		} else {
-			session.setAttribute("alertMsg", "회원탈퇴를 실패 하였습니다. 다시 시도해주세요.");
-			response.sendRedirect(request.getContextPath() + "/myPage.me");
+			request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
 		}
-		
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

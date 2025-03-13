@@ -152,28 +152,32 @@ String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=c
             <button type="button" class="btn btn-kakao" onclick="kakaoLogin()">
                 <img src="/beautyTalk/resources/images/kakao.png" alt="Kakao"> 카카오톡 로그인
             </button>
+            
 
 						<div id="naver_id_login"></div>
-<button id="naverLoginBtn" style="
-    width: 100%;
-    height: 45px;
-    background-color: #03C75A;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-">
-    <img src="/beautyTalk/resources/images/naver.jpg" 
-        alt="네이버 로고" width="24" height="24">
-    네이버 로그인
-</button>
+						
+						
+						
+						<button id="naverLoginBtn" style="
+						    width: 100%;
+						    height: 45px;
+						    background-color: #03C75A;
+						    color: white;
+						    font-size: 18px;
+						    font-weight: bold;
+						    border: none;
+						    border-radius: 30px;
+						    display: flex;
+						    align-items: center;
+						    justify-content: center;
+						    gap: 12px;
+						    cursor: pointer;
+						    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+						">
+						    <img src="/beautyTalk/resources/images/naver.jpg" 
+						        alt="네이버 로고" width="24" height="24">
+						    네이버 로그인
+						</button>
 
 
 
@@ -281,7 +285,7 @@ String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=c
 	            },
 	            fail: function(err) {
 	                console.error("로그인 실패:", err);
-	                alert("카카오 로그인 실패!");
+	                alert("카카오 로그인에 실패하였습니다.");
 	            }
 	        });
 	    }
@@ -310,7 +314,7 @@ String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=c
         location.href = loginURL;
     });
 </script>
-</script>
+
 	
 
 </body>

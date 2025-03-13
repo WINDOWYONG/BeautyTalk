@@ -43,15 +43,17 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				m = new Member(
-							   rset.getString("mem_id"),
-							   rset.getString("mem_pwd"),
-							   rset.getString("mem_name"),
-							   rset.getString("email"),
-							   rset.getString("nickname"),
-							   rset.getString("phone"),
-							   rset.getString("agree_yn"),
-							   rset.getString("gender"));
+				m = new Member(rset.getInt("MEM_NO"),
+				               rset.getString("MEM_ID"),
+				               rset.getString("MEM_PWD"),
+				               rset.getString("MEM_NAME"),
+				               rset.getString("EMAIL"),
+				               rset.getString("NICKNAME"),
+				               rset.getString("PHONE"),
+				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
+				               rset.getInt("FOLLOWER_COUNT"),
+				               rset.getInt("REVIEW_COUNT"),
+				               rset.getInt("POST_COUNT"));
 			}
 			
 		} catch (SQLException e) {
@@ -162,15 +164,17 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				m = new Member(
-							   rset.getString("mem_id"),
-							   rset.getString("mem_pwd"),
-							   rset.getString("mem_name"),
-							   rset.getString("email"),
-							   rset.getString("nickname"),
-							   rset.getString("phone"),
-							   rset.getString("agree_yn"),
-							   rset.getString("gender"));
+				m = new Member(rset.getInt("MEM_NO"),
+				               rset.getString("MEM_ID"),
+				               rset.getString("MEM_PWD"),
+				               rset.getString("MEM_NAME"),
+				               rset.getString("EMAIL"),
+				               rset.getString("NICKNAME"),
+				               rset.getString("PHONE"),
+				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
+				               rset.getInt("FOLLOWER_COUNT"),
+				               rset.getInt("REVIEW_COUNT"),
+				               rset.getInt("POST_COUNT"));
 			}
 			
 		} catch (SQLException e) {
@@ -227,16 +231,17 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				m = new Member(
-							   rset.getString("mem_id"),
-							   rset.getString("mem_pwd"),
-							   rset.getString("mem_name"),
-							   rset.getString("email"),
-							   rset.getString("nickname"),
-							   rset.getString("phone"),
-							   rset.getString("agree_yn"),
-							   rset.getString("gender"),
-							   rset.getString("Token"));
+				m = new Member(rset.getInt("MEM_NO"),
+				               rset.getString("MEM_ID"),
+				               rset.getString("MEM_PWD"),
+				               rset.getString("MEM_NAME"),
+				               rset.getString("EMAIL"),
+				               rset.getString("NICKNAME"),
+				               rset.getString("PHONE"),
+				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
+				               rset.getInt("FOLLOWER_COUNT"),
+				               rset.getInt("REVIEW_COUNT"),
+				               rset.getInt("POST_COUNT"));
 			}
 			
 		} catch (SQLException e) {
@@ -248,6 +253,102 @@ public class MemberDao {
 		return m;
 	}
 	
+	public int updateMember(Connection conn, Member m) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getUserName());
+			pstmt.setString(2, m.getUserId());
+			pstmt.setString(3, m.getUserPwd());
+			pstmt.setString(4, m.getEmail());
+			pstmt.setString(5, m.getNickName());
+			pstmt.setString(6, m.getPhone());
+			pstmt.setInt(7, m.getUserNo());
+			
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+		
+	}
+	
+	public Member selectMember(Connection conn, int userNo) {
+		
+		Member m = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member(rset.getInt("mem_no"),
+							   rset.getString("mem_id"),
+							   rset.getString("mem_pwd"),
+							   rset.getString("mem_name"),
+							   rset.getString("email"),
+							   rset.getString("nickname"),
+							   rset.getString("phone"),
+							   rset.getDate("enroll_date"),
+							   rset.getString("status"),
+							   rset.getString("agree_yn"),
+							   rset.getString("gender"),
+							   rset.getString("token"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
+	
+	public int idCheck(Connection conn, String checkId) {
+		
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("idCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, checkId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("count");
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return count;
+		
+	}
 
 }
 

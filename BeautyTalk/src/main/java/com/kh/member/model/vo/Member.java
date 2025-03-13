@@ -16,9 +16,61 @@ public class Member {
 	private String agreeYN;
 	private String gender;
 	private String token;
+	private int following;
+	private int follower;
+	private int review;
+	private int post;
 	
 	
 	public Member () {}
+
+
+
+	public Member(int userNo, String userId, String userPwd, String userName, String email, String nickName,
+			String phone, Date enrollDate, String status, String agreeYN, String gender, String token, int following,
+			int follower, int review, int post) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.email = email;
+		this.nickName = nickName;
+		this.phone = phone;
+		this.enrollDate = enrollDate;
+		this.status = status;
+		this.agreeYN = agreeYN;
+		this.gender = gender;
+		this.token = token;
+		this.following = following;
+		this.follower = follower;
+		this.review = review;
+		this.post = post;
+	}
+
+
+
+
+
+	public Member(int userNo, String userId, String userPwd, String userName, String email, String nickName,
+			String phone, int following, int follower, int review, int post) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.email = email;
+		this.nickName = nickName;
+		this.phone = phone;
+		this.following = following;
+		this.follower = follower;
+		this.review = review;
+		this.post = post;
+	}
+	
+	
+
+
 
 	public Member(int userNo, String userId, String userPwd, String userName, String email, String nickName,
 			String phone, Date enrollDate, String status, String agreeYN, String gender, String token) {
@@ -37,7 +89,7 @@ public class Member {
 		this.token = token;
 	}
 
-	
+
 
 	public Member(String userId, String userPwd, String userName, String email, String nickName, String phone,
 			String agreeYN, String gender, String token) {
@@ -67,6 +119,35 @@ public class Member {
 		this.gender = gender;
 
 	}
+	
+	
+	
+
+	public Member(String userId, String userPwd, String userName, String email, String nickName, String phone) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.email = email;
+		this.nickName = nickName;
+		this.phone = phone;
+	}
+	
+	
+
+
+
+	public Member(int userNo, String userId, String userPwd, String userName, String email, String nickName,
+			String phone) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.email = email;
+		this.nickName = nickName;
+		this.phone = phone;
+	}
 
 
 
@@ -76,13 +157,9 @@ public class Member {
 
 
 
-
-
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
-
-
 
 
 
@@ -92,13 +169,9 @@ public class Member {
 
 
 
-
-
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
-
 
 
 
@@ -108,13 +181,9 @@ public class Member {
 
 
 
-
-
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
-
-
 
 
 
@@ -124,13 +193,9 @@ public class Member {
 
 
 
-
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-
 
 
 
@@ -140,13 +205,9 @@ public class Member {
 
 
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 
 
@@ -156,13 +217,9 @@ public class Member {
 
 
 
-
-
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-
-
 
 
 
@@ -172,13 +229,9 @@ public class Member {
 
 
 
-
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-
 
 
 
@@ -188,13 +241,9 @@ public class Member {
 
 
 
-
-
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
-
-
 
 
 
@@ -204,13 +253,9 @@ public class Member {
 
 
 
-
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-
 
 
 
@@ -220,13 +265,9 @@ public class Member {
 
 
 
-
-
 	public void setAgreeYN(String agreeYN) {
 		this.agreeYN = agreeYN;
 	}
-
-
 
 
 
@@ -236,13 +277,9 @@ public class Member {
 
 
 
-
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-
 
 
 
@@ -252,13 +289,57 @@ public class Member {
 
 
 
-
-
 	public void setToken(String token) {
 		this.token = token;
 	}
 
 
+
+	public int getFollowing() {
+		return following;
+	}
+
+
+
+	public void setFollowing(int following) {
+		this.following = following;
+	}
+
+
+
+	public int getFollower() {
+		return follower;
+	}
+
+
+
+	public void setFollower(int follower) {
+		this.follower = follower;
+	}
+
+
+
+	public int getReview() {
+		return review;
+	}
+
+
+
+	public void setReview(int review) {
+		this.review = review;
+	}
+
+
+
+	public int getPost() {
+		return post;
+	}
+
+
+
+	public void setPost(int post) {
+		this.post = post;
+	}
 
 
 
@@ -266,9 +347,9 @@ public class Member {
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
 				+ ", email=" + email + ", nickName=" + nickName + ", phone=" + phone + ", enrollDate=" + enrollDate
-				+ ", status=" + status + ", agreeYN=" + agreeYN + ", gender=" + gender + ", token=" + token + "]";
+				+ ", status=" + status + ", agreeYN=" + agreeYN + ", gender=" + gender + ", token=" + token
+				+ ", following=" + following + ", follower=" + follower + ", review=" + review + ", post=" + post + "]";
 	}
-
 
 
 	
