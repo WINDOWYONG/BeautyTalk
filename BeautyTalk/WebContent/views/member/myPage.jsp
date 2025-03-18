@@ -424,7 +424,7 @@ button {
 			<div id="Content5">
 				<div>
 					<span class="material-icons" style="font-size: 30px;">person<a
-						href="<%= contextPath %>/myPage.me" " style="font-size: 25px;">마이페이지</a></span>
+						href="<%= contextPath %>/myPage.me" style="font-size: 25px;">마이페이지</a></span>
 				</div>
 
 				<div></div>

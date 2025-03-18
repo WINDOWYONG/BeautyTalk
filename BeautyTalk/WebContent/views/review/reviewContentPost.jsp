@@ -350,6 +350,23 @@ img {
 	/* 글자 바깥쪽으로 나갔으면 하는 테두리 크기의 두 배 */
 	-webkit-text-stroke: 0.2px black;
 }
+
+.reviewContent_btn{
+	border: none;
+	border-radius: 20px;
+	background-color: palevioletred;
+	padding: 10px;
+}
+.reviewContent_btn a{
+	color: white;
+	font-size: 14px;
+	font-weight: 700;
+	text-decoration-line: none;
+}
+
+
+
+
 </style>
 </head>
 <body>
@@ -462,7 +479,7 @@ img {
 			<tr>
 				<td colspan="5"></td>
 				<td>
-					<button type="button" style="width: 100px;">
+					<button type="button" class="reviewContent_btn" style="width: 100px;">
 						<a href="<%= contextPath %>/review.wr"> + 리뷰 작성 </a>
 					</button>
 				</td>
