@@ -44,12 +44,15 @@ public class MemberDao {
 			
 			if(rset.next()) {
 				m = new Member(
+							   rset.getInt("mem_no"),
 							   rset.getString("mem_id"),
 							   rset.getString("mem_pwd"),
 							   rset.getString("mem_name"),
 							   rset.getString("email"),
 							   rset.getString("nickname"),
 							   rset.getString("phone"),
+							   rset.getDate("enroll_date"),
+							   rset.getString("status"),
 							   rset.getString("agree_yn"),
 							   rset.getString("gender"));
 			}

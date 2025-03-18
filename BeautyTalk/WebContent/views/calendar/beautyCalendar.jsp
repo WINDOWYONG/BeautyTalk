@@ -1,5 +1,11 @@
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	String alertMsg = (String)session.getAttribute("alertMsg");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -222,11 +228,31 @@
             select: function(arg) {
                 var title = prompt('추가할 일정 제목:');
                 if (title) {
-                    calendar.addEvent({
-                        title: title,
-                        start: arg.start,
-                        end: arg.end,
-                        allDay: arg.allDay
+                    // FormData로 전송
+                    const formData = new URLSearchParams();
+                    formData.append('title', title);
+                    formData.append('startDay', arg.startStr);
+                    formData.append('endDay', arg.endStr);
+
+                    fetch('<%=contextPath%>/insertSchedule.ca', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: formData
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+                        if (result === 'success') {
+                            calendar.addEvent({
+                                title: title,
+                                start: arg.start,
+                                end: arg.end,
+                                allDay: true
+                            });
+                        } else {
+                            alert('일정 저장 실패!');
+                        }
                     });
                 }
                 calendar.unselect();
