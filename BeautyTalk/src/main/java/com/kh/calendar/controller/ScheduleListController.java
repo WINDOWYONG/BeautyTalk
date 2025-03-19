@@ -1,7 +1,8 @@
 package com.kh.calendar.controller;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import com.kh.calendar.model.service.CalendarService;
 import com.kh.calendar.model.vo.Calendar;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class ScheduleInsertController
+ * Servlet implementation class ScheduleListController
  */
-@WebServlet("/insertSchedule.ca")
-public class ScheduleInsertController extends HttpServlet {
+@WebServlet("/schList.ca")
+public class ScheduleListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ScheduleInsertController() {
+    public ScheduleListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,24 +36,24 @@ public class ScheduleInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		
 		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
 		int userNo = loginUser.getUserNo();
-		String title = request.getParameter("title");
-        String startDay = request.getParameter("startDay");
-        String endDay = request.getParameter("endDay");
-        
-        Calendar c = new Calendar(title, startDay, endDay);
-        
-        int result = new CalendarService().insertSchedule(userNo, c);
-        
-        response.setContentType("text/html; charset=UTF-8");
-        if(result > 0) {
-            response.getWriter().print("success");
-        } else {
-            response.getWriter().print("fail");
-        }
+		ArrayList<Calendar> scheduleList = new CalendarService().scheduleList(userNo);
+		
+		JSONArray jsonArray = new JSONArray();
+		for (Calendar sch : scheduleList) {
+			JSONObject obj = new JSONObject();
+			obj.put("id", sch.getScheduleNo());
+			obj.put("title", sch.getTitle());
+			obj.put("start", sch.getStartDay());
+			obj.put("end", sch.getEndDay());
+			obj.put("allDay", true);
+			jsonArray.add(obj);
+		}
+		
+		response.setContentType("application/json; charset=UTF-8");
+		response.getWriter().print(jsonArray);
 	}
 
 	/**

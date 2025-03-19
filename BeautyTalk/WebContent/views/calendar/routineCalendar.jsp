@@ -1,6 +1,5 @@
 <%@page import="com.kh.member.model.vo.Member"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     String contextPath = request.getContextPath();
     Member loginUser = (Member)session.getAttribute("loginUser");
@@ -9,140 +8,74 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<script src="resources/dist/index.global.min.js"></script>
-<script src="resources/dist/list.global.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block">
 <style>
-/* ✅ CSS 그대로 유지 */
-body {
-  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-  margin: 0;
-  padding: 20px;
-  color: #333;
-}
-.container {
-  display: flex;
-  max-width: 1024px;
-  margin: 0 auto;
-  gap: 20px;
-}
-#calendar {
-  flex: 1;
-  background-color: #fdf6f9;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-.fc .fc-toolbar {
-  background-color: #fce4ec;
-  border-radius: 15px;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-.fc .fc-toolbar .fc-toolbar-chunk:first-child { display: flex; gap: 2px; }
-.fc .fc-toolbar .fc-toolbar-chunk:last-child { display: flex; gap: 8px; }
-.fc .fc-button {
-  background-color: #f8bbd0;
-  color: #d81b60;
-  border: none;
-  border-radius: 50px;
-  padding: 4px 8px;
-  font-size: 12px;
-  font-weight: 600;
-  transition: background-color 0.3s;
-  box-shadow: none;
-  min-width: auto;
-}
-.fc .fc-button:hover { background-color: #d81b60; color: white; }
-.fc .fc-button.fc-today-button { background-color: #fddde6; color: #d6336c; }
-.fc .fc-button.fc-button-active { background-color: #d6336c !important; color: #fff !important; }
-.fc .fc-button-group .fc-button {
-  background-color: #f8bbd0 !important;
-  color: #d81b60 !important;
-  min-width: auto;
-  padding: 4px 12px;
-  text-align: center;
-}
-.fc .fc-button-group .fc-button:hover { background-color: #d81b60 !important; color: #fff !important; }
-.fc-toolbar-title {
-  color: #d6336c;
-  font-size: 20px !important;
-  font-weight: bold;
-  white-space: nowrap;
-  margin: 0 20px !important;
-}
-.fc-list-event { background-color: #ffffff !important; border: none; }
-.fc-list-day-cushion { background-color: #fce4ec !important; color: #d6336c; font-weight: bold; }
-.fc-list-event-time { color: #d6336c; font-weight: bold; }
-.form-container {
-  flex: 1;
-  background-color: #fff;
-  border-radius: 15px;
-  padding: 30px 40px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  color: #333;
-}
-.form-container label,
-.form-container input,
-.form-container textarea,
-.form-container select,
-.weekdays { width: 100%; }
-.form-container input, .form-container textarea, .form-container select { box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333; }
+.container { display: flex; max-width: 1200px; margin: 0 auto; gap: 30px; align-items: flex-start; }
+#routine { flex: 1; background-color: #fdf6f9; border-radius: 15px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+.form-container { flex: 1; background-color: #fff; border-radius: 15px; padding: 30px 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); color: #333; }
 .form-container h2 { font-size: 22px; margin-bottom: 20px; color: #d6336c; }
-.form-container label { display: block; margin: 15px 0 5px; font-weight: bold; color: #d6336c; }
+.form-container label { margin: 15px 0 5px; font-weight: bold; color: #d6336c; display: block; }
 .form-container input, .form-container select, .form-container textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #f8d7da;
-  border-radius: 10px;
-  background-color: #fff0f5;
+  width: 100%; padding: 10px; border: 1px solid #f8d7da; border-radius: 10px; background-color: #fff0f5;
 }
 .form-container button {
-  background-color: #f78fb3;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
-  width: 100%;
+  background-color: #f78fb3; color: white; padding: 12px 20px; border: none;
+  border-radius: 10px; font-size: 16px; cursor: pointer; margin-top: 20px; width: 100%;
 }
 .form-container button:hover { background-color: #f1aeb5; }
 .weekdays { display: flex; gap: 5px; margin-top: 10px; }
-.week-btn {
-  flex: 1;
-  padding: 10px;
-  background-color: #fff0f5;
-  border: 1px solid #f8d7da;
-  border-radius: 50px;
-  text-align: center;
-  cursor: pointer;
-  color: #d6336c;
-  font-weight: 500;
-}
+.week-btn { flex: 1; padding: 10px; background-color: #fff0f5; border: 1px solid #f8d7da;
+  border-radius: 50px; text-align: center; cursor: pointer; color: #d6336c; font-weight: 500; }
 .week-btn.active { background-color: #f78fb3; color: white; }
 .date-group { display: flex; align-items: center; gap: 8px; }
-.date-group input[type="date"] {
-  width: 140px;
-  background-color: #fff0f5;
-  border-radius: 10px;
-  border: 1px solid #f8d7da;
-  padding: 8px;
-  color: #333;
+.date-group input[type="date"] { width: 140px; background-color: #fff0f5; border-radius: 10px; border: 1px solid #f8d7da; padding: 8px; color: #333; }
+
+/* 캘린더 */
+.routine-calendar .wrapper { width: 100%; background-color: #fff; border-radius: 10px; padding: 20px; }
+.routine-calendar .nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.routine-calendar .current-date { font-size: 20px; font-weight: 600; }
+.routine-calendar .nav button { border: none; background: none; cursor: pointer; }
+.routine-calendar .nav .material-icons { font-size: 32px; color: #d6336c; }
+.routine-calendar .calendar ul { display: flex; list-style: none; flex-wrap: wrap; text-align: center; padding: 0; }
+.routine-calendar .calendar .weeks li { font-weight: 500; width: calc(100% / 7); padding: 5px 0; }
+.routine-calendar .calendar .days li { width: calc(100% / 7); position: relative; z-index: 1; margin-top: 20px; cursor: pointer; }
+.routine-calendar .days li.inactive { color: #aaa; }
+.routine-calendar .days li.active { color: #fff; }
+.routine-calendar .calendar .days li::before {
+  position: absolute; content: ''; height: 36px; width: 36px; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); border-radius: 50%; z-index: -1;
 }
-.fc-list-event-time { display: none; }
-.fc-list-event-title:has(.fc-list-event-dot) { display: none; }
+.routine-calendar .days li:hover::before { background: #f2f2f2; }
+.routine-calendar .days li.active::before { background: #ffb6cf; }
 </style>
 </head>
 
 <body>
 
 <div class="container">
-  <div id="calendar"></div>
+  <!-- 캘린더 영역 -->
+  <div id="routine">
+    <div class="routine-calendar">
+      <div class="wrapper">
+        <div class="nav">
+          <button id="prev"><span class="material-icons">chevron_left</span></button>
+          <p class="current-date"></p>
+          <button id="next"><span class="material-icons">chevron_right</span></button>
+        </div>
+        <div class="calendar">
+          <ul class="weeks">
+            <li>일</li><li>월</li><li>화</li><li>수</li><li>목</li><li>금</li><li>토</li>
+          </ul>
+          <ul class="days"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- 루틴 입력 폼 -->
   <div class="form-container">
     <h2><span style="color:black;"><%= loginUser.getUserName() %></span>님의 뷰티 루틴</h2>
     <label>항목명</label>
@@ -155,13 +88,8 @@ body {
 
     <label>요일</label>
     <div class="weekdays">
-      <div class="week-btn">월</div>
-      <div class="week-btn">화</div>
-      <div class="week-btn">수</div>
-      <div class="week-btn">목</div>
-      <div class="week-btn">금</div>
-      <div class="week-btn">토</div>
-      <div class="week-btn">일</div>
+      <div class="week-btn">월</div><div class="week-btn">화</div><div class="week-btn">수</div>
+      <div class="week-btn">목</div><div class="week-btn">금</div><div class="week-btn">토</div><div class="week-btn">일</div>
     </div>
 
     <label>메모</label>
@@ -169,161 +97,68 @@ body {
 
     <label>알림 설정</label>
     <select id="alarm">
-      <option>오전 9:00</option>
-      <option>오전 10:00</option>
-      <option>오후 1:00</option>
-      <option>오후 6:00</option>
+      <option>오전 9:00</option><option>오전 10:00</option><option>오후 1:00</option><option>오후 6:00</option>
     </select>
 
     <button id="add-event-btn">설정</button>
   </div>
 </div>
 
+<!-- ✅ 캘린더 스크립트 -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+let date = new Date();
+let currMonth = date.getMonth();
+let currYear = date.getFullYear();
+let selectedDay = date.getDate();
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      locale: 'ko',
-      plugins: [ listPlugin ],
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'listDay,listWeek'
-      },
+const calendarEl = document.querySelector('.routine-calendar');
+const currentDate = calendarEl.querySelector('.current-date');
+const daysTag = calendarEl.querySelector('.days');
+const prevNextIcon = calendarEl.querySelectorAll('.nav button');
 
-      // customize the button names,
-      // otherwise they'd all just say "list"
-      views: {
-        listDay: { buttonText: 'day' },
-        listWeek: { buttonText: 'week' }
-      },
+const renderCalendar = () => {
+  let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
+  let firstDayofMonth = new Date(currYear, currMonth, 1).getDay();
+  let lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay();
+  let lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
 
-      initialView: 'listWeek',
-      initialDate: '2025-03-18',
-      navLinks: true, // can click day/week names to navigate views
-      editable: true,
-      dayMaxEvents: true, // allow "more" link when too many events
+  currentDate.innerHTML = `${currYear}년 ${currMonth + 1}월`;
 
-      // 체크박스
-      eventContent: function(arg) {
-        return {
-          html: `
-            <div class="list-event" data-event-id="${arg.event.id}" style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-              <input type="checkbox" class="schedule-check" onclick="event.stopPropagation()">
-              <span>${arg.event.title}</span>
-            </div>`
-        }
-      },
-      
-      eventClick: function(info) {
-        if (confirm(`'${info.event.title}' 일정을 삭제하시겠습니까?`)) {
-          info.event.remove();
-        }
-      },
+  let liTag = '';
+  for (let i = firstDayofMonth; i > 0; i--) {
+    liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+  }
+  for (let i = 1; i <= lastDateofMonth; i++) {
+    let isActive = (i === selectedDay) ? 'active' : '';
+    liTag += `<li class="${isActive}" data-day="${i}">${i}</li>`;
+  }
+  for (let i = lastDayofMonth; i < 6; i++) {
+    liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
+  }
+  daysTag.innerHTML = liTag;
 
-
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2025-03-16'
-        },
-        {
-          title: 'Long Event',
-          start: '2025-03-17',
-          end: '2025-03-18'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2025-03-18T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2025-03-18T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2025-03-18',
-          end: '2025-03-19'
-        },
-        {
-          title: 'Meeting',
-          start: '2025-03-19T10:30:00',
-          end: '2025-03-19T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2025-03-18T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2025-03-18T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2025-03-20T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2025-03-21T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2025-03-22T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2025-03-22'
-        }
-      ]
+  calendarEl.querySelectorAll('.days li').forEach(day => {
+    day.addEventListener('click', function() {
+      if (!this.classList.contains('inactive')) {
+        selectedDay = parseInt(this.getAttribute('data-day'));
+        renderCalendar();
+      }
     });
+  });
+};
 
-    calendar.render();
-    console.log(calendar);
+renderCalendar();
 
-      document.getElementById('add-event-btn').addEventListener('click', function() {
-        var title = document.getElementById('event-title').value;
-        var start = document.getElementById('event-start').value;
-        var end = document.getElementById('event-end').value;
-
-        if (title && start) {
-          // 1. 캘린더에 추가
-          calendar.addEvent({
-            title: title,
-            start: start,
-            end: end ? end : null
-          });
-
-          // 2. 서버로 저장 요청 보내기
-          fetch('/save-event', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: title, start: start, end: end })
-          })
-          .then(response => response.json())
-          .then(data => {
-            console.log('서버 저장 성공:', data);
-            alert('일정이 추가되었습니다!');
-          })
-          .catch(error => {
-            console.error('서버 저장 실패:', error);
-            alert('서버 저장 실패');
-          });
-
-        } else {
-          alert('제목과 시작 시간을 입력하세요!');
-        }
-      });
-
-      document.querySelectorAll('.week-btn').forEach(btn => {
-        btn.addEventListener('click', () => btn.classList.toggle('active'));
-      });
-    });
-  </script>
-
+prevNextIcon.forEach((icon) => {
+  icon.addEventListener('click', () => {
+    currMonth = icon.id === 'prev' ? currMonth - 1 : currMonth + 1;
+    if (currMonth < 0) { currMonth = 11; currYear--; }
+    else if (currMonth > 11) { currMonth = 0; currYear++; }
+    selectedDay = null;
+    renderCalendar();
+  });
+});
+</script>
 
 </body>
 </html>

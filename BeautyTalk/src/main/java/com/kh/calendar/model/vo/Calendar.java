@@ -18,9 +18,17 @@ public class Calendar {
 		this.startDay = startDay;
 		this.endDay = endDay;
 	}
-
+	
 	public Calendar(String title, String startDay, String endDay) {
 		super();
+		this.title = title;
+		this.startDay = startDay;
+		this.endDay = endDay;
+	}
+
+	public Calendar(int scheduleNo, String title, String startDay, String endDay) {
+		super();
+		this.scheduleNo = scheduleNo;
 		this.title = title;
 		this.startDay = startDay;
 		this.endDay = endDay;
