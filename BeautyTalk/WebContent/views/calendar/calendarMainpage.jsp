@@ -393,33 +393,46 @@
 
       // AJAX 함수
       function loadPage(page) {
-    	    $.ajax({
-    	        url: page,
-    	        type: "GET",
-    	        success: function (data) {
-    	            $("#content-area").html(data);
+    	  $.ajax({
+    		  url: page,
+    		  type: "GET",
+    		  success: function (data) {
+    		    $("#content-area").html(data);
 
-    	            if (page.includes("beautyCalendar.jsp")) {
+    		    if (page.includes("beautyCalendar.jsp")) {
+    		    	// beautyCalendar.jsp 내부의 <script> 태그 실행 보장
+	                $("#content-area script").each(function() {
+	                    var scriptTag = document.createElement("script");
+	                    scriptTag.text = this.text;
+	                    document.body.appendChild(scriptTag);
+	                });
 
-    	                // beautyCalendar.jsp 내부의 <script> 태그 실행 보장
-    	                $("#content-area script").each(function() {
-    	                    var scriptTag = document.createElement("script");
-    	                    scriptTag.text = this.text;
-    	                    document.body.appendChild(scriptTag);
-    	                });
+	                // initializeCalendar()가 실행되는지 다시 확인
+	                setTimeout(function() {
+	                    if (typeof initializeCalendar === 'function') {
+	                        initializeCalendar();
+	                    }
+	                }, 100);
+    		    }
 
-    	                // initializeCalendar()가 실행되는지 다시 확인
-    	                setTimeout(function() {
-    	                    if (typeof initializeCalendar === 'function') {
-    	                        initializeCalendar();
-    	                    }
-    	                }, 100);
-    	            }
-    	        },
-    	        error: function (xhr, status, error) {
-    	            alert("페이지를 불러오는 데 실패했습니다: " + error);
-    	        }
-    	    });
+    		    if (page.includes("routineCalendar.jsp")) {
+    		      $("#content-area script").each(function() {
+    		        var scriptTag = document.createElement("script");
+    		        scriptTag.text = this.text;
+    		        document.body.appendChild(scriptTag);
+    		      });
+
+    		      setTimeout(function() {
+    		        if (typeof renderMyCalendar === 'function') {
+    		          renderMyCalendar(); // ✅ 루틴 캘린더 실행
+    		        }
+    		      }, 100);
+    		    }
+    		  },
+    		  error: function (xhr, status, error) {
+    		    alert("페이지를 불러오는 데 실패했습니다: " + error);
+    		  }
+    		});
     	}
 
 

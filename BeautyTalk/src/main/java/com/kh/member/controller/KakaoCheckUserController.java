@@ -51,16 +51,16 @@ public class KakaoCheckUserController extends HttpServlet {
             JSONParser parser = new JSONParser();
             JSONObject json = (JSONObject) parser.parse(sb.toString()); 
 
-            String kakaoEmail = (String) json.get("email");
+            String accessToken = (String) json.get("token");
 
             
-            int result = new MemberService().kakaoCheckUser(kakaoEmail);
+            int result = new MemberService().kakaoCheckUser(accessToken);
             
             boolean userExists = false;
             Member loginUser = null;
             if(result > 0) {
             	userExists = true;
-            	loginUser = new MemberService().kakaoLoginMember(kakaoEmail);
+            	loginUser = new MemberService().kakaoLoginMember(accessToken);
             }
             
             // JSON 응답

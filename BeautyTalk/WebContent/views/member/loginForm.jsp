@@ -188,7 +188,7 @@
 	    function kakaoLogin() {
 	        Kakao.Auth.login({
 	            success: function(authObj) {
-	                console.log("로그인 성공:", authObj);
+	            	const accessToken = authObj.access_token;
 	
 	                // 로그인 성공 시 사용자 정보 가져오기
 	                Kakao.API.request({
@@ -202,7 +202,7 @@
 	                        $.ajax({
 	                            type: "POST",
 	                            url: "<%= contextPath %>/kakaoCheckUser.me", // 백엔드 API
-	                            data: JSON.stringify({ email: kakaoEmail }),
+	                            data: JSON.stringify({ token: accessToken }),
 	                            contentType: "application/json",
 	                            success: function(response) {
 	                                if (response.exists) {

@@ -60,7 +60,7 @@
 		SELECT
 		       COUNT(*) "COUNT"
 		  FROM MEMBER
-		 WHERE EMAIL = ?
+		 WHERE TOKEN = ?
 	</entry>
 	
 	<entry key="kakaoLoginMember">
@@ -77,7 +77,7 @@
 		     , AGREE_YN
 		     , GENDER
 		  FROM MEMBER
-		 WHERE EMAIL = ?
+		 WHERE TOKEN = ?
 		   AND STATUS = 'Y'
 	</entry>
 
