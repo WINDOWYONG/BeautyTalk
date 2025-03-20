@@ -3,7 +3,6 @@ package com.kh.member.model.dao;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,6 +49,7 @@ public class MemberDao {
 				               rset.getString("EMAIL"),
 				               rset.getString("NICKNAME"),
 				               rset.getString("PHONE"),
+				               rset.getString("GENDER"),
 				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
 				               rset.getInt("FOLLOWER_COUNT"),
 				               rset.getInt("REVIEW_COUNT"),
@@ -171,6 +171,7 @@ public class MemberDao {
 				               rset.getString("EMAIL"),
 				               rset.getString("NICKNAME"),
 				               rset.getString("PHONE"),
+				               rset.getString("GENDER"),
 				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
 				               rset.getInt("FOLLOWER_COUNT"),
 				               rset.getInt("REVIEW_COUNT"),
@@ -238,6 +239,7 @@ public class MemberDao {
 				               rset.getString("EMAIL"),
 				               rset.getString("NICKNAME"),
 				               rset.getString("PHONE"),
+				               rset.getString("GENDER"),
 				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
 				               rset.getInt("FOLLOWER_COUNT"),
 				               rset.getInt("REVIEW_COUNT"),
