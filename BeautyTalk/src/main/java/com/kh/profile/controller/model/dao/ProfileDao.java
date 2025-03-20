@@ -48,11 +48,7 @@ public class ProfileDao {
 			pstmt.setString(9, p.getRelease());
 			pstmt.setString(10, p.getGender());
 			pstmt.setString(11, p.getColor());
-			
-			System.out.println(p.getScalpList());
-			
-			        
-			        
+			   	        
 			        
 			result = pstmt.executeUpdate();
 

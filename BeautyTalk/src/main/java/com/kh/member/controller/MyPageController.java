@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.profile.model.service.ProfileService;
-import com.kh.profile.model.vo.Profile;
 
 /**
  * Servlet implementation class MyPageController
