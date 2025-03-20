@@ -19,8 +19,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333; }
-.container { display: flex; max-width: 1200px; margin: 0 auto; gap: 30px; align-items: flex-start; }
-#routine { flex: 1; background-color: #fdf6f9; border-radius: 15px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); height: 100%;}
+.container { display: flex; max-width: 1200px; margin: 0 auto; gap: 30px; align-items: flex-start;}
 
 .form-container { flex: 1; background-color: #fff; border-radius: 15px; padding: 30px 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); color: #333; width: 50%;}
 .form-container h2 { font-size: 22px; margin-bottom: 20px; color: #d6336c; }
@@ -58,16 +57,33 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
 .routine-calendar .days li:hover::before { background: #f2f2f2; }
 .routine-calendar .days li.active::before { background: #ffb6cf; }
 .left-section {
-  width: 50%; /* 캘린더 + 체크리스트 */
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: #ffe6f0;  /* 연핑크 배경 */
+  padding: 20px;
+  border-radius: 15px;
+  height: 900px;
 }
-.checklist {
-  background-color: #fff0f5;
+
+#routine {
+  background-color: #fff;
   border-radius: 15px;
   padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  /* flex-grow 제거! */
 }
+
+.checklist {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  flex-grow: 1;  /* 체크리스트만 남은 공간 채워 */
+  overflow: auto;
+}
+
 </style>
 </head>
 

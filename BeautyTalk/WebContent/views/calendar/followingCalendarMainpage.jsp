@@ -299,9 +299,6 @@
 	            <div class="menu-item" data-page="views/calendar/routineCalendar.jsp">
 	              <i class="fas fa-check-circle"><!--로고2--></i> 루틴 설정
 	            </div>
-	            <div class="menu-item" data-page="views/calendar/routineSetting.jsp">
-	              <i class="fas fa-chart-bar"><!--로고3--></i> 월간 분석
-	            </div>
 	          </nav>
 	      </div>
 	      <div class="L2"></div>
@@ -370,7 +367,7 @@
   <script>
   $(document).ready(function () {
       // 페이지 로드 시 기본값으로 뷰티 캘린더 로드
-      loadPage("views/calendar/beautyCalendar.jsp");
+      loadPage("views/calendar/followingBeautyCalendar.jsp");
 
       // 기본적으로 뷰티 캘린더 메뉴에 active 유지
       $(".menu-item").removeClass("active");
@@ -399,7 +396,7 @@
     		  success: function (data) {
     		    $("#content-area").html(data);
 
-    		    if (page.includes("beautyCalendar.jsp")) {
+    		    if (page.includes("followingBeautyCalendar.jsp")) {
     		    	// beautyCalendar.jsp 내부의 <script> 태그 실행 보장
 	                $("#content-area script").each(function() {
 	                    var scriptTag = document.createElement("script");
