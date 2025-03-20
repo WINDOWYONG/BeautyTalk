@@ -85,12 +85,11 @@ public class ProfileUpdateController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("userProfile", p);
-			System.out.println("p: " + p);
 			session.setAttribute("alertMsg", "성공적으로 뷰티 프로필 수정완료.");
 			
 			response.sendRedirect(request.getContextPath() + "/myPage.me");
 		} else {
-			request.setAttribute("alerMsg", "뷰티 프로필 저장실패.");
+			request.setAttribute("alertMsg", "뷰티 프로필 저장실패.");
 			response.sendRedirect(request.getContextPath());
 		}
 	}

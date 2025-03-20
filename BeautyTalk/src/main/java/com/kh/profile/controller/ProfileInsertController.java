@@ -1,11 +1,6 @@
 package com.kh.profile.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -85,7 +80,7 @@ public class ProfileInsertController extends HttpServlet {
 		System.out.println("release: " + release);
 		System.out.println("gender: " + gender);
 		System.out.println("color: " + color);
-		
+
 		int result = new ProfileService().insertProfile(p);
 
 		if(result > 0) {
@@ -97,7 +92,7 @@ public class ProfileInsertController extends HttpServlet {
 			
 			response.sendRedirect(request.getContextPath() + "/myPage.me");
 		} else {
-			request.setAttribute("alerMsg", "뷰티 프로필 저장실패.");
+			request.setAttribute("alertMsg", "뷰티 프로필 저장실패.");
 			response.sendRedirect(request.getContextPath());
 		}
 	}
