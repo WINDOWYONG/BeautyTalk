@@ -179,7 +179,7 @@ String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=c
 
 			<div id="login-etc">
 				<a href="">아이디 찾기</a> <span>|</span> <a href="">비밀번호 찾기</a> <span>|</span>
-				<a href="">회원가입</a>
+				<a href="<%= contextPath %>/enrollForm.me">회원가입</a>
 			</div>
 		</div>
 	</div>
@@ -245,8 +245,8 @@ String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=c
 	                    success: function(res) {
 	                        console.log("사용자 정보:", res);
 	                        
-	                        const kakaoEmail = res.kakao_account.email; // 카카오 email
-	                        const kakaoNickname = res.kakao_account.profile.nickname; // 카카오 닉네임
+	                        const kakaoEmail = res.kakao_account.email;
+	                        const kakaoNickname = res.kakao_account.profile.nickname;
 	                        
 	                        $.ajax({
 	                            type: "POST",
@@ -284,84 +284,6 @@ String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=c
 	
 	
 <script type="text/javascript">
-    var naverLogin = new naver_id_login("<%= clientId %>", "<%= redirectURI %>");
-    var state = "<%= state %>";
-
-    // ✅ 네이버 로그인 초기화 (필수)
-    naverLogin.setState(state);
-    naverLogin.init_naver_id_login();
-
-    // ✅ 네이버에서 자동 생성하는 버튼 숨기기
-    document.getElementById("naver_id_login").style.display = "none";
-
-    // ✅ JSP에서 JavaScript로 안전하게 URL 전달
-    var loginURL = "<%= naverLoginURL.replace("&", "&amp;") %>";  // '&' 문제 해결
-
-    // ✅ 콘솔에서 URL 확인 (디버깅용)
-    console.log("🔵 네이버 로그인 URL: ", loginURL);
-
-    // ✅ 사용자가 버튼 클릭 시 로그인 실행 (자동 실행 제거)
-    document.getElementById("naverLoginBtn").addEventListener("click", function() {
-        location.href = loginURL;
-    });
-</script>
-
-	
-
-	<script>
-	    // 카카오 SDK 초기화
-	    Kakao.init('59fed56fbad84e6ce2251947508fca03'); // ★ 여기에 본인의 카카오 앱 키 입력 ★
-	    
-	    function kakaoLogin() {
-	        Kakao.Auth.login({
-	            success: function(authObj) {
-	                console.log("로그인 성공:", authObj);
-	
-	                // 로그인 성공 시 사용자 정보 가져오기
-	                Kakao.API.request({
-	                    url: '/v2/user/me',
-	                    success: function(res) {
-	                        console.log("사용자 정보:", res);
-	                        
-	                        const kakaoEmail = res.kakao_account.email; // 카카오 email
-	                        const kakaoNickname = res.kakao_account.profile.nickname; // 카카오 닉네임
-	                        
-	                        $.ajax({
-	                            type: "POST",
-	                            url: "<%= contextPath %>/kakaoCheckUser.me", // 백엔드 API
-	                            data: JSON.stringify({ email: kakaoEmail }),
-	                            contentType: "application/json",
-	                            success: function(response) {
-	                                if (response.exists) {
-	                                    // 기존 사용자 → 메인 페이지로 이동
-	                                    alert("카카오 로그인 성공!\n" + res.kakao_account.profile.nickname + "님 환영합니다~");
-	                                    window.location.href = "<%= contextPath %>";
-	                                } else {
-	                                    // 신규 사용자 → 회원가입(추가 정보 입력) 페이지로 이동
-	                                    alert("회원가입 페이지로 이동합니다.")
-	                                    window.location.href = "<%= contextPath %>/enrollForm.me?email=" + encodeURIComponent(kakaoEmail) + "&nickname=" + encodeURIComponent(kakaoNickname);
-	                                }
-	                            },
-	                            error: function(error) {
-	                                console.error("사용자 정보 가져오기 실패:", error);
-	                            }
-	                        });
-	                    },
-	                    fail: function(error) {
-	                        console.error("사용자 정보 가져오기 실패:", error);
-	                    }
-	                });
-	            },
-	            fail: function(err) {
-	                console.error("로그인 실패:", err);
-	                alert("카카오 로그인에 실패하였습니다.");
-	            }
-	        });
-	    }
-	</script>
-
-
-	<script type="text/javascript">
     var naverLogin = new naver_id_login("<%= clientId %>", "<%= redirectURI %>");
     var state = "<%= state %>";
 

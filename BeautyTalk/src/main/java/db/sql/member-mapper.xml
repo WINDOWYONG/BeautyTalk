@@ -58,33 +58,30 @@
              AND MEM_PWD = ?
    </entry>
 
-   <entry key="kakaoCheckUser">
-      SELECT
-             COUNT(*) "COUNT"
-        FROM MEMBER
-       WHERE EMAIL = ?
-         AND STATUS = 'Y'
-   </entry>
-   
-   <entry key="kakaoLoginMember">
-    SELECT 
-        M.*,
-        NVL(FOLLOWING_CNT, 0) AS FOLLOWING_COUNT,
-        NVL(FOLLOWER_CNT, 0) AS FOLLOWER_COUNT,
-        NVL(REVIEW_CNT, 0) AS REVIEW_COUNT,
-        NVL(POST_CNT, 0) AS POST_COUNT
-    FROM MEMBER M
-           LEFT JOIN (SELECT FOLLOWING, COUNT(*) AS FOLLOWING_CNT FROM FOLLOW GROUP BY FOLLOWING) F1 
-                  ON M.MEM_NO = F1.FOLLOWING
-    			 LEFT JOIN (SELECT FOLLOWER, COUNT(*) AS FOLLOWER_CNT FROM FOLLOW GROUP BY FOLLOWER) F2
-        					ON M.MEM_NO = F2.FOLLOWER
-    			 LEFT JOIN (SELECT MEM_NO, COUNT(*) AS REVIEW_CNT FROM REVIEW GROUP BY MEM_NO) R
-        					ON M.MEM_NO = R.MEM_NO
-    			 LEFT JOIN (SELECT MEM_NO, COUNT(*) AS POST_CNT FROM POST GROUP BY MEM_NO) P
-        					ON M.MEM_NO = P.MEM_NO
-    			WHERE M.EMAIL = ? 
-      			AND M.STATUS = 'Y'
-   </entry>
+	<entry key="kakaoCheckUser">
+		SELECT
+		       COUNT(*) "COUNT"
+		  FROM MEMBER
+		 WHERE TOKEN = ?
+	</entry>
+	
+	<entry key="kakaoLoginMember">
+		SELECT
+		       MEM_NO
+		     , MEM_ID
+		     , MEM_PWD
+		     , MEM_NAME
+		     , EMAIL
+		     , NICKNAME
+		     , PHONE
+		     , ENROLL_DATE
+		     , STATUS
+		     , AGREE_YN
+		     , GENDER
+		  FROM MEMBER
+		 WHERE TOKEN = ?
+		   AND STATUS = 'Y'
+	</entry>
    
       <entry key="NaverCheckUser">
       SELECT
@@ -147,30 +144,6 @@
 	      FROM MEMBER
 	      WHERE MEM_ID = ?
    </entry>
-	
-	<entry key="kakaoCheckUser">
-		SELECT
-		       COUNT(*) "COUNT"
-		  FROM MEMBER
-		 WHERE TOKEN = ?
-	</entry>
-	
-	<entry key="kakaoLoginMember">
-		SELECT
-		       MEM_NO
-		     , MEM_ID
-		     , MEM_PWD
-		     , MEM_NAME
-		     , EMAIL
-		     , NICKNAME
-		     , PHONE
-		     , ENROLL_DATE
-		     , STATUS
-		     , AGREE_YN
-		     , GENDER
-		  FROM MEMBER
-		 WHERE TOKEN = ?
-		   AND STATUS = 'Y'
-	</entry>
+
 
 </properties>

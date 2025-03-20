@@ -8,6 +8,7 @@
 	String birthday = (String) session.getAttribute("birthday");
 	String birthyear = (String) session.getAttribute("birthyear");
 	String phone = (String) session.getAttribute("mobile");
+	String kakaoAccessToken = (String) session.getAttribute("kakaoAccessToken");
 %>
 
 <!DOCTYPE html>
@@ -200,8 +201,12 @@
 			</div>
 			
             <form action="<%= contextPath %>/insert.me" id="insert-form" method="post">
-            		<input type="hidden" name="Token" value="<%= Token %>">
-            		<input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required>
+            <% if(kakaoAccessToken != null){ %>
+            	<input type="hidden" name="kakaoAccessToken" value="<%= kakaoAccessToken %>">
+            <% } else {%>
+            	<input type="hidden" name="Token" value="<%= Token %>">
+            <% } %>
+            	<input type="text" name="userId" id="userId" minlength="6" maxlength="15" placeholder="아이디를 입력하세요. (6자 이상 15자 이내)" required>
                 
 
                 <input type="password" name="userPwd" id="userPwd" minlength="8" maxlength="16" placeholder="비밀번호를 입력하세요. (8~16자, 영문+숫자+특수문자)" required>
@@ -349,22 +354,6 @@
     });
 	</script>
 
-	<script>
-    // URL에서 이메일과 닉네임을 가져와서 자동 입력
-    $(document).ready(function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const email = urlParams.get('email'); // 이메일 가져오기
-        const nickname = urlParams.get('nickname'); // 닉네임 가져오기
-
-        if (email) {
-            $("#email").val(email).attr("readonly", true); // 이메일 입력란에 자동 입력
-            
-        }
-        if (nickname) {
-            $("#userName").val(nickname); // 닉네임 입력란에 자동 입력
-        }
-    });
-	</script>
 
 </body>
 </html>
