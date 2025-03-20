@@ -46,9 +46,9 @@ public class MemberService {
 	}
 
 	
-	public int kakaoCheckUser(String kakaoEmail) {
+	public int kakaoCheckUser(String accessToken) {
 		Connection conn = getConnection();
-		int result = new MemberDao().kakaoCheckUser(conn, kakaoEmail);
+		int result = new MemberDao().kakaoCheckUser(conn, accessToken);
 		close(conn);
 		return result;
 	}
