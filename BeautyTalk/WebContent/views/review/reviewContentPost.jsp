@@ -14,6 +14,8 @@
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 	
+	Review rv = (Review)request.getAttribute("rv");
+	Image img2 = (Image)request.getAttribute("img2");
 	
 	String reviewNo = request.getParameter("REVIEW_NO");
 	String refBno = request.getParameter("REF_BNO");
@@ -511,16 +513,16 @@ img {
 			</tr>
 			<!-- 게시글이 있는 경우 -->
 			<% }else { %>
-				<% for(Review rv : list) { %>
+				<% for(Review review : list) { %>
 			<tr>
 				<td rowspan="6" align="center" style="width: 250px; height: 250px;">
-					<% if(refBno == reviewNo) { %>
-						<img src="<%= contextPath %>/" class="review_img2">
+					<% if(reviewNo == refBno) { %>
+						<img src="<%= contextPath %>/<%= filePath + changeName %>" class="review_img2">
 					<% }else { %>
-						<img src="<%= contextPath %>/<%= filePath %><%= changeName %>">
+						<img src="<%= contextPath %>/<%= filePath %>" class="review_img2" >
 					<% } %>
 				</td>
-				<td colspan="3"><%= rv.getCreateDate() %></td>
+				<td colspan="3"><%= review.getCreateDate() %></td>
 
 
 				<td></td>
@@ -530,7 +532,7 @@ img {
 			</tr>
 			<tr>
 
-				<td colspan="4" class="review_title1"><b><%= rv.getReviewNo() %>  <%= rv.getTitle() %></b></td>
+				<td colspan="4" class="review_title1"><b><%= review.getReviewNo() %>  <%= review.getTitle() %></b></td>
 
 
 
@@ -551,7 +553,7 @@ img {
 			</tr>
 			<tr>
 
-				<td colspan="4"><textarea cols="80" rows="10" style="resize: none; border-color: white;" disabled><%= rv.getContent() %></textarea>
+				<td colspan="4"><textarea cols="80" rows="10" style="resize: none; border-color: white;" disabled><%= review.getContent() %></textarea>
 				</td>
 
 
@@ -574,16 +576,16 @@ img {
 
 				<td style="width: 50px;"></td>
 				<td class="review_rating" style="width: 100px;"
-					data-content="가격 : <%= rv.getPrRating() %>">가격 : <%= rv.getPrRating() %>
+					data-content="가격 : <%= review.getPrRating() %>">가격 : <%= review.getPrRating() %>
 				</td>
 				<td class="review_rating" style="width: 100px;"
-					data-content="성분 : <%= rv.getpRating() %>">성분 : <%= rv.getpRating() %>
+					data-content="성분 : <%= review.getpRating() %>">성분 : <%= review.getpRating() %>
 				</td>
 				<td class="review_rating" style="width: 100px;"
-					data-content="재구매 : <%= rv.getrRating() %>">재구매 : <%= rv.getrRating() %>
+					data-content="재구매 : <%= review.getrRating() %>">재구매 : <%= review.getrRating() %>
 				</td>
 				<td class="review_rating" style="width: 60px;"
-					data-content="👍 : <%= rv.getLikeReview() %>">👍 : <%= rv.getLikeReview() %>
+					data-content="👍 : <%= review.getLikeReview() %>">👍 : <%= review.getLikeReview() %>
 				</td>
 
 

@@ -2,6 +2,8 @@ package com.kh.review.controller;
 
 import java.io.File;
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -119,7 +121,6 @@ public class ReviewInsertController extends HttpServlet {
 				img.setFilePath("resources/images/"); // /가 있어야 한다.
 			}
 			
-			
 			// 4. Service 요청 (요청처리)
 
 			int result = new ReviewService().insertReview(rv, img);
@@ -141,8 +142,11 @@ public class ReviewInsertController extends HttpServlet {
 			}
 			
 			Image img2 = new ReviewService().selectAttrImage();
-			
+			request.getSession().setAttribute("rv", rv);
 			request.getSession().setAttribute("img2", img2);
+			
+			RequestDispatcher rd = multiRequest.getRequestDispatcher("views/review/reviewContentPost.jsp");
+			rd.forward(request, response);
 			
 		}
 		

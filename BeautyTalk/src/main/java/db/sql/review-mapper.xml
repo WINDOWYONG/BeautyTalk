@@ -5,7 +5,7 @@
 	<entry key="selectReviewList">
 		SELECT
 		COUNT(*) count
-		FROM Review
+		FROM REVIEW RV
 		WHERE STATUS = 'Y'
 	</entry>
 
@@ -37,7 +37,7 @@
 		SELECT
 			REVIEW_NO
 		FROM
-			REVIEW A
+			REVIEW RV
 		WHERE STATUS = 'Y';
 	</entry>
 	
@@ -51,7 +51,7 @@
 	<entry key="insertReview">
 	INSERT
     	INTO
-    	REVIEW
+    	REVIEW RV
 	    (
 	      REVIEW_NO
 	    , PCODE
@@ -109,7 +109,7 @@
 	<entry key="selectMemNo">
 		SELECT
 		    MEM_NO
-		FROM REVIEW
+		FROM REVIEW RV
 		WHERE STATUS = 'Y'
 	
 	</entry>
@@ -127,7 +127,7 @@
 		    , PR_RATING
 		    , LIKE_REVIEW
 		    , STATUS
-		FROM REVIEW
+		FROM REVIEW RV
 		WHERE REVIEW_NO = ?
 		AND STATUS = 'Y'
 	
@@ -139,7 +139,7 @@
 		    , ORIGIN_NAME
 		    , CHANGE_NAME
 		    , FILE_PATH
-		FROM IMAGE IMG
+		FROM IMAGE IMG2
 		WHERE REF_BNO = ?
 		AND STATUS = 'Y'
 	
@@ -151,7 +151,7 @@
 		    , CHANGE_NAME
 		    , FILE_PATH
 		FROM
-		    IMAGE
+		    IMAGE IMG
 		WHERE STATUS = 'Y'
 	
 	</entry>
