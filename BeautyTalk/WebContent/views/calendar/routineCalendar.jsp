@@ -50,7 +50,7 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
 .routine-calendar .calendar .weeks li { font-weight: 500; width: calc(100% / 7); padding: 5px 0; }
 .routine-calendar .calendar .days li { width: calc(100% / 7); position: relative; z-index: 1; margin-top: 20px; cursor: pointer; }
 .routine-calendar .days li.inactive { color: #aaa; }
-.routine-calendar .days li.active { color: #black; }
+.routine-calendar .days li.active { color: #fff; }
 .routine-calendar .calendar .days li::before {
   position: absolute; content: ''; height: 36px; width: 36px; top: 50%; left: 50%;
   transform: translate(-50%, -50%); border-radius: 50%; z-index: -1;
