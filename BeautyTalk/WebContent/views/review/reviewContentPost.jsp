@@ -14,9 +14,9 @@
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 	
-	Review rv = (Review)request.getAttribute("rv");
 	Image img = (Image)request.getAttribute("img");
 	
+	int bno = Integer.parseInt(request.getParameter("REF_BNO"));
 	String reviewNo = request.getParameter("REVIEW_NO");
 	String refBno = request.getParameter("REF_BNO");
 	String filePath = request.getParameter("FILE_PATH");
@@ -374,8 +374,16 @@ img {
 	font-weight: 700;
 	text-decoration-line: none;
 }
-.review_img1, .review_title1{
+.reviewTr_img2 {
 	cursor:pointer;
+}
+.review_CreateDate{
+	font-size: 14px;
+	font-weight: 700;
+}
+.review_title1, .review_title2{
+	font-size: 14px;
+	font-weight: 700;
 }
 
 
@@ -522,7 +530,7 @@ img {
 						<img src="<%= contextPath %>/<%= filePath %>" class="review_img1" >
 					<% } %>
 				</td>
-				<td colspan="3"><%= review.getCreateDate() %></td>
+				<td colspan="3" class="review_CreateDate"><%= review.getCreateDate() %></td>
 
 
 				<td></td>
@@ -531,8 +539,8 @@ img {
 
 			</tr>
 			<tr class="reviewTr_img2">
-				<td class="review_title1"><%= review.getReviewNo() %></td>
-				<td class="review_title2"><%= review.getTitle() %></td>
+				<td class="review_title1" onclick="test()"><%= review.getReviewNo() %></td>
+				<td class="review_title2" onclick="test()"><%= review.getTitle() %></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -591,11 +599,9 @@ img {
 		</table>
 		
 		<script>
-			$(function(){
-				$(".reviewTable_CP1>.reviewTr_img2").click(function(){
-					location.href='<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
-				})
-			})
+			function test(){
+				location.href="<%= contextPath %>/detail.re?bno=" + <%= reviewNo %>;
+			}
 		</script>
 
 
@@ -605,7 +611,7 @@ img {
             	<button>
             		<a href="<%= contextPath %>/review.li?cpage=<%= currentPage - 1 %>">&lt;</a>
            	 	</button> 
-            <% }else if(currentPage == 1) { %>
+            <% }else { %>
            		<button>
             		<a href="<%= contextPath %>/review.li?cpage=1">&lt;</a>
            	 	</button>  
@@ -617,7 +623,7 @@ img {
             			<%= i %>
            			</button>
            		<% }else { %>
-           			<button>
+         			 <button>
            				<a href="<%= contextPath %>/review.li?cpage=<%= i %>"><%= i %></a>
            			</button>
            		<% } %>
@@ -628,9 +634,9 @@ img {
             	<button>
             		<a href="<%= contextPath %>/review.li?cpage=<%= currentPage + 1 %>">&gt;</a>
            	 	</button> 
-			<% }else if(currentPage == maxPage){ %>
+			<% }else { %>
             	<button>
-            		<a href="<%= contextPath %>/review.li?cpage=<%= currentPage %>">&gt;</a>
+            		<a href="<%= contextPath %>/review.li?cpage=<%= maxPage %>">&gt;</a>
            	 	</button>
            	<% } %>
 		</div>

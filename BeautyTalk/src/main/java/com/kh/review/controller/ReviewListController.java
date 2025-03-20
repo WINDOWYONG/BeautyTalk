@@ -67,7 +67,7 @@ public class ReviewListController extends HttpServlet {
 		
 		pageLimit = 5;
 		
-		reviewLimit = 7;
+		reviewLimit = 5;
 		
 		maxPage = (int)Math.ceil((double)listCount / reviewLimit);
 		

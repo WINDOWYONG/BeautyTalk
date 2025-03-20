@@ -41,7 +41,6 @@ public class ReviewDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		
 		String sql = prop.getProperty("selectReviewList");
 	
 		try {

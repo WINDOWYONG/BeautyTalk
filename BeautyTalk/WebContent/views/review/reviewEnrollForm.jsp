@@ -701,10 +701,7 @@ button {
 						img.setAttribute("class", "col-lg-6");
 						document.querySelector("div#image_container").appendChild(img);
 					};
-					
 					reader.readAsDataURL(event.target.files[0]);
-					
-					
 				}
 			</script>
 			<br>
