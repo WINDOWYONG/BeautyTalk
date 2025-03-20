@@ -299,7 +299,6 @@
 
 /* 버튼 스타일 */
 .modal-content .delete-btn {
-<<<<<<< HEAD
     background: #ff5f98;
     color: white;
     border: none;
@@ -598,7 +597,7 @@ margin-left: 30px;
                         <div id="line" style="margin-left: 55px;">                              
                             <pre align="left">                                                                                                                  </pre>
                         </div>
-                         <% if(userProfile != null) { %>
+                            <% if(userProfile != null) { %>
                         <form action="<%= contextPath %>/update.bp" id="profile-form11" method="post">
                             <input type="hidden" name=userNo class="userNo" maxlength="16" value="<%= loginUser.getUserNo() %>">
                             <div id="myPageTitle">
@@ -612,13 +611,10 @@ margin-left: 30px;
                                     <tr style="margin-bottom: 50px;">
                                         <td style="text-align: left;">성별</td>
                                         <% if(loginUser.getGender().equals("Y")) { %>
-                                        		<td><input type="text" name="gender" value="M" readonly></td>
-                                        		
+                                        <td><input type="text" name="gender" value="M" readonly></td>
                                         <% } else { %>
-                                        	    <td><input type="text" name="gender" value="F" readonly></td>
+                                        <td><input type="text" name="gender" value="F" readonly></td>
                                         <% } %>
-                                    </tr>
-                              
                                 </table>
                                     <div id="myPageTitle">
                                         <h4 id="Title" style="margin-left: 33px; margin-top: 50px; margin-bottom: 20px; font-size: medium; text-decoration: underline;">피부 정보</h4>
@@ -627,79 +623,79 @@ margin-left: 30px;
                                         <tr>
                                             <td style="text-align: left;" width="110" height="45px">피부 타입</td>
                                             <td style="text-align: center;" width="482">
-                                              <div class="color-box">
-                                                <input type="radio" id="skin1" name="skinType" class="color-input" value="S1">
-                                                <label for="skin1" class="color-label">건성</label>
-                                          
-                                                <input type="radio" id="skin2" name="skinType" class="color-input" value="S2">
-                                                <label for="skin2" class="color-label">지성</label>
-                                          
-                                                <input type="radio" id="skin3" name="skinType" class="color-input" value="S3">
-                                                <label for="skin3" class="color-label">복합</label>
-                                          
-                                                <input type="radio" id="skin4" name="skinType" class="color-input" value="S4">
-                                                <label for="skin4" class="color-label">민감성</label>
-                                              </div>
+                                                <div class="color-box">
+                                                    <input type="radio" id="skin1" name="skinType" class="color-input" value="S1">
+                                                    <label for="skin1" class="color-label">건성</label>
+                                            
+                                                    <input type="radio" id="skin2" name="skinType" class="color-input" value="S2">
+                                                    <label for="skin2" class="color-label">지성</label>
+                                            
+                                                    <input type="radio" id="skin3" name="skinType" class="color-input" value="S3">
+                                                    <label for="skin3" class="color-label">복합</label>
+                                            
+                                                    <input type="radio" id="skin4" name="skinType" class="color-input" value="S4">
+                                                    <label for="skin4" class="color-label">민감성</label>
+                                                </div>
                                             </td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: left;" width="110" height="45px">바디 타입</td>
                                             <td style="text-align: center;" width="482">
-                                              <div class="color-box">
-                                                <input type="radio" id="body1" name="bodyType" class="color-input" value="B1">
-                                                <label for="body1" class="color-label">건성</label>
-                                          
-                                                <input type="radio" id="body2" name="bodyType" class="color-input" value="B2">
-                                                <label for="body2" class="color-label">지성</label>
-                                          
-                                                <input type="radio" id="body3" name="bodyType" class="color-input" value="B3">
-                                                <label for="body3" class="color-label">복합</label>
-                                          
-                                                <input type="radio" id="body4" name="bodyType" class="color-input" value="B4">
-                                                <label for="body4" class="color-label">민감성</label>
-                                              </div>
+                                                <div class="color-box">
+                                                    <input type="radio" id="body1" name="bodyType" class="color-input" value="B1">
+                                                    <label for="body1" class="color-label">건성</label>
+                                            
+                                                    <input type="radio" id="body2" name="bodyType" class="color-input" value="B2">
+                                                    <label for="body2" class="color-label">지성</label>
+                                            
+                                                    <input type="radio" id="body3" name="bodyType" class="color-input" value="B3">
+                                                    <label for="body3" class="color-label">복합</label>
+                                            
+                                                    <input type="radio" id="body4" name="bodyType" class="color-input" value="B4">
+                                                    <label for="body4" class="color-label">민감성</label>
+                                                </div>
                                             </td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: left;" width="110" height="45px">개선 항목</td>
                                             <td style="text-align: center;" width="482">
-                                              <div class="color-box">
-                                                <input type="checkbox" id="skinImprove1" name="skinImprovement" class="color-input" value="주름">
-                                                <label for="skinImprove1" class="color-label">주름</label>
-                                          
-                                                <input type="checkbox" id="skinImprove2" name="skinImprovement" class="color-input" value="미백">
-                                                <label for="skinImprove2" class="color-label">미백</label>
-                                          
-                                                <input type="checkbox" id="skinImprove3" name="skinImprovement" class="color-input" value="각질">
-                                                <label for="skinImprove3" class="color-label">각질</label>
-                                          
-                                                <input type="checkbox" id="skinImprove4" name="skinImprovement" class="color-input" value="트러블">
-                                                <label for="skinImprove4" class="color-label">트러블</label>
-                                              </div>
+                                                <div class="color-box">
+                                                    <input type="checkbox" id="skinImprove1" name="skinImprovement" class="color-input" value="주름">
+                                                    <label for="skinImprove1" class="color-label">주름</label>
+                                            
+                                                    <input type="checkbox" id="skinImprove2" name="skinImprovement" class="color-input" value="미백">
+                                                    <label for="skinImprove2" class="color-label">미백</label>
+                                            
+                                                    <input type="checkbox" id="skinImprove3" name="skinImprovement" class="color-input" value="각질">
+                                                    <label for="skinImprove3" class="color-label">각질</label>
+                                            
+                                                    <input type="checkbox" id="skinImprove4" name="skinImprovement" class="color-input" value="트러블">
+                                                    <label for="skinImprove4" class="color-label">트러블</label>
+                                                </div>
                                             </td>
                                             <td><p style="color: #e8618c; margin-left: 10px;">다중 선택</p></td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: left;" width="110" height="45px">퍼스널 컬러</td>
                                             <td style="text-align: center;" width="482">
-                                              <div class="color-box">
-                                                <input type="radio" id="spring" name="skinColor" class="color-input" value="봄웜">
-                                                <label for="spring" class="color-label">봄웜</label>
-                                          
-                                                <input type="radio" id="summer" name="skinColor" class="color-input" value="여름쿨">
-                                                <label for="summer" class="color-label">여름쿨</label>
-                                          
-                                                <input type="radio" id="autumn" name="skinColor" class="color-input" value="가을웜">
-                                                <label for="autumn" class="color-label">가을웜</label>
-                                          
-                                                <input type="radio" id="winter" name="skinColor" class="color-input" value="겨울쿨">
-                                                <label for="winter" class="color-label">겨울쿨</label>
-                                              </div>
+                                                <div class="color-box">
+                                                    <input type="radio" id="spring" name="skinColor" class="color-input" value="봄웜">
+                                                    <label for="spring" class="color-label">봄웜</label>
+                                            
+                                                    <input type="radio" id="summer" name="skinColor" class="color-input" value="여름쿨">
+                                                    <label for="summer" class="color-label">여름쿨</label>
+                                            
+                                                    <input type="radio" id="autumn" name="skinColor" class="color-input" value="가을웜">
+                                                    <label for="autumn" class="color-label">가을웜</label>
+                                            
+                                                    <input type="radio" id="winter" name="skinColor" class="color-input" value="겨울쿨">
+                                                    <label for="winter" class="color-label">겨울쿨</label>
+                                                </div>
                                             </td>
                                             <td></td>
-                                          </tr>
+                                        </tr>
                                     </table>
                                     <div id="myPageTitle">
                                         <h4 id="Title" style="margin-left: 33px; margin-top: 50px; margin-bottom: 20px; font-size: medium; text-decoration: underline;">헤어 정보</h4>
@@ -708,57 +704,57 @@ margin-left: 30px;
                                         <tr>
                                             <td style="text-align: left;" width="110" height="45px">헤어 타입</td>
                                             <td style="text-align: center;" width="482">
-                                              <div class="color-box">
-                                                <input type="radio" id="hair1" name="hairType" class="color-input" value="H1">
-                                                <label for="hair1" class="color-label">직모</label>
-                                          
-                                                <input type="radio" id="hair2" name="hairType" class="color-input" value="H2">
-                                                <label for="hair2" class="color-label">곱슬</label>
-                                          
-                                                <input type="radio" id="hair3" name="hairType" class="color-input" value="H3">
-                                                <label for="hair3" class="color-label">탈모</label>
-                                          
-                                                <input type="radio" id="hair4" name="hairType" class="color-input" value="H4">
-                                                <label for="hair4" class="color-label">손상모</label>
-                                              </div>
+                                                <div class="color-box">
+                                                    <input type="radio" id="hair1" name="hairType" class="color-input" value="H1">
+                                                    <label for="hair1" class="color-label">직모</label>
+                                            
+                                                    <input type="radio" id="hair2" name="hairType" class="color-input" value="H2">
+                                                    <label for="hair2" class="color-label">곱슬</label>
+                                            
+                                                    <input type="radio" id="hair3" name="hairType" class="color-input" value="H3">
+                                                    <label for="hair3" class="color-label">탈모</label>
+                                            
+                                                    <input type="radio" id="hair4" name="hairType" class="color-input" value="H4">
+                                                    <label for="hair4" class="color-label">손상모</label>
+                                                </div>
                                             </td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: left;" width="110" height="45px">두피 타입</td>
                                             <td style="text-align: center;" width="482">
-                                              <div class="color-box">
-                                                <input type="radio" id="scalp1" name="scalpType" class="color-input" value="HB1">
-                                                <label for="scalp1" class="color-label">건성</label>
-                                          
-                                                <input type="radio" id="scalp2" name="scalpType" class="color-input" value="HB2">
-                                                <label for="scalp2" class="color-label">지성</label>
-                                          
-                                                <input type="radio" id="scalp3" name="scalpType" class="color-input" value="HB3">
-                                                <label for="scalp3" class="color-label">복합</label>
-                                          
-                                                <input type="radio" id="scalp4" name="scalpType" class="color-input" value="HB4">
-                                                <label for="scalp4" class="color-label">민감성</label>
-                                              </div>
+                                                <div class="color-box">
+                                                    <input type="radio" id="scalp1" name="scalpType" class="color-input" value="HB1">
+                                                    <label for="scalp1" class="color-label">건성</label>
+                                            
+                                                    <input type="radio" id="scalp2" name="scalpType" class="color-input" value="HB2">
+                                                    <label for="scalp2" class="color-label">지성</label>
+                                            
+                                                    <input type="radio" id="scalp3" name="scalpType" class="color-input" value="HB3">
+                                                    <label for="scalp3" class="color-label">복합</label>
+                                            
+                                                    <input type="radio" id="scalp4" name="scalpType" class="color-input" value="HB4">
+                                                    <label for="scalp4" class="color-label">민감성</label>
+                                                </div>
                                             </td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: left;" width="110" height="45px">개선 항목</td>
                                             <td style="text-align: center;" width="482">
-                                              <div class="color-box">
-                                                <input type="checkbox" id="scalpImprovement1" name="scalpImprovement" class="color-input" value="탈모예방">
-                                                <label for="scalpImprovement1" class="color-label">탈모예방</label>
-                                          
-                                                <input type="checkbox" id="scalpImprovement2" name="scalpImprovement" class="color-input" value="모발촉진">
-                                                <label for="scalpImprovement2" class="color-label">모발촉진</label>
-                                          
-                                                <input type="checkbox" id="scalpImprovement3" name="scalpImprovement" class="color-input" value="두피건강">
-                                                <label for="scalpImprovement3" class="color-label">두피건강</label>
-                                          
-                                                <input type="checkbox" id="scalpImprovement4" name="scalpImprovement" class="color-input" value="모발건강">
-                                                <label for="scalpImprovement4" class="color-label">모발건강</label>
-                                              </div>
+                                                <div class="color-box">
+                                                    <input type="checkbox" id="scalpImprovement1" name="scalpImprovement" class="color-input" value="탈모예방">
+                                                    <label for="scalpImprovement1" class="color-label">탈모예방</label>
+                                            
+                                                    <input type="checkbox" id="scalpImprovement2" name="scalpImprovement" class="color-input" value="모발촉진">
+                                                    <label for="scalpImprovement2" class="color-label">모발촉진</label>
+                                            
+                                                    <input type="checkbox" id="scalpImprovement3" name="scalpImprovement" class="color-input" value="두피건강">
+                                                    <label for="scalpImprovement3" class="color-label">두피건강</label>
+                                            
+                                                    <input type="checkbox" id="scalpImprovement4" name="scalpImprovement" class="color-input" value="모발건강">
+                                                    <label for="scalpImprovement4" class="color-label">모발건강</label>
+                                                </div>
                                             </td>
                                             <td><p style="color: #e8618c; margin-left: 10px;">다중 선택</p></td>
                                         </tr>
@@ -770,19 +766,19 @@ margin-left: 30px;
                                         <tr>
                                             <td style="text-align: left;" width="110" height="45px">관심 브랜드</td>
                                             <td style="text-align: center;" width="482">
-                                              <div class="color-box">
-                                                <input type="checkbox" id="brand1" name="brand" class="color-input" value="브랜드 A">
-                                                <label for="brand1" class="color-label">브랜드 A</label>
-                                          
-                                                <input type="checkbox" id="brand2" name="brand" class="color-input" value="브랜드 B">
-                                                <label for="brand2" class="color-label">브랜드 B</label>
-                                          
-                                                <input type="checkbox" id="brand3" name="brand" class="color-input" value="브랜드 C">
-                                                <label for="brand3" class="color-label">브랜드 C</label>
-                                          
-                                                <input type="checkbox" id="brand4" name="brand" class="color-input" value="브랜드 D">
-                                                <label for="brand4" class="color-label">브랜드 D</label>
-                                              </div>
+                                                <div class="color-box">
+                                                    <input type="checkbox" id="brand1" name="brand" class="color-input" value="브랜드 A">
+                                                    <label for="brand1" class="color-label">브랜드 A</label>
+                                            
+                                                    <input type="checkbox" id="brand2" name="brand" class="color-input" value="브랜드 B">
+                                                    <label for="brand2" class="color-label">브랜드 B</label>
+                                            
+                                                    <input type="checkbox" id="brand3" name="brand" class="color-input" value="브랜드 C">
+                                                    <label for="brand3" class="color-label">브랜드 C</label>
+                                            
+                                                    <input type="checkbox" id="brand4" name="brand" class="color-input" value="브랜드 D">
+                                                    <label for="brand4" class="color-label">브랜드 D</label>
+                                                </div>
                                             </td>
                                             <td><p style="color: #e8618c; margin-left: 10px;">다중 선택</p></td>
                                         </tr>
@@ -794,16 +790,16 @@ margin-left: 30px;
                                         <tr>
                                             <td style="text-align: left; vertical-align: middle;" width="110" height="45px">공개 여부</td>
                                             <td style="text-align: center;" width="482">
-                                              <div class="color-box" style="display: flex; justify-content: center;">
-                                                <input type="radio" id="public" name="release" class="color-input" value="A">
-                                                <label for="public" class="color-label" style="width: 161px;">모두 공개</label>
-                                          
-                                                <input type="radio" id="friends" name="release" class="color-input" value="F">
-                                                <label for="friends" class="color-label" style="width: 161px;">친구만 공개</label>
-                                          
-                                                <input type="radio" id="private" name="release" class="color-input" value="N">
-                                                <label for="private" class="color-label" style="width: 161px;">비공개</label>
-                                              </div>
+                                                <div class="color-box" style="display: flex; justify-content: center;">
+                                                    <input type="radio" id="public" name="release" class="color-input" value="A">
+                                                    <label for="public" class="color-label" style="width: 161px;">모두 공개</label>
+                                            
+                                                    <input type="radio" id="friends" name="release" class="color-input" value="F">
+                                                    <label for="friends" class="color-label" style="width: 161px;">친구만 공개</label>
+                                            
+                                                    <input type="radio" id="private" name="release" class="color-input" value="N">
+                                                    <label for="private" class="color-label" style="width: 161px;">비공개</label>
+                                                </div>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -854,7 +850,7 @@ margin-left: 30px;
                                                     })
                                             })
                                             
-                                             $(function() {
+                                            $(function() {
                                                     const color = "<%= color %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=radio]").each(function() {
@@ -896,7 +892,7 @@ margin-left: 30px;
                                                     })
                                             })
                                             
-                                             $(function() {
+                                                    $(function() {
                                                     const scalpList = "<%= scalpList %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=checkbox]").each(function() {
@@ -937,16 +933,15 @@ margin-left: 30px;
                                                     
                                                     })
                                             })
-                                         </script>
+                                            </script>
                                             
                                         
-                                           
-                                       
+
+
                                         
                             
                         </form>
                         <% } else {%>
-                 
                             <form action="<%= contextPath %>/insert.bp" id="profile-form1" method="post">
                                 <<input type="hidden" name=userNo class="userNo" maxlength="16" value="<%= loginUser.getUserNo() %>">
                                 <div id="myPageTitle">
@@ -966,7 +961,6 @@ margin-left: 30px;
                                                     <td><input type="text" name="gender" value="F" readonly></td>
                                             <% } %>
                                         </tr>
-                                  
                                     </table>
                                         <div id="myPageTitle">
                                             <h4 id="Title" style="margin-left: 33px; margin-top: 50px; margin-bottom: 20px; font-size: medium; text-decoration: underline;">피부 정보</h4>
@@ -975,79 +969,79 @@ margin-left: 30px;
                                     <tr>
                                         <td style="text-align: left;" width="110" height="45px">피부 타입</td>
                                         <td style="text-align: center;" width="482">
-                                          <div class="color-box">
-                                            <input type="radio" id="skin1" name="skinType" class="color-input" value="S1">
-                                            <label for="skin1" class="color-label">건성</label>
-                                      
-                                            <input type="radio" id="skin2" name="skinType" class="color-input" value="S2">
-                                            <label for="skin2" class="color-label">지성</label>
-                                      
-                                            <input type="radio" id="skin3" name="skinType" class="color-input" value="S3">
-                                            <label for="skin3" class="color-label">복합</label>
-                                      
-                                            <input type="radio" id="skin4" name="skinType" class="color-input" value="S4">
-                                            <label for="skin4" class="color-label">민감성</label>
-                                          </div>
+                                            <div class="color-box">
+                                                <input type="radio" id="skin1" name="skinType" class="color-input" value="S1">
+                                                <label for="skin1" class="color-label">건성</label>
+                                        
+                                                <input type="radio" id="skin2" name="skinType" class="color-input" value="S2">
+                                                <label for="skin2" class="color-label">지성</label>
+                                        
+                                                <input type="radio" id="skin3" name="skinType" class="color-input" value="S3">
+                                                <label for="skin3" class="color-label">복합</label>
+                                        
+                                                <input type="radio" id="skin4" name="skinType" class="color-input" value="S4">
+                                                <label for="skin4" class="color-label">민감성</label>
+                                            </div>
                                         </td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: left;" width="110" height="45px">바디 타입</td>
                                         <td style="text-align: center;" width="482">
-                                          <div class="color-box">
-                                            <input type="radio" id="body1" name="bodyType" class="color-input" value="B1">
-                                            <label for="body1" class="color-label">건성</label>
-                                      
-                                            <input type="radio" id="body2" name="bodyType" class="color-input" value="B2">
-                                            <label for="body2" class="color-label">지성</label>
-                                      
-                                            <input type="radio" id="body3" name="bodyType" class="color-input" value="B3">
-                                            <label for="body3" class="color-label">복합</label>
-                                      
-                                            <input type="radio" id="body4" name="bodyType" class="color-input" value="B4">
-                                            <label for="body4" class="color-label">민감성</label>
-                                          </div>
+                                            <div class="color-box">
+                                                <input type="radio" id="body1" name="bodyType" class="color-input" value="B1">
+                                                <label for="body1" class="color-label">건성</label>
+                                        
+                                                <input type="radio" id="body2" name="bodyType" class="color-input" value="B2">
+                                                <label for="body2" class="color-label">지성</label>
+                                        
+                                                <input type="radio" id="body3" name="bodyType" class="color-input" value="B3">
+                                                <label for="body3" class="color-label">복합</label>
+                                        
+                                                <input type="radio" id="body4" name="bodyType" class="color-input" value="B4">
+                                                <label for="body4" class="color-label">민감성</label>
+                                            </div>
                                         </td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: left;" width="110" height="45px">개선 항목</td>
                                         <td style="text-align: center;" width="482">
-                                          <div class="color-box">
-                                            <input type="checkbox" id="skinImprove1" name="skinImprovement" class="color-input" value="주름">
-                                            <label for="skinImprove1" class="color-label">주름</label>
-                                      
-                                            <input type="checkbox" id="skinImprove2" name="skinImprovement" class="color-input" value="미백">
-                                            <label for="skinImprove2" class="color-label">미백</label>
-                                      
-                                            <input type="checkbox" id="skinImprove3" name="skinImprovement" class="color-input" value="각질">
-                                            <label for="skinImprove3" class="color-label">각질</label>
-                                      
-                                            <input type="checkbox" id="skinImprove4" name="skinImprovement" class="color-input" value="트러블">
-                                            <label for="skinImprove4" class="color-label">트러블</label>
-                                          </div>
+                                            <div class="color-box">
+                                                <input type="checkbox" id="skinImprove1" name="skinImprovement" class="color-input" value="주름">
+                                                <label for="skinImprove1" class="color-label">주름</label>
+                                        
+                                                <input type="checkbox" id="skinImprove2" name="skinImprovement" class="color-input" value="미백">
+                                                <label for="skinImprove2" class="color-label">미백</label>
+                                        
+                                                <input type="checkbox" id="skinImprove3" name="skinImprovement" class="color-input" value="각질">
+                                                <label for="skinImprove3" class="color-label">각질</label>
+                                        
+                                                <input type="checkbox" id="skinImprove4" name="skinImprovement" class="color-input" value="트러블">
+                                                <label for="skinImprove4" class="color-label">트러블</label>
+                                            </div>
                                         </td>
                                         <td><p style="color: #e8618c; margin-left: 10px;">다중 선택</p></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: left;" width="110" height="45px">퍼스널 컬러</td>
                                         <td style="text-align: center;" width="482">
-                                          <div class="color-box">
-                                            <input type="radio" id="spring" name="skinColor" class="color-input" value="봄웜">
-                                            <label for="spring" class="color-label">봄웜</label>
-                                      
-                                            <input type="radio" id="summer" name="skinColor" class="color-input" value="여름쿨">
-                                            <label for="summer" class="color-label">여름쿨</label>
-                                      
-                                            <input type="radio" id="autumn" name="skinColor" class="color-input" value="가을웜">
-                                            <label for="autumn" class="color-label">가을웜</label>
-                                      
-                                            <input type="radio" id="winter" name="skinColor" class="color-input" value="겨울쿨">
-                                            <label for="winter" class="color-label">겨울쿨</label>
-                                          </div>
+                                            <div class="color-box">
+                                                <input type="radio" id="spring" name="skinColor" class="color-input" value="봄웜">
+                                                <label for="spring" class="color-label">봄웜</label>
+                                        
+                                                <input type="radio" id="summer" name="skinColor" class="color-input" value="여름쿨">
+                                                <label for="summer" class="color-label">여름쿨</label>
+                                        
+                                                <input type="radio" id="autumn" name="skinColor" class="color-input" value="가을웜">
+                                                <label for="autumn" class="color-label">가을웜</label>
+                                        
+                                                <input type="radio" id="winter" name="skinColor" class="color-input" value="겨울쿨">
+                                                <label for="winter" class="color-label">겨울쿨</label>
+                                            </div>
                                         </td>
                                         <td></td>
-                                      </tr>
+                                    </tr>
                                 </table>
                                 <div id="myPageTitle">
                                     <h4 id="Title" style="margin-left: 33px; margin-top: 50px; margin-bottom: 20px; font-size: medium; text-decoration: underline;">헤어 정보</h4>
@@ -1056,57 +1050,57 @@ margin-left: 30px;
                                     <tr>
                                         <td style="text-align: left;" width="110" height="45px">헤어 타입</td>
                                         <td style="text-align: center;" width="482">
-                                          <div class="color-box">
-                                            <input type="radio" id="hair1" name="hairType" class="color-input" value="H1">
-                                            <label for="hair1" class="color-label">직모</label>
-                                      
-                                            <input type="radio" id="hair2" name="hairType" class="color-input" value="H2">
-                                            <label for="hair2" class="color-label">곱슬</label>
-                                      
-                                            <input type="radio" id="hair3" name="hairType" class="color-input" value="H3">
-                                            <label for="hair3" class="color-label">탈모</label>
-                                      
-                                            <input type="radio" id="hair4" name="hairType" class="color-input" value="H4">
-                                            <label for="hair4" class="color-label">손상모</label>
-                                          </div>
+                                            <div class="color-box">
+                                                <input type="radio" id="hair1" name="hairType" class="color-input" value="H1">
+                                                <label for="hair1" class="color-label">직모</label>
+                                        
+                                                <input type="radio" id="hair2" name="hairType" class="color-input" value="H2">
+                                                <label for="hair2" class="color-label">곱슬</label>
+                                        
+                                                <input type="radio" id="hair3" name="hairType" class="color-input" value="H3">
+                                                <label for="hair3" class="color-label">탈모</label>
+                                        
+                                                <input type="radio" id="hair4" name="hairType" class="color-input" value="H4">
+                                                <label for="hair4" class="color-label">손상모</label>
+                                            </div>
                                         </td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: left;" width="110" height="45px">두피 타입</td>
                                         <td style="text-align: center;" width="482">
-                                          <div class="color-box">
-                                            <input type="radio" id="scalp1" name="scalpType" class="color-input" value="HB1">
-                                            <label for="scalp1" class="color-label">건성</label>
-                                      
-                                            <input type="radio" id="scalp2" name="scalpType" class="color-input" value="HB2">
-                                            <label for="scalp2" class="color-label">지성</label>
-                                      
-                                            <input type="radio" id="scalp3" name="scalpType" class="color-input" value="HB3">
-                                            <label for="scalp3" class="color-label">복합</label>
-                                      
-                                            <input type="radio" id="scalp4" name="scalpType" class="color-input" value="HB4">
-                                            <label for="scalp4" class="color-label">민감성</label>
-                                          </div>
+                                            <div class="color-box">
+                                                <input type="radio" id="scalp1" name="scalpType" class="color-input" value="HB1">
+                                                <label for="scalp1" class="color-label">건성</label>
+                                        
+                                                <input type="radio" id="scalp2" name="scalpType" class="color-input" value="HB2">
+                                                <label for="scalp2" class="color-label">지성</label>
+                                        
+                                                <input type="radio" id="scalp3" name="scalpType" class="color-input" value="HB3">
+                                                <label for="scalp3" class="color-label">복합</label>
+                                        
+                                                <input type="radio" id="scalp4" name="scalpType" class="color-input" value="HB4">
+                                                <label for="scalp4" class="color-label">민감성</label>
+                                            </div>
                                         </td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: left;" width="110" height="45px">개선 항목</td>
                                         <td style="text-align: center;" width="482">
-                                          <div class="color-box">
-                                            <input type="checkbox" id="scalpImprovement1" name="scalpImprovement" class="color-input" value="탈모예방">
-                                            <label for="scalpImprovement1" class="color-label">탈모예방</label>
-                                      
-                                            <input type="checkbox" id="scalpImprovement2" name="scalpImprovement" class="color-input" value="모발촉진">
-                                            <label for="scalpImprovement2" class="color-label">모발촉진</label>
-                                      
-                                            <input type="checkbox" id="scalpImprovement3" name="scalpImprovement" class="color-input" value="두피건강">
-                                            <label for="scalpImprovement3" class="color-label">두피건강</label>
-                                      
-                                            <input type="checkbox" id="scalpImprovement4" name="scalpImprovement" class="color-input" value="모발건강">
-                                            <label for="scalpImprovement4" class="color-label">모발건강</label>
-                                          </div>
+                                            <div class="color-box">
+                                                <input type="checkbox" id="scalpImprovement1" name="scalpImprovement" class="color-input" value="탈모예방">
+                                                <label for="scalpImprovement1" class="color-label">탈모예방</label>
+                                        
+                                                <input type="checkbox" id="scalpImprovement2" name="scalpImprovement" class="color-input" value="모발촉진">
+                                                <label for="scalpImprovement2" class="color-label">모발촉진</label>
+                                        
+                                                <input type="checkbox" id="scalpImprovement3" name="scalpImprovement" class="color-input" value="두피건강">
+                                                <label for="scalpImprovement3" class="color-label">두피건강</label>
+                                        
+                                                <input type="checkbox" id="scalpImprovement4" name="scalpImprovement" class="color-input" value="모발건강">
+                                                <label for="scalpImprovement4" class="color-label">모발건강</label>
+                                            </div>
                                         </td>
                                         <td><p style="color: #e8618c; margin-left: 10px;">다중 선택</p></td>
                                     </tr>
@@ -1118,19 +1112,19 @@ margin-left: 30px;
                                     <tr>
                                         <td style="text-align: left;" width="110" height="45px">관심 브랜드</td>
                                         <td style="text-align: center;" width="482">
-                                          <div class="color-box">
-                                            <input type="checkbox" id="brand1" name="brand" class="color-input" value="브랜드 A">
-                                            <label for="brand1" class="color-label">브랜드 A</label>
-                                      
-                                            <input type="checkbox" id="brand2" name="brand" class="color-input" value="브랜드 B">
-                                            <label for="brand2" class="color-label">브랜드 B</label>
-                                      
-                                            <input type="checkbox" id="brand3" name="brand" class="color-input" value="브랜드 C">
-                                            <label for="brand3" class="color-label">브랜드 C</label>
-                                      
-                                            <input type="checkbox" id="brand4" name="brand" class="color-input" value="브랜드 D">
-                                            <label for="brand4" class="color-label">브랜드 D</label>
-                                          </div>
+                                            <div class="color-box">
+                                                <input type="checkbox" id="brand1" name="brand" class="color-input" value="브랜드 A">
+                                                <label for="brand1" class="color-label">브랜드 A</label>
+                                        
+                                                <input type="checkbox" id="brand2" name="brand" class="color-input" value="브랜드 B">
+                                                <label for="brand2" class="color-label">브랜드 B</label>
+                                        
+                                                <input type="checkbox" id="brand3" name="brand" class="color-input" value="브랜드 C">
+                                                <label for="brand3" class="color-label">브랜드 C</label>
+                                        
+                                                <input type="checkbox" id="brand4" name="brand" class="color-input" value="브랜드 D">
+                                                <label for="brand4" class="color-label">브랜드 D</label>
+                                            </div>
                                         </td>
                                         <td><p style="color: #e8618c; margin-left: 10px;">다중 선택</p></td>
                                     </tr>
@@ -1142,16 +1136,16 @@ margin-left: 30px;
                                     <tr>
                                         <td style="text-align: left; vertical-align: middle;" width="110" height="45px">공개 여부</td>
                                         <td style="text-align: center;" width="482">
-                                          <div class="color-box" style="display: flex; justify-content: center;">
-                                            <input type="radio" id="public" name="release" class="color-input" value="A">
-                                            <label for="public" class="color-label" style="width: 161px;">모두 공개</label>
-                                      
-                                            <input type="radio" id="friends" name="release" class="color-input" value="F">
-                                            <label for="friends" class="color-label" style="width: 161px;">친구만 공개</label>
-                                      
-                                            <input type="radio" id="private" name="release" class="color-input" value="N">
-                                            <label for="private" class="color-label" style="width: 161px;">비공개</label>
-                                          </div>
+                                            <div class="color-box" style="display: flex; justify-content: center;">
+                                                <input type="radio" id="public" name="release" class="color-input" value="A">
+                                                <label for="public" class="color-label" style="width: 161px;">모두 공개</label>
+                                        
+                                                <input type="radio" id="friends" name="release" class="color-input" value="F">
+                                                <label for="friends" class="color-label" style="width: 161px;">친구만 공개</label>
+                                        
+                                                <input type="radio" id="private" name="release" class="color-input" value="N">
+                                                <label for="private" class="color-label" style="width: 161px;">비공개</label>
+                                            </div>
                                         </td>
                                         <td></td>
                                     </tr>
@@ -1196,29 +1190,7 @@ margin-left: 30px;
                 </form>
             </div>
         </div>
-<<<<<<< HEAD
-	<!--
-        <input type="password" name="userPwd" id="userPwd" minlength="8" maxlength="16" placeholder="비밀번호를 입력하세요. (8~16자, 영문+숫자+특수문자)" required>
-                        
-                
-        <input type="text" name="userName" id="userName" maxlength="16" placeholder="이름을 입력하세요." required value="">
-
-
-        <input type="text" name="email" id="email" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required value="">
-
-
-        <input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요" required>
-
-
-        <input type="text" name="birthDate" id="birthDate" minlength="8" maxlength="8" placeholder="생년월일 ex) 19990812" required value="">
-
-
-
-        <input type="text" name="phone" id="phone" minlength="8" maxlength="11" placeholder="휴대전화번호 ex) 01011112222" required value="">
-   -->
-=======
         
->>>>>>> beautyProfile
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const tabs = document.querySelectorAll(".tab");
