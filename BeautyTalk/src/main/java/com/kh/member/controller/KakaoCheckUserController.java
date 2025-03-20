@@ -57,7 +57,6 @@ public class KakaoCheckUserController extends HttpServlet {
             String kakaoId = (String) json.get("kakaoId");
             HttpSession session = request.getSession();
             session.setAttribute("kakaoAccessToken", kakaoId);
-            System.out.println(kakaoId);
             
             int result = new MemberService().kakaoCheckUser(kakaoId);
             

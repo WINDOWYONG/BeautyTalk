@@ -131,7 +131,6 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, kakaoId);
-			System.out.println("AccessToken: " + kakaoId);
 			
 			rset = pstmt.executeQuery();
 			
