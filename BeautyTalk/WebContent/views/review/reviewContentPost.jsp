@@ -15,7 +15,7 @@
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 	
 	Review rv = (Review)request.getAttribute("rv");
-	Image img2 = (Image)request.getAttribute("img2");
+	Image img = (Image)request.getAttribute("img");
 	
 	String reviewNo = request.getParameter("REVIEW_NO");
 	String refBno = request.getParameter("REF_BNO");
@@ -374,7 +374,7 @@ img {
 	font-weight: 700;
 	text-decoration-line: none;
 }
-.review_img2, .review_title1{
+.review_img1, .review_title1{
 	cursor:pointer;
 }
 
@@ -514,12 +514,12 @@ img {
 			<!-- 게시글이 있는 경우 -->
 			<% }else { %>
 				<% for(Review review : list) { %>
-			<tr>
+			<tr class="reviewTr_img1">
 				<td rowspan="6" align="center" style="width: 250px; height: 250px;">
 					<% if(reviewNo == refBno) { %>
-						<img src="<%= contextPath %>/<%= filePath + changeName %>" class="review_img2">
+						<img src="<%= contextPath %>/<%= filePath + changeName %>" class="review_img1">
 					<% }else { %>
-						<img src="<%= contextPath %>/<%= filePath %>" class="review_img2" >
+						<img src="<%= contextPath %>/<%= filePath %>" class="review_img1" >
 					<% } %>
 				</td>
 				<td colspan="3"><%= review.getCreateDate() %></td>
@@ -530,14 +530,11 @@ img {
 
 
 			</tr>
-			<tr>
-
-				<td colspan="4" class="review_title1"><b><%= review.getReviewNo() %>  <%= review.getTitle() %></b></td>
-
-
-
-
-
+			<tr class="reviewTr_img2">
+				<td class="review_title1"><%= review.getReviewNo() %></td>
+				<td class="review_title2"><%= review.getTitle() %></td>
+				<td></td>
+				<td></td>
 				<td></td>
 			</tr>
 			<tr>
@@ -546,10 +543,8 @@ img {
 					———————————————————————————————————</td>
 
 
-
-
+				
 				<td></td>
-
 			</tr>
 			<tr>
 
@@ -558,22 +553,16 @@ img {
 
 
 
-
 				<td></td>
-
 			</tr>
 			<tr>
-
 				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
-
-
 			</tr>
 			<tr>
-
 				<td style="width: 50px;"></td>
 				<td class="review_rating" style="width: 100px;"
 					data-content="가격 : <%= review.getPrRating() %>">가격 : <%= review.getPrRating() %>
@@ -587,14 +576,10 @@ img {
 				<td class="review_rating" style="width: 60px;"
 					data-content="👍 : <%= review.getLikeReview() %>">👍 : <%= review.getLikeReview() %>
 				</td>
-
-
 			</tr>
 			<tr>
 				<td colspan="6" style="color: lightgray;">
 					————————————————————————————————————————————————————————————</td>
-
-
 
 
 
@@ -607,14 +592,10 @@ img {
 		
 		<script>
 			$(function(){
-				$(".review_img2").click(function(){
-					location.href='<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
-				})
-				$(".review_title1").click(function(){
+				$(".reviewTable_CP1>.reviewTr_img2").click(function(){
 					location.href='<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
 				})
 			})
-
 		</script>
 
 

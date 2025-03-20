@@ -9,9 +9,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	ArrayList<SubCategory> list = (ArrayList<SubCategory>)request.getAttribute("list");
 	Review rv = (Review)request.getAttribute("rv");
 	Image img = (Image)request.getAttribute("img");
+	
+	int scId = Integer.parseInt(request.getParameter("SC_ID"));
+	String scName = request.getParameter("SC_NAME");
 %>
 <!DOCTYPE html>
 <html>
@@ -491,7 +493,7 @@
 </head>
 <body>
 <!-- 대기중 -->
-			<%@ include file="../common/header.jsp"%>
+			<%@ include file="../common/header.jsp"%> 
 			<br>
 		
 			<div id="Content1">
@@ -633,7 +635,7 @@
 						카테고리
 					</th>
 					<td width="100">
-						<%= sc.get %>
+						<%= scName %>
 					</td>
 				</tr>
 
@@ -648,9 +650,9 @@
 				</tr>
 				<tr>
 					<td colspan="4" class="reviewPost_category2">
-						가격 : <%= rv.get %>
-						성분 : <%= rv.get %>
-						재구매 : <%= rv.get %>
+						가격 : <%= rv.getPrRating() %>
+						성분 : <%= rv.getpRating() %>
+						재구매 : <%= rv.getrRating() %>
 					</td>
 				</tr>
 				<tr>
@@ -664,13 +666,13 @@
 					<% }else { %>
                     <!-- case2. 첨부파일이 있는 경우 -->
                     <!-- 사용자가 다운로드 시 놀래지 않게 하기 위함 -->
-                        <a download="<%= img.getOriginName() %>" href="<%= contextPath %>/<%= at.getFilePath() + at.getChangeName() %>"><%= at.getOriginName() %></a>
+                        <a download="<%= img.getOriginName() %>" href="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>"><%= img.getOriginName() %></a>
                 	<% } %>
 					</td>
 				</tr>
 			</table>
 <!-- 잠시 이걸로 좋아요 작성 마무리좀 -->
-			<button type="button" name="LIKE_REVIEW"><%=rv.get %></button>
+			<button type="button" name="LIKE_REVIEW"><%=rv.getLikeReview() %></button>
 <!-- 			
 			<script>
 				function setThumbnail(event){
@@ -695,8 +697,8 @@
 				<button type="button" onclick="location.href='<%= contextPath %>/review.li?'">
 					목록
 				</button>
-				<% if(loginUser != null && loginUser.getUserId().equals(b.getBoardWriter())) { %>
-					<button type="button" onclick="location.href='<%= contextPath %>/updateReview.wr?bno=<%= rv.get %>'" class="reviewDetail_btn">
+				<% if(loginUser != null && loginUser.getUserId().equals(rv.getMemNo())) { %>
+					<button type="button" onclick="location.href='<%= contextPath %>/updateReview.wr?bno=<%= rv.getReviewNo() %>'" class="reviewDetail_btn">
 						수정
 					</button>
 					<button onclick=test() type="reset">
@@ -711,7 +713,7 @@
 			            alert("삭제 안함.");
 			        } else {
 			            alert("삭제.");
-			            location.href="<%= contextPath %>/delete.bo?bno=<%= rv.getBoardNo() %>" 
+			            location.href="<%= contextPath %>/delete.bo?bno=<%= rv.getReviewNo() %>" 
 			        }
 			    }
 			</script>

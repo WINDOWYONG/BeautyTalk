@@ -128,10 +128,12 @@ public class ReviewInsertController extends HttpServlet {
 			// 5. 응답뷰 지정
 			// 성공 => /jsp/list.bo?cpage=1 url 재요청 => (목록페이지)
 			// 실패 => 에러페이지
-			
 			if(result > 0) {
 				response.sendRedirect(request.getContextPath() + "/review.li?cpage=1");
 				request.getSession().setAttribute("alertMsg", "일반게시판등록!");
+				request.getSession().setAttribute("rv", rv);
+				request.getSession().setAttribute("img", img);
+				
 			}else {
 				// 실패 => 첨부파일 있었다면 업로드 된 파일 찾아서 삭제 시킨 후 에러페이지로
 				if(img != null) { // 첨부파일이 있었다면
@@ -141,12 +143,7 @@ public class ReviewInsertController extends HttpServlet {
 				request.getSession().setAttribute("alertMsg", "등록실패!!");
 			}
 			
-			Image img2 = new ReviewService().selectAttrImage();
-			request.getSession().setAttribute("rv", rv);
-			request.getSession().setAttribute("img2", img2);
-			
-			RequestDispatcher rd = multiRequest.getRequestDispatcher("views/review/reviewContentPost.jsp");
-			rd.forward(request, response);
+
 			
 		}
 		
