@@ -6,13 +6,10 @@
 <%@page import="com.kh.review.model.vo.SubCategory"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.kh.member.model.vo.Member"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%
-	Review rv = (Review)request.getAttribute("rv");
+	Review rv1 = (Review)request.getAttribute("rv1");
 	Image img = (Image)request.getAttribute("img");
 	
-	int scId = Integer.parseInt(request.getParameter("SC_ID"));
 	String scName = request.getParameter("SC_NAME");
 %>
 <!DOCTYPE html>
@@ -629,7 +626,7 @@
 						제목
 					</th>
 					<td width="350">
-						<%= rv.getTitle() %>
+						<%= rv1.getTitle() %>
 					</td>
 					<th width="75" class="review_Detailth2">
 						카테고리
@@ -650,9 +647,9 @@
 				</tr>
 				<tr>
 					<td colspan="4" class="reviewPost_category2">
-						가격 : <%= rv.getPrRating() %>
-						성분 : <%= rv.getpRating() %>
-						재구매 : <%= rv.getrRating() %>
+						가격 : <%= rv1.getPrRating() %>
+						성분 : <%= rv1.getpRating() %>
+						재구매 : <%= rv1.getrRating() %>
 					</td>
 				</tr>
 				<tr>
@@ -672,7 +669,7 @@
 				</tr>
 			</table>
 <!-- 잠시 이걸로 좋아요 작성 마무리좀 -->
-			<button type="button" name="LIKE_REVIEW"><%=rv.getLikeReview() %></button>
+			<button type="button" name="LIKE_REVIEW"><%=rv1.getLikeReview() %></button>
 <!-- 			
 			<script>
 				function setThumbnail(event){
@@ -697,8 +694,8 @@
 				<button type="button" onclick="location.href='<%= contextPath %>/review.li?'">
 					목록
 				</button>
-				<% if(loginUser != null && loginUser.getUserId().equals(rv.getMemNo())) { %>
-					<button type="button" onclick="location.href='<%= contextPath %>/updateReview.wr?bno=<%= rv.getReviewNo() %>'" class="reviewDetail_btn">
+				<% if(loginUser != null && loginUser.getUserId().equals("")) { %>
+					<button type="button" onclick="location.href='<%= contextPath %>/updateReview.wr?bno=<%= rv1.getReviewNo() %>'" class="reviewDetail_btn">
 						수정
 					</button>
 					<button onclick=test() type="reset">
@@ -713,7 +710,7 @@
 			            alert("삭제 안함.");
 			        } else {
 			            alert("삭제.");
-			            location.href="<%= contextPath %>/delete.bo?bno=<%= rv.getReviewNo() %>" 
+			            location.href="<%= contextPath %>/delete.bo?bno=<%= rv1.getReviewNo() %>" 
 			        }
 			    }
 			</script>

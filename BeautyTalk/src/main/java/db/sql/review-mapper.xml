@@ -97,7 +97,7 @@
     VALUES
 	    (
 	      SEQ_I_NO.NEXTVAL
-	    , SEQ_REVIEW.CURRVAL
+	    , TO_CHAR(SEQ_REVIEW.CURRVAL || 'R')
 	    , ?
 	    , ?
 	    , ?
@@ -121,13 +121,13 @@
 		    , MEM_NO
 		    , TITLE
 		    , CONTENT
-		    , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') "CREATE_DATE"
+		    , CREATE_DATE
 		    , P_RATING
 		    , R_RATING
 		    , PR_RATING
 		    , LIKE_REVIEW
 		    , STATUS
-		FROM REVIEW RV
+		FROM REVIEW
 		WHERE REVIEW_NO = ?
 		AND STATUS = 'Y'
 	

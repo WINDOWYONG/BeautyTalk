@@ -62,32 +62,28 @@ public class ReviewService {
 		
 	}
 	
-	public int selectMemNo(int boardNo) {
+	public Review selectMemNo(String refBno) {
 		Connection conn = getConnection();
 		
-		int result = new ReviewDao().selectMemNo(conn, boardNo);
-		
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		return result;
-	}
-	
-	public Review selectReview(int boardNo) {
-		Connection conn = getConnection();
-		
-		Review rv = new ReviewDao().selectReview(conn, boardNo);
+		Review rv = new ReviewDao().selectMemNo(conn, refBno);
 		
 		close(conn);
 		return rv;
 	}
 	
-	public Image selectImage(int boardNo) {
+	public Review selectReview(String refBno) {
 		Connection conn = getConnection();
 		
-		Image img = new ReviewDao().selectImage(conn, boardNo);
+		Review rv = new ReviewDao().selectReview(conn, refBno);
+		
+		close(conn);
+		return rv;
+	}
+	
+	public Image selectImage(String refBno) {
+		Connection conn = getConnection();
+		
+		Image img = new ReviewDao().selectImage(conn, refBno);
 		
 		close(conn);
 		return img;

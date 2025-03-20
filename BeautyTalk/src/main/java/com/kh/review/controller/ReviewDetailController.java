@@ -33,19 +33,24 @@ public class ReviewDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int boardNo = Integer.parseInt(request.getParameter("bno"));
+		
+		ArrayList<SubCategory> list = new ReviewService().selectSubCategoryList();
+		request.setAttribute("list", list);
+		
+		String refBno = request.getParameter("bno");
+		
+		System.out.println("bno parameter: " + request.getParameter("bno"));
 		
 		ReviewService rService = new ReviewService();
-		rService.selectMemNo(boardNo);
+		rService.selectMemNo(refBno);
 		
-		int result = rService.selectMemNo(boardNo);
+		Review rv = rService.selectMemNo(refBno);
 		
-		if(result > 0) { // 유효한 게시글 => 게시글, 첨부파일 DB로부터 조회 
-			Review rv = rService.selectReview(boardNo);
-			Image img = rService.selectImage(boardNo);
+		if(rv != null && !rv.equals("")) { // 유효한 게시글 => 게시글, 첨부파일 DB로부터 조회 
+			Review rv1 = rService.selectReview(refBno);
+			Image img = rService.selectImage(refBno);
 			
-			request.setAttribute("rv", rv); // review에 대한 정보
+			request.setAttribute("rv1", rv1); // review에 대한 정보
 			request.setAttribute("img", img); // image에 대한 정보
 			
 			request.getRequestDispatcher("views/review/reviewDetail.jsp").forward(request, response);

@@ -9,8 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 import com.kh.common.model.vo.PageInfo;
 import com.kh.review.model.vo.Image;
 import com.kh.review.model.vo.Review;
@@ -242,10 +240,9 @@ public class ReviewDao {
 		
 	}
 	
-	public int selectMemNo(Connection conn, int boardNo) {
+	public Review selectMemNo(Connection conn, String refBno) {
 		// select 조회 => 대량으로 될 수도 있지 않나? 하나만인가?
-		
-		int result = 0;
+		Review rv = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -257,21 +254,20 @@ public class ReviewDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				Review rv = new Review();
+				rv = new Review();
 				rv.setMemNo(rset.getInt("MEM_NO"));
 			}
 			
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-		return result;
+		return rv;
 
 	}
 	
-	public Review selectReview(Connection conn, int boardNo) {
+	public Review selectReview(Connection conn, String refBno) {
 		// select인데 게시글 하나 조회하는 거니까 Array는 아니지.
 		Review rv = null;
 		
@@ -284,7 +280,7 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql); // 미완성
 			
-			pstmt.setInt(1, boardNo);
+			pstmt.setString(1, refBno);
 			
 			rset = pstmt.executeQuery();
 			
@@ -314,7 +310,7 @@ public class ReviewDao {
 
 	}
 	
-	public Image selectImage(Connection conn, int boardNo) {
+	public Image selectImage(Connection conn, String refBno) {
 		// select 조회인데, 게시글 하나임
 		Image img = null;
 		
@@ -328,7 +324,7 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql); // 미완성
 			
-			pstmt.setInt(1, boardNo);
+			pstmt.setString(1, refBno);
 			
 			rset = pstmt.executeQuery();
 			
@@ -341,7 +337,7 @@ public class ReviewDao {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} finally {
 			close(rset);
@@ -373,7 +369,7 @@ public class ReviewDao {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} finally {
 			close(rset);

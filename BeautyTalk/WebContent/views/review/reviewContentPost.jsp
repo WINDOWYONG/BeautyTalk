@@ -14,14 +14,9 @@
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 	
-	Image img = (Image)request.getAttribute("img");
-	
-	int bno = Integer.parseInt(request.getParameter("REF_BNO"));
 	String reviewNo = request.getParameter("REVIEW_NO");
-	String refBno = request.getParameter("REF_BNO");
 	String filePath = request.getParameter("FILE_PATH");
 	String changeName = request.getParameter("CHANGE_NAME");
-	
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -35,6 +30,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
 div, input {
 	box-sizing: border-box;
@@ -524,11 +521,7 @@ img {
 				<% for(Review review : list) { %>
 			<tr class="reviewTr_img1">
 				<td rowspan="6" align="center" style="width: 250px; height: 250px;">
-					<% if(reviewNo == refBno) { %>
 						<img src="<%= contextPath %>/<%= filePath + changeName %>" class="review_img1">
-					<% }else { %>
-						<img src="<%= contextPath %>/<%= filePath %>" class="review_img1" >
-					<% } %>
 				</td>
 				<td colspan="3" class="review_CreateDate"><%= review.getCreateDate() %></td>
 
@@ -599,22 +592,24 @@ img {
 		</table>
 		
 		<script>
-			function test(){
-				location.href="<%= contextPath %>/detail.re?bno=" + <%= reviewNo %>;
-			}
+			$(function(){
+			    $(".reviewTr_img2").on("click", function(){
+			        location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
+			    })
+			})
 		</script>
 
 
 		<div class="paging-area" align="center">
-			<% if(currentPage > 1) { %>
+			<% if(currentPage == 1) { %>
 			<!-- 이전버튼 -->
-            	<button>
+				<button>
+            		<a href="<%= contextPath %>/review.li?cpage=1">&lt;</a>
+           	 	</button>
+            <% }else if(currentPage > 1){ %>
+           	 	<button>
             		<a href="<%= contextPath %>/review.li?cpage=<%= currentPage - 1 %>">&lt;</a>
            	 	</button> 
-            <% }else { %>
-           		<button>
-            		<a href="<%= contextPath %>/review.li?cpage=1">&lt;</a>
-           	 	</button>  
             <% } %>
             
 			<% for(int i=startPage; i<=endPage; i++) { %>
@@ -629,15 +624,15 @@ img {
            		<% } %>
             <% } %>
             
-            <% if(currentPage < maxPage) { %>
+            <% if(currentPage == maxPage) { %>
             <!-- 다음버튼 -->
-            	<button>
-            		<a href="<%= contextPath %>/review.li?cpage=<%= currentPage + 1 %>">&gt;</a>
-           	 	</button> 
-			<% }else { %>
             	<button>
             		<a href="<%= contextPath %>/review.li?cpage=<%= maxPage %>">&gt;</a>
            	 	</button>
+			<% }else if(currentPage > 0){ %>
+				<button>
+            		<a href="<%= contextPath %>/review.li?cpage=<%= currentPage + 1 %>">&gt;</a>
+           	 	</button> 
            	<% } %>
 		</div>
 

@@ -1,7 +1,5 @@
 package com.kh.review.model.vo;
 
-import java.util.Date;
-
 public class Image {
 	
 	private int imgNo;
