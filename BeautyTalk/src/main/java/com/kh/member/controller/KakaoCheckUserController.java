@@ -55,7 +55,8 @@ public class KakaoCheckUserController extends HttpServlet {
             JSONObject json = (JSONObject) parser.parse(sb.toString()); 
 
             String accessToken = (String) json.get("token");
-
+            HttpSession session = request.getSession();
+            session.setAttribute("kakaoAccessToken", accessToken);
             
             int result = new MemberService().kakaoCheckUser(accessToken);
             
@@ -67,14 +68,15 @@ public class KakaoCheckUserController extends HttpServlet {
             }
             
             // JSON 응답
-            HttpSession session = request.getSession();
             JSONObject jsonResponse = new JSONObject();
             jsonResponse.put("exists", userExists);
             
             request.getSession().setAttribute("loginUser", loginUser);
-            int userNo = loginUser.getUserNo();
-			Profile userProfile = new ProfileService().selectProfile(userNo);
-			session.setAttribute("userProfile", userProfile);
+            if(userExists) {
+                int userNo = loginUser.getUserNo();
+                Profile userProfile = new ProfileService().selectProfile(userNo);
+                session.setAttribute("userProfile", userProfile);
+            }
             response.getWriter().write(jsonResponse.toJSONString());
 
         } catch (ParseException e) {

@@ -159,7 +159,7 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, kakaoEmail);
+			pstmt.setString(1, accessToken);
 			
 			rset = pstmt.executeQuery();
 			
