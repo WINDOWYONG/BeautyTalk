@@ -14,7 +14,7 @@
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 	Image img = (Image)request.getAttribute("img");
-
+	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -368,6 +368,12 @@ img {
 	font-weight: 700;
 	text-decoration-line: none;
 }
+.review_img1{
+	width: 250px;
+	height: 250px;
+	box-sizing: border-box;
+}
+
 .reviewTr_img2 {
 	cursor:pointer;
 }
@@ -518,7 +524,7 @@ img {
 				<% for(Review review : list) { %>
 			<tr class="reviewTr_img1">
 				<td rowspan="6" align="center" style="width: 250px; height: 250px;">
-					<% if(review.getReviewNo() == img.getRefBno()) { %>
+					<% if(review.getCreateDate() == img.getUploadDate()) { %>
 						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>" class="review_img1">
 					<% }else { %>
 						<img src="<%= contextPath %>/resources/images/현존최강로고1.jpg" class="review_img1">
@@ -588,23 +594,19 @@ img {
 
 
 			</tr>
-			<% } %>
-		<% } %>
+			
 		</table>
-		
+		<% } %>
 		<script>
 			$(function(){
 			    $(".reviewTr_img2").on("click", function(){
-			    	if(loginUser == null){
-			    		alert("로그인 해주세요.")
-			    		location.href = '<%= contextPath %>/loginForm.me';
-			    	}else{
-			    		location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
+			    		location.href = '<%= contextPath %>/review.re?bno' + $(this).children().eq(0).text();
 			    	}
 		    	})
 			})
 		</script>
-
+			
+	<% } %>
 
 		<div class="paging-area" align="center">
 			<% if(currentPage == 1) { %>

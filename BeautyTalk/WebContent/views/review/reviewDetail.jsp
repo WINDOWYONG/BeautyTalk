@@ -10,7 +10,7 @@
 	Review rv1 = (Review)request.getAttribute("rv1");
 	Image img = (Image)request.getAttribute("img");
 	
-	String scName = request.getParameter("SC_NAME");
+	SubCategory sc = (SubCategory)session.getAttribute("sc");
 %>
 <!DOCTYPE html>
 <html>

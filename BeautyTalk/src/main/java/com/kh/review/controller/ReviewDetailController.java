@@ -34,8 +34,8 @@ public class ReviewDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<SubCategory> list = new ReviewService().selectSubCategoryList();
-		request.setAttribute("list", list);
+		SubCategory sc = new ReviewService().selectSubCategory();
+		request.setAttribute("sc", sc);
 		
 		String refBno = request.getParameter("bno");
 		

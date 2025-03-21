@@ -94,6 +94,7 @@ public class ReviewListController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("img", img);
 		
+		System.out.println(list);
 		System.out.println(img);
 		
 		

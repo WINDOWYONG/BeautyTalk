@@ -119,7 +119,7 @@
     VALUES
 	    (
 	      SEQ_I_NO.NEXTVAL
-	    , TO_CHAR(SEQ_REVIEW.CURRVAL || 'R')
+	    , SEQ_REVIEW.CURRVAL
 	    , ?
 	    , ?
 	    , ?
