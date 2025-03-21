@@ -123,7 +123,7 @@ public class MemberDao {
 			
 	}
 
-	public int kakaoCheckUser(Connection conn, String accessToken) {
+	public int kakaoCheckUser(Connection conn, String kakaoId) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -132,7 +132,7 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, accessToken);
+			pstmt.setString(1, kakaoId);
 			
 			rset = pstmt.executeQuery();
 			
@@ -150,7 +150,7 @@ public class MemberDao {
 	}
 
 	
-	public Member kakaoLoginMember(Connection conn, String accessToken) {
+	public Member kakaoLoginMember(Connection conn, String kakaoId) {
 		// select문 => ResultSet 객체(한행) => Member 객체
 		Member m = null;
 		
@@ -161,7 +161,7 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, accessToken);
+			pstmt.setString(1, kakaoId);
 			
 			rset = pstmt.executeQuery();
 			

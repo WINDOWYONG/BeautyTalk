@@ -237,21 +237,21 @@ String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=c
 	    function kakaoLogin() {
 	        Kakao.Auth.login({
 	            success: function(authObj) {
-	            	const accessToken = authObj.access_token;
 	
 	                // 로그인 성공 시 사용자 정보 가져오기
 	                Kakao.API.request({
 	                    url: '/v2/user/me',
 	                    success: function(res) {
-	                        console.log("사용자 정보:", res);
 	                        
 	                        const kakaoEmail = res.kakao_account.email;
 	                        const kakaoNickname = res.kakao_account.profile.nickname;
+	                        const kakaoId = res.id;
+	                        console.log(JSON.stringify({ kakaoId: kakaoId }));
 	                        
 	                        $.ajax({
 	                            type: "POST",
 	                            url: "<%= contextPath %>/kakaoCheckUser.me", // 백엔드 API
-	                            data: JSON.stringify({ token: accessToken }),
+	                            data: JSON.stringify({ kakaoId: kakaoId.toString() }),
 	                            contentType: "application/json",
 	                            success: function(response) {
 	                                if (response.exists) {
