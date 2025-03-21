@@ -49,6 +49,15 @@ public class Member {
 		this.agreeYN = agreeYN;
 		this.gender = gender;
 	}
+	
+	
+
+	public Member(int userNo, String userId, String userName) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userName = userName;
+	}
 
 	public int getUserNo() {
 		return userNo;

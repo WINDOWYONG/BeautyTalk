@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,6 +6,11 @@
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	String alertMsg = (String)session.getAttribute("alertMsg");
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	// 팔로우한 사람의 회원번호, 아이디, 이름
+	Member userName = (Member)request.getAttribute("userName");
+
+	// 선택한 사람의 회원 이름
 %>
 <!DOCTYPE html>
 <html>
@@ -199,6 +205,9 @@
       flex-direction: column;
       gap: 8px;
       width: 100%;
+      height: 280px; 
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     .following-item {
@@ -210,15 +219,27 @@
       border-radius: 10px;
       text-decoration: none;
       transition: background 0.2s;
-      width: 100%;
+      width: 90%;
       height: 70px;
-      max-width: 170px; /* 리스트 개별 크기 제한 */
       justify-content: flex-start; /* 왼쪽 정렬 */
     }
 
     .following-item:hover {
       background: #f8d7da;
     }
+    
+    .following-list::-webkit-scrollbar {
+	  width: 4px;  /* 얇게 */
+	}
+	
+	.following-list::-webkit-scrollbar-thumb {
+	  background-color: #d81b60; /* 진한 핑크 */
+	  border-radius: 4px;
+	}
+	
+	.following-list::-webkit-scrollbar-track {
+	  background-color: #fdeef2; /* 연한 핑크 */
+	}
 
     .profile-img {
       width: 38px;
@@ -262,25 +283,6 @@
       margin-top: -5px; /* 이름과 간격 좁힘 */
     }
 
-    .pagination {
-      margin-top: 8px;
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-      margin-bottom: 5px; /* dot이 박스 안으로 들어오도록 */
-    }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      background: #ddd;
-      border-radius: 50%;
-    }
-
-    .dot.active {
-      background: #d81b60;
-    }
-    
 </style>
 </head>
 <body>
@@ -293,7 +295,7 @@
 	        </div>
 	        <br><br>
 	          <nav class="sidebar-menu">
-	            <div class="menu-item active" data-page="views/calendar/beautyCalendar.jsp" id="default-menu">
+	            <div class="menu-item active" data-page="views/calendar/followingBeautyCalendar.jsp" id="default-menu">
 	              <i class="fas fa-calendar-alt"><!--로고1--></i> 뷰티 캘린더
 	            </div>
 	            <div class="menu-item" data-page="views/calendar/routineCalendar.jsp">
@@ -306,36 +308,25 @@
 	        <div class="L3-content">
 	          <h3>내 팔로잉</h3>
 	          <div class="following-list">
-	            <a href="<%= contextPath %>/followingCalendarMainpage.ca?userId=상대방아이디" class="following-item">
-	              <div class="profile-img">
-	                <img src="" alt="프로필 이미지">
-	              </div>
-	              <div class="profile-info">
-	                <p class="following-name">이름</p>
-	                <p class="following-id">@아이디</p>
-	              </div>
-	            </a>
-	            <a href="#" class="following-item">
-	              <div class="profile-img default"></div>
-	              <div class="profile-info">
-	                <p class="following-name">이름</p>
-	                <p class="following-id">@아이디</p>
-	              </div>
-	            </a>
-	            <a href="#" class="following-item">
-	              <div class="profile-img default"></div>
-	              <div class="profile-info">
-	                <p class="following-name">이름</p>
-	                <p class="following-id">@아이디</p>
-	              </div>
-	            </a>
-	          </div>
-	          <div class="pagination">
-	            <span class="dot active"></span>
-	            <span class="dot"></span>
-	            <span class="dot"></span>
-	            <span class="dot"></span>
-	            <span class="dot"></span>
+	            
+	            <% if(list.isEmpty()) { %>
+                <!-- case1. 팔로우한 사람이 없을 경우 -->
+                 팔로우한 사용자가 없습니다.
+	            <% }else { %>
+	                 <!-- case2. 팔로우한 사람이 있을 경우 -->
+	                 <% for(Member m : list) { %>
+	                 <a href="<%= contextPath %>/followingCalendarMainpage.ca?userId=<%= m.getUserId() %>" class="following-item">
+		              <div class="profile-img">
+		                <img src="" alt="프로필 이미지">
+		              </div>
+		              <div class="profile-info">
+		                <p class="following-name"><%= m.getUserName() %></p>
+		                <p class="following-id">@<%= m.getUserId() %></p>
+		              </div>
+		            </a>
+	               <% } %>
+	            <% } %>
+	            
 	          </div>
 	        </div>        
 	      </div>
@@ -344,7 +335,7 @@
 	      <div class="R1">
 	        <div class="R1-content">
 	          <div class="title">
-	            <strong><%= loginUser.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span><i class="fa-regular fa-heart"></i>
+	            <strong><%= userName.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span><i class="fa-regular fa-heart"></i>
 	          </div>
 	          <div class="icons">
 	            <i class="fa-solid fa-magnifying-glass">

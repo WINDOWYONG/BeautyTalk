@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import com.kh.calendar.model.dao.CalendarDao;
 import com.kh.calendar.model.vo.Calendar;
+import com.kh.member.model.vo.Member;
+
 import static com.kh.common.JDBCTemplate.*;
 
 public class CalendarService {
@@ -40,6 +42,20 @@ public class CalendarService {
 			rollback(conn);
 		}
 		return result;
+	}
+	
+	public ArrayList<Member> selectFollowList(int userNo) {
+		Connection conn = getConnection();
+		ArrayList<Member> list = new CalendarDao().selectFollowList(conn, userNo);
+		close(conn);
+		return list;
+	}
+	
+	public Member selectFollowUserName(String userId) {
+		Connection conn = getConnection();
+		Member userName = new CalendarDao().selectFollowUserName(conn, userId);
+		close(conn);
+		return userName;
 	}
 
 }
