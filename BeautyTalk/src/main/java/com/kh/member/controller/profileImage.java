@@ -7,10 +7,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.kh.common.MyFileRenamePoliy;
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 import com.kh.profile.controller.model.service.ProfileService;
 import com.kh.profile.controller.model.vo.UserProfileImage;
 import com.oreilly.servlet.MultipartRequest;
@@ -46,7 +50,8 @@ public class profileImage extends HttpServlet {
 			MultipartRequest multRequest = new MultipartRequest(request, savepath, maxSize, "UTF-8", new MyFileRenamePoliy());
 			
 			int userNo = Integer.parseInt(multRequest.getParameter("userNo"));
-			System.out.println(userNo);
+			String userId = multRequest.getParameter("userId");
+			String userPwd = multRequest.getParameter("userPwd");
 			
 			UserProfileImage up = null;
 			
@@ -58,9 +63,13 @@ public class profileImage extends HttpServlet {
 			}
 			
 			int result = new ProfileService().insertUserImage(up, userNo);
-			
+			Member updateMem = new MemberService().loginMember(userId, userPwd);
+
+			HttpSession session = request.getSession();
 			if(result > 0) {
 				request.getSession().setAttribute("alertMsg", "프로필 이미지 등록 성공");
+				session.setAttribute("loginUser", updateMem);
+				
 				response.sendRedirect(request.getContextPath() + "/myPage.me");
 			} else {
 				request.setAttribute("alertMsg", "프로필 이미지 등록 실패!");

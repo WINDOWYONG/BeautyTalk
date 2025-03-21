@@ -593,7 +593,7 @@ input[type="file"] {
 	    <div id="Content1">
             <div id="Content2">
                 <div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
-                    <img id="userprofile" src="<%= contextPath %>/resources/userImage/변우석.jpg" 
+                    <img id="userprofile" src="<%= contextPath + "/" + loginUser.getFilePath() %>" 
                         alt="유저이미지" style="border-radius: 50%; cursor: pointer;">
                     
                     <!-- 수정 아이콘 -->
@@ -611,9 +611,11 @@ input[type="file"] {
                         <!-- ✅ form에 class 추가하여 스타일 영향 최소화 -->
                         <form id="profileForm" action="<%= contextPath %>/insert.img" method="POST" enctype="multipart/form-data" class="profile-form">
                             <input type="hidden" name="userNo" value="<%= loginUser.getUserNo() %>">
+                            <input type="hidden" name="userId" value="<%= loginUser.getUserId() %>">
+                            <input type="hidden" name="userPwd" value="<%= loginUser.getUserPwd() %>">
                             <!-- 현재 사용자 프로필 이미지 -->
                             <div class="profile-preview">
-                                <img id="previewImage" src="<%= contextPath %>/resources/userImage/변우석.jpg" 
+                                <img id="previewImage" src="<%= loginUser.getFilePath() %>" 
                                     alt="현재 프로필 이미지">
                             </div>
                 
