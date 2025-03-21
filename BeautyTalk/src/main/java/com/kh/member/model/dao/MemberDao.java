@@ -43,17 +43,19 @@ public class MemberDao {
 			
 			if(rset.next()) {
 				m = new Member(rset.getInt("MEM_NO"),
-				               rset.getString("MEM_ID"),
-				               rset.getString("MEM_PWD"),
-				               rset.getString("MEM_NAME"),
-				               rset.getString("EMAIL"),
-				               rset.getString("NICKNAME"),
-				               rset.getString("PHONE"),
-				               rset.getString("GENDER"),
-				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
-				               rset.getInt("FOLLOWER_COUNT"),
-				               rset.getInt("REVIEW_COUNT"),
-				               rset.getInt("POST_COUNT"));
+						rset.getString("MEM_ID"),
+						rset.getString("MEM_PWD"),
+						rset.getString("MEM_NAME"),
+						rset.getString("EMAIL"),
+						rset.getString("NICKNAME"),
+						rset.getString("PHONE"),
+						rset.getString("GENDER"),
+						rset.getInt("FOLLOWING_COUNT"),
+						rset.getInt("FOLLOWER_COUNT"),
+						rset.getInt("REVIEW_COUNT"),
+						rset.getInt("POST_COUNT"),
+						rset.getString("PROFILE_IMAGE_PATH"));
+				
 			}
 			
 		} catch (SQLException e) {
@@ -175,7 +177,8 @@ public class MemberDao {
 				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
 				               rset.getInt("FOLLOWER_COUNT"),
 				               rset.getInt("REVIEW_COUNT"),
-				               rset.getInt("POST_COUNT"));
+				               rset.getInt("POST_COUNT"),
+				               rset.getString("PROFILE_IMAGE_PATH"));
 			}
 			
 		} catch (SQLException e) {
@@ -243,7 +246,8 @@ public class MemberDao {
 				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
 				               rset.getInt("FOLLOWER_COUNT"),
 				               rset.getInt("REVIEW_COUNT"),
-				               rset.getInt("POST_COUNT"));
+				               rset.getInt("POST_COUNT"),
+				               rset.getString("PROFILE_IMAGE_PATH") != null ? rset.getString("PROFILE_IMAGE_PATH") : "");
 			}
 			
 		} catch (SQLException e) {

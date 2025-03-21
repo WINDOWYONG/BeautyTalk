@@ -73,9 +73,7 @@ public class KakaoCheckUserController extends HttpServlet {
             
             request.getSession().setAttribute("loginUser", loginUser);
             if(userExists) {
-                int userNo = loginUser.getUserNo();
-                Profile userProfile = new ProfileService().selectProfile(userNo);
-                session.setAttribute("userProfile", userProfile);
+
             }
             response.getWriter().write(jsonResponse.toJSONString());
 

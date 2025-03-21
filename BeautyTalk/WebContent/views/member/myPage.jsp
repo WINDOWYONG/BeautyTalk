@@ -8,8 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 </head>
 <style>
     #Content1{
@@ -21,6 +20,7 @@
     }
     #Content2{
         width: 1200px;
+        height: 100px;
         overflow: hidden;
         margin: 0 auto;
 
@@ -62,7 +62,8 @@
         
     }
     #userprofile{
-    	border-radius: 100%;
+        border-radius: 50%;  /* 원형 이미지 */
+        object-fit: cover;
         height: 100%;
         width: 100%;
     }
@@ -70,11 +71,11 @@
     #Content2 div{
         float: left;
         margin: auto;
-        margin: 10px;
         
     }
     #userName *{
         margin: 0;
+        margin-top: 20px;
     }
     table td{
         text-align: center;
@@ -435,6 +436,140 @@ margin-left: 30px;
   .color-label:last-of-type {
     border-radius: 0 10px 10px 0;
   }
+#userImg {
+    position: relative;
+    display: inline-block;
+}
+
+
+.edit-icon {
+    position: absolute;
+    bottom: 5px; /* 이미지 아래쪽 여백 */
+    right: 5px;  /* 이미지 오른쪽 여백 */
+    background-color: white; /* 아이콘 배경 */
+    color: black;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+}
+.profile-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; /* 기본 크기 */
+    height: 500px;
+    min-width: 300px;  /* 최소 너비 */
+    min-height: 200px; /* 최소 높이 */
+    max-width: 600px;  /* 최대 너비 */
+    max-height: 500px; /* 최대 높이 */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    resize: both;  /* 크기 조절 가능하도록 설정 */
+}
+
+/* 내부 컨텐츠 */
+.profile-modal-content {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* 내용이 넘칠 경우 스크롤 가능 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 버튼을 감싸는 부모 컨테이너 추가 */
+.profile-button-container {
+    display: flex;
+    flex-direction: row;  /* 버튼을 가로로 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    gap: 15px; /* 버튼 간격 */
+    margin-top: 15px; /* 위쪽 여백 */
+    width: 100%; /* 부모 요소가 가득 차도록 설정 */
+}
+
+.profile-modal-content img {
+    width: 200px;
+    height: 200px;
+    margin-left: 125px;
+    border-radius: 50%;
+    margin-bottom: 20px; /* 간격 조정 */
+}
+
+.profile-button-container {
+    display: flex;
+
+    gap: 10px; /* 버튼 간격 조정 */
+    align-items: center;
+}
+
+.custom-file-upload, 
+#saveProfile {
+    width: 120px; /* 버튼 크기 조정 */
+    text-align: center;
+}
+
+/* 닫기 버튼 */
+.close-profile {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f8d7da;
+    color: #e8618c;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid #e8618c;
+}
+
+.custom-file-upload:hover {
+    background-color: #e8618c;
+    color: white;
+}
+
+#saveProfile {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f8d7da;
+    color: #e8618c;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid #e8618c;
+}
+
+#saveProfile:hover {
+    background-color: #e8618c;
+    color: white;
+}
+
+
+
 
 </style>
 <body>
@@ -457,16 +592,49 @@ margin-left: 30px;
 	
 	    <div id="Content1">
             <div id="Content2">
-                <div id="userImg">
-                    <img id="userprofile" src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
+                <div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+                    <img id="userprofile" src="<%= contextPath %>/resources/userImage/변우석.jpg" 
+                        alt="유저이미지" style="border-radius: 50%; cursor: pointer;">
+                    
+                    <!-- 수정 아이콘 -->
+                    <span id="openProfileModal" class="material-icons" 
+                        style="position: absolute; bottom: 2px; right: 2px; cursor: pointer;">
+                        photo_camera
+                    </span>
                 </div>
-                <div id="userName">
+                <!-- ✅ 프로필 수정 모달 -->
+                <div id="profileModal" class="profile-modal">
+                    <div class="profile-modal-content">
+                        <span class="close-profile">&times;</span>
+                        <h2 style="color: #e8618c;">프로필 사진 변경</h2>
+                
+                        <!-- ✅ form에 class 추가하여 스타일 영향 최소화 -->
+                        <form id="profileForm" action="<%= contextPath %>/insert.img" method="POST" enctype="multipart/form-data" class="profile-form">
+                            <input type="hidden" name="userNo" value="<%= loginUser.getUserNo() %>">
+                            <!-- 현재 사용자 프로필 이미지 -->
+                            <div class="profile-preview">
+                                <img id="previewImage" src="<%= contextPath %>/resources/userImage/변우석.jpg" 
+                                    alt="현재 프로필 이미지">
+                            </div>
+                
+                            <!-- 이미지 업로드 버튼 -->
+                            <div class="profile-button-container">
+                                <input type="file" id="profileUpload" name="upfile" accept="image/*" style="display: none;">
+                                <label for="profileUpload" class="custom-file-upload">파일 선택</label>
+                                <button type="submit" id="saveProfile" style="font-size: medium;">저장</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+
+                <div id="userName" style="margin-left: 20px;">
                     <h2><%= loginUser.getUserName() %></h2>
                     <span style="font-size: x-small;"><%= loginUser.getUserId() %></span>
                 </div>
             </div>
             <div id="Content3">
-                <table>
+                <table style="margin-top: 10px;">
                     <tr>
                         <td>
                             <a href="" style="font-weight: 800; font-size: larger;">게시글 <br><%= loginUser.getPost() %></a> <br>
@@ -1237,6 +1405,26 @@ margin-left: 30px;
                     }
                 });
             });
+            $(document).ready(function () {
+            // ✅ 프로필 수정 모달 열기
+            $("#userprofile, #openProfileModal").click(function () {
+                $("#profileModal").fadeIn();
+            });
+
+            // ✅ 프로필 수정 모달 닫기 (X 버튼 클릭 시)
+            $(".close-profile").click(function () {
+                $("#profileModal").fadeOut();
+            });
+
+            // ✅ 프로필 수정 모달 바깥 클릭 시 닫기 (회원탈퇴 모달과 구별)
+            $(window).click(function (e) {
+                if ($(e.target).is("#profileModal")) {
+                    $("#profileModal").fadeOut();
+                }
+            });
+
+            // 🔥 기존 회원탈퇴 모달 관련 코드는 손대지 않음! 🔥
+        });
         </script>
         
         <script>

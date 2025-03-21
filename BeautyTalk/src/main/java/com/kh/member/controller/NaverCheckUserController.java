@@ -43,10 +43,6 @@ public class NaverCheckUserController extends HttpServlet {
 		if(result > 0) {
 			loginUser = new MemberService().NaverLoginMember(Token);
 			session.setAttribute("loginUser", loginUser);
-			int userNo = loginUser.getUserNo();
-			Profile userProfile = new ProfileService().selectProfile(userNo);
-			session.setAttribute("userProfile", userProfile);
-			System.out.println(userProfile);
 			System.out.println(loginUser);
 			response.sendRedirect(request.getContextPath());
 			
