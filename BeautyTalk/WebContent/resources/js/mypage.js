@@ -122,6 +122,7 @@ $(function() {
     
     })
 })
+
 document.addEventListener("DOMContentLoaded", function () {
     const tabs = document.querySelectorAll(".tab");
     const underline = document.querySelector(".underline");
@@ -269,5 +270,3 @@ $(document).ready(function () {
         $tabs.removeClass("active"); // 모든 탭 비활성화
     });
 });
-
-
