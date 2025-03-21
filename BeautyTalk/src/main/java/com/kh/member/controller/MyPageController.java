@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/myPage.me")
 public class MyPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
