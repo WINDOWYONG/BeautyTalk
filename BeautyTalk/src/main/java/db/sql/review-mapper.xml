@@ -12,25 +12,47 @@
 	<entry key="selectReviewArrayList">
 		SELECT *
 		FROM (
-			SELECT ROWNUM RNUM, A.*
-			FROM (
-					SELECT
-					REVIEW_NO
-					, CREATE_DATE
-					, TITLE
-					, CONTENT
-					, PR_RATING
-					, P_RATING
-					, R_RATING
-					, LIKE_REVIEW
-					FROM REVIEW
-					WHERE STATUS = 'Y'
-					ORDER
-					BY REVIEW_NO DESC
-					) A
+				SELECT ROWNUM RNUM, A.*
+				FROM (
+						SELECT
+							REVIEW_NO
+							, CREATE_DATE
+							, TITLE
+							, CONTENT
+							, PR_RATING
+							, P_RATING
+							, R_RATING
+							, LIKE_REVIEW
+						FROM REVIEW RV
+						WHERE STATUS = 'Y'
+						ORDER
+						BY REVIEW_NO DESC
+						) A
 				)
 		WHERE RNUM BETWEEN ? AND ?
 
+	</entry>
+	
+	<entry key="selectImageArraylist">
+		SELECT *
+		FROM (
+				SELECT ROWNUM RNUM, A.*
+				FROM (
+						SELECT
+							IMAGE_NO
+							, REF_BNO
+							, ORIGIN_NAME
+							, CHANGE_NAME
+							, FILE_PATH
+							, UPLOAD_DATE
+						FROM IMAGE IMG
+						WHERE STATUS = 'Y'
+						ORDER
+						BY IMAGE_NO DESC
+						) A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+	
 	</entry>
 
 	<entry key="selectReviewCpage">
@@ -127,7 +149,7 @@
 		    , PR_RATING
 		    , LIKE_REVIEW
 		    , STATUS
-		FROM REVIEW
+		FROM REVIEW RV
 		WHERE REVIEW_NO = ?
 		AND STATUS = 'Y'
 	
@@ -136,10 +158,11 @@
 	<entry key="selectImage">
 		SELECT
 		      IMAGE_NO
+		    , REF_BNO
 		    , ORIGIN_NAME
 		    , CHANGE_NAME
 		    , FILE_PATH
-		FROM IMAGE IMG2
+		FROM IMAGE IMG
 		WHERE REF_BNO = ?
 		AND STATUS = 'Y'
 	

@@ -33,6 +33,16 @@ public class ReviewService {
 		
 	}
 	
+	public Image selectImageArraylist(PageInfo pi){
+		Connection conn = getConnection();
+		
+		Image img = new ReviewDao().selectImageArraylist(conn, pi);
+		
+		close(conn);
+		return img;
+	}
+	
+	
 	public ArrayList<SubCategory> selectSubCategoryList() {
 		Connection conn = getConnection();
 		

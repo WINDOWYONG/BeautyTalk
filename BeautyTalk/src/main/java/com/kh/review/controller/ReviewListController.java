@@ -19,6 +19,7 @@ import javax.xml.crypto.dsig.Transform;
 
 import com.kh.common.model.vo.PageInfo;
 import com.kh.review.model.service.ReviewService;
+import com.kh.review.model.vo.Image;
 import com.kh.review.model.vo.Review;
 
 
@@ -71,7 +72,7 @@ public class ReviewListController extends HttpServlet {
 		
 		maxPage = (int)Math.ceil((double)listCount / reviewLimit);
 		
-		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		startPage = ((currentPage - 1) / pageLimit) * pageLimit + 1;
 		
 		endPage = startPage + pageLimit - 1;
 		
@@ -87,9 +88,14 @@ public class ReviewListController extends HttpServlet {
 		
 		// * 현재 요청한 페이지(c)에 보여질 게시글 리스트 boardLimit 수만큼 조회
 		ArrayList<Review> list = new ReviewService().selectReviewArrayList(pi);
+		Image img = new ReviewService().selectImageArraylist(pi);
 				
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
+		request.setAttribute("img", img);
+		
+		System.out.println(img);
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("views/review/reviewContentPost.jsp");
 		rd.forward(request, response);

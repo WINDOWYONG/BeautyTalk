@@ -120,6 +120,9 @@ public class ReviewInsertController extends HttpServlet {
 				img.setFilePath("resources/images/"); // /가 있어야 한다.
 			}
 			
+			request.setAttribute("rv", rv);
+			request.setAttribute("img", img);
+			
 			// 4. Service 요청 (요청처리)
 
 			int result = new ReviewService().insertReview(rv, img);
@@ -130,9 +133,6 @@ public class ReviewInsertController extends HttpServlet {
 			if(result > 0) {
 				response.sendRedirect(request.getContextPath() + "/review.li?cpage=1");
 				request.getSession().setAttribute("alertMsg", "일반게시판등록!");
-				request.getSession().setAttribute("rv", rv);
-				request.getSession().setAttribute("img", img);
-				
 			}else {
 				// 실패 => 첨부파일 있었다면 업로드 된 파일 찾아서 삭제 시킨 후 에러페이지로
 				if(img != null) { // 첨부파일이 있었다면
@@ -141,9 +141,7 @@ public class ReviewInsertController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/review.li?cpage=1");
 				request.getSession().setAttribute("alertMsg", "등록실패!!");
 			}
-			
 
-			
 		}
 		
 	}

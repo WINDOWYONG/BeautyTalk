@@ -73,15 +73,15 @@ public class ReviewDao {
 			pstmt = conn.prepareStatement(sql); // 미완성
 			
 			/*
-			 * currentPage : 1 => 시작값(RNUM) : 1 | 끝값(RNUM) : 4
-			 * currentPage : 2 => 시작값 : 5 | 끝값 : 9
-			 * currentPage : 3 => 시작값 : 10 | 끝값 : 15
+			 * currentPage : 1 => 시작값(RNUM) : 1 | 끝값(RNUM) : 5
+			 * currentPage : 2 => 시작값 : 6 | 끝값 : 10
+			 * currentPage : 3 => 시작값 : 11 | 끝값 : 15
 			 * 
 			 * 시작값 : (current - 1) * reviewLimit + 1
 			 * 끝값 : 시작값 + reviewLimit - 1
 			 */
 			
-			int startReview = (pi.getCurrentPage() - 1 ) * (pi.getreviewLimit() + 1);
+			int startReview = (pi.getCurrentPage() - 1) * (pi.getreviewLimit() + 1);
 			int endReview = startReview + pi.getreviewLimit() - 1;
 			
 			pstmt.setInt(1, startReview);
@@ -111,6 +111,45 @@ public class ReviewDao {
 			close(pstmt);
 		}
 		return list;
+
+	}
+	
+	public Image selectImageArraylist(Connection conn, PageInfo pi){
+		Image img = null; // 초기화
+		
+		PreparedStatement pstmt = null; // 초기화
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectImageArraylist"); 
+		
+		int startReview = (pi.getCurrentPage() - 1) * (pi.getreviewLimit() + 1);
+		int endReview = startReview + pi.getreviewLimit() - 1;
+
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성
+			
+			pstmt.setInt(1, startReview);
+			pstmt.setInt(2, endReview);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				img = new Image();
+				img.setImgNo(rset.getInt("IMAGE_NO"));
+				img.setRefBno(rset.getString("REF_BNO"));
+				img.setOriginName(rset.getString("ORIGIN_NAME"));
+				img.setChangeName(rset.getString("CHANGE_NAME"));
+				img.setFilePath(rset.getString("FILE_PATH"));
+				img.setUploadDate(rset.getString("UPLOAD_DATE"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return img;
 
 	}
 	
@@ -331,13 +370,13 @@ public class ReviewDao {
 			if(rset.next()) {
 				img = new Image();
 				img.setImgNo(rset.getInt("IMAGE_NO"));
+				img.setRefBno(rset.getString("REF_BNO"));
 				img.setOriginName(rset.getString("ORIGIN_NAME"));
 				img.setChangeName(rset.getString("CHANGE_NAME"));
 				img.setFilePath(rset.getString("FILE_PATH"));
 			}
 			
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
 			close(rset);

@@ -13,11 +13,8 @@
 	
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
-	
-	String reviewNo = request.getParameter("REVIEW_NO");
-	String filePath = request.getParameter("FILE_PATH");
-	String changeName = request.getParameter("CHANGE_NAME");
-	
+	Image img = (Image)request.getAttribute("img");
+
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -521,7 +518,11 @@ img {
 				<% for(Review review : list) { %>
 			<tr class="reviewTr_img1">
 				<td rowspan="6" align="center" style="width: 250px; height: 250px;">
-						<img src="<%= contextPath %>/<%= filePath + changeName %>" class="review_img1">
+					<% if(review.getReviewNo() == img.getRefBno()) { %>
+						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>" class="review_img1">
+					<% }else { %>
+						<img src="<%= contextPath %>/resources/images/현존최강로고1.jpg" class="review_img1">
+					<% } %>
 				</td>
 				<td colspan="3" class="review_CreateDate"><%= review.getCreateDate() %></td>
 
@@ -532,8 +533,8 @@ img {
 
 			</tr>
 			<tr class="reviewTr_img2">
-				<td class="review_title1" onclick="test()"><%= review.getReviewNo() %></td>
-				<td class="review_title2" onclick="test()"><%= review.getTitle() %></td>
+				<td class="review_title1"><%= review.getReviewNo() %></td>
+				<td class="review_title2"><%= review.getTitle() %></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -588,14 +589,19 @@ img {
 
 			</tr>
 			<% } %>
-			<% } %>
+		<% } %>
 		</table>
 		
 		<script>
 			$(function(){
 			    $(".reviewTr_img2").on("click", function(){
-			        location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
-			    })
+			    	if(loginUser == null){
+			    		alert("로그인 해주세요.")
+			    		location.href = '<%= contextPath %>/loginForm.me';
+			    	}else{
+			    		location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
+			    	}
+		    	})
 			})
 		</script>
 
