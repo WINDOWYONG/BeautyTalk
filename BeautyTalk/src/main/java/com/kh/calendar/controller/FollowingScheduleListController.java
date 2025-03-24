@@ -3,27 +3,30 @@ package com.kh.calendar.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import com.kh.calendar.model.service.CalendarService;
+import com.kh.calendar.model.vo.Calendar;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class CalendarMainpageFormController
+ * Servlet implementation class FollowingScheduleListController
  */
-@WebServlet("/calendarMainpage.ca")
-public class CalendarMainpageFormController extends HttpServlet {
+@WebServlet("/followingSchList.ca")
+public class FollowingScheduleListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CalendarMainpageFormController() {
+    public FollowingScheduleListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,14 +38,23 @@ public class CalendarMainpageFormController extends HttpServlet {
 		
 		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
 		int userNo = loginUser.getUserNo();
+		String userId = request.getParameter("userId");
 		
-		ArrayList<Member> list = new CalendarService().selectFollowList(userNo);
+		ArrayList<Calendar> scheduleList = new CalendarService().followingScheduleList(userId);
 		
-		request.setAttribute("list", list);
+		JSONArray jsonArray = new JSONArray();
+		for (Calendar sch : scheduleList) {
+			JSONObject obj = new JSONObject();
+			obj.put("id", sch.getScheduleNo());
+			obj.put("title", sch.getTitle());
+			obj.put("start", sch.getStartDay());
+			obj.put("end", sch.getEndDay());
+			obj.put("allDay", true);
+			jsonArray.add(obj);
+		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/calendar/calendarMainpage.jsp");
-		view.forward(request, response);
-		
+		response.setContentType("application/json; charset=UTF-8");
+		response.getWriter().print(jsonArray);
 	}
 
 	/**

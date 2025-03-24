@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -5,15 +6,14 @@
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	String alertMsg = (String)session.getAttribute("alertMsg");
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
 <title>Insert title here</title>
 <style>
 div {
@@ -197,31 +197,31 @@ div {
 	margin-top: 0px;
 }
 
-.following-list {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-	width: 100%;
-}
+    .following-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
 
-.following-item {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	padding: 8px;
-	background: white;
-	border-radius: 10px;
-	text-decoration: none;
-	transition: background 0.2s;
-	width: 100%;
-	height: 70px;
-	max-width: 170px; /* 리스트 개별 크기 제한 */
-	justify-content: flex-start; /* 왼쪽 정렬 */
-}
+    .following-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px;
+      background: white;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s;
+      width: 100%;
+      height: 70px;
+      max-width: 170px; /* 리스트 개별 크기 제한 */
+      justify-content: flex-start; /* 왼쪽 정렬 */
+    }
 
-.following-item:hover {
-	background: #f8d7da;
-}
+    .following-item:hover {
+      background: #f8d7da;
+    }
 
 .profile-img {
 	width: 38px;
@@ -259,123 +259,116 @@ div {
 	color: #333;
 }
 
-.profile-info .following-id {
-	font-size: 12px;
-	color: #666;
-	margin-top: -5px; /* 이름과 간격 좁힘 */
-}
+    .profile-info .following-id {
+      font-size: 12px;
+      color: #666;
+      margin-top: -5px; /* 이름과 간격 좁힘 */
+    }
 
-.pagination {
-	margin-top: 8px;
-	display: flex;
-	justify-content: center;
-	gap: 5px;
-	margin-bottom: 5px; /* dot이 박스 안으로 들어오도록 */
-}
+    .pagination {
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-bottom: 5px; /* dot이 박스 안으로 들어오도록 */
+    }
 
-.dot {
-	width: 6px;
-	height: 6px;
-	background: #ddd;
-	border-radius: 50%;
-}
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #ddd;
+      border-radius: 50%;
+    }
 
-.dot.active {
-	background: #d81b60;
-}
+    .dot.active {
+      background: #d81b60;
+    }
+    
 </style>
 </head>
 <body>
 
 	<div class="wrap">
-		<div class="left">
-			<div class="L1">
-				<div class="logo-container">
-					<a href="<%= contextPath %>"><img
-						src="<%= contextPath %>/resources/images/현존최강로고.jpg" alt="메인로고"></a>
-				</div>
-				<br>
-				<br>
-				<nav class="sidebar-menu">
-					<div class="menu-item active"
-						data-page="views/calendar/beautyCalendar.jsp" id="default-menu">
-						<i class="fas fa-calendar-alt">
-							<!--로고1-->
-						</i> 뷰티 캘린더
-					</div>
-					<div class="menu-item"
-						data-page="views/calendar/routineCalendar.jsp">
-						<i class="fas fa-check-circle">
-							<!--로고2-->
-						</i> 루틴 설정
-					</div>
-					<div class="menu-item"
-						data-page="views/calendar/routineSetting.jsp">
-						<i class="fas fa-chart-bar">
-							<!--로고3-->
-						</i> 월간 분석
-					</div>
-				</nav>
-			</div>
-			<div class="L2"></div>
-			<div class="L3">
-				<div class="L3-content">
-					<h3>내 팔로잉</h3>
-					<div class="following-list">
-						<a href="#" class="following-item">
-							<div class="profile-img">
-								<img src="" alt="프로필 이미지">
-							</div>
-							<div class="profile-info">
-								<p class="following-name">이름</p>
-								<p class="following-id">@아이디</p>
-							</div>
-						</a> <a href="#" class="following-item">
-							<div class="profile-img default"></div>
-							<div class="profile-info">
-								<p class="following-name">이름</p>
-								<p class="following-id">@아이디</p>
-							</div>
-						</a> <a href="#" class="following-item">
-							<div class="profile-img default"></div>
-							<div class="profile-info">
-								<p class="following-name">이름</p>
-								<p class="following-id">@아이디</p>
-							</div>
-						</a>
-					</div>
-					<div class="pagination">
-						<span class="dot active"></span> <span class="dot"></span> <span
-							class="dot"></span> <span class="dot"></span> <span class="dot"></span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="right">
-			<div class="R1">
-				<div class="R1-content">
-					<div class="title">
-						<strong><%= loginUser.getUserName() %></strong>님의 <span
-							class="highlight">뷰티 캘린더</span><i class="fa-regular fa-heart"></i>
-					</div>
-					<div class="icons">
-						<i class="fa-solid fa-magnifying-glass"> <img
-							src="<%= contextPath %>/resources/images/3.PNG" alt="">
-						</i> <i class="fa-regular fa-bell"> <img
-							src="<%= contextPath %>/resources/images/3.PNG" alt="">
-						</i>
-						<div class="profile-img">
-							<img src="" alt="">
-						</div>
-						<i class="fa-solid fa-chevron-down">
-							<!--로고3-->
-						</i>
-					</div>
-				</div>
-			</div>
-			<div class="R2" id="content-area"></div>
-		</div>
-	</div>
+	    <div class="left">
+	      <div class="L1">
+	        <div class="logo-container">
+            <a href="<%= contextPath %>"><img src="<%= contextPath %>/resources/images/현존최강로고.jpg" alt="메인로고"></a>
+	        </div>
+	        <br><br>
+	          <nav class="sidebar-menu">
+	            <div class="menu-item active" data-page="views/calendar/beautyCalendar.jsp" id="default-menu">
+	              <i class="fas fa-calendar-alt"><!--로고1--></i> 뷰티 캘린더
+	            </div>
+	            <div class="menu-item" data-page="views/calendar/routineCalendar.jsp">
+	              <i class="fas fa-check-circle"><!--로고2--></i> 루틴 설정
+	            </div>
+	            <div class="menu-item" data-page="views/calendar/routineSetting.jsp">
+	              <i class="fas fa-chart-bar"><!--로고3--></i> 월간 분석
+	            </div>
+	          </nav>
+	      </div>
+	      <div class="L2"></div>
+	      <div class="L3">
+	        <div class="L3-content">
+	          <h3>내 팔로잉</h3>
+	          <div class="following-list">
+	            <a href="#" class="following-item">
+	              <div class="profile-img">
+	                <img src="" alt="프로필 이미지">
+	              </div>
+	              <div class="profile-info">
+	                <p class="following-name">이름</p>
+	                <p class="following-id">@아이디</p>
+	              </div>
+	            </a>
+	            <a href="#" class="following-item">
+	              <div class="profile-img default"></div>
+	              <div class="profile-info">
+	                <p class="following-name">이름</p>
+	                <p class="following-id">@아이디</p>
+	              </div>
+	            </a>
+	            <a href="#" class="following-item">
+	              <div class="profile-img default"></div>
+	              <div class="profile-info">
+	                <p class="following-name">이름</p>
+	                <p class="following-id">@아이디</p>
+	              </div>
+	            </a>
+	          </div>
+	          <div class="pagination">
+	            <span class="dot active"></span>
+	            <span class="dot"></span>
+	            <span class="dot"></span>
+	            <span class="dot"></span>
+	            <span class="dot"></span>
+	          </div>
+	        </div>        
+	      </div>
+	    </div>
+	    <div class="right">
+	      <div class="R1">
+	        <div class="R1-content">
+	          <div class="title">
+	            <strong><%= loginUser.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span><i class="fa-regular fa-heart"></i>
+	          </div>
+	          <div class="icons">
+	            <i class="fa-solid fa-magnifying-glass">
+	              <img src="<%= contextPath %>/resources/images/3.PNG" alt="">
+	            </i>
+	            <i class="fa-regular fa-bell">
+	              <img src="<%= contextPath %>/resources/images/3.PNG" alt="">
+	            </i>
+	            <div class="profile-img">
+	              <img src="" alt="">
+	            </div>
+	            <i class="fa-solid fa-chevron-down"><!--로고3--></i>
+	          </div>
+	        </div>
+	      </div>
+	      <div class="R2" id="content-area"></div>
+	    </div>
+  	</div>
 
 	<script>
   $(document).ready(function () {

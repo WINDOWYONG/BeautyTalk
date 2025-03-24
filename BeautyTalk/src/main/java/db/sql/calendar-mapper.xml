@@ -37,5 +37,32 @@
 		  FROM SCHEDULE
 		 WHERE SCH_NO = ?
 	</entry>
+	
+	<entry key="selectFollowList">
+		SELECT 
+			   FOLLOWING
+			 , MEM_ID
+			 , MEM_NAME
+		  FROM FOLLOW
+		  JOIN MEMBER ON (FOLLOWING = MEM_NO)
+		 WHERE FOLLOWER = ?
+		   AND STATUS = 'Y'
+	</entry>
 
+	<entry key="selectFollowUserName">
+		SELECT MEM_NAME
+		  FROM MEMBER
+		 WHERE MEM_ID = ?
+	</entry>
+	
+	<entry key="followingScheduleList">
+		SELECT
+		       SCH_NO
+		     , SCH_TITLE
+		     , SCH_STARTDATE
+		     , SCH_ENDDATE
+		  FROM SCHEDULE
+		  JOIN MEMBER USING (MEM_NO)
+		 WHERE MEM_ID = ?
+	</entry>
 </properties>

@@ -14,16 +14,16 @@ import com.kh.calendar.model.service.CalendarService;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class CalendarMainpageFormController
+ * Servlet implementation class FollowingCalendarMainpageFormController
  */
-@WebServlet("/calendarMainpage.ca")
-public class CalendarMainpageFormController extends HttpServlet {
+@WebServlet("/followingCalendarMainpage.ca")
+public class FollowingCalendarMainpageFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CalendarMainpageFormController() {
+    public FollowingCalendarMainpageFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,14 +35,16 @@ public class CalendarMainpageFormController extends HttpServlet {
 		
 		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
 		int userNo = loginUser.getUserNo();
+		String userId = request.getParameter("userId");
 		
 		ArrayList<Member> list = new CalendarService().selectFollowList(userNo);
+		Member userName = new CalendarService().selectFollowUserName(userId);
 		
 		request.setAttribute("list", list);
+		request.setAttribute("userName", userName);
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/calendar/calendarMainpage.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("views/calendar/followingCalendarMainpage.jsp");
 		view.forward(request, response);
-		
 	}
 
 	/**
