@@ -12,6 +12,7 @@ import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
 import com.kh.profile.controller.model.service.ProfileService;
 import com.kh.profile.controller.model.vo.Profile;
+import com.kh.profile.controller.model.vo.UserProfileImage;
 
 /**
  * Servlet implementation class LoginController
@@ -33,26 +34,19 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-
 			String userId = request.getParameter("userId");
 			String userPwd = request.getParameter("userPwd");
 			
 			Member loginUser = new MemberService().loginMember(userId, userPwd);
 			
-			
-			
-			
+
 			if(loginUser == null) {
 				request.getSession().setAttribute("alertMsg", "로그인에 실패하였습니다.");
 				response.sendRedirect(request.getContextPath() + "/loginForm.me");
 			}else {
-				int userNo = loginUser.getUserNo();
-				Profile userProfile = new ProfileService().selectProfile(userNo);
 				HttpSession session = request.getSession();
-				session.setAttribute("userProfile", userProfile);
-				System.out.println(userProfile);
 				session.setAttribute("loginUser", loginUser);
+				System.out.println(loginUser);
 				response.sendRedirect(request.getContextPath());
 			}
 		}

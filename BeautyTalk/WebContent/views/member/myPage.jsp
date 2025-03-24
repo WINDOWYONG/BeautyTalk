@@ -8,435 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<link href="resources/css/mypage.css"rel="stylesheet">
 </head>
-<style>
-    #Content1{
-        height: auto;
-        width: 100%;
-        min-width: 1200px;
-        margin: auto;
-        margin-top: 50px;
-    }
-    #Content2{
-        width: 1200px;
-        overflow: hidden;
-        margin: 0 auto;
 
-    }
-    #Content3{
-        width: 1200px;
-        overflow: hidden;
-        margin: auto;
-    }
-    #Content3 table{
-        height: auto;
-        width: 350px;
-        margin-bottom: 50px;
-    }
-    #Content3 div{
-        float: left;
-        text-align: center;
-    }
-    #Content4{
-        width: 1200px;
-        height: 1200px;
-        overflow: hidden;
-        margin: auto;
-        display: flex;
-
-    }
-    #Content5{
-        width: 350px;
-        border: 1px solid #ddd;
-        margin-right: 50px;
-        
-    }
-    #Content6{
-        width: 800px;
-    }
-    #userImg{
-        height: 70px;
-        width: 70px
-        
-    }
-    #userprofile{
-    	border-radius: 100%;
-        height: 100%;
-        width: 100%;
-    }
-    
-    #Content2 div{
-        float: left;
-        margin: auto;
-        margin: 10px;
-        
-    }
-    #userName *{
-        margin: 0;
-    }
-    table td{
-        text-align: center;
-
-    }
-    a{
-        text-decoration: none;
-        color: black;
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 600;
-    }
-    a:hover{
-        color: #e8618c;
-    }
-
-    #userInfo tr{
-        float: left;
-    }
-    #userBoard {
-        display: flex;
-        text-align: left;
-        gap: 33px;
-        position: relative;
-        border-bottom: 2px solid #ddd;
-        padding-bottom: 5px;
-        margin-left: 20px;
-        margin-bottom: 30px;
-    }
-
-    #myPageTitle{
-        margin-left: 20px;
-    }
-    #Title{
-        color: #e8618c;
-        font-size: x-large;
-        margin: 0;
-    }
-
-    .tab {
-        font-size: 16px;
-        font-weight: bold;
-        color: #5e5858;
-        padding: 10px;
-        cursor: pointer;
-        position: relative;
-        transition: color 0.3s ease-in-out;
-    }
-    .tab.active {
-        color: #e8618c;
-    }
-    .underline{
-        position: absolute;
-        bottom: -2px;
-        height: 3px;
-        background-color: #e8618c;
-        transition: all 0.3s ease-in-out;
-        
-    }
-    .material-icons{
-        display: inline;
-        display: flex;
-        align-items: center;
-        font-weight: 600;
-    }
-    pre{
-        text-decoration: underline;
-        color: #e8618c;
-        text-decoration-thickness: 3px;
-        font-size: xx-small;
-    }
-
-
-    input[type="text"], input[type="password"] {
-        width: 480px;
-        padding: 12px;
-        margin: 0;
-        border: 1px solid #ddd;
-        border-radius: 7px;
-        font-size: 13px;
-        box-sizing: border-box;
-    }
-    .check {
-    background-color: #e8618c;
-    color: white;
-    width: 80px;
-    height: 40px;
-    border-radius: 7px;
-    border: none;
-    cursor: pointer; /* 🔥 마우스 커서를 손가락 모양으로 변경 */
-    pointer-events: auto;
-    font-size: 13px;
-    font-weight: 600;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 3px 3px 5px #e8618c(0, 0, 0, 0.2);
-}
-    .check:hover {
-    background-color: #d9507a;
-    box-shadow: 3px 3px 5px #e8618c(0, 0, 0, 0.2);
-    }
-
-    /* 클릭 시 버튼이 살짝 눌리는 효과 */
-    .check:active {
-        transform: scale(0.95);
-        box-shadow: 1px 1px 3px #e8618c(0, 0, 0, 0.2);
-    }
-    .btn-insta-insert {
-    background-color: #e8618c;
-    color: white;
-    width: 150px;
-    height: 40px;
-    margin-top: 20px;
-    border-radius: 7px;
-    border: none;
-    cursor: pointer; /* 🔥 마우스 커서를 손가락 모양으로 변경 */
-    pointer-events: auto;
-    font-size: 13px;
-    font-weight: 600;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 3px 3px 5px #e8618c(0, 0, 0, 0.2);
-    }
-
-    /* 호버 시 */
-    .btn-insta-insert:hover {
-        background-color: #d9507a;
-        box-shadow: 3px 3px 5px #e8618c(0, 0, 0, 0.2);
-    }
-
-    /* 클릭 시 */
-    .btn-insta-insert:active {
-        transform: scale(0.95);
-        box-shadow: 1px 1px 3px #e8618c(0, 0, 0, 0.2);
-    }
-
-    .btn img {
-        width: 18px;
-        height: 18px;
-        margin-right: 10px;
-    }
-
-    .error-message {
-        color: red;
-        font-size: 12px;
-        display: none;
-    }
-    
-    #insert-form :nth-child(4){
-        margin-top: 20px;
-    }
-
-    #insert-form :nth-child(7){
-        margin-top: 20px;
-    }
-
-    #Content5>*{
-        margin: 7px;
-    }
-    #update{
-        align-content: center;
-    }
-    #update2{
-        width: 100%;
-        height: 100%;
-    }
-    #openModal {
-    display: inline-block;
-    text-decoration: none;
-    color: black;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    }
-    #openModal:hover{
-        color: #e8618c;
-    }
-
-
-    .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-/* 모달 박스 */
-.modal-content {
-    background: white;
-    padding: 90px; /* 좌우 여백을 충분히 줌 */
-    box-sizing: border-box; /* padding 포함한 크기 유지 */
-    height: 600px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 4px solid #5aa1f2; /* 파란색 테두리 추가 */
-}
-
-/* 입력 폼 스타일 */
-.modal-content input[id="password"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-.modal-content input[id="userPwd"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-/* 버튼 스타일 */
-.modal-content .delete-btn {
-    background: #ff5f98;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto 0;
-    text-align: center;
-    width: 200px;
-}
-
-.modal-content .delete-btn:hover {
-    background: #e8618c;
-	background: #ff5f98;
-	color: white;
-	border: none;
-	padding: 12px 20px;
-	border-radius: 5px;
-	font-weight: bold;
-	cursor: pointer;
-	display: block;
-	margin: 20px auto 0;
-	text-align: center;
-	width: 200px;
-}
-
-/* 닫기 버튼 (X) */
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.close-btn:hover {
-    color: red;
-}
-.password-container {
-    display: flex;
-    align-items: center; /* 세로 정렬 */
-    gap: 10px; /* 라벨과 입력 필드 사이 간격 */
-}
-.userId-container {
-    display: flex;
-    align-items: center; /* 세로 정렬 */
-    gap: 26px; /* 라벨과 입력 필드 사이 간격 */
-}
-
-.password-container label {
-    white-space: nowrap; /* 라벨 줄바꿈 방지 */
-}
-
-.password-container input {
-    flex: 1; /* 입력 필드가 남은 공간을 차지 */
-    max-width: 500px; /* 원하는 너비 설정 */
-}
-.userId-container label {
-    white-space: nowrap; /* 라벨 줄바꿈 방지 */
-}
-
-.userId-container input {
-    flex: 1; /* 입력 필드가 남은 공간을 차지 */
-    max-width: 500px; /* 원하는 너비 설정 */
-}
-table {
-    table-layout: fixed; /* 테이블 셀 너비를 균등하게 */
-}
-
-button {
-    border-style: none;
-}
-#gender{
-        width: 100%;
-        height: 20px;
-        margin-top: 10px;
-        
-    }
-#improvement input{
-margin-left: 30px;
-}
-#update2 input[type="checkbox"]{
-    margin-left: 30px;
-    appearance: none;
-    width: 15px;
-    vertical-align: middle;
-    height: 12px;
-    border: 1px solid rgb(118, 118, 118);
-    border-radius: 50%; /* 원형 */
-    position: relative;
-    cursor: pointer;
-}
-#update2 input[type="radio"]{
-    margin: 10px;
-}
-.color-box {
-    display: flex;
-  }
-
-  .color-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 121px; /* 버튼 크기 */
-    height: 45px;
-    border: 2px solid #ddd;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-    background-color: #fff;
-    transition: all 0.3s;
-  }
-
-  /* 라디오 버튼 숨기기 */
-  .color-input {
-    display: none;
-  }
-
-  /* 선택된 상태 스타일 */
-  .color-input:checked + .color-label {
-    background-color: #e8618c;
-    border-color: #e8618c;
-    color: white;
-  }
-  /* 처음 버튼 (왼쪽만 둥글게) */
-  .color-label:first-of-type {
-    border-radius: 10px 0 0 10px;
-  }
-
-  /* 마지막 버튼 (오른쪽만 둥글게) */
-  .color-label:last-of-type {
-    border-radius: 0 10px 10px 0;
-  }
-
-</style>
 <body>
 	<%@ include file="../common/header.jsp" %>
 	<%
@@ -457,16 +32,65 @@ margin-left: 30px;
 	
 	    <div id="Content1">
             <div id="Content2">
-                <div id="userImg">
-                    <img id="userprofile" src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
+                <% if(loginUser.getFilePath() != null) { %>
+                <div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+                    <img id="userprofile" src="<%= loginUser.getFilePath() %>" 
+                        alt="유저이미지" style="border-radius: 50%; cursor: pointer;">
+                    
+                    <!-- 수정 아이콘 -->
+                    <span id="openProfileModal" class="material-icons" 
+                        style="position: absolute; bottom: 2px; right: 2px; cursor: pointer;">
+                        photo_camera
+                    </span>
                 </div>
-                <div id="userName">
+                <% } else {%>
+                <div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+                    <img id="userprofile" src="<%= contextPath %>/resources/images/account_circle_500dp_000000.png" alt="프로필 사진" 
+                        alt="유저이미지" style="border-radius: 50%; cursor: pointer;">
+                    
+                    <!-- 수정 아이콘 -->
+                    <span id="openProfileModal" class="material-icons" 
+                        style="position: absolute; bottom: 2px; right: 2px; cursor: pointer;">
+                        photo_camera
+                    </span>
+                </div>
+                <% } %>
+                
+                <!-- ✅ 프로필 수정 모달 -->
+                <div id="profileModal" class="profile-modal">
+                    <div class="profile-modal-content">
+                        <span class="close-profile">&times;</span>
+                        <h2 style="color: #e8618c;">프로필 사진 변경</h2>
+                
+                        <!-- ✅ form에 class 추가하여 스타일 영향 최소화 -->
+                        <form id="profileForm" action="<%= contextPath %>/insert.img" method="POST" enctype="multipart/form-data" class="profile-form">
+                            <input type="hidden" name="userNo" value="<%= loginUser.getUserNo() %>">
+                            <input type="hidden" name="userId" value="<%= loginUser.getUserId() %>">
+                            <input type="hidden" name="userPwd" value="<%= loginUser.getUserPwd() %>">
+                            <!-- 현재 사용자 프로필 이미지 -->
+                            <div class="profile-preview">
+                                <img id="previewImage" src="<%= loginUser.getFilePath() %>" 
+                                    alt="현재 프로필 이미지">
+                            </div>
+                
+                            <!-- 이미지 업로드 버튼 -->
+                            <div class="profile-button-container">
+                                <input type="file" id="profileUpload" name="upfile" accept="image/*" style="display: none;">
+                                <label for="profileUpload" class="custom-file-upload">파일 선택</label>
+                                <button type="submit" id="saveProfile" style="font-size: medium;">저장</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+
+                <div id="userName" style="margin-left: 20px;">
                     <h2><%= loginUser.getUserName() %></h2>
                     <span style="font-size: x-small;"><%= loginUser.getUserId() %></span>
                 </div>
             </div>
             <div id="Content3">
-                <table>
+                <table style="margin-top: 10px;">
                     <tr>
                         <td>
                             <a href="" style="font-weight: 800; font-size: larger;">게시글 <br><%= loginUser.getPost() %></a> <br>
@@ -1237,6 +861,26 @@ margin-left: 30px;
                     }
                 });
             });
+            $(document).ready(function () {
+            // ✅ 프로필 수정 모달 열기
+            $("#userprofile, #openProfileModal").click(function () {
+                $("#profileModal").fadeIn();
+            });
+
+            // ✅ 프로필 수정 모달 닫기 (X 버튼 클릭 시)
+            $(".close-profile").click(function () {
+                $("#profileModal").fadeOut();
+            });
+
+            // ✅ 프로필 수정 모달 바깥 클릭 시 닫기 (회원탈퇴 모달과 구별)
+            $(window).click(function (e) {
+                if ($(e.target).is("#profileModal")) {
+                    $("#profileModal").fadeOut();
+                }
+            });
+
+            // 🔥 기존 회원탈퇴 모달 관련 코드는 손대지 않음! 🔥
+        });
         </script>
         
         <script>
@@ -1322,4 +966,5 @@ margin-left: 30px;
 
         </script>
 </body>
+
 </html>

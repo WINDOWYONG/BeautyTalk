@@ -20,9 +20,30 @@ public class Member {
 	private int follower;
 	private int review;
 	private int post;
+	private String filePath;
 	
 	
 	public Member () {}
+
+
+
+	public Member(int userNo, String userId, String userPwd, String userName, String email, String nickName,
+			String phone, String gender, int following, int follower, int review, int post, String filePath) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.email = email;
+		this.nickName = nickName;
+		this.phone = phone;
+		this.gender = gender;
+		this.following = following;
+		this.follower = follower;
+		this.review = review;
+		this.post = post;
+		this.filePath = filePath;
+	}
 
 
 
@@ -152,15 +173,40 @@ public class Member {
 		this.phone = phone;
 	}
 
-
-
 	public Member(int userNo, String userId, String userName) {
-		super();
-		this.userNo = userNo;
-		this.userId = userId;
-		this.userName = userName;
+			super();
+			this.userNo = userNo;
+			this.userId = userId;
+			this.userName = userName;
 	}
 
+
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+
+
+	
 	public int getUserNo() {
 		return userNo;
 	}
@@ -358,8 +404,12 @@ public class Member {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
 				+ ", email=" + email + ", nickName=" + nickName + ", phone=" + phone + ", enrollDate=" + enrollDate
 				+ ", status=" + status + ", agreeYN=" + agreeYN + ", gender=" + gender + ", token=" + token
-				+ ", following=" + following + ", follower=" + follower + ", review=" + review + ", post=" + post + "]";
+				+ ", following=" + following + ", follower=" + follower + ", review=" + review + ", post=" + post
+				+ ", filePath=" + filePath + "]";
 	}
+
+
+
 
 
 	

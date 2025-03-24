@@ -87,9 +87,8 @@ public class ProfileInsertController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("userProfile", p);
-			System.out.println("p: " + p);
+			System.out.println(p);
 			session.setAttribute("alertMsg", "성공적으로 뷰티 프로필 저장완료.");
-			
 			response.sendRedirect(request.getContextPath() + "/myPage.me");
 		} else {
 			request.setAttribute("alertMsg", "뷰티 프로필 저장실패.");
