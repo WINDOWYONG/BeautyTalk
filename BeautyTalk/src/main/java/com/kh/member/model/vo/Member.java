@@ -179,6 +179,14 @@ public class Member {
 			this.userId = userId;
 			this.userName = userName;
 	}
+	
+
+	public Member(int userNo, String userName, int follower) {
+		super();
+		this.userNo = userNo;
+		this.userName = userName;
+		this.follower = follower;
+	}
 
 
 
