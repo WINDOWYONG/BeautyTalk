@@ -18,6 +18,7 @@
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <title>Insert title here</title>
 <style>
 
@@ -50,6 +51,10 @@
 
     .L2{
       height: 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
     }
 
     .right{
@@ -283,6 +288,34 @@
       margin-top: -5px; /* 이름과 간격 좁힘 */
     }
 
+    .move-my-calendar-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      padding: 12px 18px;
+      background-color: #d81b60; /* 진한 핑크 */
+      color: white;
+      border: none;
+      border-radius: 30px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      margin-bottom: 20px;  /* 여백 추가로 너무 붙는 거 해결 */
+    }
+
+    .move-my-calendar-btn:hover {
+      background-color: #b3164f; /* 조금 더 진한 핑크 */
+      transform: translateY(-2px);
+    }
+
+    .move-my-calendar-btn i {
+      margin-right: 8px;  /* 아이콘과 글자 간격 */
+      font-size: 16px;
+    }
+
 </style>
 </head>
 <body>
@@ -303,7 +336,11 @@
 	            </div>
 	          </nav>
 	      </div>
-	      <div class="L2"></div>
+	      <div class="L2">
+          <button class="move-my-calendar-btn" onclick="location.href='<%= contextPath %>/calendarMainpage.ca'">
+            <i class="fas fa-arrow-left"></i> 내 캘린더로 이동
+          </button>
+        </div>
 	      <div class="L3">
 	        <div class="L3-content">
 	          <h3>내 팔로잉</h3>
@@ -335,14 +372,12 @@
 	      <div class="R1">
 	        <div class="R1-content">
 	          <div class="title">
-	            <strong><%= userName.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span><i class="fa-regular fa-heart"></i>
+	            <strong><%= userName.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span>
 	          </div>
 	          <div class="icons">
 	            <i class="fa-solid fa-magnifying-glass">
-	              <img src="<%= contextPath %>/resources/images/3.PNG" alt="">
 	            </i>
 	            <i class="fa-regular fa-bell">
-	              <img src="<%= contextPath %>/resources/images/3.PNG" alt="">
 	            </i>
 	            <div class="profile-img">
 	              <img src="" alt="">
@@ -356,6 +391,8 @@
   	</div>
 
   <script>
+  var userId = "<%= request.getParameter("userId") %>";
+  
   $(document).ready(function () {
       // 페이지 로드 시 기본값으로 뷰티 캘린더 로드
       loadPage("views/calendar/followingBeautyCalendar.jsp");

@@ -54,4 +54,15 @@
 		  FROM MEMBER
 		 WHERE MEM_ID = ?
 	</entry>
+	
+	<entry key="followingScheduleList">
+		SELECT
+		       SCH_NO
+		     , SCH_TITLE
+		     , SCH_STARTDATE
+		     , SCH_ENDDATE
+		  FROM SCHEDULE
+		  JOIN MEMBER USING (MEM_NO)
+		 WHERE MEM_ID = ?
+	</entry>
 </properties>

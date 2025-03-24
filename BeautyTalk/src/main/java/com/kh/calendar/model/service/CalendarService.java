@@ -57,5 +57,12 @@ public class CalendarService {
 		close(conn);
 		return userName;
 	}
+	
+	public ArrayList<Calendar> followingScheduleList(String userId) {
+		Connection conn = getConnection();
+		ArrayList<Calendar> scheduleList = new CalendarDao().followingScheduleList(conn, userId);
+		close(conn);
+		return scheduleList;
+	}
 
 }

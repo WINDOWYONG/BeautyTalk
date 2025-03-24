@@ -231,7 +231,18 @@
             dayCellContent: function(info) {
             	return info.date.getDate();
             },
-            events: '<%=contextPath%>/schList.ca'
+            events: function(fetchInfo, successCallback, failureCallback) {
+                $.ajax({
+                    url: '<%= contextPath %>/followingSchList.ca',
+                    data: { userId: userId },  // 전역 JS userId 사용
+                    success: function(response) {
+                        successCallback(response);
+                    },
+                    error: function() {
+                        failureCallback();
+                    }
+                });
+            }
         });
 
         calendar.render();

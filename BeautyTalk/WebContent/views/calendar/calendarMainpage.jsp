@@ -14,6 +14,7 @@
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <title>Insert title here</title>
 <style>
 
@@ -334,14 +335,12 @@
 	      <div class="R1">
 	        <div class="R1-content">
 	          <div class="title">
-	            <strong><%= loginUser.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span><i class="fa-regular fa-heart"></i>
+	            <strong><%= loginUser.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span>
 	          </div>
 	          <div class="icons">
 	            <i class="fa-solid fa-magnifying-glass">
-	              <img src="<%= contextPath %>/resources/images/3.PNG" alt="">
 	            </i>
 	            <i class="fa-regular fa-bell">
-	              <img src="<%= contextPath %>/resources/images/3.PNG" alt="">
 	            </i>
 	            <div class="profile-img">
 	              <img src="" alt="">

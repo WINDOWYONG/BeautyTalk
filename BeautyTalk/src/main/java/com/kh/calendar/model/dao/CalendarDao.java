@@ -149,5 +149,32 @@ private Properties prop = new Properties();
 		}
 		return userName;
 	}
+	
+	public ArrayList<Calendar> followingScheduleList(Connection conn, String userId) {
+		ArrayList<Calendar> scheduleList = new ArrayList<Calendar>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("followingScheduleList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				scheduleList.add(new Calendar(rset.getInt("sch_no"),
+											  rset.getString("sch_title"), 
+											  rset.getString("sch_startdate"), 
+											  rset.getString("sch_enddate")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return scheduleList;
+	}
 
 }

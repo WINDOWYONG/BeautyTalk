@@ -21,7 +21,10 @@
 body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333; }
 .container { display: flex; max-width: 1200px; margin: 0 auto; gap: 30px; align-items: flex-start;}
 
-.form-container { flex: 1; background-color: #fff; border-radius: 15px; padding: 30px 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); color: #333; width: 50%;}
+.form-container { flex: 1; background-color: #fff; border-radius: 15px; padding: 30px 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); color: #333; width: 50%; box-sizing: border-box;}
+.form-container * {
+  box-sizing: border-box;
+}
 .form-container h2 { font-size: 22px; margin-bottom: 20px; color: #d6336c; }
 .form-container label { margin: 15px 0 5px; font-weight: bold; color: #d6336c; display: block; }
 .form-container input, .form-container select, .form-container textarea {
@@ -29,7 +32,7 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
 }
 .form-container button {
   background-color: #f78fb3; color: white; padding: 12px 20px; border: none;
-  border-radius: 10px; font-size: 16px; cursor: pointer; margin-top: 20px; width: 100%;
+  border-radius: 10px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 20px; width: 100%;
 }
 .form-container button:hover { background-color: #f1aeb5; }
 .weekdays { display: flex; gap: 5px; margin-top: 10px; }
@@ -122,38 +125,39 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
 
   <!-- 루틴 입력 폼 -->
   <div class="form-container">
-    <h2><span style="color:black;"><%= loginUser.getUserName() %></span>님의 뷰티 루틴</h2>
-    <label>항목명</label>
-    <input type="text" id="event-title" placeholder="항목명을 입력해 주세요.">
-
-    <label>기간</label>
-    <div class="date-group">
-      <input type="date" id="event-start"> ~ <input type="date" id="event-end">
-    </div>
-
-    <label>요일</label>
-    <div class="weekdays">
-      <div class="week-btn">월</div>
-      <div class="week-btn">화</div>
-      <div class="week-btn">수</div>
-      <div class="week-btn">목</div>
-      <div class="week-btn">금</div>
-      <div class="week-btn">토</div>
-      <div class="week-btn">일</div>
-    </div>
-
-    <label>메모</label>
-    <textarea id="event-memo" rows="3" placeholder="메모를 입력하세요 (선택사항)" style="resize: none;"></textarea>
-
-    <label>알림 설정</label>
-    <select id="alarm">
-      <option>오전 9:00</option>
-      <option>오전 10:00</option>
-      <option>오후 1:00</option>
-      <option>오후 6:00</option>
-    </select>
-
-    <button id="add-event-btn">설정</button>
+    <form action="" method="post">
+      <h2><span style="color:black;"><%= loginUser.getUserName() %></span>님의 뷰티 루틴</h2>
+      <label>항목명</label>
+      <input type="text" id="check_title" name="check_title" placeholder="항목명을 입력해 주세요." required>
+  	  <br><br>
+      <label>기간</label>
+      <div class="date-group">
+        <input type="date" id="repeat_startdate" name="repeat_startdate" required> ~ <input type="date" id="repeat_enddate" name="repeat_enddate">
+      </div>
+  	  <br>
+      <label>요일 (선택사항)</label>
+      <div class="weekdays">
+        <div class="week-btn">월</div>
+        <div class="week-btn">화</div>
+        <div class="week-btn">수</div>
+        <div class="week-btn">목</div>
+        <div class="week-btn">금</div>
+        <div class="week-btn">토</div>
+        <div class="week-btn">일</div>
+        <input type="hidden" name="mon_re" id="mon_re" value="N">
+        <input type="hidden" name="tue_re" id="tue_re" value="N">
+        <input type="hidden" name="wed_re" id="wed_re" value="N">
+        <input type="hidden" name="thu_re" id="thu_re" value="N">
+        <input type="hidden" name="fri_re" id="fri_re" value="N">
+        <input type="hidden" name="sat_re" id="sat_re" value="N">
+        <input type="hidden" name="sun_re" id="sun_re" value="N">
+      </div>
+  	  <br>
+      <label>메모</label>
+      <textarea id="event-memo" rows="3" placeholder="메모를 입력하세요 (선택사항)" style="resize: none;"></textarea>
+  	  <br><br>
+      <button id="add-event-btn">설정</button>
+    </form>
   </div>
 </div>
 
@@ -205,6 +209,31 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
 	        }
 	      });
 	    });
+	    
+	    $(document).ready(function() {
+	    	  // 요일 버튼 클릭 시 active 토글
+	    	  $(".week-btn").click(function() {
+	    	    $(this).toggleClass("active");
+
+            const text = $(this).text();
+            let inputId = "";
+
+            if (text === '월') inputId = 'mon_re';
+            if (text === '화') inputId = 'tue_re';
+            if (text === '수') inputId = 'wed_re';
+            if (text === '목') inputId = 'thu_re';
+            if (text === '금') inputId = 'fri_re';
+            if (text === '토') inputId = 'sat_re';
+            if (text === '일') inputId = 'sun_re';
+
+            if ($(this).hasClass("active")) {
+              $("#" + inputId).val("Y");
+            } else {
+              $("#" + inputId).val("N");
+            }
+	    	  });
+	    	});
+
 	  };
 
 	  renderCalendar();
