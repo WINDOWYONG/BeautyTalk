@@ -277,7 +277,6 @@ public class MemberDao {
 			pstmt.setInt(7, m.getUserNo());
 			
 			result = pstmt.executeUpdate();
-			System.out.println(result);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

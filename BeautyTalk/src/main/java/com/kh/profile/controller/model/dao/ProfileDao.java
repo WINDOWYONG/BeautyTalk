@@ -85,8 +85,6 @@ public class ProfileDao {
 			pstmt.setString(9, p.getColor());
 			pstmt.setInt(10, p.getUserNo());
 			
-			System.out.println(p.getScalpList());
-
 			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -110,7 +108,6 @@ public class ProfileDao {
 			pstmt.setString(3, up.getChangename());
 			pstmt.setString(4, up.getFilepath());
 			
-			System.out.println(pstmt);
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
