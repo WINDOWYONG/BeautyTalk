@@ -14,19 +14,7 @@
 
 <body>
 	<%@ include file="../common/header.jsp" %>
-	<%
-	int bfNO = (userProfile == null) ? 22 : userProfile.getBfNO();
-	int userNo = (userProfile == null) ? 22 : userProfile.getUserNo();
-	String skinTypeNo = (userProfile == null) ? "" : userProfile.getSkinTypeNo(); // 필수 입력 사항 아니라서 null이 있을 수도 있다.
-	String bodyTypeNo = (userProfile == null) ? "" : userProfile.getBodyTypeNo();
-	String skinList = (userProfile == null) ? "" : userProfile.getSkinList();
-	String scalpList = (userProfile == null) ? "" : userProfile.getScalpList();
-	String brandList = (userProfile == null) ? "" : userProfile.getBrandList();
-	String color = (userProfile == null) ? "" : userProfile.getColor();
-	String release = (userProfile == null) ? "" : userProfile.getRelease();
-	String hairTypeNo = (userProfile == null) ? "" : userProfile.getHairTypeNo();
-	String scalpTypeNo = (userProfile == null) ? "" : userProfile.getScalpTypeNo();
-	%>
+
     
     <br>
 	
@@ -96,8 +84,8 @@
                             <a href="" style="font-weight: 800; font-size: larger;">게시글 <br><%= loginUser.getPost() %></a> <br>
                         </td>
                         <td><a href="" style="font-weight: 800; font-size: larger;">리뷰 <br><%= loginUser.getReview() %><br></a></td>
-                        <td><a href="" style="font-weight: 800; font-size: larger;">팔로우 <br><%= loginUser.getFollower() %><br></a></td>
-                        <td><a href="" style="font-weight: 800; font-size: larger;">팔로잉 <br><%= loginUser.getFollowing() %><br></a></td>
+                        <td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로우 <br><%= loginUser.getFollower() %><br></a></td>
+                        <td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로잉 <br><%= loginUser.getFollowing() %><br></a></td>
                     </tr>
                 </table>
                 <div id="userBoard">
@@ -221,7 +209,7 @@
                         <div id="line" style="margin-left: 55px;">                              
                             <pre align="left">                                                                                                                  </pre>
                         </div>
-                            <% if(userProfile != null) { %>
+                            <% if(loginUser.getBfNo() != 0) { %>
                         <form action="<%= contextPath %>/update.bp" id="profile-form11" method="post">
                             <input type="hidden" name=userNo class="userNo" maxlength="16" value="<%= loginUser.getUserNo() %>">
                             <div id="myPageTitle">
@@ -434,7 +422,7 @@
                                         </table>
                                         <script>
                                             $(function() {
-                                                    const skinTypeNo = "<%= skinTypeNo %>";
+                                                    const skinTypeNo = "<%= loginUser.getSkinType() %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=radio]").each(function() {
                                                     
@@ -447,7 +435,7 @@
                                             })	
                                             
                                             $(function() {
-                                                    const bodyTypeNo = "<%= bodyTypeNo %>";
+                                                    const bodyTypeNo = "<%= loginUser.getBodyType() %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=radio]").each(function() {
                                                     
@@ -461,7 +449,7 @@
                                             })
                                             
                                             $(function() {
-                                                    const skinList = "<%= skinList %>";
+                                                    const skinList = "<%= loginUser.getSimList() %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=checkbox]").each(function() {
                                                     
@@ -475,7 +463,7 @@
                                             })
                                             
                                             $(function() {
-                                                    const color = "<%= color %>";
+                                                    const color = "<%= loginUser.getColor() %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=radio]").each(function() {
                                                     
@@ -489,7 +477,7 @@
                                             })
                                             
                                             $(function() {
-                                                    const hairTypeNo = "<%= hairTypeNo %>";
+                                                    const hairTypeNo = "<%= loginUser.getHairType() %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=radio]").each(function() {
                                                     
@@ -503,7 +491,7 @@
                                             })
                                             
                                             $(function() {
-                                                    const scalpTypeNo = "<%= scalpTypeNo %>";
+                                                    const scalpTypeNo = "<%= loginUser.getScalpType() %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=radio]").each(function() {
                                                     
@@ -517,7 +505,7 @@
                                             })
                                             
                                                     $(function() {
-                                                    const scalpList = "<%= scalpList %>";
+                                                    	const scalpList = "<%= loginUser.getHimList() %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=checkbox]").each(function() {
                                                     
@@ -531,7 +519,7 @@
                                             })
                                             
                                             $(function() {
-                                                    const brandList = "<%= brandList %>";
+                                                    const brandList = "<%= loginUser.getBrandList() %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=checkbox]").each(function() {
                                                     
@@ -545,7 +533,7 @@
                                             })
                                             
                                             $(function() {
-                                                    const release = "<%= release %>";
+                                                    const release = "<%= loginUser.getMarketingAgree() %>";
                                                     // "" | "1, 2, 3 ..."
                                                     $("input[type=radio]").each(function() {
                                                     
