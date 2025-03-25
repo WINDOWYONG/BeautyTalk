@@ -1,6 +1,7 @@
 package com.kh.member.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import static com.kh.common.JDBCTemplate.*;
 
@@ -103,7 +104,57 @@ public class MemberService {
 		return count;
 	}
 	
+public Member selectMember(int userNo) {
+		
+		Connection conn = getConnection();
+		Member updateMem = new MemberDao().selectMember(conn, userNo);
+		close(conn);
+		return updateMem;
+		
+		
+	}
 	
+
+	
+public ArrayList<Member> selectListFollow(int userNo) {
+		
+		Connection conn = getConnection();
+		ArrayList<Member> list = new MemberDao().selectListFollow(conn, userNo);
+		close(conn);
+		return list;
+		
+		
+	}
+
+public ArrayList<Member> selectListFollower(int userNo) {
+	
+	Connection conn = getConnection();
+	ArrayList<Member> list = new MemberDao().selectListFollower(conn, userNo);
+	close(conn);
+	return list;
+	
+	
+}
+
+public ArrayList<Member> followList(String nickname) {
+	
+	Connection conn = getConnection();
+	ArrayList<Member> list = new MemberDao().followList(conn, nickname);
+	close(conn);
+	return list;
+		
+}
+
+public ArrayList<Member> followerList(String nickname) {
+	
+	Connection conn = getConnection();
+	ArrayList<Member> list = new MemberDao().followerList(conn, nickname);
+	close(conn);
+	return list;
+		
+}
+
+
 
 
 }
