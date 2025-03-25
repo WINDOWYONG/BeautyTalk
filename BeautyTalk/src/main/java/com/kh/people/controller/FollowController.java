@@ -1,31 +1,25 @@
 package com.kh.people.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.calendar.model.service.CalendarService;
-import com.kh.calendar.model.vo.Calendar;
-import com.kh.member.model.vo.Member;
 import com.kh.people.model.service.PeopleService;
 
 /**
- * Servlet implementation class PeopleListController
+ * Servlet implementation class FollowController
  */
-@WebServlet("/selectPeople.pe")
-public class PeopleListController extends HttpServlet {
+@WebServlet("/follow.pe")
+public class FollowController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PeopleListController() {
+    public FollowController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,22 +29,18 @@ public class PeopleListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Member> peopleList = new PeopleService().selectPeopleList();
+		int loginUserNo = Integer.parseInt(request.getParameter("loginUserNo"));
+		int targetUserNo = Integer.parseInt(request.getParameter("targetUserNo"));
 		
-		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
-		ArrayList<Integer> activeList = new ArrayList<>();
-
-		if (loginUser != null) {
-		    int userNo = loginUser.getUserNo();
-		    activeList = new PeopleService().selectActive(userNo);  // 로그인 했을 때만 조회
-		}
+		int result = new PeopleService().insertFollow(loginUserNo, targetUserNo);
 		
-		request.setAttribute("peopleList", peopleList);
-		request.setAttribute("activeList", activeList);
+		response.setContentType("text/html; charset=UTF-8");
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/people/peopleMainpage.jsp");
-		view.forward(request, response);
-		
+		if(result > 0) {
+			response.getWriter().print("success");
+        } else {
+        	response.getWriter().print("fail");
+        }
 	}
 
 	/**

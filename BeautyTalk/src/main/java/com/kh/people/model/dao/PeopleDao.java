@@ -52,5 +52,70 @@ public class PeopleDao {
 		}
 		return peopleList;
 	}
+	
+	public ArrayList<Integer> selectActive(Connection conn, int userNo) {
+		ArrayList<Integer> activeList = new ArrayList<Integer>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectActive");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				activeList.add(rset.getInt("FOLLOWING"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return activeList;
+	}
+	
+	public int insertFollow(Connection conn, int loginUserNo, int targetUserNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertFollow");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, targetUserNo);
+			pstmt.setInt(2, loginUserNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int deleteUnfollow(Connection conn, int loginUserNo, int targetUserNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteUnfollow");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, targetUserNo);
+			pstmt.setInt(2, loginUserNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
 }

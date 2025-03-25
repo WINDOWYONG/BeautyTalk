@@ -4,6 +4,9 @@
 <%
 	ArrayList<Member> peopleList = (ArrayList<Member>)request.getAttribute("peopleList");
 	// 회원 번호, 회원 이름, 팔로워 수 (프로필사진 추가해야할듯..)
+	
+	ArrayList<Integer> activeList = (ArrayList<Integer>)request.getAttribute("activeList");
+	// 로그인 유저가 팔로우한 사람의 번호
 %>
 <!DOCTYPE html>
 <html>
@@ -18,8 +21,8 @@
     }
 
     .container {
-      width: 900px; /* 중앙 배치용 */
-      margin: 0 auto;  /* 이걸로 가운데 정렬 */
+      width: 900px;
+      margin: 0 auto;
     }
 
     .rank-item {
@@ -84,7 +87,7 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-left: 45px; /* 숫자 부분 만큼 들여쓰기 */
+      margin-left: 45px;
     }
 
     .photo {
@@ -94,6 +97,18 @@
       border-radius: 6px;
       background-color: #ddd;
     }
+    
+    .follow-btn.active {
+	  background-color: #ff69b4;  /* 진한 핑크 */
+	  color: #fff;
+	  font-weight: bold;
+	}
+	
+	.follow-btn:hover {
+	  opacity: 0.6;
+  	  transition: opacity 0.2s;
+	}
+    
   </style>
 <title>Insert title here</title>
 </head>
@@ -103,9 +118,10 @@
 <br><br>
 
   <div class="container">
-  <input type="hidden" id="loginUserNo" value="<%= (loginUser != null) ? loginUser.getUserNo() : 0 %>">
   <% int rank = 1; %>
-  <% for(Member m : peopleList) { %>
+  <% for(Member m : peopleList) { 
+	  boolean isFollowing = (loginUser != null && activeList.contains(m.getUserNo()));
+  %>
     <div class="rank-item">
       <div class="user-row">
         <div class="user-left">
@@ -117,8 +133,9 @@
           </div>
         </div>
         
-        <input type="hidden" class="targetUserNo" value="<%= m.getUserNo() %>">
-        <div class="follow-btn">+ 팔로우</div>
+        <div class="follow-btn <%= isFollowing ? "active" : "" %>" data-userno="<%= m.getUserNo() %>">
+      		<%= isFollowing ? "✔ 팔로잉" : "+ 팔로우" %>
+  		</div>
       </div>
 
       <div class="photos">
@@ -135,40 +152,61 @@
   </div>
   
   	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-		  const loginUserNo = document.getElementById('loginUserNo').value;
-		  const followBtns = document.querySelectorAll('.follow-btn');
-		
-		  followBtns.forEach(btn => {
-		    btn.addEventListener('click', function() {
-		      const targetUserNo = this.previousElementSibling.value;  // 바로 위에 hidden에서 값 가져옴
-		
-		      // 비회원 체크
-		      if(loginUserNo == 0) {
-		        alert('로그인이 필요합니다.');
-		        location.href = '<%= request.getContextPath() %>/loginForm.me';
-		        return;
-		      }
-		
-		      // confirm 후 AJAX 전송
-		      if(confirm("팔로우 하시겠습니까?")) {
-		        fetch('<%= request.getContextPath() %>/follow.pe', {
-		          method: 'POST',
-		          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-		          body: 'follower=' + loginUserNo + '&following=' + targetUserNo
-		        })
-		        .then(response => {
-		          if(response.ok) {
-		            alert('팔로우 성공!');
-		            this.textContent = '✔ 팔로잉';
-		          } else {
-		            alert('팔로우 실패');
-		          }
-		        });
-		      }
-		    });
-		  });
-		});
+  	document.addEventListener('DOMContentLoaded', function() {
+  	  const loginUserNo = <%= (loginUser != null) ? loginUser.getUserNo() : 0 %>;
+  	  const followBtns = document.querySelectorAll('.follow-btn');
+
+  	  followBtns.forEach(btn => {
+  	    btn.addEventListener('click', function() {
+  	      if (loginUserNo == 0) {
+  	        alert('로그인이 필요합니다.');
+  	        location.href = '<%= request.getContextPath() %>/loginForm.me';
+  	        return;
+  	      }
+
+  	      const targetUserNo = this.dataset.userno;
+
+  	      if (this.classList.contains('active')) {
+  	        if (confirm('언팔로우 하시겠습니까?')) {
+  	          // 언팔로우 처리 fetch
+  	          fetch('<%= request.getContextPath() %>/unfollow.pe', { 
+	 	          method: 'POST',
+	  	          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+	  	          body: 'loginUserNo=' + loginUserNo + '&targetUserNo=' + targetUserNo
+  	          })
+  	          .then(response => response.text())
+	  	      .then(result => {
+	  	          if(result.trim() === 'success') {
+	  	              location.reload();
+	  	              alert('언팔로우 성공!');
+	  	          } else {
+	  	              alert('언팔로우 실패');
+	  	          }
+	  	      });
+  	        }
+  	      } else {
+  	        if (confirm('팔로우 하시겠습니까?')) {
+  	          // 팔로우 처리 fetch
+  	          fetch('<%= request.getContextPath() %>/follow.pe', { 
+	 	          method: 'POST',
+	  	          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+	  	          body: 'loginUserNo=' + loginUserNo + '&targetUserNo=' + targetUserNo
+  	          })
+  	          .then(response => response.text())
+	  	      .then(result => {
+	  	          if(result.trim() === 'success') {
+	  	              location.reload();
+	  	              alert('팔로우 성공!');
+	  	          } else {
+	  	              alert('팔로우 실패');
+	  	          }
+	  	      });
+  	        }
+  	      }
+  	    });
+  	  });
+  	});
+
 	</script>
   
 	

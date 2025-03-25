@@ -15,5 +15,36 @@ public class PeopleService {
 		close(conn);
 		return peopleList;
 	}
+	
+	public ArrayList<Integer> selectActive(int userNo) {
+		Connection conn = getConnection();
+		ArrayList<Integer> activeList = new PeopleDao().selectActive(conn, userNo);
+		close(conn);
+		return activeList;
+	}
+	
+	public int insertFollow(int loginUserNo, int targetUserNo) {
+		Connection conn = getConnection();
+		int result = new PeopleDao().insertFollow(conn, loginUserNo, targetUserNo);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		return result;
+	}
+	
+	public int deleteUnfollow(int loginUserNo, int targetUserNo) {
+		Connection conn = getConnection();
+		int result = new PeopleDao().deleteUnfollow(conn, loginUserNo, targetUserNo);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		return result;
+	}
 
 }

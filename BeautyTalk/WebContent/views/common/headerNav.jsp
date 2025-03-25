@@ -323,7 +323,9 @@ img {
 		<div id="header">
 
 			<div id="header1">
-				<img src="<%= contextPath %>/resources/images/현존최강로고.jpg" alt="로고">
+				<a href="<%= contextPath %>">
+					<img src="<%= contextPath %>/resources/images/현존최강로고.jpg" alt="로고">
+				</a>
 			</div>
 
 			<div id="header2">
@@ -382,10 +384,10 @@ img {
 				<li><a href="haircare.html">헤어케어</a></li>
 			</ul>
 			<ul id="navi">
-				<li><a href="index.html">HOME</a></li>
+				<li><a href="<%= contextPath %>">HOME</a></li>
 				<li><a href="./review.li?">Reviews</a></li>
 				<li><a href="posts.html">Posts</a></li>
-				<li><a href="${pageContext.request.contextPath}/peopleMainpage.pe">People</a></li>
+				<li><a href="${pageContext.request.contextPath}/selectPeople.pe">People</a></li>
 				<li><a href="ranking.html">상품 랭킹</a></li>
 			</ul>
 		</div>

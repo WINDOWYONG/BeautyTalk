@@ -1,25 +1,25 @@
 package com.kh.people.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.people.model.service.PeopleService;
+
 /**
- * Servlet implementation class PeopleMainpageFormController
+ * Servlet implementation class UnfollowController
  */
-@WebServlet("/peopleMainpage.pe")
-public class PeopleMainpageFormController extends HttpServlet {
+@WebServlet("/unfollow.pe")
+public class UnfollowController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PeopleMainpageFormController() {
+    public UnfollowController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,9 +29,18 @@ public class PeopleMainpageFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/people/peopleMainpage.jsp");
-		view.forward(request, response);
+		int loginUserNo = Integer.parseInt(request.getParameter("loginUserNo"));
+		int targetUserNo = Integer.parseInt(request.getParameter("targetUserNo"));
 		
+		int result = new PeopleService().deleteUnfollow(loginUserNo, targetUserNo);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		
+		if(result > 0) {
+			response.getWriter().print("success");
+        } else {
+        	response.getWriter().print("fail");
+        }
 	}
 
 	/**
