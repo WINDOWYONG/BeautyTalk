@@ -53,7 +53,7 @@ public class Member {
 
 
 	public Member(int userNo, String userId, String userPwd, String userName, String email, String nickName,
-			String phone, int following, int follower, int review, int post) {
+			String phone, String gender, int following, int follower, int review, int post) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
@@ -62,6 +62,7 @@ public class Member {
 		this.email = email;
 		this.nickName = nickName;
 		this.phone = phone;
+		this.gender = gender;
 		this.following = following;
 		this.follower = follower;
 		this.review = review;
@@ -132,6 +133,8 @@ public class Member {
 		this.nickName = nickName;
 		this.phone = phone;
 	}
+	
+	
 	
 	
 

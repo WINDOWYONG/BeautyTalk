@@ -1,7 +1,6 @@
 package com.kh.review.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.review.model.service.ReviewService;
 import com.kh.review.model.vo.Image;
 import com.kh.review.model.vo.Review;
-import com.kh.review.model.vo.SubCategory;
+
 
 /**
  * Servlet implementation class ReviewDetailController
@@ -34,19 +33,16 @@ public class ReviewDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		SubCategory sc = new ReviewService().selectSubCategory();
-		request.setAttribute("sc", sc);
-		
 		String refBno = request.getParameter("bno");
-		
-		System.out.println("bno parameter: " + request.getParameter("bno"));
 		
 		ReviewService rService = new ReviewService();
 		rService.selectMemNo(refBno);
 		
+		System.out.println("bno parameter: " + request.getParameter("bno"));
+		
 		Review rv = rService.selectMemNo(refBno);
 		
-		if(rv != null && !rv.equals("")) { // 유효한 게시글 => 게시글, 첨부파일 DB로부터 조회 
+		if(rv != null) { // 유효한 게시글 => 게시글, 첨부파일 DB로부터 조회 
 			Review rv1 = rService.selectReview(refBno);
 			Image img = rService.selectImage(refBno);
 			
@@ -59,6 +55,8 @@ public class ReviewDetailController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/review.li?cpage=1");
 			request.getSession().setAttribute("alertMsg", "게시글 조회 오류");
 		}
+		
+		
 		
 	}
 

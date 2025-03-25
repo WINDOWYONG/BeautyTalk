@@ -1,5 +1,7 @@
 package com.kh.review.model.vo;
 
+import com.kh.member.model.vo.Member;
+
 public class Review {
 	
 	private String reviewNo;
@@ -13,11 +15,11 @@ public class Review {
 	private int prRating;
 	private int likeReview;
 	private String status;
-	
+
 	public Review () {}
 
-	public Review(String reviewNo, String pcode, int memNo, String title, String content, String createDate, int pRating,
-			int rRating, int prRating, int likeReview, String status) {
+	public Review(String reviewNo, String pcode, int memNo, String title, String content, String createDate,
+			int pRating, int rRating, int prRating, int likeReview, String status) {
 		super();
 		this.reviewNo = reviewNo;
 		this.pcode = pcode;

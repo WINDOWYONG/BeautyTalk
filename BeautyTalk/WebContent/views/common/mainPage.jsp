@@ -6,16 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 
 <!-- bestReview -->
@@ -258,7 +248,7 @@ li {
 
 	<!-- bestReview -->
 	<div align="center">
-		<form action="" id="form_bestReview1" method="">
+		<form id="form_bestReview1">
 			<table id="table_bestReview">
 				<tr>
 					<td colspan="15" align="center" style="height: 20px; color: black;"><h1>Best
@@ -574,7 +564,7 @@ li {
 		</div>
 <!-- footer -->
 <footer id="footer_footer">
-	<form action="" id="form_footer" method="">
+	<form id="form_footer">
 		<table id="table_footer" style="text-align: left;">
 			<tr>
 				<td rowspan="4" style="width: 30%;" class="logo1_footer">

@@ -4,16 +4,19 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.kh.common.model.vo.PageInfo"%>
 <%@page import="com.kh.member.model.vo.Member"%>
+<%@page import="com.kh.review.controller.ReviewListController"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	String alertMsg = (String)session.getAttribute("alertMsg");
-	
+
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 	Image img = (Image)request.getAttribute("img");
+	Review review = (Review)request.getAttribute("rv");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -361,13 +364,25 @@ img {
 	border-radius: 20px;
 	background-color: palevioletred;
 	padding: 10px;
-}
-.reviewContent_btn a{
+	cursor : pointer;
 	color: white;
 	font-size: 14px;
 	font-weight: 700;
-	text-decoration-line: none;
+	width: 120px;
 }
+
+.reviewContent_btn2{
+	border: none;
+	border-radius: 20px;
+	background-color: palevioletred;
+	padding: 10px;
+	cursor : pointer;
+	font-size: 14px;
+	font-weight: 700;
+	color:lightgray;
+	width: 120px;
+}
+
 .review_img1{
 	width: 250px;
 	height: 250px;
@@ -487,6 +502,7 @@ img {
     </script>
 
 	<form action="" id="reviewForm_CP1" method="get">
+	
 		<table id="reviewTable_CP1">
 			<tr>
 				<td height="50"></td>
@@ -501,16 +517,24 @@ img {
 				<td colspan="5"></td>
 				<td>
 					<% if(loginUser != null) { %>
-					<button type="button" class="reviewContent_btn" style="width: 100px;">
-						<a href="<%= contextPath %>/review.wr"> + 리뷰 작성 </a>
-					</button>
+						<button type="button" class="reviewContent_btn" onclick="location.href='<%= contextPath %>/review.wr'">
+							+ 리뷰 작성
+						</button>
 					<% }else { %>
-					<button type="button" class="reviewContent_btn" style="width: 100px;" disabled>
-						+ 리뷰 작성
-					</button>
+						<button type="button" class="reviewContent_btn2" onclick="location.href='<%= contextPath %>/loginForm.me'">
+							+ 리뷰 작성
+						</button>
 					<% } %>
 				</td>
 			</tr>
+			<script>
+			$(function(){
+			    $(".reviewContent_btn2").on("click", function(){
+			    	alert("로그인을 해주세요.");
+		    	})
+			})
+			
+			</script>
 			<!-- 게시글이 없는 경우 -->
 			<% if(list.isEmpty()) { %>
 
@@ -521,26 +545,27 @@ img {
 			</tr>
 			<!-- 게시글이 있는 경우 -->
 			<% }else { %>
-				<% for(Review review : list) { %>
+				<% for(Review rv1 : list) { %>
 			<tr class="reviewTr_img1">
-				<td rowspan="6" align="center" style="width: 250px; height: 250px;">
-					<% if(review.getCreateDate() == img.getUploadDate()) { %>
-						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>" class="review_img1">
-					<% }else { %>
+				<td rowspan="6" align="center" onclick="location.href='<%= contextPath %>/detail.im'" style="width: 250px; height: 250px;">
+					<% if(rv1.getReviewNo() != img.getReviewBno()) { %>
 						<img src="<%= contextPath %>/resources/images/현존최강로고1.jpg" class="review_img1">
+					<% }else { %>
+						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>" class="review_img1">
 					<% } %>
+				
 				</td>
-				<td colspan="3" class="review_CreateDate"><%= review.getCreateDate() %></td>
+				<td colspan="3" class="review_CreateDate"><%= rv1.getCreateDate() %></td>
 
-
+				
 				<td></td>
 				<td></td>
 
 
 			</tr>
 			<tr class="reviewTr_img2">
-				<td class="review_title1"><%= review.getReviewNo() %></td>
-				<td class="review_title2"><%= review.getTitle() %></td>
+				<td class="review_title1"><%= rv1.getReviewNo() %></td>
+				<td class="review_title2"><%= rv1.getTitle() %></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -556,7 +581,7 @@ img {
 			</tr>
 			<tr>
 
-				<td colspan="4"><textarea cols="80" rows="10" style="resize: none; border-color: white;" disabled><%= review.getContent() %></textarea>
+				<td colspan="4"><textarea cols="80" rows="10" style="resize: none; border-color: white;" disabled><%= rv1.getContent() %></textarea>
 				</td>
 
 
@@ -573,16 +598,16 @@ img {
 			<tr>
 				<td style="width: 50px;"></td>
 				<td class="review_rating" style="width: 100px;"
-					data-content="가격 : <%= review.getPrRating() %>">가격 : <%= review.getPrRating() %>
+					data-content="가격 : <%= rv1.getPrRating() %>">가격 : <%= rv1.getPrRating() %>
 				</td>
 				<td class="review_rating" style="width: 100px;"
-					data-content="성분 : <%= review.getpRating() %>">성분 : <%= review.getpRating() %>
+					data-content="성분 : <%= rv1.getpRating() %>">성분 : <%= rv1.getpRating() %>
 				</td>
 				<td class="review_rating" style="width: 100px;"
-					data-content="재구매 : <%= review.getrRating() %>">재구매 : <%= review.getrRating() %>
+					data-content="재구매 : <%= rv1.getrRating() %>">재구매 : <%= rv1.getrRating() %>
 				</td>
 				<td class="review_rating" style="width: 60px;"
-					data-content="👍 : <%= review.getLikeReview() %>">👍 : <%= review.getLikeReview() %>
+					data-content="👍 : <%= rv1.getLikeReview() %>">👍 : <%= rv1.getLikeReview() %>
 				</td>
 			</tr>
 			<tr>
@@ -594,52 +619,70 @@ img {
 
 
 			</tr>
-			
-		</table>
+			<% } %>
 		<% } %>
+
+		</table>
 		<script>
-			$(function(){
-			    $(".reviewTr_img2").on("click", function(){
-			    		location.href = '<%= contextPath %>/review.re?bno' + $(this).children().eq(0).text();
-			    	}
-		    	})
-			})
+				$(function(){
+				    $(".reviewTr_img2").on("click", function(){
+						location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
+			    	})
+				})
 		</script>
-			
-	<% } %>
+		<!-- 
+			// $(function(){
+			//     $(".reviewTr_img2").on("click", function(){
+			//     	if(<%= loginUser %> != null) {
+			//     		location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
+			//     	}
+		  //   	})
+			// })
+			// 	$(".review_title1").on("click", function(){
+		  //   		if(<%= loginUser %> != null) {
+		  //   			location.href = '<%= contextPath %>/detail.re?bno=' + $(this).text();
+		  //   		}
+		  //   	})
+			// })
+			// $(function(){
+			//     $(".reviewTr_img2").on("click", function(){
+			//     	location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
+		  //   	})
+			// })
+		-->
 
 		<div class="paging-area" align="center">
 			<% if(currentPage == 1) { %>
 			<!-- 이전버튼 -->
-				<button>
-            		<a href="<%= contextPath %>/review.li?cpage=1">&lt;</a>
+				<button type="button" onclick="location.href='<%= contextPath %>/review.li?cpage=1'">
+            		&lt;
            	 	</button>
             <% }else if(currentPage > 1){ %>
-           	 	<button>
-            		<a href="<%= contextPath %>/review.li?cpage=<%= currentPage - 1 %>">&lt;</a>
-           	 	</button> 
+           	 	<button type="button" onclick="location.href='<%= contextPath %>/review.li?cpage=<%= currentPage - 1 %>'">
+            		&lt;
+           	 	</button>
             <% } %>
             
 			<% for(int i=startPage; i<=endPage; i++) { %>
             	<% if(i == currentPage) { %>
-            		<button disabled>
+            		<button type="button" disabled>
             			<%= i %>
            			</button>
            		<% }else { %>
-         			 <button>
-           				<a href="<%= contextPath %>/review.li?cpage=<%= i %>"><%= i %></a>
+         			 <button type="button" onclick="location.href='<%= contextPath %>/review.li?cpage=<%= i %>'">
+           				<%= i %>
            			</button>
            		<% } %>
             <% } %>
             
             <% if(currentPage == maxPage) { %>
             <!-- 다음버튼 -->
-            	<button>
-            		<a href="<%= contextPath %>/review.li?cpage=<%= maxPage %>">&gt;</a>
+            	<button type="button" onclick="location.href='<%= contextPath %>/review.li?cpage=<%= maxPage %>'">
+            		&gt;
            	 	</button>
 			<% }else if(currentPage > 0){ %>
-				<button>
-            		<a href="<%= contextPath %>/review.li?cpage=<%= currentPage + 1 %>">&gt;</a>
+				<button type="button" onclick="location.href='<%= contextPath %>/review.li?cpage=<%= currentPage + 1 %>'">
+            		&gt;
            	 	</button> 
            	<% } %>
 		</div>

@@ -6,9 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
+import com.kh.profile.controller.model.service.ProfileService;
+import com.kh.profile.controller.model.vo.Profile;
 
 /**
  * Servlet implementation class LoginController
@@ -37,11 +40,19 @@ public class LoginController extends HttpServlet {
 			
 			Member loginUser = new MemberService().loginMember(userId, userPwd);
 			
+			
+			
+			
 			if(loginUser == null) {
 				request.getSession().setAttribute("alertMsg", "로그인에 실패하였습니다.");
 				response.sendRedirect(request.getContextPath() + "/loginForm.me");
 			}else {
-				request.getSession().setAttribute("loginUser", loginUser);
+				int userNo = loginUser.getUserNo();
+				Profile userProfile = new ProfileService().selectProfile(userNo);
+				HttpSession session = request.getSession();
+				session.setAttribute("userProfile", userProfile);
+				System.out.println(userProfile);
+				session.setAttribute("loginUser", loginUser);
 				response.sendRedirect(request.getContextPath());
 			}
 		}

@@ -3,7 +3,6 @@ package com.kh.member.model.dao;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,6 +49,7 @@ public class MemberDao {
 				               rset.getString("EMAIL"),
 				               rset.getString("NICKNAME"),
 				               rset.getString("PHONE"),
+				               rset.getString("GENDER"),
 				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
 				               rset.getInt("FOLLOWER_COUNT"),
 				               rset.getInt("REVIEW_COUNT"),
@@ -121,7 +121,7 @@ public class MemberDao {
 			
 	}
 
-	public int kakaoCheckUser(Connection conn, String kakaoEmail) {
+	public int kakaoCheckUser(Connection conn, String kakaoId) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -130,7 +130,8 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, kakaoEmail);
+			pstmt.setString(1, kakaoId);
+			System.out.println("AccessToken: " + kakaoId);
 			
 			rset = pstmt.executeQuery();
 			
@@ -148,7 +149,7 @@ public class MemberDao {
 	}
 
 	
-	public Member kakaoLoginMember(Connection conn, String kakaoEmail) {
+	public Member kakaoLoginMember(Connection conn, String kakaoId) {
 		// select문 => ResultSet 객체(한행) => Member 객체
 		Member m = null;
 		
@@ -159,7 +160,7 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, kakaoEmail);
+			pstmt.setString(1, kakaoId);
 			
 			rset = pstmt.executeQuery();
 			
@@ -171,6 +172,7 @@ public class MemberDao {
 				               rset.getString("EMAIL"),
 				               rset.getString("NICKNAME"),
 				               rset.getString("PHONE"),
+				               rset.getString("GENDER"),
 				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
 				               rset.getInt("FOLLOWER_COUNT"),
 				               rset.getInt("REVIEW_COUNT"),
@@ -238,6 +240,7 @@ public class MemberDao {
 				               rset.getString("EMAIL"),
 				               rset.getString("NICKNAME"),
 				               rset.getString("PHONE"),
+				               rset.getString("GENDER"),
 				               rset.getInt("FOLLOWING_COUNT"),  // 추가 정보
 				               rset.getInt("FOLLOWER_COUNT"),
 				               rset.getInt("REVIEW_COUNT"),

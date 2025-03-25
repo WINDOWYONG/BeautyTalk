@@ -42,8 +42,6 @@ public class ReviewListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		// ------------- 페이징 처리 -------------
 		
 		int listCount;		// 현재 총 게시글 개수
@@ -72,7 +70,7 @@ public class ReviewListController extends HttpServlet {
 		
 		maxPage = (int)Math.ceil((double)listCount / reviewLimit);
 		
-		startPage = ((currentPage - 1) / pageLimit) * pageLimit + 1;
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 		
 		endPage = startPage + pageLimit - 1;
 		
@@ -89,15 +87,15 @@ public class ReviewListController extends HttpServlet {
 		// * 현재 요청한 페이지(c)에 보여질 게시글 리스트 boardLimit 수만큼 조회
 		ArrayList<Review> list = new ReviewService().selectReviewArrayList(pi);
 		Image img = new ReviewService().selectImageArraylist(pi);
-				
+		
+		String refBno = request.getParameter("bno");
+		Review rv = new ReviewService().selectRefBno(refBno);
+		
+		request.setAttribute("rv", rv);
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.setAttribute("img", img);
-		
-		System.out.println(list);
-		System.out.println(img);
-		
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher("views/review/reviewContentPost.jsp");
 		rd.forward(request, response);
 		

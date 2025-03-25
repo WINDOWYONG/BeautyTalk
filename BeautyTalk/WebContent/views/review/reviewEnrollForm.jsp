@@ -638,6 +638,7 @@ button {
                             <% for(SubCategory sc : list) { %>
                             	<option value="<%= sc.getScId() %>"><%= sc.getScName() %></option>
                             <% } %>
+                        </select>
                     </td>
 				</tr>
 
@@ -719,6 +720,8 @@ button {
 			</div>
 		</form>
 	</div>
+	</div>
+</div>
 
 </body>
 </html>
