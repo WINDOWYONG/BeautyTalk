@@ -335,7 +335,7 @@
 	      <div class="R1">
 	        <div class="R1-content">
 	          <div class="title">
-	            <strong><%= loginUser.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span>
+	            <strong><%= loginUser.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더 🎀</span>
 	          </div>
 	          <div class="icons">
 	            <i class="fa-solid fa-magnifying-glass">

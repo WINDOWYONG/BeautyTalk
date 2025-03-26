@@ -115,12 +115,7 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
     </div>
 
     <!-- 체크리스트 (새로 추가한 영역) -->
-    <div class="checklist">
-      <h3>체크리스트</h3>
-      <ul id="checklist-items">
-        <!-- 체크리스트 항목들이 여기에 추가됨 -->
-      </ul>
-    </div>
+    <div class="checklist"></div>
   </div>
 
   <!-- 루틴 입력 폼 -->
@@ -163,6 +158,7 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
 
 <!-- ✅ 캘린더 스크립트 -->
 <script>
+	  
 	function renderMyCalendar() {
 	  const today = new Date();
 	  const todayDate = today.getDate();
@@ -210,33 +206,9 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
 	      });
 	    });
 	    
-	    $(document).ready(function() {
-	    	  // 요일 버튼 클릭 시 active 토글
-	    	  $(".week-btn").click(function() {
-	    	    $(this).toggleClass("active");
-
-            const text = $(this).text();
-            let inputId = "";
-
-            if (text === '월') inputId = 'mon_re';
-            if (text === '화') inputId = 'tue_re';
-            if (text === '수') inputId = 'wed_re';
-            if (text === '목') inputId = 'thu_re';
-            if (text === '금') inputId = 'fri_re';
-            if (text === '토') inputId = 'sat_re';
-            if (text === '일') inputId = 'sun_re';
-
-            if ($(this).hasClass("active")) {
-              $("#" + inputId).val("Y");
-            } else {
-              $("#" + inputId).val("N");
-            }
-	    	  });
-	    	});
-
-	  };
-
-	  renderCalendar();
+	    
+	    renderCalendar();
+	  
 
 	  prevNextIcon.forEach((icon) => {
 	    icon.addEventListener('click', () => {
@@ -253,6 +225,47 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
 	    });
 	  });
 	}
+
+	
+	$(document).ready(function() {
+		
+		renderMyCalendar();
+		
+  	  // 요일 버튼 클릭 시 active 토글
+  	  $(".week-btn").click(function() {
+  	    $(this).toggleClass("active");
+
+      const text = $(this).text();
+      let inputId = "";
+
+      if (text === '월') inputId = 'mon_re';
+      if (text === '화') inputId = 'tue_re';
+      if (text === '수') inputId = 'wed_re';
+      if (text === '목') inputId = 'thu_re';
+      if (text === '금') inputId = 'fri_re';
+      if (text === '토') inputId = 'sat_re';
+      if (text === '일') inputId = 'sun_re';
+
+      if ($(this).hasClass("active")) {
+        $("#" + inputId).val("Y");
+      } else {
+        $("#" + inputId).val("N");
+      }
+  	  });
+  	  
+	  	$.ajax({
+	        url: '<%= request.getContextPath() %>/checklist.jsp',
+	        type: 'GET',
+	        success: function(data) {
+	            $('.checklist').html(data); // 결과를 checklist에 넣음
+	        },
+	        error: function() {
+	            alert('체크리스트 로딩 실패');
+	        }
+	    });
+  	});
+
+};
 
 </script>
 
