@@ -15,7 +15,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333; }
@@ -87,6 +86,122 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
   overflow: auto;
 }
 
+ .todo-container {
+   background-color: #fff;
+   border-radius: 15px;
+   padding: 20px;
+   max-width: 400px;
+   margin: 0 auto;
+ }
+
+
+ .form1 {
+   display: flex;
+   margin-bottom: 15px;
+ }
+
+ #inputTodo {
+   flex-grow: 1;
+   padding: 10px;
+   font-size: 14px;
+   border-radius: 50px;
+   border: none;
+   background-color: #fff0f8;
+ }
+
+ #addBtn {
+   padding: 5px 8px;
+   font-size: 14px;
+   border-radius: 50px;
+   border: none;
+   background-color: #ff81b5;
+   color: #fff;
+   cursor: pointer;
+   margin-left: 10px;
+   transition: background-color 0.3s;
+ }
+
+ #addBtn:hover {
+   background-color: #ff4d88;
+ }
+
+ .todo-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+ }
+
+ .liContainer {
+   display: flex;
+   align-items: center;
+   padding: 8px 10px;
+   margin-bottom: 10px;
+   background-color: #ffffff;
+   border: none;
+   border-bottom: 1px solid #e0e0e0;
+ }
+
+ .liSpan {
+   flex-grow: 1;
+   font-size: 14px;
+   color: #555;
+ }
+
+ .liButton {
+   padding: 6px 10px;
+   font-size: 12px;
+   border-radius: 8px;
+   border: none;
+   background-color: #ff81b5;
+   color: #fff;
+   cursor: pointer;
+ }
+
+ .liButton:hover {
+   background-color: #ff4d88;
+ }
+
+ #footer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 15px;
+   flex-wrap: wrap;
+ }
+
+ #footer > span {
+   font-size: 12px;
+   color: #333;
+   margin: 5px;
+ }
+
+ #footer > button {
+   padding: 8px 12px;
+   font-size: 12px;
+   border-radius: 10px;
+   border: none;
+   background-color: #ff81b5;
+   color: #fff;
+   cursor: pointer;
+ }
+
+ #footer > button:hover {
+   background-color: #ff4d88;
+ }
+
+ #All, #Active, #Complete {
+   background-color: #fff0f8;
+   padding: 5px 10px;
+   border-radius: 8px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+ }
+
+ #All:hover, #Active:hover, #Complete:hover {
+   background-color: #ffb6c1;
+ }
+
+
 </style>
 </head>
 
@@ -115,7 +230,29 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
     </div>
 
     <!-- 체크리스트 (새로 추가한 영역) -->
-    <div class="checklist"></div>
+    <div class="checklist">
+      <div class="todo-container">
+	    <section class="form1">
+	      <input type="text" placeholder="할 일을 입력하세요." id="inputTodo">
+	      <button type="button" id = "addBtn">
+	        <span class="material-icons">add</span>
+	      </button>
+	    </section>
+	
+	    <ul class="todo-list" id ="todo-listId" >
+	    </ul>
+	
+	    <div id = "footer">
+	      <span id = "countSpan">남은 할일: </span>
+	      <span id = "countSpanInput"></span>
+	      <span id = "All">전체보기</span>
+	      <span id = "Active">미완료</span>
+	      <span id = "Complete">완료</span>
+	      <button type="button" id="allDelete" >전체 삭제</button>
+	  </div>
+  </div>
+      
+    </div>
   </div>
 
   <!-- 루틴 입력 폼 -->
@@ -156,118 +293,7 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
   </div>
 </div>
 
-<!-- ✅ 캘린더 스크립트 -->
-<script>
-	  
-	function renderMyCalendar() {
-	  const today = new Date();
-	  const todayDate = today.getDate();
-	  const todayMonth = today.getMonth();
-	  const todayYear = today.getFullYear();
-	  
-	  let date = new Date();
-	  let currMonth = date.getMonth();
-	  let currYear = date.getFullYear();
-	  let selectedDay = todayDate;
 
-	  const calendarEl = document.querySelector('.routine-calendar');
-	  const currentDate = calendarEl.querySelector('.current-date');
-	  const daysTag = calendarEl.querySelector('.days');
-	  const prevNextIcon = calendarEl.querySelectorAll('.nav button');
-
-	  const renderCalendar = () => {
-	    let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
-	    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay();
-	    let lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay();
-	    let lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
-
-	    currentDate.innerHTML = `${currYear}년 ${currMonth + 1}월`;
-
-	    let liTag = '';
-	    for (let i = firstDayofMonth; i > 0; i--) {
-	      liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
-	    }
-	    for (let i = 1; i <= lastDateofMonth; i++) {
-	      let isActive = (i === selectedDay) ? 'active' : '';
-	      liTag += `<li class="${isActive}" data-day="${i}">${i}</li>`;
-	    }
-	    for (let i = lastDayofMonth; i < 6; i++) {
-	      liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
-	    }
-
-	    daysTag.innerHTML = liTag;
-
-	    calendarEl.querySelectorAll('.days li').forEach(day => {
-	      day.addEventListener('click', function() {
-	        if (!this.classList.contains('inactive')) {
-	          selectedDay = parseInt(this.getAttribute('data-day'));
-	          renderCalendar();
-	        }
-	      });
-	    });
-	    
-	    
-	    renderCalendar();
-	  
-
-	  prevNextIcon.forEach((icon) => {
-	    icon.addEventListener('click', () => {
-	      currMonth = icon.id === 'prev' ? currMonth - 1 : currMonth + 1;
-	      if (currMonth < 0) { currMonth = 11; currYear--; }
-	      else if (currMonth > 11) { currMonth = 0; currYear++; }
-	      
-	     	if (currMonth === todayMonth && currYear === todayYear) {
-	          selectedDay = todayDate;
-	        } else {
-	          selectedDay = null; // 다른 달이면 선택 초기화해도 됨 (원하는 대로 수정 가능)
-	        }
-	      renderCalendar();
-	    });
-	  });
-	}
-
-	
-	$(document).ready(function() {
-		
-		renderMyCalendar();
-		
-  	  // 요일 버튼 클릭 시 active 토글
-  	  $(".week-btn").click(function() {
-  	    $(this).toggleClass("active");
-
-      const text = $(this).text();
-      let inputId = "";
-
-      if (text === '월') inputId = 'mon_re';
-      if (text === '화') inputId = 'tue_re';
-      if (text === '수') inputId = 'wed_re';
-      if (text === '목') inputId = 'thu_re';
-      if (text === '금') inputId = 'fri_re';
-      if (text === '토') inputId = 'sat_re';
-      if (text === '일') inputId = 'sun_re';
-
-      if ($(this).hasClass("active")) {
-        $("#" + inputId).val("Y");
-      } else {
-        $("#" + inputId).val("N");
-      }
-  	  });
-  	  
-	  	$.ajax({
-	        url: '<%= request.getContextPath() %>/checklist.jsp',
-	        type: 'GET',
-	        success: function(data) {
-	            $('.checklist').html(data); // 결과를 checklist에 넣음
-	        },
-	        error: function() {
-	            alert('체크리스트 로딩 실패');
-	        }
-	    });
-  	});
-
-};
-
-</script>
 
 </body>
 </html>
