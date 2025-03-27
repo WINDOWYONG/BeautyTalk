@@ -84,8 +84,8 @@
                             <a href="" style="font-weight: 800; font-size: larger;">게시글 <br><%= loginUser.getPost() %></a> <br>
                         </td>
                         <td><a href="" style="font-weight: 800; font-size: larger;">리뷰 <br><%= loginUser.getReview() %><br></a></td>
-                        <td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로우 <br><%= loginUser.getFollower() %><br></a></td>
-                        <td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로잉 <br><%= loginUser.getFollowing() %><br></a></td>
+                        <td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로워 <br><%= loginUser.getFollowing() %><br></a></td>
+                        <td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로잉 <br><%= loginUser.getFollower() %><br></a></td>
                     </tr>
                 </table>
                 <div id="userBoard">

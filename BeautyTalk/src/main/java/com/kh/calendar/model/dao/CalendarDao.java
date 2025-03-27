@@ -101,7 +101,7 @@ private Properties prop = new Properties();
 		ArrayList<Member> list = new ArrayList<Member>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectFollowList");
+		String sql = prop.getProperty("selectListFollowing");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

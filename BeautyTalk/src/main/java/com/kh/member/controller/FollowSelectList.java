@@ -41,16 +41,16 @@ public class FollowSelectList extends HttpServlet {
 		ArrayList<Member> followList = new MemberService().selectListFollow(userNo);
 		ArrayList<Member> followerList = new MemberService().selectListFollower(userNo);
 		response.setContentType("application/json; charset=utf-8");
-		 Gson gson = new Gson();
+		response.setContentType("application/json; charset=utf-8");
+		Gson gson = new Gson();
 
-	        // 두 리스트를 묶어서 Map에 넣음
-	        JsonObject jsonResponse = new JsonObject();
-	        jsonResponse.add("followList", gson.toJsonTree(followList));
-	        jsonResponse.add("followerList", gson.toJsonTree(followerList));
+		// JsonObject 생성 후 리스트 추가
+		JsonObject jsonResponse = new JsonObject();
+		jsonResponse.add("followList", gson.toJsonTree(followList));
+		jsonResponse.add("followerList", gson.toJsonTree(followerList));
 
-	        // JSON 데이터를 response로 출력
-	        response.setContentType("application/json");
-	        response.getWriter().write(jsonResponse.toString());
+		// JSON 데이터를 response로 출력
+		response.getWriter().write(gson.toJson(jsonResponse));
 	}
 
 	/**

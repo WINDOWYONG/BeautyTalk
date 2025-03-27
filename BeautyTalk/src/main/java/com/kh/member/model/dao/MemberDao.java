@@ -439,7 +439,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
-		String sql = prop.getProperty("selectListFollow");
+		String sql = prop.getProperty("selectListFollowing");
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -449,14 +449,15 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
+				int followUserNo = rset.getInt("MEM_NO");
 				String nicknameFromDB = rset.getString("NICKNAME");
 				String filePath = rset.getString("FILEPATH");
 
 				// 콘솔에 출력 (디버깅 용)
-				System.out.println("Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
+				System.out.println("followUserNo: " + followUserNo + ", Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
 
 				// 리스트에 추가
-				list.add(new Member(nicknameFromDB, filePath));
+				list.add(new Member(followUserNo, nicknameFromDB, filePath));
 			}
 
 		} catch (SQLException e) {
@@ -486,14 +487,14 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
+				int followUserNo = rset.getInt("MEM_NO");
 				String nicknameFromDB = rset.getString("NICKNAME");
 				String filePath = rset.getString("FILEPATH");
 
 				// 콘솔에 출력 (디버깅 용)
-				System.out.println("Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
-
+				System.out.println("followUserNo: " + followUserNo + ", Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
 				// 리스트에 추가
-				list.add(new Member(nicknameFromDB, filePath));
+				list.add(new Member(followUserNo, nicknameFromDB, filePath));
 			}
 
 		} catch (SQLException e) {

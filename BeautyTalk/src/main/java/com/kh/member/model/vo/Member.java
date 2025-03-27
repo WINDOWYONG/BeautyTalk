@@ -1,6 +1,7 @@
 package com.kh.member.model.vo;
 
 import java.sql.Date;
+import com.google.gson.annotations.SerializedName;
 
 public class Member {
 
@@ -32,7 +33,23 @@ public class Member {
     private String marketingAgree; // RELEASE 컬럼명 변경
     private String color;
 	
+
+        
+        
 	public Member () {}
+	
+	
+
+
+
+	public Member(String nickName, String filePath, int userNo) {
+		super();
+		this.userNo = userNo;
+		this.nickName = nickName;
+		this.filePath = filePath;
+	}
+
+
 
 
 
