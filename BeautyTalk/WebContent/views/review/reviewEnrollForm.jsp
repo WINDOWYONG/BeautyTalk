@@ -636,12 +636,14 @@ button {
 					<!-- 카테고리  -->
 					</th>
 					<td width="100">
-					<!-- 	<select class="reviewPost_category1" name="SC_ID">  -->
+						<input type="hidden" name="SC_ID" value="<%= rv.getMemNo() %>">
+					<!--	<select class="reviewPost_category1" name="SC_ID"> -->
+							
 <!-- Category 테이블로부터 조회해올 것 -->
-                     <!--        <% for(SubCategory sc : list) { %>
+                     <!--   <% for(SubCategory sc : list) { %>
                             	<option value="<%= sc.getScId() %>"><%= sc.getScName() %></option>
-                            <% } %>
-                        </select>  -->
+                            <% } %> -->
+                    <!-- </select> -->
                     </td>
 				</tr>
 

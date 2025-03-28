@@ -248,7 +248,7 @@ li {
 
 	<!-- bestReview -->
 	<div align="center">
-		<form id="form_bestReview1">
+		<form action="" id="form_bestReview1" method="">
 			<table id="table_bestReview">
 				<tr>
 					<td colspan="15" align="center" style="height: 20px; color: black;"><h1>Best
@@ -564,7 +564,7 @@ li {
 		</div>
 <!-- footer -->
 <footer id="footer_footer">
-	<form id="form_footer">
+	<form action="" id="form_footer" method="">
 		<table id="table_footer" style="text-align: left;">
 			<tr>
 				<td rowspan="4" style="width: 30%;" class="logo1_footer">

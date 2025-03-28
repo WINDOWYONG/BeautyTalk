@@ -57,7 +57,6 @@ public class KakaoCheckUserController extends HttpServlet {
             String kakaoId = (String) json.get("kakaoId");
             HttpSession session = request.getSession();
             session.setAttribute("kakaoAccessToken", kakaoId);
-            System.out.println(kakaoId);
             
             int result = new MemberService().kakaoCheckUser(kakaoId);
             
@@ -74,9 +73,7 @@ public class KakaoCheckUserController extends HttpServlet {
             
             request.getSession().setAttribute("loginUser", loginUser);
             if(userExists) {
-                int userNo = loginUser.getUserNo();
-                Profile userProfile = new ProfileService().selectProfile(userNo);
-                session.setAttribute("userProfile", userProfile);
+
             }
             response.getWriter().write(jsonResponse.toJSONString());
 
