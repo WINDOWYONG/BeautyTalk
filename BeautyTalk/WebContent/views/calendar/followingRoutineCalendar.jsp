@@ -8,6 +8,7 @@
       response.sendRedirect(contextPath + "/loginForm.me");
       return;
     }
+    String userId = request.getParameter("userId");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -15,10 +16,14 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333; }
-.container { display: flex; max-width: 1200px; margin: 0 auto; gap: 30px; align-items: flex-start;}
+.container { display: flex; max-width: 1200px; margin: 0 auto; gap: 30px; align-items: center;height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;}
 
 .form-container { flex: 1; background-color: #fff; border-radius: 15px; padding: 30px 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); color: #333; width: 50%; box-sizing: border-box;}
 .form-container * {
@@ -205,7 +210,7 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
 </style>
 </head>
 
-<body>
+<body data-userid="<%= userId %>" data-contextpath="<%= contextPath %>">
 
 <div class="container">
   <!-- 캘린더 영역 -->
@@ -232,61 +237,27 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; color: #333
     <!-- 체크리스트 (새로 추가한 영역) -->
     <div class="checklist">
       <div class="todo-container">
-	    <section class="form1">
-	      <input type="text" placeholder="할 일을 입력하세요." id="inputTodo">
-	      <button type="button" id = "addBtn">
-	        <span class="material-icons">add</span>
-	      </button>
-	    </section>
+
 	
 	    <ul class="todo-list" id ="todo-listId" >
 	    </ul>
+	    
 	
-	    <div id = "footer">
-	      <span id = "countSpan">남은 할일: </span>
-	      <span id = "countSpanInput"></span>
-	      <span id = "All">전체보기</span>
-	      <span id = "Active">미완료</span>
-	      <span id = "Complete">완료</span>
-	      <button type="button" id="allDelete" >전체 삭제</button>
-	  </div>
   </div>
       
     </div>
   </div>
 
-  <!-- 루틴 입력 폼 -->
-  <div class="form-container">
-    <form action="" method="post">
-      <h2><span style="color:black;"><%= loginUser.getUserName() %></span>님의 뷰티 루틴</h2>
-      <label>항목명</label>
-      <input type="text" id="check_title" name="check_title" placeholder="항목명을 입력해 주세요." required>
-  	  <br><br>
-      <label>기간</label>
-      <div class="date-group">
-        <input type="date" id="repeat_startdate" name="repeat_startdate" required> ~ <input type="date" id="repeat_enddate" name="repeat_enddate">
-      </div>
-  	  <br>
-      <label>요일 (선택사항)</label>
-      <div class="weekdays">
-        <div class="week-btn">월</div>
-        <div class="week-btn">화</div>
-        <div class="week-btn">수</div>
-        <div class="week-btn">목</div>
-        <div class="week-btn">금</div>
-        <div class="week-btn">토</div>
-        <div class="week-btn">일</div>
-      </div>
-  	  <br>
-      <label>메모</label>
-      <textarea id="event-memo" rows="3" placeholder="메모를 입력하세요 (선택사항)" style="resize: none;"></textarea>
-  	  <br><br>
-      <button id="add-event-btn">설정</button>
-    </form>
-  </div>
+
 </div>
+<script>
+  window.contextPath = "<%= contextPath %>";
+  window.userId = "<%= userId %>";
+</script>
+
+<script src="<%= contextPath %>/resources/js/followingRoutineCalendar.js?v=20250328"></script>
+
 
 
 
 </body>
-</html>

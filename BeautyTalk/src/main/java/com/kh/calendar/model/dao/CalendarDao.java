@@ -297,5 +297,34 @@ private Properties prop = new Properties();
 
 	    return result;
 	}
+	
+	public ArrayList<Todo> selectFollowTodos(Connection conn, String userId, String dateStr) {
+		ArrayList<Todo> todoList = new ArrayList<Todo>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectFollowTodos");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, dateStr);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				todoList.add(new Todo(rset.getInt("check_no"),
+									  rset.getInt("mem_no"),
+									  rset.getString("check_title"),
+									  rset.getString("check_yn")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return todoList;
+	}
 
 }

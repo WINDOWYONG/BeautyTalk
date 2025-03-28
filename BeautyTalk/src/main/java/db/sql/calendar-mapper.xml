@@ -115,4 +115,17 @@
 		 WHERE CHECK_NO IN (#)
 	</entry>
 	
+	<entry key="selectFollowTodos">
+		SELECT
+		       CHECK_NO
+		     , MEM_NO
+			 , CHECK_TITLE
+			 , CHECK_YN
+		  FROM CHECKLIST
+		  JOIN MEMBER 
+		 USING (MEM_NO)
+		 WHERE MEM_ID = ?
+		   AND CHECK_DATE = ?
+	</entry>
+	
 </properties>

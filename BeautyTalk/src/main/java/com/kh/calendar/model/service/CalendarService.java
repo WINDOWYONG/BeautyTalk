@@ -120,5 +120,12 @@ public class CalendarService {
 		}
 		return result;
 	}
+	
+	public ArrayList<Todo> selectFollowTodos(String userId, String dateStr) {
+		Connection conn = getConnection();
+		ArrayList<Todo> todoList = new CalendarDao().selectFollowTodos(conn, userId, dateStr);
+		close(conn);
+		return todoList;
+	}
 
 }
