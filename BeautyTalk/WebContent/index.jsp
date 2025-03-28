@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="views/common/body1_bestReview_lyh.jsp" %>
+	<%@ include file="views/common/mainPage.jsp" %>
 </body>
 </html>

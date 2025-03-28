@@ -43,9 +43,15 @@ public class MemberInsertController extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
 		String agreeYN = request.getParameter("agree");
+		String Token = null;
+		if(request.getParameter("kakaoAccessToken") != null) {
+			Token = request.getParameter("kakaoAccessToken");
+		}else {
+			Token = request.getParameter("Token");
+		}
 
 		// Member 객체 생성
-		Member m = new Member(userId, userPwd, userName, email, nickName, phone, gender, agreeYN);
+		Member m = new Member(userId, userPwd, userName, email, nickName, phone, gender, agreeYN, Token);
 
 		// DB에 회원 정보 삽입
 		int result = new MemberService().insertMember(m);
@@ -55,9 +61,9 @@ public class MemberInsertController extends HttpServlet {
 		    session.setAttribute("alertMsg", "성공적으로 회원가입 되었습니다.");
 		    response.sendRedirect(request.getContextPath());
 		} else {
-		    // request.setAttribute("errorMsg", "회원가입 실패했습니다.");
-		    // RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-		    // view.forward(request, response);
+			HttpSession session = request.getSession();
+		    session.setAttribute("alertMsg", "탈퇴한 아이디 혹은 잘못된 형식입니다.");
+		    response.sendRedirect(request.getContextPath());
 		}
 	}
 
