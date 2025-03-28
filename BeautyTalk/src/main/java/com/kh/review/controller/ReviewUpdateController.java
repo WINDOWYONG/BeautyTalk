@@ -118,8 +118,8 @@ public class ReviewUpdateController extends HttpServlet {
 				}
 				
 			}
-		System.out.println("reviewUpdate컨트롤러 refBno : " + refBno);
-		System.out.println("ReviewUpdate 컨트롤러 rv.getMemNo : " + memNo);
+		System.out.println("리뷰 업뎃 컨트롤러 refBno : " + refBno);
+		System.out.println("리뷰 업뎃 컨트롤러 rv.getMemNo : " + memNo);
 		System.out.println("리뷰 업뎃 오리지날 리뷰 넘버 : " + Integer.parseInt(multiRequest.getParameter("originFileNo")));
 		System.out.println("리뷰 업뎃 뉴인풋 : " + memNo);
 			
