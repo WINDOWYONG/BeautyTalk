@@ -341,6 +341,7 @@ public class ReviewDao {
 			
 			if(rset.next()) {
 				img = new Image();
+				img.setImgNo(rset.getInt("IMAGE_NO"));
 				img.setOriginName(rset.getString("ORIGIN_NAME"));
 				img.setChangeName(rset.getString("CHANGE_NAME"));
 				img.setFilePath(rset.getString("FILE_PATH"));

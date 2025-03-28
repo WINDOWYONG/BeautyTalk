@@ -161,6 +161,7 @@
 		        (
 				SELECT
                      RV.REVIEW_NO   
+                    , IMG.IMAGE_NO
 				    , IMG.ORIGIN_NAME
 				    , IMG.CHANGE_NAME
 				    , IMG.FILE_PATH
@@ -239,11 +240,15 @@
 		UPDATE
 	       	IMAGE IMG
 		SET
-	        IMG.ORIGIN_NAME = ?
-	        , IMG.CHANGE_NAME = ?
-	        , IMG.FILE_PATH = ?
-        FROM REVIEW RV
-		WHERE IMAGE IMG.REF_BNO  = RV.MEM_NO
+	        ORIGIN_NAME = ?
+	        , CHANGE_NAME = ?
+	        , FILE_PATH = ?
+		WHERE IMAGE_NO in ?
+        AND IMG.REF_BNO in
+                           (select
+                               RV.MEM_NO
+                           FROM REVIEW RV
+                           WHERE RV.MEM_NO = IMG.REF_BNO)
 	
 	</entry>
 	

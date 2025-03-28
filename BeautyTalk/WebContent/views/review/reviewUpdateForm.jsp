@@ -777,14 +777,11 @@
 			<br>
 
 			<div class="reviewEnrollForm_btn" align="center">
-				<button type="button" onclick="location.href='<%= contextPath %>/review.li?'">
-					목록
+				<button type="button" onclick="location.href='<%= contextPath %>/detail.re?bno=<%= rv1.getReviewNo() %>'">
+					뒤로가기
 				</button>
 				<button type="submit" onclick=update() class="reviewDetail_btn">
 					수정
-				</button>
-				<button onclick=test() type="reset">
-					삭제
 				</button>
 
 			</div>
@@ -794,21 +791,12 @@
 			        if(!confirm("확인(수정) 또는 취소(수정 안 함).")) {
 				    	alert("취소합니다.");
 			        }else {
+			        	alert("수정 완료.");
 			        	return;
 			        }
 				}
 			</script>
 			
-			<script>
-			    function test() {
-			        if(!confirm("확인(삭제) 또는 취소(삭제 안함).")) {
-			           alert("취소합니다.");
-			        }else {
-			           alert("삭제 완료.");
-			           location.href="<%= contextPath %>/review.li"
-			        }
-			    }
-			</script>
 		</form>
 		</div>
 		</div>
