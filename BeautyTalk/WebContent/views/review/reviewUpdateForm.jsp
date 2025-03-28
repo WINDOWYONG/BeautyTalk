@@ -634,13 +634,14 @@
 		<h2 align="center">리뷰 수정하기</h2>
 		<form id="review_update" action="<%= contextPath %>/updateReview.up" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="MEM_NO" value="<%= rv1.getMemNo() %>">
+			<input type="hidden" name="bno" value="<%= rv1.getReviewNo() %>">
 			<table id="review_update_table1" align="center">
 				<tr>
 					<th width="75" height="50" align="left" class="review_update_th">
 						제목
 					</th>
 					<td width="350">
-						<input type="text" name="TITLE" value="<%= rv1.getTitle() %>">
+						<input type="text" name="TITLE" value="<%= rv1.getTitle() %>" required>
 					</td>
 					<th width="75" class="review_update_th2">
 					<!-- 카테고리 -->
@@ -669,7 +670,7 @@
 					</th>
 					<!-- 높낮이를 고정시키기 위해서 style 부여 -->
 					<td colspan="3" style="height: 200px;"><textarea
-							id="reviewPost_textarea1" name="CONTENT" style="resize: none;"><%= rv1.getContent() %></textarea>
+							id="reviewPost_textarea1" name="CONTENT" style="resize: none;" required><%= rv1.getContent() %></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -791,19 +792,19 @@
 			<script>
 				function update(){
 			        if(!confirm("확인(수정) 또는 취소(수정 안 함).")) {
-				           alert("수정 안 함.");
-				        }else {
-				           location.href="<%= contextPath %>/detail.re?bno=<%= rv1.getReviewNo() %>"
-				        }
+				    	alert("취소합니다.");
+			        }else {
+			        	return;
+			        }
 				}
 			</script>
 			
 			<script>
 			    function test() {
 			        if(!confirm("확인(삭제) 또는 취소(삭제 안함).")) {
-			           alert("삭제 안 함.");
+			           alert("취소합니다.");
 			        }else {
-			           alert("삭제.");
+			           alert("삭제 완료.");
 			           location.href="<%= contextPath %>/review.li"
 			        }
 			    }

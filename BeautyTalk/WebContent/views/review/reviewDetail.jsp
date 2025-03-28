@@ -18,7 +18,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
-<style>
 	#Content1 {
 		height: auto;
 		width: 100%;
@@ -516,6 +515,16 @@
 		padding: 10px;
 		box-sizing: border-box;
 	}
+
+	.review_detail_title{
+		width: 100%;
+		height: 100%;
+		border: 0.1px solid lightgrey;
+		border-radius: 20px;
+		box-sizing: border-box;
+		padding: 20px;
+		text-align: left;
+	}
 	
 </style>
 <!-- Latest compiled and minified CSS -->
@@ -794,8 +803,9 @@
 					<th width="75" height="50" align="left" class="review_Detailth">
 						제목
 					</th>
-					<td width="350" style="text-align: left">
-						&nbsp; <%= rv1.getReviewNo() %> &nbsp;&nbsp;&nbsp; <%= rv1.getTitle() %>
+					<td>
+						<div class="review_detail_title">&nbsp; <%= rv1.getReviewNo() %> &nbsp;&nbsp;&nbsp; <%= rv1.getTitle() %>
+						</div>
 					</td>
 					<th width="75" class="review_Detailth2">
 					<!-- 카테고리 -->

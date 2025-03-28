@@ -42,7 +42,6 @@ public class ReviewDetailController extends HttpServlet {
 		if(rv != null) { // 유효한 게시글 => 게시글, 첨부파일 DB로부터 조회 
 			Review rv1 = rService.selectReview(refBno);
 			Image img = rService.selectImage(refBno);
-			System.out.println(refBno);	
 			request.setAttribute("rv1", rv1); // review에 대한 정보
 			request.setAttribute("img", img); // image에 대한 정보
 			

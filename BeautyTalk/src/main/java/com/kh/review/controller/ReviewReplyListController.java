@@ -34,12 +34,8 @@ public class ReviewReplyListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String refBno = request.getParameter("bno");
-		System.out.println(refBno);
 		ArrayList<Reply> list = new ReviewService().selectReplyList(refBno);
 		
-		// [{}, {}, {}, {}, ...] => JSON 형태
-		
-		// Gson을 활용해서 jsp에 넣어서 결과물 출력하라.
 		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(list, response.getWriter());
 	}

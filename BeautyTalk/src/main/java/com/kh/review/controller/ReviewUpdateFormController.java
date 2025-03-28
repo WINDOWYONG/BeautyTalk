@@ -36,7 +36,7 @@ public class ReviewUpdateFormController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String refBno = request.getParameter("bno");
-		
+	System.out.println("리뷰 업뎃폼 bno : " + refBno);
 		ReviewService rService = new ReviewService();
 		rService.selectReview(refBno);
 		

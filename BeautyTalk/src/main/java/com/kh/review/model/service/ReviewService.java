@@ -132,7 +132,7 @@ public class ReviewService {
 	public int updateReview(Review rv, Image img) {
 		Connection conn = getConnection();
 		
-		int result1 = new ReviewDao().updateReview(conn, rv);
+		int result1 = new ReviewDao().updateReview2(conn, rv);
 		int result2 = 1;
 		
 		if(img != null) {

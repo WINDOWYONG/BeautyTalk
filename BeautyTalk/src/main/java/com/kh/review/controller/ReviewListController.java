@@ -91,36 +91,6 @@ public class ReviewListController extends HttpServlet {
 
 		RequestDispatcher rd = request.getRequestDispatcher("views/review/reviewContentPost.jsp");
 		rd.forward(request, response);
-		
-//		String pageNum = request.getParameter("currentPage");
-//		if(pageNum == null) {
-//			pageNum = "1";
-//		}
-		
-//		int listCount = new ReviewService().selectReviewList();
-
-//		int pageLimit = 10;
-		
-//		int reviewLimit = 5;
-		
-//		int currentPage = Integer.parseInt(pageNum);
-		
-//		int maxPage =  (int)Math.ceil((double)listCount / reviewLimit);
-		
-//		int startPage = (currentPage - 1) / reviewLimit * reviewLimit + 1;
-		
-//		listCount == 게시글의 개수 (DB에서 추출해옴)  == cnt
-//		currentPage, == pageNum (jsp에서 request)
-//		pageLimit, == 페이징바의 최대 개수? 지정 == pageBlock
-//		reviewLimit, == 게시글의 최대 개수? 지정 == pageSize
-//		maxPage, == maxPage
-//		startPage, == startRow
-//		endPage == endPage
-		
-
-//		request.setAttribute("request","requestValue");
-//		response.sendRedirect("views/bodyTestLYH/reviewlyh.jsp");
-		
 	}
 
 	/**

@@ -226,7 +226,7 @@
 		UPDATE
 	        REVIEW
 		SET
-	        TITLE = ?
+	          TITLE = ?
 	        , CONTENT = ?
 	        , P_RATING = ?
 	        , R_RATING = ?
@@ -237,12 +237,13 @@
 
 	<entry key="updateImage">
 		UPDATE
-	       	IMAGE
+	       	IMAGE IMG
 		SET
-	        ORIGIN_NAME = ?
-	        , CHANGE_NAME = ?
-	        , FILE_PATH = ?
-		WHERE IMAGE_NO = ?
+	        IMG.ORIGIN_NAME = ?
+	        , IMG.CHANGE_NAME = ?
+	        , IMG.FILE_PATH = ?
+        FROM REVIEW RV
+		WHERE IMAGE IMG.REF_BNO  = RV.MEM_NO
 	
 	</entry>
 	

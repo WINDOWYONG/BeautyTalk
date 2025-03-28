@@ -463,7 +463,7 @@ public class ReviewDao {
 
 	}
 	
-	public int updateReview(Connection conn, Review rv) {
+	public int updateReview2(Connection conn, Review rv) {
 		int result = 0;
 		
 		PreparedStatement pstmt = null;

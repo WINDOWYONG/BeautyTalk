@@ -35,9 +35,6 @@ public class ReviewReplyController extends HttpServlet {
 		String refBno = request.getParameter("bno");
 		int memNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 		String replyContent = request.getParameter("content");
-
-//		Review rv = new ReviewService().selectReply();
-//		String replyNo = rv.getReviewNo();
 		
 		Reply r = new Reply();
 		r.setRefBno(Integer.parseInt(refBno));
@@ -45,7 +42,6 @@ public class ReviewReplyController extends HttpServlet {
 		r.setReplyContent(replyContent);
 		
 		int result = new ReviewService().insertReply(r);
-		// 바로 출력 가능(한글도 없엉!)
 		
 		response.getWriter().print(result); // 0, 1 둘 중 하나
 

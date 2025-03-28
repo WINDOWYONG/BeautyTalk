@@ -715,7 +715,7 @@ button {
 			<br>
 
 			<div class="reviewEnrollForm_btn" align="center">
-				<button type="button" onclick="location.href='<%= contextPath %>/review.li?'">
+				<button type="button" onclick="history.back()">
 					목록
 				</button>
 				<button type="submit">
