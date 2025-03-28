@@ -1,3 +1,4 @@
+<%@page import="java.nio.file.attribute.UserPrincipalNotFoundException"%>
 <%@page import="com.kh.review.model.vo.Image"%>
 <%@page import="com.kh.review.model.vo.Review"%>
 <%@page import="com.kh.review.model.vo.SubCategory"%>
@@ -154,7 +155,6 @@ a:hover {
 .material-icons {
 	display: inline;
 	display: flex;
-	align-items: center;
 	font-weight: 600;
 }
 
@@ -614,31 +614,34 @@ button {
 				moveUnderline(tabs[0]);
 				tabs[0].classList.add("active");
 		});
-</script>
+	</script>
 
 <!-- ReviewEnrollForm -->
+
 	<div class="review_Enrollouter">
 		<h2 align="center">리뷰 작성</h2>
+		<% if(loginUser != null) { %>
 		<form action="<%= contextPath %>/insert.re" id="reviewEnroll_Form1" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="MEM_NO" value="<%= loginUser.getUserNo() %>">
+			<input type="hidden" name="MEM_NO" value="<%= loginUser.getUserNo()  %>">
+			<input type="hidden" name="LIKE_REVIEW" value="<%= rv.getLikeReview() %>">
 			<table id="reviewPost_table1" align="center">
 				<tr>
 					<th width="75" height="50" align="left" class="review_EnrollTh">
 						제목
 					</th>
 					<td width="350">
-						<input type="text" name="TITLE">
+						<input type="text" name="TITLE" required>
 					</td>
 					<th width="75" class="review_EnrollTh2">
-						카테고리
+					<!-- 카테고리  -->
 					</th>
 					<td width="100">
-						<select class="reviewPost_category1" name="SC_ID">
+					<!-- 	<select class="reviewPost_category1" name="SC_ID">  -->
 <!-- Category 테이블로부터 조회해올 것 -->
-                            <% for(SubCategory sc : list) { %>
+                     <!--        <% for(SubCategory sc : list) { %>
                             	<option value="<%= sc.getScId() %>"><%= sc.getScName() %></option>
                             <% } %>
-                        </select>
+                        </select>  -->
                     </td>
 				</tr>
 
@@ -648,7 +651,7 @@ button {
 					</th>
 					<!-- 높낮이를 고정시키기 위해서 style 부여 -->
 					<td colspan="3" style="height: 200px;"><textarea
-							id="reviewPost_textarea1" name="CONTENT" style="resize: none;"></textarea>
+							id="reviewPost_textarea1" name="CONTENT" style="resize: none;" required></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -679,19 +682,20 @@ button {
 					<th style="height: 50px;" align="left" class="review_EnrollTh">
 						첨부파일
 					</th>
-					<td colspan="3" align="center">
-						<label for="review_upload">
+					<td colspan="3" class="review_enroll_img">
+						<br>
+						<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
+						<div id="image_container"></div>
+						<br>
+						<label for="review_upload" style="center";>
 							<span class="material-icons">
 								<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#e8618c"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
 							</span>
 						</label>
-						<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
-						<div id="image_container"></div>
 					</td>
 				</tr>
 			</table>
-			<input type="hidden" name="LIKE_REVIEW" value="0">
-			
+
 			<script>
 				function setThumbnail(event){
 					const reader = new FileReader();
@@ -705,6 +709,7 @@ button {
 					reader.readAsDataURL(event.target.files[0]);
 				}
 			</script>
+			
 			<br>
 
 			<div class="reviewEnrollForm_btn" align="center">
@@ -719,6 +724,7 @@ button {
 				</button>
 			</div>
 		</form>
+		<% } %>
 	</div>
 	</div>
 </div>

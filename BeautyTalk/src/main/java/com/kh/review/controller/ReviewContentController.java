@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.review.model.service.ReviewService;
+import com.kh.review.model.vo.Review;
 import com.kh.review.model.vo.SubCategory;
 
 /**
@@ -34,10 +35,15 @@ public class ReviewContentController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ArrayList<SubCategory> list = new ReviewService().selectSubCategoryList();
+
+		Review rv = new ReviewService().selectReviewEnroll();
 		
 		request.setAttribute("list", list);
+		request.setAttribute("rv", rv);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("views/review/reviewEnrollForm.jsp");
 		rd.forward(request, response);
+		
 		
 		
 	}

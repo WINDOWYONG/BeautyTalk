@@ -3,21 +3,21 @@ package com.kh.review.model.vo;
 public class Image {
 	
 	private int imgNo;
-	private String refBno;
+	private int refBno;
 	private String originName;
 	private String changeName;
 	private String filePath;
 	private String uploadDate;
-	private String reviewBno;
-	private String postBno;
-	private String profileBno;
-	private int fileLevel;
+	private String fileLevel;
 	private String status;
+	
+	private int reviewMem;
+	private int postMem;
 	
 	public Image () {}
 
-	public Image(int imgNo, String refBno, String originName, String changeName, String filePath, String uploadDate,
-			String reviewBno, String postBno, String profileBno, int fileLevel, String status) {
+	public Image(int imgNo, int refBno, String originName, String changeName, String filePath, String uploadDate,
+			String fileLevel, String status, int reviewMem, int postMem) {
 		super();
 		this.imgNo = imgNo;
 		this.refBno = refBno;
@@ -25,11 +25,10 @@ public class Image {
 		this.changeName = changeName;
 		this.filePath = filePath;
 		this.uploadDate = uploadDate;
-		this.reviewBno = reviewBno;
-		this.postBno = postBno;
-		this.profileBno = profileBno;
 		this.fileLevel = fileLevel;
 		this.status = status;
+		this.reviewMem = reviewMem;
+		this.postMem = postMem;
 	}
 
 	public int getImgNo() {
@@ -40,11 +39,11 @@ public class Image {
 		this.imgNo = imgNo;
 	}
 
-	public String getRefBno() {
+	public int getRefBno() {
 		return refBno;
 	}
 
-	public void setRefBno(String refBno) {
+	public void setRefBno(int refBno) {
 		this.refBno = refBno;
 	}
 
@@ -80,35 +79,11 @@ public class Image {
 		this.uploadDate = uploadDate;
 	}
 
-	public String getReviewBno() {
-		return reviewBno;
-	}
-
-	public void setReviewBno(String reviewBno) {
-		this.reviewBno = reviewBno;
-	}
-
-	public String getPostBno() {
-		return postBno;
-	}
-
-	public void setPostBno(String postBno) {
-		this.postBno = postBno;
-	}
-
-	public String getProfileBno() {
-		return profileBno;
-	}
-
-	public void setProfileBno(String profileBno) {
-		this.profileBno = profileBno;
-	}
-
-	public int getFileLevel() {
+	public String getFileLevel() {
 		return fileLevel;
 	}
 
-	public void setFileLevel(int fileLevel) {
+	public void setFileLevel(String fileLevel) {
 		this.fileLevel = fileLevel;
 	}
 
@@ -120,12 +95,28 @@ public class Image {
 		this.status = status;
 	}
 
+	public int getReviewMem() {
+		return reviewMem;
+	}
+
+	public void setReviewMem(int reviewMem) {
+		this.reviewMem = reviewMem;
+	}
+
+	public int getPostMem() {
+		return postMem;
+	}
+
+	public void setPostMem(int postMem) {
+		this.postMem = postMem;
+	}
+
 	@Override
 	public String toString() {
 		return "Image [imgNo=" + imgNo + ", refBno=" + refBno + ", originName=" + originName + ", changeName="
-				+ changeName + ", filePath=" + filePath + ", uploadDate=" + uploadDate + ", reviewBno=" + reviewBno
-				+ ", postBno=" + postBno + ", profileBno=" + profileBno + ", fileLevel=" + fileLevel + ", status="
-				+ status + "]";
+				+ changeName + ", filePath=" + filePath + ", uploadDate=" + uploadDate + ", fileLevel=" + fileLevel
+				+ ", status=" + status + ", reviewMem=" + reviewMem + ", postMem=" + postMem + "]";
 	}
+
 	
 }

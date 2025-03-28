@@ -78,9 +78,6 @@ public class ReviewListController extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		// com.kh.common.model.vo.PageInfo - jsp 가져가야해서 가방에 담아야함
-		// * jsp에서 페이징바를 만드려면 7개의 값이 필요한데
-		// 그걸 담기 위한 가방, 그릇! (vo)
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, reviewLimit, maxPage, startPage, endPage);
 		
 		
@@ -88,10 +85,6 @@ public class ReviewListController extends HttpServlet {
 		ArrayList<Review> list = new ReviewService().selectReviewArrayList(pi);
 		Image img = new ReviewService().selectImageArraylist(pi);
 		
-		String refBno = request.getParameter("bno");
-		Review rv = new ReviewService().selectRefBno(refBno);
-		
-		request.setAttribute("rv", rv);
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.setAttribute("img", img);

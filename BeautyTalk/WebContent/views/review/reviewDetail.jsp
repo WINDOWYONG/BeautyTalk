@@ -15,6 +15,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style>
 <style>
 	#Content1 {
 		height: auto;
@@ -151,7 +154,6 @@
 	.material-icons {
 		display: inline;
 		display: flex;
-		align-items: center;
 		font-weight: 600;
 	}
 	
@@ -782,24 +784,24 @@
 		});
 	</script>
 	<% } %>
-<!-- ReviewEnrollForm -->
 
+<!-- ReviewEnrollForm -->
 	<div id="review_detailouter" class="review_detailouter">
 		<h2 align="center">리뷰 상세보기</h2>
-
-			<table id="reviewDetail_table1" align="center">
+			<input type="hidden" name="MEM_NO" value="<%= rv1.getMemNo() %>">
+			<table id="reviewDetail_table1">
 				<tr>
 					<th width="75" height="50" align="left" class="review_Detailth">
 						제목
 					</th>
 					<td width="350" style="text-align: left">
-						&nbsp; <%= rv1.getReviewNo() %> &nbsp;&nbsp;&nbsp;&nbsp; <%= rv1.getTitle() %>
+						&nbsp; <%= rv1.getReviewNo() %> &nbsp;&nbsp;&nbsp; <%= rv1.getTitle() %>
 					</td>
 					<th width="75" class="review_Detailth2">
-						카테고리
+					<!-- 카테고리 -->
 					</th>
 					<td width="100">
-						<%= rv1.getPcode() %>
+					<!-- <%= rv1.getPcode() %>  -->
 					</td>
 				</tr>
 
@@ -819,51 +821,33 @@
 						<span>재구매 : <%= rv1.getrRating() %></span>
 					</td>
 					<td>
-						<button type="button" id="review_DetailLikebtn" class="review_detail_like" name="LIKE_REVIEW"> 👍 : <%=rv1.getLikeReview() %></button>
+						<button type="button" id="review_DetailLikebtn" class="review_detail_like" name="LIKE_REVIEW" value="<%= rv1.getLikeReview() %>"> 👍 : <%= rv1.getLikeReview() %></button>
 					</td>
 				</tr>
 				<tr>
 					<th style="height: 50px;" align="left" class="review_EnrollTh">
 						첨부 파일
 					</th>
-					<td colspan="3" align="center" class="review_DetailImg">
+					<td colspan="3" class="review_DetailImg">
 	                	<% if(img == null) { %>
-	                    <!-- case1. 첨부파일이 없을 경우 -->
-	                        첨부파일이 없습니다
-						<% }else { %>
-	                    <!-- case2. 첨부파일이 있는 경우 -->
-	                    <!-- 사용자가 다운로드 시 놀래지 않게 하기 위함 -->
-	                    	<br><br>
-	                    	<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
-	                        <br><br><br>
-	                        <a download="<%= img.getOriginName() %>" href="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>"><%= img.getOriginName() %></a>
+	                	<!-- case1. 첨부파일이 없을 경우 -->
+	                		<br>
+	                        	<b>첨부파일이 없습니다</b>
+		                    <br>
+							
+	                	<% }else { %>
+						<!-- case2. 첨부파일이 있는 경우 -->
+       						<br>
+         					<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+							<a download="<%= img.getOriginName() %>" href="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>"><%= img.getOriginName() %></a>
+							<br>
+
 	                	<% } %>
 					</td>
 				</tr>
 
 			</table>
-			
-
-			
-<!-- 잠시 이걸로 좋아요 작성 마무리좀 -->
-<!-- 			
-			<script>
-				function setThumbnail(event){
-					const reader = new FileReader();
-					
-					reader.onload = function(event){
-						var img = document.createElement("img");
-						img.setAttribute("src", event.target.result);
-						img.setAttribute("class", "col-lg-6");
-						document.querySelector("div#image_container").appendChild(img);
-					};
-					
-					reader.readAsDataURL(event.target.files[0]);
-					
-					
-				}
-			</script>
--->			
+		
 			<br>
 
 			<div class="reviewEnrollForm_btn" align="center">
@@ -881,22 +865,12 @@
 			</div>
 			
 			<script>
-			    function test() {
-			        if (!confirm("삭제(확인) 또는 취소.")) {
-			            alert("삭제 안 함.");
-			        } else {
-			            location.href="<%= contextPath %>/review.de?bno=<%= rv1.getReviewNo() %>" 
-			        }
-			    }
-			</script>
-			
-			<script>
 				$(function(){
 				    $(".review_detail_delete").on("click", function(){
 				        if(!confirm("삭제(확인) 또는 취소.")) {
 				        	alert("삭제 안 함.");
 				        }else {
-				        	location.href="<%= contextPath %>/review.de"
+				        	location.href="<%= contextPath %>/review.de?bno=<%= rv1.getReviewNo() %>" 
 				        }
 			    	})
 				})
@@ -969,13 +943,13 @@
             			},
             		})
             	}
-            	
+              	
             	// ajax으로 해당 게시글에 딸린 댓글 목록 조회용 함수
             	function selectReplyList(){
             		$.ajax({
             			url:"rlist.re",
             			data:{
-            				bno:<%= rv1.getReviewNo() %>
+            				bno: <%= rv1.getReviewNo() %>
             			},
             			success:function(list){
             				console.log(list);

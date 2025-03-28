@@ -43,15 +43,6 @@ public class ReviewService {
 		return img;
 	}
 	
-	public Review selectRefBno(String refBno) {
-		Connection conn = getConnection();
-		
-		Review rv = new ReviewDao().selectRefBno(conn, refBno);
-		
-		close(conn);
-		return rv;
-	}
-	
 	
 	public ArrayList<SubCategory> selectSubCategoryList() {
 		Connection conn = getConnection();
@@ -82,10 +73,10 @@ public class ReviewService {
 		
 	}
 	
-	public Review selectMemNo(String refBno) {
+	public Review selectReviewTest(String refBno) {
 		Connection conn = getConnection();
 		
-		Review rv = new ReviewDao().selectMemNo(conn, refBno);
+		Review rv = new ReviewDao().selectReviewTest(conn, refBno);
 		
 		close(conn);
 		return rv;
@@ -196,6 +187,17 @@ public class ReviewService {
 		}
 		return result;
 	}
+	
+	public Review selectReviewEnroll() {
+		Connection conn = getConnection();
+		
+		Review rv = new ReviewDao().selectReviewEnroll(conn);
+		
+		close(conn);
+		return rv;
+
+	}
+	
 	
 	
 	

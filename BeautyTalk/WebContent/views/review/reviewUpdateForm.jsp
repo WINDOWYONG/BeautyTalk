@@ -17,6 +17,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style>
 <style>
 	#Content1 {
 		height: auto;
@@ -372,7 +375,6 @@
 	.material-icons {
 		display: inline;
 		display: flex;
-		align-items: center;
 		font-weight: 600;
 	}
 	
@@ -631,8 +633,8 @@
 	<div id="review_updateouter" class="review_updateouter">
 		<h2 align="center">리뷰 수정하기</h2>
 		<form id="review_update" action="<%= contextPath %>/updateReview.up" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="MEM_NO" value="<%= rv1.getMemNo() %>">
 			<table id="review_update_table1" align="center">
-				<input type="hidden" name="bno" value="<%= rv1.getReviewNo() %>">
 				<tr>
 					<th width="75" height="50" align="left" class="review_update_th">
 						제목
@@ -641,14 +643,14 @@
 						<input type="text" name="TITLE" value="<%= rv1.getTitle() %>">
 					</td>
 					<th width="75" class="review_update_th2">
-						카테고리
+					<!-- 카테고리 -->
 					</th>
 					<td width="100">
-						<select class="reviewPost_category1" name="SC_ID">
+					<!-- 	<select class="reviewPost_category1" name="SC_ID">
                             <% for(SubCategory cate : list1) { %>
                             	<option class="review_update_option1" value="<%= cate.getScId() %>"><%= cate.getScName() %></option>
                             <% } %>
-                        </select>
+                        </select>  -->
                         <script>
                         	$(function(){
                         		$("#review_update review_update_option1").each(function(){
@@ -713,39 +715,44 @@
                         </script>
 					</td>
 					<td>
-						<div id="review_update_btn" name="LIKE_REVIEW"> 👍 : <%=rv1.getLikeReview() %></div>
+						<button type="button" id="review_UpLikebtn" class="review_update_like" name="LIKE_REVIEW" value="<%= rv1.getLikeReview() %>"> 👍 : <%= rv1.getLikeReview() %></button>
 					</td>
 				</tr>
 				<tr>
 					<th style="height: 50px;" align="left" class="review_EnrollTh">
 						첨부파일
 					</th>
-					<td colspan="3" align="center" class="review_update_img">
-	                	<% if(img == null) { %>
-	                    <!-- case1. 첨부파일이 없을 경우 -->
-	                    	<br><br>
-                        	<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
-                    		<br><br><br>
-               				<label for="review_upload">
+					<td colspan="3" class="review_update_img">
+	                	<% if(img != null) { %>
+                    <!-- case1. 첨부파일이 있는 경우 -->
+	                    <input type="hidden" name="originFileNo" value="<%= img.getImgNo() %>">
+	                    	<br>
+							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
+							<div id="image_container"></div>
+							<br>
+							<label for="review_upload">
 								<span class="material-icons">
 									<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#e8618c"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
 								</span>
 							</label>
-							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
-							<div id="image_container" align="center"></div>
+							<br>
+							<a download="<%= img.getOriginName() %>" href="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>" onchange="setThumbnail(event);"><%= img.getOriginName() %></a>
+
 						<% }else { %>
-	                    <!-- case2. 첨부파일이 있는 경우 -->
-	                    <!-- 사용자가 다운로드 시 놀래지 않게 하기 위함 -->
-							<%= img.getOriginName() %>
-	                    	<input type="hidden" name="originFileNo" value="<%= img.getImgNo() %>">
+                    <!-- case2. 첨부파일이 없을 경우 -->
+							<br>
+	                        	<b>첨부파일이 없습니다</b>
+							<br>
+							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
+							<div id="image_container"></div>
+							<br>
+							<label for="review_upload" style="center";>
+								<span class="material-icons">
+									<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#e8618c"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+								</span>
+							</label>
 	                	<% } %>
-        	            <label for="review_upload">
-							<span class="material-icons">
-								<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#e8618c"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-							</span>
-						</label>
-						<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
-						<div id="image_container" align="center"></div>
+
 						<br>
 					</td>
 				</tr>
@@ -785,17 +792,16 @@
 				function update(){
 			        if(!confirm("확인(수정) 또는 취소(수정 안 함).")) {
 				           alert("수정 안 함.");
-				           history.back();
 				        }else {
 				           location.href="<%= contextPath %>/detail.re?bno=<%= rv1.getReviewNo() %>"
 				        }
 				}
 			</script>
+			
 			<script>
 			    function test() {
 			        if(!confirm("확인(삭제) 또는 취소(삭제 안함).")) {
 			           alert("삭제 안 함.");
-			           history.back();
 			        }else {
 			           alert("삭제.");
 			           location.href="<%= contextPath %>/review.li"

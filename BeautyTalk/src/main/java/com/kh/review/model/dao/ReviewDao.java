@@ -94,7 +94,7 @@ public class ReviewDao {
 			while(rset.next()) {
 				Review rv = new Review();
 				rv.setReviewNo(rset.getString("REVIEW_NO"));
-				rv.setCreateDate(rset.getString("CREATE_DATE"));
+				rv.setCreateDate(rset.getDate("CREATE_DATE"));
 				rv.setTitle(rset.getString("TITLE"));
 				rv.setContent(rset.getString("CONTENT"));
 				rv.setPrRating(rset.getInt("PR_RATING"));
@@ -138,15 +138,12 @@ public class ReviewDao {
 			if(rset.next()) {
 				img = new Image();
 				img.setImgNo(rset.getInt("IMAGE_NO"));
-				img.setRefBno(rset.getString("REF_BNO"));
+				img.setRefBno(rset.getInt("REF_BNO"));
 				img.setOriginName(rset.getString("ORIGIN_NAME"));
 				img.setChangeName(rset.getString("CHANGE_NAME"));
 				img.setFilePath(rset.getString("FILE_PATH"));
 				img.setUploadDate(rset.getString("UPLOAD_DATE"));
-				img.setReviewBno(rset.getString("REVIEW_BNO"));
-				img.setPostBno(rset.getString("POST_BNO"));
-				img.setProfileBno(rset.getString("PROFILE_BNO"));
-				img.setFileLevel(rset.getInt("FILE_LEVEL"));
+				img.setFileLevel(rset.getString("FILE_LEVEL"));
 			}
 			
 		} catch (SQLException e) {
@@ -159,33 +156,6 @@ public class ReviewDao {
 
 	}
 	
-	public Review selectRefBno(Connection conn, String refBno) {
-		Review rv = null;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectRefBno");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				rv = new Review();
-				rv.setReviewNo(rset.getString("REVIEW_NO"));
-			}
-			
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		return rv;
-	}
 	
 	public ArrayList<SubCategory> selectSubCategoryList(Connection conn){
 		// select에 여러 행 조회 => Resultset
@@ -264,7 +234,7 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql); // 미완성
 			
-			pstmt.setString(1, img.getRefBno());
+			pstmt.setInt(1, img.getRefBno());
 			pstmt.setString(2, img.getOriginName());
 			pstmt.setString(3, img.getChangeName());
 			pstmt.setString(4, img.getFilePath());
@@ -282,22 +252,25 @@ public class ReviewDao {
 		
 	}
 	
-	public Review selectMemNo(Connection conn, String refBno) {
+	public Review selectReviewTest(Connection conn, String refBno) {
 		// select 조회 => 대량으로 될 수도 있지 않나? 하나만인가?
 		Review rv = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectMemNo");
+		String sql = prop.getProperty("selectReviewTest");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, refBno);
+			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
 				rv = new Review();
-				rv.setMemNo(rset.getInt("MEM_NO"));
+				rv.setReviewNo(rset.getString("REVIEW_NO"));
 			}
 			
 		} catch (SQLException e) {
@@ -326,14 +299,13 @@ public class ReviewDao {
 			
 			rset = pstmt.executeQuery();
 			
-			if(rset.next()) { // 수정할 때 필요한 멤버 넘버, 생성날짜, 제목, 카테고리 = PCODE, 내용, 가격, 성분, 재구매, 따봉수
+			if(rset.next()) { // 이거 업뎃용 아니잖아.
 				rv = new Review();
 				rv.setReviewNo(rset.getString("REVIEW_NO"));
 				rv.setPcode(rset.getString("PCODE"));
 				rv.setMemNo(rset.getInt("MEM_NO"));
 				rv.setTitle(rset.getString("TITLE"));
 				rv.setContent(rset.getString("CONTENT"));
-				rv.setCreateDate(rset.getString("CREATE_DATE"));
 				rv.setpRating(rset.getInt("P_RATING"));
 				rv.setrRating(rset.getInt("R_RATING"));
 				rv.setPrRating(rset.getInt("PR_RATING"));
@@ -359,25 +331,19 @@ public class ReviewDao {
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("selectImage");
-		// (해당 게시글에 달린 이미지를 조회해야 함.)
-		// 이미지 데이터중 뭘 불러와야 할까?
-		
 		
 		try {
-			pstmt = conn.prepareStatement(sql); // 미완성'
+			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, refBno);
-			
+
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
 				img = new Image();
-				img.setImgNo(rset.getInt("IMAGE_NO"));
-				img.setRefBno(rset.getString("REF_BNO"));
 				img.setOriginName(rset.getString("ORIGIN_NAME"));
 				img.setChangeName(rset.getString("CHANGE_NAME"));
 				img.setFilePath(rset.getString("FILE_PATH"));
-				img.setReviewBno(rset.getString("REVIEW_BNO"));
 			}
 			
 		} catch (SQLException e) {
@@ -440,7 +406,7 @@ public class ReviewDao {
 				rv.setMemNo(rset.getInt("MEM_NO"));
 				rv.setTitle(rset.getString("TITLE"));
 				rv.setContent(rset.getString("CONTENT"));
-				rv.setCreateDate(rset.getString("CREATE_DATE"));
+				rv.setCreateDate(rset.getDate("CREATE_DATE"));
 				rv.setpRating(rset.getInt("P_RATING"));
 				rv.setrRating(rset.getInt("R_RATING"));
 				rv.setPrRating(rset.getInt("PR_RATING"));
@@ -459,6 +425,7 @@ public class ReviewDao {
 	
 	public Image selectImgImage(Connection conn) {
 		Image img = null;
+		Review rv = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -468,16 +435,21 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			
+			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
 				img = new Image();
+				rv = new Review();
 				img.setImgNo(rset.getInt("IMAGE_NO"));
-				img.setRefBno(rset.getString("REF_BNO"));
+				img.setRefBno(rset.getInt("REF_BNO"));
 				img.setOriginName(rset.getString("ORIGIN_NAME"));
 				img.setChangeName(rset.getString("CHANGE_NAME"));
 				img.setFilePath(rset.getString("FILE_PATH"));
-				img.setReviewBno(rset.getString("REVIEW_BNO"));
+				img.setUploadDate(rset.getString("UPLOAD_DATE"));
+				rv.setMemNo(rset.getInt("MEM_NO"));
+				rv.setCreateDate(rset.getDate("CREATE_DATE"));
 			}
 			
 		} catch (SQLException e) {
@@ -501,13 +473,12 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, rv.getPcode());
-			pstmt.setString(2, rv.getTitle());
-			pstmt.setString(3, rv.getContent());
-			pstmt.setInt(4, rv.getpRating());
-			pstmt.setInt(5, rv.getrRating());
-			pstmt.setInt(6, rv.getPrRating());
-			pstmt.setString(7, rv.getReviewNo());
+			pstmt.setString(1, rv.getTitle());
+			pstmt.setString(2, rv.getContent());
+			pstmt.setInt(3, rv.getpRating());
+			pstmt.setInt(4, rv.getrRating());
+			pstmt.setInt(5, rv.getPrRating());
+			pstmt.setString(6, rv.getReviewNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -530,11 +501,10 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, img.getRefBno());
-			pstmt.setString(2, img.getOriginName());
-			pstmt.setString(3, img.getChangeName());
-			pstmt.setString(4, img.getFilePath());
-			pstmt.setInt(5, img.getImgNo());
+			pstmt.setString(1, img.getOriginName());
+			pstmt.setString(2, img.getChangeName());
+			pstmt.setString(3, img.getFilePath());
+			pstmt.setInt(4, img.getImgNo());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -557,11 +527,10 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, img.getRefBno());
+			pstmt.setInt(1, img.getRefBno());
 			pstmt.setString(2, img.getOriginName());
 			pstmt.setString(3, img.getChangeName());
 			pstmt.setString(4, img.getFilePath());
-			pstmt.setString(5, img.getReviewBno());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -587,6 +556,7 @@ public class ReviewDao {
 			pstmt.setString(1, rv.getReviewNo());
 			
 			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -619,11 +589,11 @@ public class ReviewDao {
 				Reply r = new Reply();
 				Member m = new Member();
 				r.setReplyNo(rset.getInt("REPLY_NO"));
-				r.setRefBno(rset.getInt("REF_BNO"));
 				r.setMemNo(rset.getInt("MEM_NO"));
 				r.setUserId(rset.getString("MEM_ID"));
 				r.setReplyContent(rset.getString("REPLY_CONTENT"));
 				r.setCreateDate(rset.getString("CREATE_DATE"));
+				r.setRefBno(rset.getInt("REF_BNO"));
 
 				list.add(r);
 			}
@@ -651,9 +621,9 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, r.getRefBno());
-			pstmt.setInt(2, r.getMemNo());
-			pstmt.setString(3, r.getReplyContent());
+			pstmt.setInt(1, r.getMemNo());
+			pstmt.setString(2, r.getReplyContent());
+			pstmt.setInt(3, r.getRefBno());
 			
 			result = pstmt.executeUpdate();
 			
@@ -667,7 +637,36 @@ public class ReviewDao {
 
 	}
 	
-	
+	public Review selectReviewEnroll(Connection conn) {
+		Review rv = new Review();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+				
+		String sql = prop.getProperty("selectReviewEnroll");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				rv.setReviewNo(rset.getString("REVIEW_NO"));
+				rv.setMemNo(rset.getInt("MEM_NO"));
+				rv.setLikeReview(rset.getInt("LIKE_REVIEW"));
+			}
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return rv;
+		
+				
+				
+	}
 	
 
 }

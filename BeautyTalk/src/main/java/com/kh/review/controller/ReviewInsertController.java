@@ -50,9 +50,9 @@ public class ReviewInsertController extends HttpServlet {
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/images/");
 					
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
-				
+			
 			String category = multiRequest.getParameter("SC_ID");
-			String reviewWriter = multiRequest.getParameter("MEM_NO");
+			String memNo = multiRequest.getParameter("MEM_NO");
 			String reviewTitle = multiRequest.getParameter("TITLE");
 			String content = multiRequest.getParameter("CONTENT");
 			String pRating = multiRequest.getParameter("P_RATING"); 
@@ -62,7 +62,7 @@ public class ReviewInsertController extends HttpServlet {
 			
 			Review rv = new Review();
 			rv.setPcode(category);
-			rv.setMemNo(Integer.parseInt(reviewWriter));
+			rv.setMemNo(Integer.parseInt(memNo));
 			rv.setTitle(reviewTitle);
 			rv.setContent(content);
 			rv.setpRating(Integer.parseInt(pRating));
@@ -71,20 +71,14 @@ public class ReviewInsertController extends HttpServlet {
 			rv.setLikeReview(Integer.parseInt(likeReview));
 
 			Image img = null;
-
 			if(multiRequest.getOriginalFileName("upfile") != null) {
 				// if문을 타면, 넘어온 첨부파일이 있을 경우
 				img = new Image();
-				// at.setOriginName(원본명);
-				img.setRefBno(multiRequest.getParameter("MEM_NO"));
+				img.setRefBno(rv.getMemNo());
 				img.setOriginName(multiRequest.getOriginalFileName("upfile"));
 				img.setChangeName(multiRequest.getFilesystemName("upfile"));
 				img.setFilePath("resources/images/"); // /가 있어야 한다.
-				img.setFileLevel(1);
 			}
-			
-			request.setAttribute("rv", rv);
-			request.setAttribute("img", img);
 			
 			// 4. Service 요청 (요청처리)
 

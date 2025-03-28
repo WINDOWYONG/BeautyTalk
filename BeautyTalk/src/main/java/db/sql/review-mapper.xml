@@ -46,9 +46,6 @@
 							, CHANGE_NAME
 							, FILE_PATH
 							, UPLOAD_DATE
-							, REVIEW_BNO
-							, POST_BNO
-							, PROFILE_BNO
 							, FILE_LEVEL
 						FROM IMAGE IMG
 						WHERE STATUS = 'Y'
@@ -58,14 +55,6 @@
 				)
 		WHERE RNUM BETWEEN ? AND ?
 	
-	</entry>
-
-	<entry key="selectRefBno">
-		SELECT
-    		REVIEW_NO
-		FROM REVIEW
-		WHERE STATUS = 'Y'
-		
 	</entry>
 	
 	<entry key="selectSubCategoryList">
@@ -120,8 +109,8 @@
 	    , CHANGE_NAME
 	    , FILE_PATH
 	    , UPLOAD_DATE
-	    , REVIEW_BNO
 	    , FILE_LEVEL
+	    , STATUS
 	    )
     VALUES
 	    (
@@ -131,17 +120,18 @@
 	    , ?
 	    , ?
 	    , SYSDATE
-	    , TO_CHAR(SEQ_REVIEW.CURRVAL)
-	    , 1
+	    , 'R'
+	    , 'Y'
 	    )
 	
 	</entry>
 	
-	<entry key="selectMemNo">
+	<entry key="selectReviewTest">
 		SELECT
-		    MEM_NO
+		    REVIEW_NO
 		FROM REVIEW RV
-		WHERE STATUS = 'Y'
+		WHERE REVIEW_NO = ?
+			AND STATUS = 'Y'
 	
 	</entry>
 	
@@ -149,10 +139,9 @@
 		SELECT
 			  REVIEW_NO
 			, PCODE
-		    , MEM_NO
-		    , TITLE
+			, MEM_NO
+			, TITLE
 		    , CONTENT
-		    , CREATE_DATE
 		    , P_RATING
 		    , R_RATING
 		    , PR_RATING
@@ -164,17 +153,28 @@
 	</entry>
 	
 	<entry key="selectImage">
-		SELECT
-		      IMAGE_NO
-		    , REF_BNO
-		    , ORIGIN_NAME
-		    , CHANGE_NAME
-		    , FILE_PATH
-		    , REVIEW_BNO
-		FROM IMAGE IMG
-		WHERE REVIEW_BNO = ?
-		AND STATUS = 'Y'
-		AND FILE_LEVEL = 1
+		SELECT *
+		FROM(
+		    SELECT
+		        ROWNUM RNUM, A.*
+		    FROM
+		        (
+				SELECT
+                     RV.REVIEW_NO   
+				    , IMG.ORIGIN_NAME
+				    , IMG.CHANGE_NAME
+				    , IMG.FILE_PATH
+				FROM IMAGE IMG
+				JOIN REVIEW RV ON (IMG.UPLOAD_DATE = RV.CREATE_DATE)
+				WHERE RV.REVIEW_NO = ?
+                AND IMG.STATUS = 'Y'
+				AND IMG.FILE_LEVEL = 'R'
+                ORDER
+                    BY REVIEW_NO
+                    , IMG.UPLOAD_DATE DESC
+		            ) A
+		        )
+		WHERE RNUM BETWEEN 1 AND 1
 	
 	</entry>
 	
@@ -188,32 +188,37 @@
 	
 	<entry key="selectImgReview">
 		SELECT
-			REVIEW_NO
-			, PCODE
-		    , MEM_NO
-		    , TITLE
-		    , CONTENT
-		    , CREATE_DATE
-		    , P_RATING
-		    , R_RATING
-		    , PR_RATING
-		    , LIKE_REVIEW
-		FROM REVIEW RV
-		WHERE STATUS = 'Y'
+		   IMG.IMAGE_NO,
+		   IMG.REF_BNO,
+		   IMG.ORIGIN_NAME,
+		   IMG.CHANGE_NAME,
+		   IMG.FILE_PATH,
+		   IMG.UPLOAD_DATE,
+		   RV.MEM_NO,
+		   RV.CREATE_DATE
+		FROM IMAGE IMG
+		JOIN REVIEW RV ON (IMG.REF_BNO = RV.MEM_NO)
+		WHERE IMG.REF_BNO = RV.MEM_NO
+		 AND IMG.FILE_LEVEL = 'R'
+		 AND IMG.STATUS = 'Y'
+		 AND RV.STATUS = 'Y'
+		ORDER
+			BY IMG.UPLOAD_DATE DESC
+			, RV.CREATE_DATE DESC
 	
 	</entry>
 	
 	<entry key="selectImgImage">
+		
 		SELECT
 		      IMAGE_NO
 		    , REF_BNO
 		    , ORIGIN_NAME
 		    , CHANGE_NAME
 		    , FILE_PATH
-		    , REVIEW_BNO
 		FROM IMAGE IMG
 		WHERE STATUS = 'Y'
-		AND FILE_LEVEL = 1
+		AND FILE_LEVEL = 'R'
 	
 	</entry>
 	
@@ -221,8 +226,7 @@
 		UPDATE
 	        REVIEW
 		SET
-	          PCODE = ?
-	        , TITLE = ?
+	        TITLE = ?
 	        , CONTENT = ?
 	        , P_RATING = ?
 	        , R_RATING = ?
@@ -235,8 +239,7 @@
 		UPDATE
 	       	IMAGE
 		SET
-	          REF_BNO = ?
-	        , ORIGIN_NAME = ?
+	        ORIGIN_NAME = ?
 	        , CHANGE_NAME = ?
 	        , FILE_PATH = ?
 		WHERE IMAGE_NO = ?
@@ -244,9 +247,9 @@
 	</entry>
 	
 	<entry key="newInsertImage">
-		INSERT
-    	INTO
-    	IMAGE IMG
+	INSERT
+	    INTO
+	    IMAGE IMG
 	    (
 	      IMAGE_NO
 	    , REF_BNO
@@ -254,8 +257,8 @@
 	    , CHANGE_NAME
 	    , FILE_PATH
 	    , UPLOAD_DATE
-	    , REVIEW_BNO
 	    , FILE_LEVEL
+	    , STATUS
 	    )
     VALUES
 	    (
@@ -265,8 +268,8 @@
 	    , ?
 	    , ?
 	    , SYSDATE
-	    , ?
-	    , 1
+	    , 'R'
+	    , 'Y'
 	    )
 	
 	</entry>
@@ -282,11 +285,11 @@
 	<entry key="selectReplyList">
 		SELECT
 		      REPLY_NO
-		    , REF_BNO
-            , MEM_NO
+		    , MEM_NO
+            , REPLY_CONTENT
 		    , MEM_ID
-		    , REPLY_CONTENT
 		    , CREATE_DATE
+		    , REF_BNO
 		FROM REPLY
 		JOIN MEMBER M USING(MEM_NO)
 		WHERE REPLY_STATUS = 'Y'
@@ -302,23 +305,35 @@
        	REPLY
 	    (
 	    REPLY_NO
-	    , REF_BNO
 	    , MEM_NO
 	    , REPLY_CONTENT
 	    , CREATE_DATE
 	    , REPLY_STATUS
+	    , REF_BNO
 	    )
     	VALUES
 	    (
 	    SEQ_REPLY.NEXTVAL
 	    , ?
 	    , ?
+	    , default
+	    , default
 	    , ?
-	    , default
-	    , default
 	    )
 	
 	</entry>
+	
+	<entry key="selectReviewEnroll">
+		SELECT
+		    REVIEW_NO
+		    , MEM_NO
+		    , LIKE_REVIEW
+		FROM
+		    REVIEW
+		WHERE STATUS = 'Y'
+	
+	</entry>
+	
 	
 	
 	

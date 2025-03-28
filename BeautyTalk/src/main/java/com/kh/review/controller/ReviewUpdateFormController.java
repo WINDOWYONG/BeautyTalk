@@ -38,11 +38,9 @@ public class ReviewUpdateFormController extends HttpServlet {
 		String refBno = request.getParameter("bno");
 		
 		ReviewService rService = new ReviewService();
-		rService.selectMemNo(refBno);
+		rService.selectReview(refBno);
 		
-		System.out.println("bno parameter: " + request.getParameter("bno"));
-		
-		Review rv = rService.selectMemNo(refBno);
+		Review rv = rService.selectReview(refBno);
 		
 		int listCount;		// 현재 총 게시글 개수
 		
@@ -78,19 +76,14 @@ public class ReviewUpdateFormController extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		// com.kh.common.model.vo.PageInfo - jsp 가져가야해서 가방에 담아야함
-		// * jsp에서 페이징바를 만드려면 7개의 값이 필요한데
-		// 그걸 담기 위한 가방, 그릇! (vo)
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, reviewLimit, maxPage, startPage, endPage);
 		
 		
-		// * 현재 요청한 페이지(c)에 보여질 게시글 리스트 boardLimit 수만큼 조회
 		ArrayList<Review> list = new ReviewService().selectReviewArrayList(pi);
 		
 		ArrayList<SubCategory> list1 = new ReviewService().selectSubCategoryList();
 		request.setAttribute("list", list);
 		
-		if(rv != null) { // 유효한 게시글 => 게시글, 첨부파일 DB로부터 조회 
 			Review rv1 = rService.selectReview(refBno);
 			Image img = rService.selectImage(refBno);
 			
@@ -102,11 +95,8 @@ public class ReviewUpdateFormController extends HttpServlet {
 		
 			request.getRequestDispatcher("views/review/reviewUpdateForm.jsp").forward(request, response);
 			
-		}else {
-			response.sendRedirect(request.getContextPath() + "/review.li?cpage=1");
-			request.getSession().setAttribute("alertMsg", "게시글 조회 오류");
-		}
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

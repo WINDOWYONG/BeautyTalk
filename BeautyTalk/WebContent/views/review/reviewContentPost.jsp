@@ -501,8 +501,8 @@ img {
         });
     </script>
 
+<!-- 리뷰 콘텐츠 -->
 	<form action="" id="reviewForm_CP1" method="get">
-	
 		<table id="reviewTable_CP1">
 			<tr>
 				<td height="50"></td>
@@ -527,14 +527,15 @@ img {
 					<% } %>
 				</td>
 			</tr>
-			<script>
-			$(function(){
-			    $(".reviewContent_btn2").on("click", function(){
-			    	alert("로그인을 해주세요.");
-		    	})
-			})
 			
+			<script>
+				$(function(){
+				    $(".reviewContent_btn2").on("click", function(){
+				    	alert("로그인을 해주세요.");
+			    	})
+				})
 			</script>
+			
 			<!-- 게시글이 없는 경우 -->
 			<% if(list.isEmpty()) { %>
 
@@ -543,17 +544,18 @@ img {
 					<p>조회된 게시글이 없습니다.</p>
 				</td>
 			</tr>
+			
 			<!-- 게시글이 있는 경우 -->
 			<% }else { %>
 				<% for(Review rv1 : list) { %>
 			<tr class="reviewTr_img1">
 				<td rowspan="6" align="center" onclick="location.href='<%= contextPath %>/detail.im'" style="width: 250px; height: 250px;">
-					<% if(rv1.getReviewNo() != img.getReviewBno()) { %>
-						<img src="<%= contextPath %>/resources/images/현존최강로고1.jpg" class="review_img1">
-					<% }else { %>
+					<input type="hidden" name="MEM_NO" value="<%= rv1.getReviewNo() %>">
+					<% if(rv1.getMemNo() == img.getRefBno()) { %>
 						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>" class="review_img1">
+					<% }else { %>
+						<img src="<%= contextPath %>/resources/images/현존최강로고1.jpg" class="review_img1">
 					<% } %>
-				
 				</td>
 				<td colspan="3" class="review_CreateDate"><%= rv1.getCreateDate() %></td>
 
@@ -630,26 +632,6 @@ img {
 			    	})
 				})
 		</script>
-		<!-- 
-			// $(function(){
-			//     $(".reviewTr_img2").on("click", function(){
-			//     	if(<%= loginUser %> != null) {
-			//     		location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
-			//     	}
-		  //   	})
-			// })
-			// 	$(".review_title1").on("click", function(){
-		  //   		if(<%= loginUser %> != null) {
-		  //   			location.href = '<%= contextPath %>/detail.re?bno=' + $(this).text();
-		  //   		}
-		  //   	})
-			// })
-			// $(function(){
-			//     $(".reviewTr_img2").on("click", function(){
-			//     	location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
-		  //   	})
-			// })
-		-->
 
 		<div class="paging-area" align="center">
 			<% if(currentPage == 1) { %>
