@@ -331,7 +331,7 @@
 	            <div class="menu-item active" data-page="views/calendar/followingBeautyCalendar.jsp" id="default-menu">
 	              <i class="fas fa-calendar-alt"><!--로고1--></i> 뷰티 캘린더
 	            </div>
-	            <div class="menu-item" data-page="views/calendar/routineCalendar.jsp">
+	            <div class="menu-item" data-page="views/calendar/followingRoutineCalendar.jsp">
 	              <i class="fas fa-check-circle"><!--로고2--></i> 루틴 설정
 	            </div>
 	          </nav>
@@ -372,7 +372,7 @@
 	      <div class="R1">
 	        <div class="R1-content">
 	          <div class="title">
-	            <strong><%= userName.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span>
+	            <strong><%= userName.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더 🎀</span>
 	          </div>
 	          <div class="icons">
 	            <i class="fa-solid fa-magnifying-glass">
@@ -418,6 +418,10 @@
 
       // AJAX 함수
       function loadPage(page) {
+    	  if (page.includes("followingRoutineCalendar.jsp") || page.includes("followingBeautyCalendar.jsp")) {
+    		    page += "?userId=" + userId;
+    		  }
+    	  
     	  $.ajax({
     		  url: page,
     		  type: "GET",
@@ -440,7 +444,7 @@
 	                }, 100);
     		    }
 
-    		    if (page.includes("routineCalendar.jsp")) {
+    		    if (page.includes("followingRoutineCalendar.jsp")) {
     		      $("#content-area script").each(function() {
     		        var scriptTag = document.createElement("script");
     		        scriptTag.text = this.text;

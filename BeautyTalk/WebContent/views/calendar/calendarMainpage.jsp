@@ -13,7 +13,10 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+<script>
+  const contextPath = "<%= contextPath %>";
+</script><script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+<script src="<%= contextPath %>/resources/js/routineCalendar.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <title>Insert title here</title>
 <style>
@@ -335,7 +338,7 @@
 	      <div class="R1">
 	        <div class="R1-content">
 	          <div class="title">
-	            <strong><%= loginUser.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더</span>
+	            <strong><%= loginUser.getUserName() %></strong>님의 <span class="highlight">뷰티 캘린더 🎀</span>
 	          </div>
 	          <div class="icons">
 	            <i class="fa-solid fa-magnifying-glass">
@@ -410,7 +413,7 @@
 
     		      setTimeout(function() {
     		        if (typeof renderMyCalendar === 'function') {
-    		          renderMyCalendar(); // ✅ 루틴 캘린더 실행
+    		        	initRoutineCalendarPage();  // ✅ DOM 준비된 후 함수 실행
     		        }
     		      }, 100);
     		    }
