@@ -215,7 +215,7 @@
                 <input type="text" name="userName" id="userName" maxlength="16" placeholder="이름을 입력하세요." required >
 
 
-                <input type="text" name="email" id="email" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required>
+                <input type="text" name="email" id="email" minlength="8" maxlength="30" placeholder="이메일을 입력하세요." required>
 
 
                 <input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요" required>
@@ -233,7 +233,7 @@
                 <input type="text" name="userName" id="userName" maxlength="16" placeholder="이름을 입력하세요." required value="<%= userName %>">
 
 
-                <input type="text" name="email" id="email" minlength="8" maxlength="20" placeholder="이메일을 입력하세요." required value="<%= email %>">
+                <input type="text" name="email" id="email" minlength="8" maxlength="30" placeholder="이메일을 입력하세요." required value="<%= email %>">
 
 
                 <input type="text" name="nickName" id="nickName" minlength="2" maxlength="10" placeholder="닉네임을 입력하세요" required>
