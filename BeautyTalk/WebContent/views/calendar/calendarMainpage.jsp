@@ -346,7 +346,7 @@
 	            <i class="fa-regular fa-bell">
 	            </i>
 	            <div class="profile-img">
-	              <img src="" alt="">
+	              <a href="<%= contextPath %>/myPage.me"><img src="<%= loginUser.getFilePath() %>" alt="유저이미지"></a>
 	            </div>
 	            <i class="fa-solid fa-chevron-down"><!--로고3--></i>
 	          </div>
