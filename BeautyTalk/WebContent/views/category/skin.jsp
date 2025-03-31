@@ -190,20 +190,12 @@
                                         <label for="brand2">노스카나인</label>
                                     </div>
                                     <div class="brand-checkbox">
-                                        <input type="checkbox" id="brand3">
-                                        <label for="brand3">미쟝센</label>
-                                    </div>
-                                    <div class="brand-checkbox">
                                         <input type="checkbox" id="brand4">
                                         <label for="brand4">토리든</label>
                                     </div>
-                                    <div class="brand-checkbox">
-                                        <input type="checkbox" id="brand5">
-                                        <label for="brand5">클리오</label>
-                                    </div>
                                 </div>
                                 <div class="filter-footer">
-                                    <span class="footer-text" style="color: #FF69B4;">스킨케어 카테고리 내 5개의 사용이 가능합니다.</span>
+                                    <span class="footer-text" style="color: #FF69B4;">스킨케어 카테고리 내 <%= list.size() %>개의 사용이 가능합니다.</span>
                                 </div>
                             </div>
 
