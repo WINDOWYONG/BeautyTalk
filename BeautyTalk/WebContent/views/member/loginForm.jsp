@@ -127,11 +127,6 @@ String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=c
 	
 	<br><br><br><br><br>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	
 	<div class="outer">
 		<div class="inner">
@@ -178,7 +173,9 @@ String naverLoginURL = "https://nid.naver.com/oauth2.0/authorize?response_type=c
             <br>
 
 			<div id="login-etc">
-				<a href="">아이디 찾기</a> <span>|</span> <a href="">비밀번호 찾기</a> <span>|</span>
+				<a href="<%= contextPath %>/findIDForm.me">아이디 찾기</a> 
+				<span>|</span> 
+				<a href="<%= contextPath %>/findPWForm.me">비밀번호 찾기</a> <span>|</span>
 				<a href="<%= contextPath %>/enrollForm.me">회원가입</a>
 			</div>
 		</div>

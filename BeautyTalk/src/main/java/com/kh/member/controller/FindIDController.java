@@ -1,29 +1,27 @@
-package com.kh.calendar.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.kh.calendar.model.service.CalendarService;
+import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class CalendarMainpageFormController
+ * Servlet implementation class FindIDController
  */
-@WebServlet("/calendarMainpage.ca")
-public class CalendarMainpageFormController extends HttpServlet {
+@WebServlet("/findID.me")
+public class FindIDController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CalendarMainpageFormController() {
+    public FindIDController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +31,24 @@ public class CalendarMainpageFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
-		int userNo = loginUser.getUserNo();
+		String userName = request.getParameter("userName");
+		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
 		
-		ArrayList<Member> list = new CalendarService().selectFollowList(userNo);
+		Member m = new Member();
+		m.setUserName(userName);
+		m.setEmail(email);
+		m.setPhone(phone);
+		
+		Member findIDResult = new MemberService().findID(m);
 
-		request.setAttribute("list", list);
-		
-		RequestDispatcher view = request.getRequestDispatcher("views/calendar/calendarMainpage.jsp");
-		view.forward(request, response);
+		if(findIDResult == null) {
+			request.getSession().setAttribute("alertMsg", "아이디 찾기에 실패하였습니다.");
+			response.sendRedirect(request.getContextPath() + "/loginForm.me");
+		}else {
+			request.setAttribute("findIDResult", findIDResult);
+	        request.getRequestDispatcher("views/member/findIDResult.jsp").forward(request, response);
+		}
 		
 	}
 
