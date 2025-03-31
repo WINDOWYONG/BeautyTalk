@@ -36,5 +36,13 @@ public class ProductService {
 		close(conn);
 		return list;
 	}
+	
+	public ArrayList<Product> selectBrandList(String[] selectedBrands) {
+		Connection conn = getConnection();
+		ArrayList<Product> list = new ProductDao().selectBrandList(conn, selectedBrands);
+		
+		close(conn);
+		return list;
+	}
 
 }

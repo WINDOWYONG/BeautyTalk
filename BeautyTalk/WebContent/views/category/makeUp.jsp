@@ -250,19 +250,7 @@
                     [1, 2, 3, 4, 5].forEach(starNumber => {
                         const star = document.getElementById(`star${starNumber}_${productCode}`);
 
-                        if (star) {  // star가 존재할 때만 실행
-                            // 별의 상태에 맞게 클래스 설정
-                            if (rating >= starNumber) {
-                                star.classList.add('filled');  // 채워진 별
-                                star.classList.remove('half', 'empty');
-                            } else if (rating >= starNumber - 0.5) {
-                                star.classList.add('half');  // 반쪽짜리 별
-                                star.classList.remove('filled', 'empty');
-                            } else {
-                                star.classList.add('empty');  // 빈 별
-                                star.classList.remove('filled', 'half');
-                            }
-                        }
+                        
                     });
                 });
             });
