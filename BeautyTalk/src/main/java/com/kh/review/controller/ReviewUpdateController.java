@@ -101,6 +101,8 @@ public class ReviewUpdateController extends HttpServlet {
 
 			}else {
 				// 새로운 첨부파일 없음 => at 객체 null
+			    img.setOriginName("첨부파일없음"); // 챗gpt 추천이긴한데, 완전 임시방편인데?
+			    img.setChangeName("첨부파일없음");
 			    
 				int result = new ReviewService().updateReview(rv, img);
 
@@ -113,6 +115,7 @@ public class ReviewUpdateController extends HttpServlet {
 				}
 				
 			}
+			
 			System.out.println("리뷰 이미지 업데이트 확인 : " + multiRequest.getOriginalFileName("upfile"));
 		}
 		

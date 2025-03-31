@@ -259,30 +259,30 @@
 	</entry>
 	
 	<entry key="newInsertImage">
-	INSERT
-	    INTO
-	    IMAGE IMG
-	    (
-	      IMAGE_NO
-	    , REF_BNO
-	    , ORIGIN_NAME
-	    , CHANGE_NAME
-	    , FILE_PATH
-	    , UPLOAD_DATE
-	    , FILE_LEVEL
-	    , STATUS
-	    )
-    VALUES
-	    (
-	      SEQ_I_NO.NEXTVAL
-	    , ?
-	    , ?
-	    , ?
-	    , ?
-	    , SYSDATE
-	    , 'R'
-	    , 'Y'
-	    )
+		INSERT
+		    INTO
+		    IMAGE IMG
+		    (
+		      IMAGE_NO
+		    , REF_BNO
+		    , ORIGIN_NAME
+		    , CHANGE_NAME
+		    , FILE_PATH
+		    , UPLOAD_DATE
+		    , FILE_LEVEL
+		    , STATUS
+		    )
+	    VALUES
+		    (
+		      SEQ_I_NO.NEXTVAL
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , SYSDATE
+		    , 'R'
+		    , 'Y'
+		    )
 	
 	</entry>
 	

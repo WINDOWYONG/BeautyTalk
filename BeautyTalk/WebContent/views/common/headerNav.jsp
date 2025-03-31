@@ -24,9 +24,7 @@ div, input {
 	margin: auto;
 }
 
-img {
-	width: 100%;
-}
+
 
 #header {
 	width: 100%;
@@ -379,9 +377,9 @@ img {
 		<div id="navigator">
 			<a href="#" id="category">☰ 카테고리</a>
 			<ul class="category-menu">
-				<li><a href="skincare.html">스킨케어</a></li>
-				<li><a href="makeup.html">메이크업</a></li>
-				<li><a href="haircare.html">헤어케어</a></li>
+				<li><a href="/beautyTalk/skinlist.pr">스킨케어</a></li>
+				<li><a href="/beautyTalk/makeuplist.pr">메이크업</a></li>
+				<li><a href="/beautyTalk/hairlist.pr">헤어케어</a></li>
 			</ul>
 			<ul id="navi">
 				<li><a href="<%= contextPath %>">HOME</a></li>

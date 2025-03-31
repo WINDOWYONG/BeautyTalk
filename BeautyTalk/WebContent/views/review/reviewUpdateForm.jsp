@@ -1,16 +1,17 @@
-<%@page import="com.kh.review.model.vo.Image"%>
+<%@page import="com.kh.review.model.vo.SubCategory"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.kh.review.model.vo.Review"%>
-<%@page import="com.kh.review.model.vo.SubCategory"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.kh.common.model.vo.PageInfo"%>
+<%@page import="com.kh.review.model.vo.Image"%>
+<%@page import="com.kh.review.model.vo.Review"%>
 <%@page import="com.kh.member.model.vo.Member"%>
 <%
-	ArrayList<Review> rv = (ArrayList<Review>)request.getAttribute("rv");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 	ArrayList<SubCategory> list1 = (ArrayList<SubCategory>)request.getAttribute("list1");
 	Review rv1 = (Review)request.getAttribute("rv1");
 	Image img = (Image)request.getAttribute("img");
-	SubCategory sc = (SubCategory)request.getAttribute("sc");
 %>
 <!DOCTYPE html>
 <html>
