@@ -84,6 +84,61 @@ function initRoutineCalendarPage() {
       updateCount();
     });
   });
+  
+  document.getElementById("add-event-btn").addEventListener("click", function(e) {
+  e.preventDefault();
+
+  const title = document.getElementById("check_title").value;
+  const startDate = document.getElementById("repeat_startdate").value;
+  const endDate = document.getElementById("repeat_enddate").value;
+  const memo = document.getElementById("event-memo").value;
+
+  const weekdayMap = { "월": 1, "화": 2, "수": 3, "목": 4, "금": 5, "토": 6, "일": 7 };
+  const selectedWeekdays = [...document.querySelectorAll(".week-btn.active")]
+    .map(btn => weekdayMap[btn.textContent]);
+
+  // 유효성 검사
+  if (!title) {
+    alert("항목명을 입력해 주세요.");
+    return;
+  }
+
+  if (!startDate || !endDate) {
+    alert("시작일과 종료일을 모두 선택해 주세요.");
+    return;
+  }
+
+  if (new Date(startDate) > new Date(endDate)) {
+    alert("시작일은 종료일보다 앞서야 합니다.");
+    return;
+  }
+
+  if (selectedWeekdays.length === 0) {
+    alert("요일을 하나 이상 선택해 주세요.");
+    return;
+  }
+
+  // AJAX 요청
+  $.ajax({
+    url: contextPath + "/insertRoutine.do",
+    method: "POST",
+    contentType: "application/json",
+    data: JSON.stringify({
+      title: title,
+      startDate: startDate,
+      endDate: endDate,
+      weekdays: selectedWeekdays,
+      memo: memo
+    }),
+    success: function() {
+      alert("루틴 등록 성공!");
+    },
+    error: function() {
+      alert("루틴 등록 실패!");
+    }
+  });
+});
+
 
   // 전체 삭제
   document.getElementById("allDelete").addEventListener("click", function () {
@@ -330,3 +385,5 @@ function showComplete() {
     li.style.display = li.querySelector("input").checked ? "flex" : "none";
   });
 }
+
+
