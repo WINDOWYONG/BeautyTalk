@@ -306,23 +306,28 @@ AND
         SELECT MAX(IMAGE_NO) 
         FROM IMAGE 
         WHERE REF_BNO = M.MEM_NO
-    );
+    )
 </entry>
 
 <entry key="selectListFollowing">
 SELECT
     M.MEM_NO,
-    M.NICKNAME, 
+    M.NICKNAME,
     I.FILE_PATH || I.CHANGE_NAME AS FILEPATH
-FROM 
+FROM
     MEMBER M
-LEFT JOIN 
-    IMAGE I ON M.MEM_NO = I.REF_BNO
-JOIN 
+JOIN
     FOLLOW F ON M.MEM_NO = F.FOLLOWING
-WHERE 
-    F.FOLLOWER = ?  
-ORDER BY 
+LEFT JOIN
+    IMAGE I ON M.MEM_NO = I.REF_BNO
+WHERE
+    F.FOLLOWER = ?
+    AND (I.IMAGE_NO = (
+        SELECT MAX(IMAGE_NO)
+        FROM IMAGE
+        WHERE REF_BNO = M.MEM_NO
+    ) OR I.IMAGE_NO IS NULL)
+ORDER BY
     M.MEM_NO
 </entry>
 
