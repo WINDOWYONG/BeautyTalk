@@ -41,6 +41,7 @@ public class UnfollowController extends HttpServlet {
         } else {
         	response.getWriter().print("fail");
         }
+		response.getWriter().close();
 	}
 
 	/**
