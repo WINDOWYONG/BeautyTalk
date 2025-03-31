@@ -290,20 +290,23 @@ AND
 </entry>
 
 <entry key="followerList">
-SELECT
-		M.MEM_NO,
+SELECT 
     M.NICKNAME, 
     I.FILE_PATH || I.CHANGE_NAME AS FILEPATH
 FROM 
     MEMBER M
-LEFT JOIN 
-    IMAGE I ON M.MEM_NO = I.REF_BNO
 JOIN 
-    FOLLOW F ON M.MEM_NO = F.FOLLOWER
+    FOLLOW F ON M.MEM_NO = F.FOLLOWING
+JOIN 
+    IMAGE I ON M.MEM_NO = I.REF_BNO
 WHERE 
-    F.FOLLOWING = ?  
-ORDER BY 
-    M.MEM_NO
+    M.NICKNAME LIKE ?
+AND 
+    I.IMAGE_NO = (
+        SELECT MAX(IMAGE_NO) 
+        FROM IMAGE 
+        WHERE REF_BNO = M.MEM_NO
+    );
 </entry>
 
 <entry key="selectListFollowing">
