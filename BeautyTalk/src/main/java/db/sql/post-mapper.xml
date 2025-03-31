@@ -59,7 +59,7 @@
 		SELECT
 	      SC_ID
 	    , SC_NAME
-		FROM SUBCATEGORY2
+		FROM SUBCATEGORY
 		
 	</entry>
 	
@@ -82,8 +82,8 @@
 	     , ?
 	     , ?
 	     , ?
-	     , SYSDATE
-		 , DEFALUT
+	     , default
+		 , default
 	     , 'Y'
 	    )
 	
@@ -92,7 +92,7 @@
 	<entry key="insertImage">
 	INSERT
 	    INTO
-	    IMAGE IMG
+	    IMAGE
 	    (
 	      IMAGE_NO
 	    , REF_BNO
@@ -111,7 +111,7 @@
 	    , ?
 	    , ?
 	    , SYSDATE
-	    , 'R'
+	    , 'P'
 	    , 'Y'
 	    )
 	
@@ -155,9 +155,10 @@
 				FROM IMAGE IMG
 				JOIN POST PO ON (PO.MEM_NO = IMG.REF_BNO)
 				WHERE PO.POST_NO = ?
-                AND IMG.UPLOAD_DATE >= PO.CREATE_DATE
+				AND IMG.REF_BNO = PO.MEM_NO
+                AND IMG.UPLOAD_DATE = PO.CREATE_DATE
                 AND IMG.STATUS = 'Y'
-				AND IMG.FILE_LEVEL = 'R'
+				AND IMG.FILE_LEVEL = 'P'
                 ORDER
                     BY IMG.IMAGE_NO DESC
 		            ) A
@@ -201,7 +202,7 @@
 		FROM IMAGE IMG
 		JOIN POST PO ON (IMG.REF_BNO = PO.MEM_NO)
 		WHERE IMG.REF_BNO = PO.MEM_NO
-		 AND IMG.FILE_LEVEL = 'R'
+		 AND IMG.FILE_LEVEL = 'P'
 		 AND IMG.STATUS = 'Y'
 		 AND PO.STATUS = 'Y'
 		ORDER
@@ -229,17 +230,13 @@
 	        , FILE_PATH = ?
 		WHERE IMAGE_NO in ?
         AND IMG.REF_BNO in
-                           (select
-                               PO.MEM_NO
-                           FROM POST PO
-                           WHERE PO.MEM_NO = IMG.REF_BNO)
-	
+
 	</entry>
 	
 	<entry key="newInsertImage">
 	INSERT
 	    INTO
-	    IMAGE IMG
+	    IMAGE
 	    (
 	      IMAGE_NO
 	    , REF_BNO
@@ -258,7 +255,7 @@
 	    , ?
 	    , ?
 	    , SYSDATE
-	    , 'R'
+	    , 'P'
 	    , 'Y'
 	    )
 	

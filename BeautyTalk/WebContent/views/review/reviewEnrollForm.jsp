@@ -1,4 +1,4 @@
-<%@page import="com.kh.post.model.vo.SubCategory2"%>
+<%@page import="com.kh.review.model.vo.SubCategory"%>
 <%@page import="java.nio.file.attribute.UserPrincipalNotFoundException"%>
 <%@page import="com.kh.review.model.vo.Image"%>
 <%@page import="com.kh.review.model.vo.Review"%>
@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	ArrayList<SubCategory2> list = (ArrayList<SubCategory2>)request.getAttribute("list");
+	ArrayList<SubCategory> list = (ArrayList<SubCategory>)request.getAttribute("list");
 	Review rv = (Review)request.getAttribute("rv");
 	Image img = (Image)request.getAttribute("img");
 %>
@@ -828,13 +828,13 @@ color: white;
 					<!-- 카테고리  -->
 					</th>
 					<td width="100">
-						<input type="hidden" name="SC_ID" value="<%= rv.getMemNo() %>">
-<!-- Category 테이블로부터 조회해올 것 -->					
-					<!--	<select class="reviewPost_category1" name="SC_ID">
-                     		<% for(SubCategory2 sc : list) { %>
-                            	<option value=""></option>
-                            <% } %>
-                    		</select> -->
+<!-- Category 테이블로부터 조회해올 것 -->
+					<% for(SubCategory sc : list) { %>
+						<input type="hidden" name="SC_ID" value="<%= sc.getScId() %>">
+					<!--<select class="reviewPost_category1" name="SC_ID">
+  						<option value=""></option>
+                    	</select> -->
+                   	<% } %>
                     </td>
 				</tr>
 
@@ -913,7 +913,7 @@ color: white;
 					작성
 				</button>
 				<button type="reset">
-					삭제
+					초기화
 				</button>
 			</div>
 		</form>

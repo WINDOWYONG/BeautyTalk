@@ -14,6 +14,8 @@ import com.kh.post.model.service.PostService;
 import com.kh.post.model.vo.Image2;
 import com.kh.post.model.vo.Post;
 import com.kh.post.model.vo.SubCategory2;
+import com.kh.review.model.service.ReviewService;
+import com.kh.review.model.vo.Review;
 /**
  * Servlet implementation class postUpdateFormController
  */
@@ -35,6 +37,11 @@ public class postUpdateFormController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String refBno = request.getParameter("bno");
+		
+		PostService rService = new PostService();
+		rService.selectPost(refBno);
+		
+		Post po = rService.selectPost(refBno);
 		
 		int listCount;		// 현재 총 게시글 개수
 		
@@ -75,13 +82,13 @@ public class postUpdateFormController extends HttpServlet {
 		ArrayList<Post> list = new PostService().selectPostArrayList(pi);
 		ArrayList<SubCategory2> list1 = new PostService().selectSubCategory2List();
 		
-		Post po = new PostService().selectPost(refBno);
-		Image2 img = new PostService().selectImage2(refBno);
+		Post po1 = rService.selectPost(refBno);
+		Image2 img = rService.selectImage2(refBno);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.setAttribute("list1", list1);
-		request.setAttribute("po", po);
+		request.setAttribute("po1", po1);
 		request.setAttribute("img", img);
 		
 		request.getRequestDispatcher("views/post/postUpdateForm.jsp").forward(request, response);

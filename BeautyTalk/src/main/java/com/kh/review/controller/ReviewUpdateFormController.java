@@ -78,11 +78,9 @@ public class ReviewUpdateFormController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, reviewLimit, maxPage, startPage, endPage);
 		
-		
 		ArrayList<Review> list = new ReviewService().selectReviewArrayList(pi);
 		
 		ArrayList<SubCategory> list1 = new ReviewService().selectSubCategoryList();
-		request.setAttribute("list", list);
 		
 		Review rv1 = rService.selectReview(refBno);
 		Image img = rService.selectImage(refBno);

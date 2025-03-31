@@ -343,8 +343,8 @@ public class ReviewDao {
 			
 			if(rset.next()) {
 				img = new Image();
-				rv = new Review();
-				rv.setReviewNo(rset.getString("REVIEW_NO"));
+//				rv = new Review();
+//				rv.setReviewNo(rset.getString("REVIEW_NO"));
 				img.setImgNo(rset.getInt("IMAGE_NO"));
 				img.setOriginName(rset.getString("ORIGIN_NAME"));
 				img.setChangeName(rset.getString("CHANGE_NAME"));
@@ -538,6 +538,7 @@ public class ReviewDao {
 			pstmt.setString(4, img.getFilePath());
 			
 			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

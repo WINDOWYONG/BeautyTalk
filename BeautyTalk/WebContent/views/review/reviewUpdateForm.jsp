@@ -1,6 +1,6 @@
+<%@page import="com.kh.review.model.vo.Image"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.kh.review.model.vo.Image"%>
 <%@page import="com.kh.review.model.vo.Review"%>
 <%@page import="com.kh.review.model.vo.SubCategory"%>
 <%@page import="java.util.ArrayList"%>

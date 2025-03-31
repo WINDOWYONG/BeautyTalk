@@ -28,7 +28,7 @@
 						WHERE STATUS = 'Y'
 						ORDER
 						BY CREATE_DATE DESC
-						, Review_NO DESC
+						, REVIEW_NO DESC
 						) A
 				)
 		WHERE RNUM BETWEEN ? AND ?
@@ -70,7 +70,7 @@
     	INTO
     	REVIEW RV
 	    (
-	      Review_NO
+	      REVIEW_NO
 	    , PCODE
 	    , MEM_NO
 	    , TITLE
@@ -138,7 +138,7 @@
 	
 	<entry key="selectReview">
 		SELECT
-			  Review_NO
+			  REVIEW_NO
 			, PCODE
 			, MEM_NO
 			, TITLE
@@ -161,16 +161,17 @@
 		    FROM
 		        (
 				SELECT
-                     RV.REVIEW_NO   
-                    , IMG.IMAGE_NO
+                   IMG.IMAGE_NO
 				    , IMG.ORIGIN_NAME
 				    , IMG.CHANGE_NAME
 				    , IMG.FILE_PATH
 				FROM IMAGE IMG
-				JOIN Review RV ON (RV.MEM_NO = IMG.REF_BNO)
-				WHERE RV.REVIEW_NO = ?
-                AND IMG.UPLOAD_DATE >= RV.CREATE_DATE
-                AND IMG.STATUS = 'Y'
+				JOIN REVIEW RV ON (RV.MEM_NO = IMG.REF_BNO)
+				WHERE IMG.STATUS = 'Y'
+                AND RV.REVIEW_NO = ?
+                AND RV.CREATE_DATE >= IMG.UPLOAD_DATE
+                AND RV.MEM_NO = IMG.REF_BNO
+                AND IMG.IMAGE_NO >= RV.REVIEW_NO
 				AND IMG.FILE_LEVEL = 'R'
                 ORDER
                     BY IMG.IMAGE_NO DESC
@@ -200,8 +201,8 @@
 			, R_RATING
 			, PR_RATING
 			, LIKE_Review
-		FROM Review
-		WHERE Review_NO = ?
+		FROM REVIEW
+		WHERE REVIEW_NO = ?
 		
 	
 	</entry>
@@ -237,7 +238,7 @@
 	        , P_RATING = ?
 	        , R_RATING = ?
 	        , PR_RATING = ?
-		WHERE Review_NO = ?
+		WHERE REVIEW_NO = ?
 	
 	</entry>
 
@@ -289,7 +290,7 @@
 		UPDATE
 		    REVIEW
 		SET STATUS = 'N'
-		WHERE Review_NO = ?
+		WHERE REVIEW_NO = ?
 	
 	</entry>
 	
@@ -336,7 +337,7 @@
 	
 	<entry key="selectReviewEnroll">
 		SELECT
-		    Review_NO
+		    REVIEW_NO
 		    , MEM_NO
 		    , LIKE_REVIEW
 		FROM

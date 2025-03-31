@@ -520,6 +520,7 @@ public class PostDao {
 			pstmt.setString(4, img.getFilePath());
 			
 			result = pstmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

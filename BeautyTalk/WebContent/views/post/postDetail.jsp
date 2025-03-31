@@ -995,7 +995,7 @@ color: white;
 		</script>
 	<% } %>
 
-<!-- ReviewEnrollForm -->
+<!-- PostEnrollForm -->
 	<div id="review_detailouter" class="review_detailouter">
 		<h2 align="center">포스트 상세보기</h2>
 			<input type="hidden" name="MEM_NO" value="">
@@ -1065,6 +1065,7 @@ color: white;
 					<button type="button" onclick="location.href='<%= contextPath %>/postUpdate.po?bno=<%= po.getPostNo() %>'" class="reviewDetail_btn">
 						수정
 					</button>
+					
 					<button type="button" onclick=test() class="review_detail_delete">
 						삭제
 					</button>
@@ -1094,7 +1095,7 @@ color: white;
                         <th style="text-align: right; padding: 0px 120px;">댓글</th>
                         <% if(loginUser != null) { // 로그인이 되어 있을 경우 %>
                         <td>
-                            <textarea id="replyContent" rows="5" cols="50"></textarea>
+                            <textarea id="replyContent" rows="5" cols="50" required></textarea>
                         </td>
                         <td>
                             <button type="button" onclick="insertReply()" class="reviewDetail_btn">댓글 등록</button>

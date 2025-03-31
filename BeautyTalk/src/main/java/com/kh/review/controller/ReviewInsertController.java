@@ -74,14 +74,13 @@ public class ReviewInsertController extends HttpServlet {
 			if(multiRequest.getOriginalFileName("upfile") != null) {
 				// if문을 타면, 넘어온 첨부파일이 있을 경우
 				img = new Image();
-				img.setRefBno(rv.getMemNo());
+				img.setRefBno(Integer.parseInt(memNo));
 				img.setOriginName(multiRequest.getOriginalFileName("upfile"));
 				img.setChangeName(multiRequest.getFilesystemName("upfile"));
 				img.setFilePath("resources/images/"); // /가 있어야 한다.
 			}
-			
+	System.out.println("리뷰 이미지 확인 : " + multiRequest.getOriginalFileName("upfile"));
 			// 4. Service 요청 (요청처리)
-
 			int result = new ReviewService().insertReview(rv, img);
 			
 			// 5. 응답뷰 지정

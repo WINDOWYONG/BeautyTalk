@@ -65,18 +65,18 @@ public class ReviewUpdateController extends HttpServlet {
 			rv.setReviewNo(refBno);
 			
 			Image img = null; // 처음에는 null로 초기화
+			img = new Image();
+			img.setOriginName(multiRequest.getOriginalFileName("upfile"));
+			img.setChangeName(multiRequest.getFilesystemName("upfile"));
+			img.setFilePath("resources/images/");
 
 			if(multiRequest.getOriginalFileName("upfile") != null) {
-				if(multiRequest.getParameter("originFileNo") != null) {
-					// 기존의 첨부파일이 있었을 경우 => update attachment (기존의첨부파일번호 필요)
-					img = new Image();
-					img.setOriginName(multiRequest.getOriginalFileName("upfile"));
-					img.setChangeName(multiRequest.getFilesystemName("upfile"));
-					img.setFilePath("resources/images/");
+				if(imgNo != null) {
+					// 기존의 첨부파일이 있을 경우 => (기존의첨부파일번호 필요)
 					img.setImgNo(Integer.parseInt(imgNo));
 
 					int result = new ReviewService().updateReview(rv, img);
-			System.out.println("리뷰 이미지 업뎃 imgNo : " + Integer.parseInt(imgNo));	
+	
 					if(result > 0) { // 성공
 						response.sendRedirect(request.getContextPath() + "/detail.re?bno=" + refBno);
 						
@@ -85,12 +85,8 @@ public class ReviewUpdateController extends HttpServlet {
 						response.sendRedirect(request.getContextPath() + "/review.li?cpage=1");
 					}
 				}else {
-					// 기존의 첨부파일이 없었을 경우 => insert attachment (해당, 현재게시글의 번호)
-					img = new Image();
+					// 기존의 첨부파일이 없었을 경우 => (해당, 현재게시글의 번호)
 					img.setRefBno(Integer.parseInt(memNo));
-					img.setOriginName(multiRequest.getOriginalFileName("upfile"));
-					img.setChangeName(multiRequest.getFilesystemName("upfile"));
-					img.setFilePath("resources/images/");
 					
 					int result = new ReviewService().updateReview(rv, img);
 			
@@ -105,12 +101,7 @@ public class ReviewUpdateController extends HttpServlet {
 
 			}else {
 				// 새로운 첨부파일 없음 => at 객체 null
-				img = new Image();
-				img.setRefBno(Integer.parseInt(memNo));
-				img.setOriginName(multiRequest.getOriginalFileName("upfile"));
-				img.setChangeName(multiRequest.getFilesystemName("upfile"));
-				img.setFilePath("resources/images/");
-				
+			    
 				int result = new ReviewService().updateReview(rv, img);
 
 				if(result > 0) { // 성공
@@ -122,10 +113,9 @@ public class ReviewUpdateController extends HttpServlet {
 				}
 				
 			}
-			System.out.println("리뷰 업뎃 컨트롤러 bno : " + refBno);
-			System.out.println("리뷰 이미지 뉴인풋 : " + memNo);
-			
+			System.out.println("리뷰 이미지 업데이트 확인 : " + multiRequest.getOriginalFileName("upfile"));
 		}
+		
 	}
 
 	/**

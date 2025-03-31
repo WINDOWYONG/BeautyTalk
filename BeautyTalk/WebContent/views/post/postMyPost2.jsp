@@ -589,11 +589,6 @@ color: white;
 }
 
 <!-- postMyPost2 -->
-#reviewForm_CP1 * {
-	border: 5px solid black;
-	margin: auto;
-	margin-top: 10px;
-}
 
 #reviewTable_CP1 {
 	margin: auto;
@@ -962,7 +957,6 @@ color: white;
 			
 			<!-- 게시글이 없는 경우 -->
 			<% if(list.isEmpty()) { %>
-		<table id="table_my_review2" align="left">
 			<tr>
 				<td colspan="2"><input type="text"
 					style="width: 280px; border-radius: 15px;"
@@ -981,7 +975,7 @@ color: white;
 
 			</tr>
 			<tr>
-				<td colspan="6"><b>200 result</b></td>
+				<td colspan="6"></td>
 
 
 
@@ -1000,31 +994,38 @@ color: white;
 			<!-- 게시글이 있는 경우  -->
 			<% }else { %>
 			
-			<% for(Post po : list) { %>
+				<% for(Post po : list) { %>
 			<tr class="reviewPostNo_img">
 				<td class="reviewTr_img1" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;" onclick="location.href='<%= contextPath %>/detail.po?bno='">
 					<% for(Image2 img : list1) { %>
+						
 						<% if(po.getMemNo() == (img.getPostMem()) && po.getCreateDate() == img.getUploadDate()) { %>
-						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+							<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
 						<% } %>
+						
 					<% } %>
 				</td>
+				
 				<td><input type="hidden" class="reviewTr_img1" value="<%= po.getPostNo() %>"></td>
 				
 				<td class="reviewTr_img2" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;" onclick="location.href='<%= contextPath %>/detail.po?bno='">
 					<% for(Image2 img : list1) { %>
+					
 						<% if(po.getCreateDate() == img.getUploadDate()) { %>
-						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+							<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
 						<% } %>
+						
 					<% } %>
 				</td>
 				<td></td>
 				
 				<td class="reviewTr_img3" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;" onclick="location/href='<%= contextPath %>/detail.po?bno='">
 					<% for(Image2 img : list1) { %>
+					
 						<% if(po.getMemNo() == (img.getPostMem()) && po.getCreateDate() == img.getUploadDate()) { %>
-						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+							<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
 						<% } %>
+						
 					<% } %>
 				</td>
 				<td></td>
@@ -1110,9 +1111,9 @@ color: white;
 		</script>
 
 		<div class="paging-area" align="center">
+		<!-- 이전버튼 -->
 			<% if(currentPage == 1) { %>
-			<!-- 이전버튼 -->
-				<button type="button" onclick="location.href='<%= contextPath %>/post.list?cpage=1'">
+				<button type="button" onclick="location.href='<%= contextPath %>/post.list?'">
             		&lt;
            	 	</button>
             <% }else if(currentPage > 1){ %>
@@ -1133,8 +1134,8 @@ color: white;
            		<% } %>
             <% } %>
             
-            <% if(currentPage == maxPage) { %>
             <!-- 다음버튼 -->
+            <% if(currentPage == maxPage) { %>
             	<button type="button" onclick="location.href='<%= contextPath %>/post.list?cpage=<%= maxPage %>'">
             		&gt;
            	 	</button>
@@ -1146,7 +1147,6 @@ color: white;
 		</div>
 
 	</form>
-
 
 </body>
 </html>

@@ -812,8 +812,8 @@ color: white;
 		<h2 align="center">포스트 작성</h2>
 		<% if(loginUser != null) { %>
 		<form action="<%= contextPath %>/post.wr" id="reviewEnroll_Form1" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="MEM_NO" value="">
-			<input type="hidden" name="LIKE_REVIEW" value="">
+			<input type="hidden" name="MEM_NO" value="<%= loginUser.getUserNo() %>">
+			<input type="hidden" name="LIKE_POST" value="<%= po.getLikePost()  %>">
 			<table id="reviewPost_table1" align="center">
 				<tr>
 					<th width="75" height="50" align="left" class="review_EnrollTh">
@@ -889,7 +889,7 @@ color: white;
 					작성
 				</button>
 				<button type="reset">
-					삭제
+					초기화
 				</button>
 			</div>
 		</form>

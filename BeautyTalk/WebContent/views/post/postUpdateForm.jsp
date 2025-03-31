@@ -1,15 +1,15 @@
-<%@page import="com.kh.post.model.vo.SubCategory2"%>
 <%@page import="com.kh.post.model.vo.Image2"%>
-<%@page import="com.kh.common.model.vo.PageInfo"%>
+<%@page import="com.kh.post.model.vo.SubCategory2"%>
 <%@page import="com.kh.post.model.vo.Post"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.kh.common.model.vo.PageInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Post> list = (ArrayList<Post>)request.getAttribute("list");
 	ArrayList<SubCategory2> list1 = (ArrayList<SubCategory2>)request.getAttribute("list1");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	Post po = (Post)request.getAttribute("po");
+	Post po1 = (Post)request.getAttribute("po1");
 	Image2 img = (Image2)request.getAttribute("img");
 %>
 
@@ -826,15 +826,15 @@ color: white;
 	<div id="review_updateouter" class="review_updateouter">
 		<h2 align="center">포스트 수정하기</h2>
 		<form id="review_update" action="<%= contextPath %>/updatePost1.wr" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="MEM_NO" value="<%= po.getMemNo() %>">
-			<input type="hidden" name="bno" value="<%= po.getPostNo() %>">
+			<input type="hidden" name="MEM_NO" value="<%= loginUser.getUserNo() %>">
+			<input type="hidden" name="bno" value="<%= po1.getPostNo() %>">
 			<table id="review_update_table1" align="center">
 				<tr>
 					<th width="75" height="50" align="left" class="review_update_th">
 						제목
 					</th>
 					<td width="350">
-						<input type="text" name="TITLE" value="<%= po.getTitle() %>" required>
+						<input type="text" name="TITLE" value="<%= po1.getTitle() %>" required>
 					</td>
 					<th width="75" class="review_update_th2">
 					<!-- 카테고리 -->
@@ -863,14 +863,14 @@ color: white;
 					</th>
 					<!-- 높낮이를 고정시키기 위해서 style 부여 -->
 					<td colspan="3" style="height: 200px;"><textarea
-							id="reviewPost_textarea1" name="CONTENT" style="resize: none;" required><%= po.getContent() %></textarea>
+							id="reviewPost_textarea1" name="CONTENT" style="resize: none;" required><%= po1.getContent() %></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="3" class="reviewPost_category2">
 					</td>
 					<td>
-						<button type="button" id="review_UpLikebtn" class="review_update_like" name="LIKE_REVIEW" value="<%= po.getLikePost() %>"> 👍 : <%= po.getLikePost() %></button>
+						<button type="button" id="review_UpLikebtn" class="review_update_like" name="LIKE_REVIEW" value="<%= po1.getLikePost() %>"> 👍 : <%= po1.getLikePost() %></button>
 					</td>
 				</tr>
 				<tr>
@@ -931,7 +931,7 @@ color: white;
 			<br>
 
 			<div class="reviewEnrollForm_btn" align="center">
-				<button type="button" onclick="location.href='<%= contextPath %>/detail.re?bno=<%= po.getPostNo() %>'">
+				<button type="button" onclick="location.href='<%= contextPath %>/detail.po?bno=<%= po1.getPostNo() %>'">
 					뒤로가기
 				</button>
 				<button type="submit" onclick=update() class="reviewDetail_btn">

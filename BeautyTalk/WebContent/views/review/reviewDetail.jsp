@@ -1089,7 +1089,7 @@ button {
                         <th style="text-align: right; padding: 0px 120px;">댓글</th>
                         <% if(loginUser != null) { // 로그인이 되어 있을 경우 %>
                         <td>
-                            <textarea id="replyContent" rows="5" cols="50"></textarea>
+                            <textarea id="replyContent" rows="5" cols="50" required></textarea>
                         </td>
                         <td>
                             <button type="button" onclick="insertReply()" class="reviewDetail_btn">댓글 등록</button>
