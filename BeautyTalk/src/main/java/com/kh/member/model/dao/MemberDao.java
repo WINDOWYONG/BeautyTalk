@@ -505,5 +505,87 @@ public class MemberDao {
 		}
 		return list;
 	}
+	
+	public Member findID(Connection conn, Member m) {
+		Member findIdResult = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("findID");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, m.getUserName());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getPhone());
+
+			rset = pstmt.executeQuery();
+			
+			if (rset.next()) {
+				findIdResult = new Member();
+				findIdResult.setUserId(rset.getString("MEM_ID"));
+				findIdResult.setUserName(rset.getString("MEM_NAME"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return findIdResult;
+	}
+	
+	public int checkUserExists(Connection conn, String name, String userId, String email) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("checkUserExists");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, name);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, email);
+			
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				result = rset.getInt("count");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updatePassword(Connection conn, String userId, String name, String email, String newPassword) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updatePassword");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPassword);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, name);
+			pstmt.setString(4, email);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
 }
