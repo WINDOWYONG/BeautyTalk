@@ -134,7 +134,12 @@ function initRoutineCalendarPage() {
       alert("루틴 등록 성공!");
     },
     error: function() {
+      if (xhr.status === 401) {
+      alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+      location.href = contextPath + "/loginForm.me";
+    } else {
       alert("루틴 등록 실패!");
+    }
     }
   });
 });
