@@ -16,18 +16,19 @@
 				FROM (
 						SELECT
 							REVIEW_NO
+							, MEM_NO
 							, CREATE_DATE
 							, TITLE
 							, CONTENT
 							, PR_RATING
 							, P_RATING
 							, R_RATING
-							, LIKE_REVIEW
+							, LIKE_Review
 						FROM REVIEW RV
 						WHERE STATUS = 'Y'
 						ORDER
 						BY CREATE_DATE DESC
-						, REVIEW_NO DESC
+						, Review_NO DESC
 						) A
 				)
 		WHERE RNUM BETWEEN ? AND ?
@@ -69,7 +70,7 @@
     	INTO
     	REVIEW RV
 	    (
-	      REVIEW_NO
+	      Review_NO
 	    , PCODE
 	    , MEM_NO
 	    , TITLE
@@ -137,7 +138,7 @@
 	
 	<entry key="selectReview">
 		SELECT
-			  REVIEW_NO
+			  Review_NO
 			, PCODE
 			, MEM_NO
 			, TITLE
@@ -145,7 +146,7 @@
 		    , P_RATING
 		    , R_RATING
 		    , PR_RATING
-		    , LIKE_REVIEW
+		    , LIKE_Review
 		FROM REVIEW RV
 		WHERE REVIEW_NO = ?
 		AND STATUS = 'Y'
@@ -161,17 +162,18 @@
 		        (
 				SELECT
                      RV.REVIEW_NO   
+                    , IMG.IMAGE_NO
 				    , IMG.ORIGIN_NAME
 				    , IMG.CHANGE_NAME
 				    , IMG.FILE_PATH
 				FROM IMAGE IMG
-				JOIN REVIEW RV ON (IMG.UPLOAD_DATE = RV.CREATE_DATE)
+				JOIN Review RV ON (RV.MEM_NO = IMG.REF_BNO)
 				WHERE RV.REVIEW_NO = ?
+                AND IMG.UPLOAD_DATE >= RV.CREATE_DATE
                 AND IMG.STATUS = 'Y'
 				AND IMG.FILE_LEVEL = 'R'
                 ORDER
-                    BY REVIEW_NO
-                    , IMG.UPLOAD_DATE DESC
+                    BY IMG.IMAGE_NO DESC
 		            ) A
 		        )
 		WHERE RNUM BETWEEN 1 AND 1
@@ -187,6 +189,24 @@
 	</entry>
 	
 	<entry key="selectImgReview">
+		SELECT
+			  REVIEW_NO
+			, PCODE
+			, MEM_NO
+			, TITLE
+			, CONTENT
+			, CREATE_DATE
+			, P_RATING
+			, R_RATING
+			, PR_RATING
+			, LIKE_Review
+		FROM Review
+		WHERE Review_NO = ?
+		
+	
+	</entry>
+	
+	<entry key="selectImgImage">
 		SELECT
 		   IMG.IMAGE_NO,
 		   IMG.REF_BNO,
@@ -208,20 +228,6 @@
 	
 	</entry>
 	
-	<entry key="selectImgImage">
-		
-		SELECT
-		      IMAGE_NO
-		    , REF_BNO
-		    , ORIGIN_NAME
-		    , CHANGE_NAME
-		    , FILE_PATH
-		FROM IMAGE IMG
-		WHERE STATUS = 'Y'
-		AND FILE_LEVEL = 'R'
-	
-	</entry>
-	
 	<entry key="updateReview">
 		UPDATE
 	        REVIEW
@@ -231,7 +237,7 @@
 	        , P_RATING = ?
 	        , R_RATING = ?
 	        , PR_RATING = ?
-		WHERE REVIEW_NO = ?
+		WHERE Review_NO = ?
 	
 	</entry>
 
@@ -239,11 +245,15 @@
 		UPDATE
 	       	IMAGE IMG
 		SET
-	        IMG.ORIGIN_NAME = ?
-	        , IMG.CHANGE_NAME = ?
-	        , IMG.FILE_PATH = ?
-        FROM REVIEW RV
-		WHERE IMAGE IMG.REF_BNO  = RV.MEM_NO
+	        ORIGIN_NAME = ?
+	        , CHANGE_NAME = ?
+	        , FILE_PATH = ?
+		WHERE IMAGE_NO in ?
+        AND IMG.REF_BNO in
+                           (SELECT
+                               RV.MEM_NO
+                           FROM REVIEW RV
+                           WHERE RV.MEM_NO = IMG.REF_BNO)
 	
 	</entry>
 	
@@ -279,7 +289,7 @@
 		UPDATE
 		    REVIEW
 		SET STATUS = 'N'
-		WHERE REVIEW_NO = ?
+		WHERE Review_NO = ?
 	
 	</entry>
 	
@@ -326,7 +336,7 @@
 	
 	<entry key="selectReviewEnroll">
 		SELECT
-		    REVIEW_NO
+		    Review_NO
 		    , MEM_NO
 		    , LIKE_REVIEW
 		FROM

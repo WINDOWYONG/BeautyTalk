@@ -18,7 +18,7 @@
 			<ul id="navi">
 				<li><a href="index.html">HOME</a></li>
 				<li><a href="./review.li?">Reviews</a></li>
-				<li><a href="posts.html">Posts</a></li>
+				<li><a href="./post.list">Posts</a></li>
 				<li><a href="${pageContext.request.contextPath}/selectPeople.pe">People</a></li>
 				<li><a href="ranking.html">상품 랭킹</a></li>
 			</ul>

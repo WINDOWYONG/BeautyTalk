@@ -36,7 +36,7 @@ public class ReviewUpdateFormController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String refBno = request.getParameter("bno");
-	System.out.println("리뷰 업뎃폼 bno : " + refBno);
+		
 		ReviewService rService = new ReviewService();
 		rService.selectReview(refBno);
 		
@@ -84,16 +84,16 @@ public class ReviewUpdateFormController extends HttpServlet {
 		ArrayList<SubCategory> list1 = new ReviewService().selectSubCategoryList();
 		request.setAttribute("list", list);
 		
-			Review rv1 = rService.selectReview(refBno);
-			Image img = rService.selectImage(refBno);
+		Review rv1 = rService.selectReview(refBno);
+		Image img = rService.selectImage(refBno);
 			
-			request.setAttribute("pi", pi);
-			request.setAttribute("list", list);
-			request.setAttribute("list1", list1);
-			request.setAttribute("rv1", rv1);
-			request.setAttribute("img", img);
-		
-			request.getRequestDispatcher("views/review/reviewUpdateForm.jsp").forward(request, response);
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		request.setAttribute("list1", list1);
+		request.setAttribute("rv1", rv1);
+		request.setAttribute("img", img);
+	
+		request.getRequestDispatcher("views/review/reviewUpdateForm.jsp").forward(request, response);
 			
 	}
 

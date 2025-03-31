@@ -94,6 +94,7 @@ public class ReviewDao {
 			while(rset.next()) {
 				Review rv = new Review();
 				rv.setReviewNo(rset.getString("REVIEW_NO"));
+				rv.setMemNo(rset.getInt("MEM_NO"));
 				rv.setCreateDate(rset.getDate("CREATE_DATE"));
 				rv.setTitle(rset.getString("TITLE"));
 				rv.setContent(rset.getString("CONTENT"));
@@ -116,8 +117,8 @@ public class ReviewDao {
 
 	}
 	
-	public Image selectImageArraylist(Connection conn, PageInfo pi){
-		Image img = null; // 초기화
+	public ArrayList<Image> selectImageArraylist(Connection conn, PageInfo pi){
+		ArrayList<Image> list2 = new ArrayList<Image>(); // 초기화
 		
 		PreparedStatement pstmt = null; // 초기화
 		ResultSet rset = null;
@@ -136,13 +137,13 @@ public class ReviewDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				img = new Image();
+				Image img = new Image();
 				img.setImgNo(rset.getInt("IMAGE_NO"));
 				img.setRefBno(rset.getInt("REF_BNO"));
 				img.setOriginName(rset.getString("ORIGIN_NAME"));
 				img.setChangeName(rset.getString("CHANGE_NAME"));
 				img.setFilePath(rset.getString("FILE_PATH"));
-				img.setUploadDate(rset.getString("UPLOAD_DATE"));
+				img.setUploadDate(rset.getDate("UPLOAD_DATE"));
 				img.setFileLevel(rset.getString("FILE_LEVEL"));
 			}
 			
@@ -152,7 +153,7 @@ public class ReviewDao {
 			close(rset);
 			close(pstmt);
 		}
-		return img;
+		return list2;
 
 	}
 	
@@ -238,7 +239,7 @@ public class ReviewDao {
 			pstmt.setString(2, img.getOriginName());
 			pstmt.setString(3, img.getChangeName());
 			pstmt.setString(4, img.getFilePath());
-			// 리뷰는 Level 1로
+			// 리뷰는 Level R로
 			
 			result = pstmt.executeUpdate();
 			
@@ -326,6 +327,7 @@ public class ReviewDao {
 	public Image selectImage(Connection conn, String refBno) {
 		// select 조회인데, 게시글 하나임
 		Image img = null;
+		Review rv = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -341,6 +343,9 @@ public class ReviewDao {
 			
 			if(rset.next()) {
 				img = new Image();
+				rv = new Review();
+				rv.setReviewNo(rset.getString("REVIEW_NO"));
+				img.setImgNo(rset.getInt("IMAGE_NO"));
 				img.setOriginName(rset.getString("ORIGIN_NAME"));
 				img.setChangeName(rset.getString("CHANGE_NAME"));
 				img.setFilePath(rset.getString("FILE_PATH"));
@@ -356,7 +361,7 @@ public class ReviewDao {
 		
 	}
 	
-	public Review selectImgMemNo (Connection conn) {
+	public Review selectImgMemNo (Connection conn, String refBno) {
 		// 조회 ResultSet 다만, 조회를 하나만 할 거여.
 		Review rv = null;
 		
@@ -386,7 +391,7 @@ public class ReviewDao {
 
 	}
 	
-	public Review selectImgReview(Connection conn) {
+	public Review selectImgReview(Connection conn, String refBno) {
 		Review rv = null;
 		
 		PreparedStatement pstmt = null;
@@ -396,6 +401,8 @@ public class ReviewDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, refBno);
 			
 			rset = pstmt.executeQuery();
 			
@@ -423,7 +430,7 @@ public class ReviewDao {
 
 	}
 	
-	public Image selectImgImage(Connection conn) {
+	public Image selectImgImage(Connection conn, String refBno) {
 		Image img = null;
 		Review rv = null;
 		
@@ -435,8 +442,6 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			
-			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -447,7 +452,7 @@ public class ReviewDao {
 				img.setOriginName(rset.getString("ORIGIN_NAME"));
 				img.setChangeName(rset.getString("CHANGE_NAME"));
 				img.setFilePath(rset.getString("FILE_PATH"));
-				img.setUploadDate(rset.getString("UPLOAD_DATE"));
+				img.setUploadDate(rset.getDate("UPLOAD_DATE"));
 				rv.setMemNo(rset.getInt("MEM_NO"));
 				rv.setCreateDate(rset.getDate("CREATE_DATE"));
 			}
@@ -581,7 +586,6 @@ public class ReviewDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, refBno);
-			System.out.println("SQL 실행 전 로그 추가 : " + pstmt);
 			
 			rset = pstmt.executeQuery();
 			

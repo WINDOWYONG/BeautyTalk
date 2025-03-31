@@ -83,11 +83,11 @@ public class ReviewListController extends HttpServlet {
 		
 		// * 현재 요청한 페이지(c)에 보여질 게시글 리스트 boardLimit 수만큼 조회
 		ArrayList<Review> list = new ReviewService().selectReviewArrayList(pi);
-		Image img = new ReviewService().selectImageArraylist(pi);
+		ArrayList<Image> list2 = new ReviewService().selectImageArraylist(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
-		request.setAttribute("img", img);
+		request.setAttribute("list2", list2);
 
 		RequestDispatcher rd = request.getRequestDispatcher("views/review/reviewContentPost.jsp");
 		rd.forward(request, response);

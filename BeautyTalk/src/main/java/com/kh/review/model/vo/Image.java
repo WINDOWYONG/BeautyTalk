@@ -1,5 +1,7 @@
 package com.kh.review.model.vo;
 
+import java.util.Date;
+
 public class Image {
 	
 	private int imgNo;
@@ -7,7 +9,7 @@ public class Image {
 	private String originName;
 	private String changeName;
 	private String filePath;
-	private String uploadDate;
+	private Date uploadDate;
 	private String fileLevel;
 	private String status;
 	
@@ -16,7 +18,7 @@ public class Image {
 	
 	public Image () {}
 
-	public Image(int imgNo, int refBno, String originName, String changeName, String filePath, String uploadDate,
+	public Image(int imgNo, int refBno, String originName, String changeName, String filePath, Date uploadDate,
 			String fileLevel, String status, int reviewMem, int postMem) {
 		super();
 		this.imgNo = imgNo;
@@ -71,11 +73,11 @@ public class Image {
 		this.filePath = filePath;
 	}
 
-	public String getUploadDate() {
+	public Date getUploadDate() {
 		return uploadDate;
 	}
 
-	public void setUploadDate(String uploadDate) {
+	public void setUploadDate(Date uploadDate) {
 		this.uploadDate = uploadDate;
 	}
 

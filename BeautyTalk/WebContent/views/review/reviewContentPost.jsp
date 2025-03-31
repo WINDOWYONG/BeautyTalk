@@ -1,13 +1,14 @@
-<%@page import="com.kh.review.model.vo.Image"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="java.awt.font.ImageGraphicAttribute"%>
+
+<%@page import="com.kh.review.model.vo.Image"%>
 <%@page import="com.kh.review.model.vo.Review"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.kh.common.model.vo.PageInfo"%>
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@page import="com.kh.review.controller.ReviewListController"%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
@@ -15,9 +16,11 @@
 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
-	Image img = (Image)request.getAttribute("img");
+	ArrayList<Image> list2 = (ArrayList<Image>)request.getAttribute("list2");
 	Review review = (Review)request.getAttribute("rv");
 	
+
+	int reviewLimit = pi.getreviewLimit();
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -30,8 +33,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+</script>
 <style>
 div, input {
 	box-sizing: border-box;
@@ -326,6 +332,7 @@ img {
 	display: block;
 }
 
+<!-- reviewContentPost -->
 #reviewForm_CP1 {
 	margin: auto;
 	margin-top: 10px;
@@ -401,8 +408,6 @@ img {
 	font-weight: 700;
 }
 
-
-
 </style>
 </head>
 <body>
@@ -474,8 +479,8 @@ img {
 			</ul>
 			<ul id="navi">
 				<li><a href="index.html">HOME</a></li>
-				<li><a href="<%= contextPath %>/review.li">Reviews</a></li>
-				<li><a href="posts.html">Posts</a></li>
+				<li><a href="<%= contextPath %>/review.li?">Reviews</a></li>
+				<li><a href="<%= contextPath %>/post.list">Posts</a></li>
 				<li><a href="people.html">People</a></li>
 				<li><a href="ranking.html">상품 랭킹</a></li>
 			</ul>
@@ -549,13 +554,17 @@ img {
 			<% }else { %>
 				<% for(Review rv1 : list) { %>
 			<tr class="reviewTr_img1">
-				<td rowspan="6" align="center" onclick="location.href='<%= contextPath %>/detail.im'" style="width: 250px; height: 250px;">
-					<input type="hidden" name="MEM_NO" value="<%= rv1.getReviewNo() %>">
-					<% if(rv1.getMemNo() == img.getRefBno()) { %>
-						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>" class="review_img1">
-					<% }else { %>
-						<img src="<%= contextPath %>/resources/images/현존최강로고1.jpg" class="review_img1">
-					<% } %>
+			<input type="hidden" name="MEM_NO" value="<%= rv1.getReviewNo() %>">
+				<td rowspan="6" align="center" style="width: 250px; height: 250px;">
+						<div id="review_content_thumnail">
+							<% for(Image img: list2) { %>
+									<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+								<!--  <% if(rv1.getCreateDate() == img.getUploadDate()) { %>
+								<% }else { %>
+									<img src="<%= contextPath %>/resources/images/LOGO.jpg">
+								<% } %> -->
+							<% } %>
+						</div>
 				</td>
 				<td colspan="3" class="review_CreateDate"><%= rv1.getCreateDate() %></td>
 
@@ -626,11 +635,17 @@ img {
 
 		</table>
 		<script>
-				$(function(){
-				    $(".reviewTr_img2").on("click", function(){
-						location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
-			    	})
+			$(function(){
+				$("#review_content_thumnail").on("click", function(){
+					location.href='<%= contextPath %>/detail.im'
 				})
+			})
+			
+			$(function(){
+			    $(".reviewTr_img2").on("click", function(){
+					location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
+		    	})
+			})
 		</script>
 
 		<div class="paging-area" align="center">

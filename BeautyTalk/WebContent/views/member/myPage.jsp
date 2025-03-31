@@ -80,10 +80,8 @@
             <div id="Content3">
                 <table style="margin-top: 10px;">
                     <tr>
-                        <td>
-                            <a href="" style="font-weight: 800; font-size: larger;">게시글 <br><%= loginUser.getPost() %></a> <br>
-                        </td>
-                        <td><a href="" style="font-weight: 800; font-size: larger;">리뷰 <br><%= loginUser.getReview() %><br></a></td>
+                        <td><a href="<%= contextPath %>/postMyList.po" style="font-weight: 800; font-size: larger;">게시글 <br><%= loginUser.getPost() %></a><br></td>
+                        <td><a href="<%= contextPath %>/review.my" style="font-weight: 800; font-size: larger;">리뷰 <br><%= loginUser.getReview() %><br></a></td>
                         <td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로워 <br><%= loginUser.getFollowing() %><br></a></td>
                         <td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로잉 <br><%= loginUser.getFollower() %><br></a></td>
                     </tr>

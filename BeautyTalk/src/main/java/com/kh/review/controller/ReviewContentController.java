@@ -43,9 +43,7 @@ public class ReviewContentController extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("views/review/reviewEnrollForm.jsp");
 		rd.forward(request, response);
-		
-		
-		
+
 	}
 
 	/**

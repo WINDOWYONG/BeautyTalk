@@ -34,13 +34,13 @@ public class ReviewService {
 		
 	}
 	
-	public Image selectImageArraylist(PageInfo pi){
+	public ArrayList<Image> selectImageArraylist(PageInfo pi){
 		Connection conn = getConnection();
 		
-		Image img = new ReviewDao().selectImageArraylist(conn, pi);
+		ArrayList<Image> list2 = new ReviewDao().selectImageArraylist(conn, pi);
 		
 		close(conn);
-		return img;
+		return list2;
 	}
 	
 	
@@ -101,29 +101,29 @@ public class ReviewService {
 	}
 	
 	
-	public Review selectImgMemNo() {
+	public Review selectImgMemNo(String refBno) {
 		Connection conn = getConnection();
 		
-		Review rv = new ReviewDao().selectImgMemNo(conn);
+		Review rv = new ReviewDao().selectImgMemNo(conn, refBno);
 		
 		close(conn);
 		return rv;
 		
 	}
 	
-	public Review selectImgReview() {
+	public Review selectImgReview(String refBno) {
 		Connection conn = getConnection();
 		
-		Review rv = new ReviewDao().selectImgReview(conn);
+		Review rv = new ReviewDao().selectImgReview(conn, refBno);
 		
 		close(conn);
 		return rv;
 	}
 	
-	public Image selectImgImage() {
+	public Image selectImgImage(String refBno) {
 		Connection conn = getConnection();
 		
-		Image img = new ReviewDao().selectImgImage(conn);
+		Image img = new ReviewDao().selectImgImage(conn, refBno);
 		
 		close(conn);
 		return img;
@@ -135,10 +135,10 @@ public class ReviewService {
 		int result1 = new ReviewDao().updateReview2(conn, rv);
 		int result2 = 1;
 		
-		if(img != null) {
-			if(img.getImgNo() != 0) {
+		if(img != null) { // 이미지가 있으면
+			if(img.getImgNo() != 0) { // 있으면
 				result2 = new ReviewDao().updateImage(conn, img);
-			}else {
+			}else { // 없으면
 				result2 = new ReviewDao().newInsertImage(conn, img);
 			}
 		}
