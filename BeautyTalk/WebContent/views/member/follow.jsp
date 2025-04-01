@@ -149,7 +149,7 @@
             followerListDiv.innerHTML = "";  // 이전 검색 결과 초기화
 
             if (nickname === "") {
-                loadFollowerList(); // 팔로워 목록 초기 로드
+                loadFollowList(); // 팔로워 목록 초기 로드
                 return;
             }
 
@@ -212,7 +212,10 @@
                     followerListDiv.innerHTML = "<p>팔로워 목록을 불러오는 데 실패했습니다.</p>";
                 }
             });
+
         }
+
+
         function searchfollower() {
             let nickname = document.getElementById("searchfollower").value.trim();  // 팔로잉 검색창에 맞게 수정
             let followListDiv = document.getElementById("followList");  // 팔로잉 목록 div
@@ -250,8 +253,8 @@
 
                     let htmlContentFollowing = "";
                     for (let i = 0; i < result.length; i++) {
-                        let followBtnText = "✔ 팔로잉";
-                        let followBtnClass = "follow-btn following";  // 팔로잉 상태에 맞게 클래스 설정
+                        let followBtnClass = "follow-btn"; // 팔로우 버튼 클래스
+                        let followBtnText = "✔ 팔로잉";  // 팔로잉 상태일 경우 텍스트
 
                         // 팔로잉에 맞는 HTML 생성
                         htmlContentFollowing += `
@@ -268,16 +271,56 @@
                                     \${result[i].userId}
                                 </td>
                                 <td style="width: 100px; text-align: center;">
-                                    <button class="follow-btn \${followBtnClass}" data-userno="\${result[i].userNo}" style="background-color: #ccc; color: white; width: 80px; height: 40px; border-radius: 7px; border: none; cursor: pointer; font-size: 13px; font-weight: 600;">
+                                    <button class="follow-btn \${followBtnClass}" data-userno="\${result[i].userNo}" style="background-color: #e8618c; color: white; width: 80px; height: 40px; border-radius: 7px; border: none; cursor: pointer; font-size: 13px; font-weight: 600;">
                                         \${followBtnText}
                                     </button>
                                 </td>
                             </tr>
                         </table>
-                    </div>`;
+                    </div>
+                `;
                     }
 
                     followListDiv.innerHTML = htmlContentFollowing;
+
+                    // 버튼에 클릭 이벤트 리스너 추가
+                    const followBtns = document.querySelectorAll('.follow-btn');
+                    followBtns.forEach(btn => {
+                        btn.addEventListener('click', function () {
+                            const targetUserNo = this.dataset.userno;
+                            const isFollowing = this.classList.contains('following');
+                            const actionUrl = !isFollowing
+                                ? '<%= request.getContextPath() %>/unfollow.pe'  // 언팔로우 URL
+                                : '<%= request.getContextPath() %>/follow.pe';   // 팔로우 URL
+
+                            fetch(actionUrl, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                body: 'loginUserNo=' + <%= loginUser.getUserNo() %> + '&targetUserNo=' + targetUserNo
+                            })
+                                .then(response => response.text())
+                                .then(result => {
+                                    if (result.trim() === 'success') {
+                                        if (isFollowing) {
+                                            // 언팔로우 성공 시 UI 업데이트
+
+                                            
+                                        } else {
+                                            // 팔로우 성공 시 UI 업데이트
+                                            this.classList.remove('following');
+                                            this.classList.add('follow');
+                                            this.textContent = "+ 팔로우";
+                                            
+                                        }
+                                        loadFollowList(); // 목록 새로고침
+                                    } else {
+                                        alert(isFollowing ? '언팔로우 실패' : '팔로우 실패');
+                                    }
+                                })
+                                .catch(error => console.error('오류 발생:', error));
+                        });
+                    });
+
                 },
                 error: function (xhr, status, error) {
                     loadingDiv.style.display = "none"; // 로딩 숨기기
