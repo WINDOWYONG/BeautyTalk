@@ -29,18 +29,27 @@ public class ReviewService {
 		
 		ArrayList<Review> list = new ReviewDao().selectReviewArrayList(conn, pi);
 		
+		// 각 리뷰에 대해 이미지 목록을 추가
+	    for (Review rv : list) {
+	        ArrayList<Image> images = new ReviewDao().selectImagesForReview(conn, rv.getReviewNo());
+	        
+	        // 각 리뷰에 해당하는 이미지 리스트를 조회
+	        rv.setImages(images);
+	        // Review 객체에 이미지 목록 추가
+	    }
+		
 		close(conn);
 		return list;
 		
 	}
 	
-	public ArrayList<Image> selectImageArraylist(PageInfo pi){
+	public ArrayList<Image> selectImageArrayList(PageInfo pi){
 		Connection conn = getConnection();
 		
-		ArrayList<Image> list2 = new ReviewDao().selectImageArraylist(conn, pi);
+		ArrayList<Image> list1 = new ReviewDao().selectImageArrayList(conn, pi);
 		
 		close(conn);
-		return list2;
+		return list1;
 	}
 	
 	

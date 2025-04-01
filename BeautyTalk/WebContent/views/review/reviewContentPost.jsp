@@ -1,13 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@page import="java.awt.font.ImageGraphicAttribute"%>
-
 <%@page import="com.kh.review.model.vo.Image"%>
 <%@page import="com.kh.review.model.vo.Review"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.kh.common.model.vo.PageInfo"%>
 <%@page import="com.kh.member.model.vo.Member"%>
-<%@page import="com.kh.review.controller.ReviewListController"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="java.awt.font.ImageGraphicAttribute"%>
 
 <%
 	String contextPath = request.getContextPath();
@@ -16,10 +14,8 @@
 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
-	ArrayList<Image> list2 = (ArrayList<Image>)request.getAttribute("list2");
-	Review review = (Review)request.getAttribute("rv");
+	ArrayList<Image> list1 = (ArrayList<Image>)request.getAttribute("list1");
 	
-
 	int reviewLimit = pi.getreviewLimit();
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -390,13 +386,13 @@ img {
 	width: 120px;
 }
 
-.review_img1{
-	width: 250px;
+#review_content_thumnail img{
+	width: 280px;
 	height: 250px;
 	box-sizing: border-box;
 }
 
-.reviewTr_img2 {
+#review_content_thumnail {
 	cursor:pointer;
 }
 .review_CreateDate{
@@ -532,15 +528,7 @@ img {
 					<% } %>
 				</td>
 			</tr>
-			
-			<script>
-				$(function(){
-				    $(".reviewContent_btn2").on("click", function(){
-				    	alert("로그인을 해주세요.");
-			    	})
-				})
-			</script>
-			
+
 			<!-- 게시글이 없는 경우 -->
 			<% if(list.isEmpty()) { %>
 
@@ -552,19 +540,19 @@ img {
 			
 			<!-- 게시글이 있는 경우 -->
 			<% }else { %>
-				<% for(Review rv1 : list) { %>
+			<% for(Review rv1 : list) { %>	
 			<tr class="reviewTr_img1">
-			<input type="hidden" name="MEM_NO" value="<%= rv1.getReviewNo() %>">
-				<td rowspan="6" align="center" style="width: 250px; height: 250px;">
-						<div id="review_content_thumnail">
-							<% for(Image img: list2) { %>
-									<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
-								<!--  <% if(rv1.getCreateDate() == img.getUploadDate()) { %>
-								<% }else { %>
-									<img src="<%= contextPath %>/resources/images/LOGO.jpg">
-								<% } %> -->
-							<% } %>
-						</div>
+				<td id="review_content_thumnail" rowspan="6" align="center" style="width: 250px; height: 250px;">
+					<input type="hidden" name="MEM_NO" value="<%= rv1.getReviewNo() %>">
+					<% for(Image img : rv1.getImages()) { %> <!-- Review 객체에 추가된 이미지 목록 출력 -->
+					<div>
+						<% if(img.getRefBno() == rv1.getMemNo()){ %>
+						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+						<% }else { %>
+						<img src="<%= contextPath %>/resources/images/LOGO.jpg">
+						<% } %>
+					</div>
+					<% } %>
 				</td>
 				<td colspan="3" class="review_CreateDate"><%= rv1.getCreateDate() %></td>
 
@@ -574,6 +562,7 @@ img {
 
 
 			</tr>
+				
 			<tr class="reviewTr_img2">
 				<td class="review_title1"><%= rv1.getReviewNo() %></td>
 				<td class="review_title2"><%= rv1.getTitle() %></td>
@@ -634,13 +623,16 @@ img {
 		<% } %>
 
 		</table>
+		
 		<script>
-			$(function(){
-				$("#review_content_thumnail").on("click", function(){
-					location.href='<%= contextPath %>/detail.im'
+				$(function(){
+				    $(".reviewContent_btn2").on("click", function(){
+				    	alert("로그인을 해주세요.");
+			    	})
 				})
-			})
-			
+		</script>
+		
+		<script>
 			$(function(){
 			    $(".reviewTr_img2").on("click", function(){
 					location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();

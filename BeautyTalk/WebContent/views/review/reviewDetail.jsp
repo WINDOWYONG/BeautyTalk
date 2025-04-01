@@ -15,15 +15,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
 <!-- Popper JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script
@@ -623,10 +621,6 @@ button {
 		font-weight: bold;
 	}
 	
-	.review_EnrollTh2 {
-		padding: 20px;
-	}
-	
 	#review_upload{
 		display: none;
 		cursor: pointer;
@@ -644,6 +638,18 @@ button {
 	}
 
 	.reviewDetail_btn{
+		margin-left: 20px;
+		border-radius: 20px;
+		padding: 10px 20px;
+		background-color: palevioletred;
+		color: white;
+		font-size: 15px;
+		font-weight: 900;
+		cursor: pointer;
+	}
+	
+	.reviewDetail_btn1{
+		width: 100px;
 		margin-left: 20px;
 		border-radius: 20px;
 		padding: 10px 20px;
@@ -777,8 +783,7 @@ button {
 			<div id="Content4">
 				<div id="Content5">
 					<div>
-						<span class="material-icons" style="font-size: 30px;">person<a
-							href="<%= contextPath %>/myPage.me" style="font-size: 25px;">마이페이지</a></span>
+						<span class="material-icons" style="font-size: 30px;">person<a href="<%= contextPath %>/myPage.me" style="font-size:25px;">마이페이지</a></span>
 					</div>
 	
 					<div></div>
@@ -1028,7 +1033,8 @@ button {
 				</tr>
 				<tr>
 					<th style="height: 50px;" align="left" class="review_EnrollTh">
-						첨부 파일
+						첨부<br>
+						파일
 					</th>
 					<td colspan="3" class="review_DetailImg">
 	                	<% if(img == null) { %>
@@ -1092,14 +1098,14 @@ button {
                             <textarea id="replyContent" rows="5" cols="50" required></textarea>
                         </td>
                         <td>
-                            <button type="button" onclick="insertReply()" class="reviewDetail_btn">댓글 등록</button>
+                            <button type="button" onclick="insertReply()" class="reviewDetail_btn1">댓글 등록</button>
                         </td>
                         <% }else { %>
                         <td>
                             <textarea rows="5" cols="50" readonly>로그인 후 이용 가능한 서비스입니다.</textarea>
                         </td>
                         <td>
-                            <button class="reviewDetail_btn" disabled>댓글 등록</button>
+                            <button class="reviewDetail_btn1" disabled>댓글 등록</button>
                         </td>
                         <% } %>
                     </tr>

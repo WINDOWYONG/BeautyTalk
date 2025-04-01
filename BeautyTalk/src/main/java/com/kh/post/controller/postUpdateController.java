@@ -46,7 +46,6 @@ public class postUpdateController extends HttpServlet {
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
 			String refBno = multiRequest.getParameter("bno"); // url용
-	System.out.println("포스트 업뎃 bno 값 : " + refBno);	
 			String memNo = multiRequest.getParameter("MEM_NO");
 			String postTitle = multiRequest.getParameter("TITLE");
 			String content = multiRequest.getParameter("CONTENT");
@@ -55,6 +54,7 @@ public class postUpdateController extends HttpServlet {
 			Post po = new Post();
 			po.setTitle(postTitle);
 			po.setContent(content);
+			po.setPostNo(Integer.parseInt(refBno));
 			po.setMemNo(Integer.parseInt(refBno));
 			
 			Image2 img = null; // 처음에는 null로 초기화
@@ -64,7 +64,7 @@ public class postUpdateController extends HttpServlet {
 			img.setFilePath("resources/images/");
 	System.out.println("포스트 업뎃 이미지이름 : " + multiRequest.getOriginalFileName("upfile"));
 			if(multiRequest.getOriginalFileName("upfile") != null) {
-				if(multiRequest.getParameter("originFileNo") != null) {
+				if(imgNo != null) {
 					// 기존의 첨부파일이 있었을 경우 => update attachment (기존의첨부파일번호 필요)
 					img.setImgNo(Integer.parseInt(imgNo));
 
@@ -94,17 +94,9 @@ public class postUpdateController extends HttpServlet {
 
 			}else {
 				// 새로운 첨부파일 없음
-//			    if (img != null) { // 챗GPT추천
-//			        img.setRefBno(Integer.parseInt(memNo));
-//			        img.setOriginName("");  // 빈 값 또는 기본값 설정
-//			        img.setChangeName("");  // 빈 값 또는 기본값 설정
-//			        img.setFilePath("");    // 빈 값 또는 기본값 설정
-//			    }
-				img.setRefBno(Integer.parseInt(memNo));
-				img.setOriginName(multiRequest.getOriginalFileName("upfile"));
-				img.setChangeName(multiRequest.getFilesystemName("upfile"));
-				img.setFilePath("resources/images/");
-				
+			    img.setOriginName("첨부파일없음"); // 챗gpt 추천이긴한데, 완전 임시방편인데?
+			    img.setChangeName("첨부파일없음");
+
 				int result = new PostService().updatePost(po, img);
 
 				if(result > 0) { // 성공

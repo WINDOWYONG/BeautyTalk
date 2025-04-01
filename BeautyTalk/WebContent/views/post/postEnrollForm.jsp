@@ -820,7 +820,7 @@ color: white;
 						제목
 					</th>
 					<td width="350">
-						<input type="text" name="TITLE" required>
+						<input type="text" name="TITLE" maxlength="33" required>
 					</td>
 					<th width="75" class="review_EnrollTh2">
 					<!-- 카테고리  -->
@@ -843,7 +843,7 @@ color: white;
 					</th>
 					<!-- 높낮이를 고정시키기 위해서 style 부여 -->
 					<td colspan="3" style="height: 200px;"><textarea
-							id="reviewPost_textarea1" name="CONTENT" style="resize: none;" required></textarea>
+							id="reviewPost_textarea1" name="CONTENT" maxlength="133" style="resize: none;" required></textarea>
 					</td>
 				</tr>
 

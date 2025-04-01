@@ -117,13 +117,52 @@ public class ReviewDao {
 
 	}
 	
-	public ArrayList<Image> selectImageArraylist(Connection conn, PageInfo pi){
-		ArrayList<Image> list2 = new ArrayList<Image>(); // 초기화
+	public ArrayList<Image> selectImagesForReview(Connection conn, String reviewNo) {
+	    ArrayList<Image> list1 = new ArrayList<Image>();
+	    
+	    PreparedStatement pstmt = null;
+	    ResultSet rset = null;
+	    
+	    String sql = prop.getProperty("selectImagesForReview");
+	    
+	    try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, reviewNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Image img = new Image();
+	            img.setImgNo(rset.getInt("IMAGE_NO"));
+	            img.setRefBno(rset.getInt("REF_BNO"));
+	            img.setOriginName(rset.getString("ORIGIN_NAME"));
+	            img.setChangeName(rset.getString("CHANGE_NAME"));
+	            img.setFilePath(rset.getString("FILE_PATH"));
+	            img.setUploadDate(rset.getDate("UPLOAD_DATE"));
+	            img.setFileLevel(rset.getString("FILE_LEVEL"));
+	            
+	            list1.add(img);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+	        close(rset);
+	        close(pstmt);
+		}
+	    return list1;
+
+	}
+	
+	public ArrayList<Image> selectImageArrayList(Connection conn, PageInfo pi) {
+		ArrayList<Image> list1 = new ArrayList<Image>(); // 초기화
 		
 		PreparedStatement pstmt = null; // 초기화
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectImageArraylist"); 
+		String sql = prop.getProperty("selectImageArrayList"); 
 		
 		int startReview = (pi.getCurrentPage() - 1) * pi.getreviewLimit() + 1;
 		int endReview = startReview + pi.getreviewLimit() - 1;
@@ -153,10 +192,9 @@ public class ReviewDao {
 			close(rset);
 			close(pstmt);
 		}
-		return list2;
-
-	}
+		return list1;
 	
+	}
 	
 	public ArrayList<SubCategory> selectSubCategoryList(Connection conn){
 		// select에 여러 행 조회 => Resultset
@@ -530,10 +568,9 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, img.getRefBno());
-			pstmt.setString(2, img.getOriginName());
-			pstmt.setString(3, img.getChangeName());
-			pstmt.setString(4, img.getFilePath());
+			pstmt.setString(1, img.getOriginName());
+			pstmt.setString(2, img.getChangeName());
+			pstmt.setString(3, img.getFilePath());
 			
 			result = pstmt.executeUpdate();
 			

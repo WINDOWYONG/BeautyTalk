@@ -35,7 +35,42 @@
 
 	</entry>
 	
-	<entry key="selectImageArraylist">
+	<entry key="selectImagesForReview">
+		SELECT *
+		FROM(
+		    SELECT
+		        ROWNUM RNUM, A.*
+		    FROM
+		        (
+				SELECT
+					IMG.IMAGE_NO
+					, IMG.REF_BNO
+				    , IMG.ORIGIN_NAME
+				    , IMG.CHANGE_NAME
+				    , IMG.FILE_PATH
+					, IMG.UPLOAD_DATE
+					, IMG.FILE_LEVEL
+				FROM IMAGE IMG
+				JOIN REVIEW RV ON (RV.STATUS = IMG.STATUS)
+				WHERE IMG.STATUS = 'Y'
+                AND RV.REVIEW_NO = ?
+                AND IMG.UPLOAD_DATE = RV.CREATE_DATE
+                AND IMG.IMAGE_NO >= RV.REVIEW_NO
+				AND IMG.FILE_LEVEL = 'R'
+                AND IMG.REF_BNO = RV.MEM_NO
+                OR IMG.REF_BNO = 0
+                AND IMG.STATUS = 'Y'
+                AND IMG.UPLOAD_DATE >= RV.CREATE_DATE
+                AND IMG.IMAGE_NO >= RV.REVIEW_NO
+				AND IMG.FILE_LEVEL = 'R'
+                AND IMG.REF_BNO = RV.MEM_NO
+		            ) A
+		        )
+		WHERE RNUM BETWEEN 1 AND 1
+	
+	</entry>
+	
+	<entry key="selectImageArrayList">
 		SELECT *
 		FROM (
 				SELECT ROWNUM RNUM, A.*
@@ -161,20 +196,24 @@
 		    FROM
 		        (
 				SELECT
-                   IMG.IMAGE_NO
+					IMG.IMAGE_NO
 				    , IMG.ORIGIN_NAME
 				    , IMG.CHANGE_NAME
 				    , IMG.FILE_PATH
 				FROM IMAGE IMG
-				JOIN REVIEW RV ON (RV.MEM_NO = IMG.REF_BNO)
+				JOIN REVIEW RV ON (RV.STATUS = IMG.STATUS)
 				WHERE IMG.STATUS = 'Y'
                 AND RV.REVIEW_NO = ?
-                AND RV.CREATE_DATE >= IMG.UPLOAD_DATE
-                AND RV.MEM_NO = IMG.REF_BNO
+                AND IMG.UPLOAD_DATE = RV.CREATE_DATE
                 AND IMG.IMAGE_NO >= RV.REVIEW_NO
 				AND IMG.FILE_LEVEL = 'R'
-                ORDER
-                    BY IMG.IMAGE_NO DESC
+                AND IMG.REF_BNO = RV.MEM_NO
+                OR IMG.REF_BNO = 0
+                AND IMG.STATUS = 'Y'
+                AND IMG.UPLOAD_DATE >= RV.CREATE_DATE
+                AND IMG.IMAGE_NO >= RV.REVIEW_NO
+				AND IMG.FILE_LEVEL = 'R'
+                AND IMG.REF_BNO = RV.MEM_NO
 		            ) A
 		        )
 		WHERE RNUM BETWEEN 1 AND 1
@@ -275,7 +314,7 @@
 	    VALUES
 		    (
 		      SEQ_I_NO.NEXTVAL
-		    , ?
+		    , 0
 		    , ?
 		    , ?
 		    , ?
@@ -347,6 +386,5 @@
 	</entry>
 	
 	
-	
-	
+
 </properties>

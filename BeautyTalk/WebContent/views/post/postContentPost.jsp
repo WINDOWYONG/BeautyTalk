@@ -29,8 +29,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
 </script>
@@ -393,19 +402,21 @@ img {
 	box-sizing: border-box;
 }
 
-.reviewTr_img1, .reviewTr_img2, .reviewTr_img3 {
+.reviewPostNo_img, .reviewTr_img1, .reviewTr_img2, .reviewTr_img3 {
 	cursor: pointer;
 }
 
-.review_CreateDate {
+.review_CreateDate, .review_title1, .review_title2 {
 	font-size: 14px;
 	font-weight: 700;
 }
 
-.review_title1, .review_title2 {
+.reviewTD_img1, .reviewTD_img2, .reviewTD_img3 {
+	align-content: end;
 	font-size: 14px;
 	font-weight: 700;
 }
+
 </style>
 </head>
 <body>
@@ -551,36 +562,46 @@ img {
 			
 			<!-- 게시글이 있는 경우  -->
 			<% }else { %>
-			
 			<% for(Post po : list) { %>
 			<tr class="reviewPostNo_img">
-				<td class="reviewTr_img1" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;" onclick="location.href='<%= contextPath %>/detail.po?bno='">
-					<% for(Image2 img:list1) { %>
-						<% if(po.getMemNo() == (img.getPostMem()) && po.getCreateDate() == img.getUploadDate()) { %>
+				<% for(Image2 img: po.getImages()) { %> <!-- Post 객체에 추가된 이미지 목록 출력 -->
+				<td class="reviewTr_img1" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;">
+					<div>
+						<% if(img.getRefBno() == po.getMemNo()) { %>
 						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
-						<% } %>
-					<% } %>
-				</td>
-				<td></td>
-				
-				<td class="reviewTr_img2" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;" onclick="location.href='<%= contextPath %>/detail.po?bno='">
-					<% for(Image2 img:list1) { %>
-						<% if(po.getCreateDate() == img.getUploadDate()) { %>
+						<% }else if(img.getRefBno() == 0){ %>
 						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+						<% }else { %>
+						<img src="<%= contextPath %>/resources/images/LOGO.jpg">
 						<% } %>
-					<% } %>
+					</div>
 				</td>
-				<td></td>
+				<td class="reviewTD_img1"><%= po.getPostNo() %></td>
 				
-				<td class="reviewTr_img3" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;" onclick="location/href='<%= contextPath %>/detail.po?bno='">
-					<% for(Image2 img:list1) { %>
-						<% if(po.getMemNo() == (img.getPostMem()) && po.getCreateDate() == img.getUploadDate()) { %>
+				<td class="reviewTr_img2" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;">
+					<div>
+						<% if(img.getRefBno() == po.getMemNo()) { %>
 						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+						<% }else if(img.getRefBno() == 0){ %>
+						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+						<% }else { %>
+						<img src="<%= contextPath %>/resources/images/LOGO.jpg">
 						<% } %>
-					<% } %>
+					</div>
 				</td>
-				<td></td>
+				<td class="reviewTD_img2"><%= po.getPostNo() %></td>
 				
+				<td class="reviewTr_img3" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;">
+					<div>
+						<% if(img.getRefBno() == po.getMemNo()) { %>
+						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+						<% }else { %>
+						<img src="<%= contextPath %>/resources/images/LOGO.jpg">
+						<% } %>
+					</div>
+				</td>
+				<td class="reviewTD_img3"><%= po.getPostNo() %></td>
+				<% } %>
 			</tr>
 
 			
@@ -618,18 +639,15 @@ img {
 			</tr>
 			
 			<tr class="review_image_tr">
-				<td class="reviewTD_img1"><%= po.getPostNo() %></td>
-				<td><%= po.getTitle() %></td>
+				<td colspan="2"><%= po.getTitle() %></td>
 				<td><%= po.getLikePost() %></td>
 				<td></td>
 
-				<td class="reviewTD_img2"><%= po.getPostNo() %></td>
-				<td><%= po.getTitle() %></td>
+				<td colspan="2"><%= po.getTitle() %></td>
 				<td><%= po.getLikePost() %></td>
 				<td></td>
 
-				<td class="reviewTD_img3"><%= po.getPostNo() %></td>
-				<td><%= po.getTitle() %></td>
+				<td colspan="2"><%= po.getTitle() %></td>
 				<td><%= po.getLikePost() %></td>
 				<td></td>
 			</tr>
@@ -644,13 +662,13 @@ img {
 		<script>
 			$(function(){
 				$("#review_content_thumnail").on("click", function(){
-					location.href='<%= contextPath %>/detail.im'
+					location.href='<%= contextPath %>/detail.po?bno=' + $(this);
 				})
 			})
 			
 			$(function(){
-			    $(".reviewTr_img1").on("click", function(){
-					location.href = '<%= contextPath %>/detail.po?bno=' + $(".review_image_tr").children().eq(0).text();
+			    $(".reviewPostNo_img").on("click", function(){
+					location.href = '<%= contextPath %>/detail.po?bno=' + $(this).children().eq(3).text();
 		    	})
 			})
 		</script>
