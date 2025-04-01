@@ -380,6 +380,7 @@ public class MemberDao {
 
 			while (rset.next()) {
 				// rset에서 닉네임과 파일 경로를 가져옴
+				int followUserNo = rset.getInt("MEM_NO");
 				String nicknameFromDB = rset.getString("NICKNAME");
 				String filePath = rset.getString("FILEPATH");
 
@@ -387,7 +388,7 @@ public class MemberDao {
 				System.out.println("Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
 
 				// 리스트에 추가
-				list.add(new Member(nicknameFromDB, filePath));
+				list.add(new Member(followUserNo, nicknameFromDB, filePath));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -419,6 +420,7 @@ public class MemberDao {
 
 			while (rset.next()) {
 				// rset에서 닉네임과 파일 경로를 가져옴
+				int followerUserNo = rset.getInt("MEM_NO");
 				String nicknameFromDB = rset.getString("NICKNAME");
 				String filePath = rset.getString("FILEPATH");
 
@@ -426,7 +428,7 @@ public class MemberDao {
 				System.out.println("Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
 
 				// 리스트에 추가
-				list.add(new Member(nicknameFromDB, filePath));
+				list.add(new Member(followerUserNo, nicknameFromDB, filePath));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

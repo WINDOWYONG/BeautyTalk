@@ -141,50 +141,156 @@
     <script>
         function searchfollow() {
             let nickname = document.getElementById("searchfollow").value.trim();
-            let followListDiv = document.getElementById("followList");
-            let loadingDiv = document.getElementById("loading");  // 수정된 부분
+            let followerListDiv = document.getElementById("followerList");
+            let loadingDiv = document.getElementById("loading");
+
+            // 로딩 표시 활성화
+            loadingDiv.style.display = "block";
+            followerListDiv.innerHTML = "";  // 이전 검색 결과 초기화
+
+            if (nickname === "") {
+                loadFollowerList(); // 팔로워 목록 초기 로드
+                return;
+            }
+
+            $.ajax({
+                url: "<%= contextPath %>/followerlist.me",  // 팔로워 목록을 가져오는 URL
+                type: "POST",
+                data: { nickname: nickname },
+                dataType: "json",
+                success: function (result) {
+                    console.log("서버 응답 (팔로워):", result);  // 응답 확인
+
+                    loadingDiv.style.display = "none"; // 로딩 숨기기
+
+                    // `result`가 배열이 아닐 경우 대비
+                    if (!Array.isArray(result)) {
+                        console.error("🚨 응답 데이터가 배열이 아닙니다!", result);
+                        followerListDiv.innerHTML = "<p>잘못된 데이터 형식입니다.</p>";
+                        return;
+                    }
+
+                    // 배열이 비어 있는지 확인
+                    if (result.length === 0) {
+                        followerListDiv.innerHTML = "<p>팔로워 결과가 없습니다.</p>";
+                        return;
+                    }
+
+                    let htmlContentFollower = "";
+                    for (let i = 0; i < result.length; i++) {
+                        let followBtnClass = "follow-btn"; // 필요시 설정
+                        let followBtnText = "팔로우"; // 필요시 설정
+
+                        htmlContentFollower += `
+                <div class="follow-item" style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                    <table style="border-collapse: collapse; width: 100%;">
+                        <tr>
+                            <td style="width: 30px; text-align: center; padding: 0;">
+                                \${result[i].userNo}
+                            </td>
+                            <td style="width: 30px; text-align: center; padding: 0;">
+                                <img src="<%= contextPath %>/\${result[i].userName ? result[i].userName : '/resources/images/account_circle_500dp_000000.png'}" alt="프로필 이미지" style="width: 50px; height: 50px; margin-left: 35px;">
+                            </td>
+                            <td style="width: 130px; text-align: center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                \${result[i].userId}
+                            </td>
+                            <td style="width: 100px; text-align: center;">
+                                <button class="follow-btn \${followBtnClass}" data-userno="\${result[i].userNo}" style="background-color: #e8618c; color: white; width: 80px; height: 40px; border-radius: 7px; border: none; cursor: pointer; font-size: 13px; font-weight: 600;">
+                                    \${followBtnText}
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>`;
+                    }
+
+                    followerListDiv.innerHTML = htmlContentFollower;
+                },
+                error: function (xhr, status, error) {
+                    loadingDiv.style.display = "none"; // 로딩 숨기기
+                    console.error("AJAX 오류 (팔로워):", status, error);
+                    followerListDiv.innerHTML = "<p>팔로워 목록을 불러오는 데 실패했습니다.</p>";
+                }
+            });
+        }
+        function searchfollower() {
+            let nickname = document.getElementById("searchfollower").value.trim();  // 팔로잉 검색창에 맞게 수정
+            let followListDiv = document.getElementById("followList");  // 팔로잉 목록 div
+            let loadingDiv = document.getElementById("loading");  // 팔로잉 로딩 div
 
             // 로딩 표시 활성화
             loadingDiv.style.display = "block";
             followListDiv.innerHTML = "";  // 이전 검색 결과 초기화
 
             if (nickname === "") {
-                loadFollowList();
+                loadFollowList(); // 팔로잉 목록 초기 로드
                 return;
             }
 
             $.ajax({
-                url: "<%= contextPath %>/followlist.me",  // 팔로우 목록을 가져오는 URL
+                url: "<%= contextPath %>/followlist.me",  // 팔로잉 목록을 가져오는 URL
                 type: "POST",
                 data: { nickname: nickname },
                 dataType: "json",
                 success: function (result) {
-                    console.log(result);  // 서버 응답 확인
-                    loadingDiv.style.display = "none";  // 로딩 숨기기
+                    console.log("서버 응답 (팔로잉):", result);  // 응답 확인
 
-                    // 응답이 배열인지, 배열의 길이가 0인지 확인
-                    if (!Array.isArray(result) || result.length === 0) {
-                        followListDiv.innerHTML = "<p>팔로우 결과가 없습니다.</p>";
+                    loadingDiv.style.display = "none"; // 로딩 숨기기
+
+                    if (!Array.isArray(result)) {
+                        console.error("🚨 응답 데이터가 배열이 아닙니다!", result);
+                        followListDiv.innerHTML = "<p>잘못된 데이터 형식입니다.</p>";
                         return;
                     }
 
-                    let htmlContentFollow = "";
-                    for (let i = 0; i < result.length; i++) {
-                        htmlContentFollow += `
-                    <div class="follow-item">
-                        <img src="<%= contextPath %>/\${result[i].filePath}" alt="프로필 이미지" style="width: 50px; height: 50px;">
-                        <span>\${result[i].nickName}</span>
-                    </div>
-                `;
+                    if (result.length === 0) {
+                        followListDiv.innerHTML = "<p>팔로잉 결과가 없습니다.</p>";
+                        return;
                     }
-                    followListDiv.innerHTML = htmlContentFollow;
+
+                    let htmlContentFollowing = "";
+                    for (let i = 0; i < result.length; i++) {
+                        let followBtnText = "✔ 팔로잉";
+                        let followBtnClass = "follow-btn following";  // 팔로잉 상태에 맞게 클래스 설정
+
+                        // 팔로잉에 맞는 HTML 생성
+                        htmlContentFollowing += `
+                    <div class="follow-item" style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                        <table style="border-collapse: collapse; width: 100%;">
+                            <tr>
+                                <td style="width: 30px; text-align: center; padding: 0;">
+                                    \${result[i].userNo}
+                                </td>
+                                <td style="width: 30px; text-align: center; padding: 0;">
+                                    <img src="<%= contextPath %>/\${result[i].userName ? result[i].userName : '/resources/images/account_circle_500dp_000000.png'}" alt="프로필 이미지" style="width: 50px; height: 50px; margin-left: 35px;">
+                                </td>
+                                <td style="width: 130px; text-align: center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                    \${result[i].userId}
+                                </td>
+                                <td style="width: 100px; text-align: center;">
+                                    <button class="follow-btn \${followBtnClass}" data-userno="\${result[i].userNo}" style="background-color: #ccc; color: white; width: 80px; height: 40px; border-radius: 7px; border: none; cursor: pointer; font-size: 13px; font-weight: 600;">
+                                        \${followBtnText}
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>`;
+                    }
+
+                    followListDiv.innerHTML = htmlContentFollowing;
                 },
-                error: function () {
-                    loadingDiv.style.display = "none";
-                    followListDiv.innerHTML = "<p>팔로우 목록을 가져오는 데 실패했습니다.</p>";
+                error: function (xhr, status, error) {
+                    loadingDiv.style.display = "none"; // 로딩 숨기기
+                    console.error("AJAX 오류 (팔로잉):", status, error);
+                    followListDiv.innerHTML = "<p>팔로잉 목록을 불러오는 데 실패했습니다.</p>";
                 }
             });
         }
+
+
+        window.onload = function () {
+            loadFollowList();  // 페이지 로드 시 팔로우 목록을 불러옵니다.
+        };
 
         function renderFollowerList(followerList) {
             let followerListDiv = document.getElementById("followerList");
@@ -391,9 +497,6 @@
             });
         }
 
-        window.onload = function () {
-            loadFollowList();  // 페이지 로드 시 팔로우 목록을 불러옵니다.
-        };
     </script>
 
 

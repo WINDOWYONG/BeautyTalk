@@ -273,6 +273,7 @@ AND M.STATUS = 'Y'
 	 
 <entry key="followList">
 SELECT 
+		M.MEM_NO,
     M.NICKNAME, 
     I.FILE_PATH || I.CHANGE_NAME AS FILEPATH
 FROM 
@@ -291,6 +292,7 @@ AND
 
 <entry key="followerList">
 SELECT 
+		M.MEM_NO,
     M.NICKNAME, 
     I.FILE_PATH || I.CHANGE_NAME AS FILEPATH
 FROM 
