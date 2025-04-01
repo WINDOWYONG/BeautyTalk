@@ -33,7 +33,7 @@
 	</entry>
 	
 	<entry key="selectImagesForPost">
-				SELECT *
+	SELECT *
 		FROM(
 		    SELECT
 		        ROWNUM RNUM, A.*
@@ -177,17 +177,20 @@
 	</entry>
 	
 	<entry key="selectImage">
-		SELECT *
+	SELECT *
 		FROM(
 		    SELECT
 		        ROWNUM RNUM, A.*
 		    FROM
 		        (
 				SELECT
-                    			IMG.IMAGE_NO
+					IMG.IMAGE_NO
+					, IMG.REF_BNO
 				    , IMG.ORIGIN_NAME
 				    , IMG.CHANGE_NAME
 				    , IMG.FILE_PATH
+					, IMG.UPLOAD_DATE
+					, IMG.FILE_LEVEL
 				FROM IMAGE IMG
 				JOIN POST PO ON (PO.STATUS = IMG.STATUS)
 				WHERE IMG.STATUS = 'Y'

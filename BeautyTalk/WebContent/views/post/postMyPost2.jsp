@@ -78,7 +78,6 @@
 	max-height: 800px;
 	border: 1px solid #ddd;
 	margin-right: 50px;
-    
 }
 #Content6{
 	width: 800px;
@@ -596,10 +595,14 @@ button {
 }
 
 <!-- postMyPost2 -->
+#reviewForm_CP1 {}
 
 #reviewTable_CP1 {
+	width: 800px;
+	height: auto;
 	margin: auto;
 	margin-top: 10px;
+	box-sizing: border-box;
 }
 
 .reviewMP_td1 {
@@ -635,6 +638,7 @@ button {
 	font-size: 14px;
 	font-weight: 700;
 	width: 120px;
+	align-items: center;
 }
 
 .reviewContent_btn2 {
@@ -814,15 +818,15 @@ button {
 			<div id="Content3">
 				<table>
 					<tr>
-						<td><a href="" style="font-weight: 800; font-size: larger;">게시글
+						<td><a href="<%= contextPath %>/postMyList.po" style="font-weight: 800; font-size: larger;">게시글
 								<br><%= loginUser.getPost() %></a> <br></td>
-						<td><a href="" style="font-weight: 800; font-size: larger;">리뷰
+						<td><a href="<%= contextPath %>/review.my" style="font-weight: 800; font-size: larger;">리뷰
 								<br><%= loginUser.getReview() %><br>
 						</a></td>
-						<td><a href="" style="font-weight: 800; font-size: larger;">팔로우
+						<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로우
 								<br><%= loginUser.getFollower() %><br>
 						</a></td>
-						<td><a href="" style="font-weight: 800; font-size: larger;">팔로잉
+						<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로잉
 								<br><%= loginUser.getFollowing() %><br>
 						</a></td>
 					</tr>
@@ -931,55 +935,42 @@ button {
 		<table id="reviewTable_CP1">
 			<tr>
 				<td height="50"></td>
-				<td colspan="11"class="reviewMP_td1">My Post 게시글</td>
+				<td colspan="11" class="reviewMP_td1">My Post 게시글</td>
 
 			</tr>
 			<tr>
 				<td colspan="12" style="color: lightgray;" height="0">
-					————————————————————————————————————————————————————————————</td>
+				————————————————————————————————————————————————————————————</td>
 			</tr>
 
 			<tr>
-				<td colspan="11"></td>
-				<td>
-					<% if(loginUser != null) { %>
-						<button type="button" class="reviewContent_btn" onclick="location.href='<%= contextPath %>/post.wr'">
-							+포스트 작성
-						</button>
-					<% }else { %>
-						<button type="button" class="reviewContent_btn2" onclick="location.href='<%= contextPath %>/loginForm.me'">
-							+ 포스트 작성
-						</button>
-					<% } %>
+				<td colspan="10"></td>
+				<td colspan="2">
+					<button type="button" class="reviewContent_btn" onclick="location.href='<%= contextPath %>/post.wr'">+포스트 작성</button>
 				</td>
 			</tr>
-			
-			<script>
-				$(function(){
-				    $(".reviewContent_btn2").on("click", function(){
-				    	alert("로그인을 해주세요.");
-			    	})
-				})
-			</script>
-			
-			<!-- 게시글이 없는 경우 -->
-			<% if(list.isEmpty()) { %>
 			<tr>
-				<td colspan="2"><input type="text"
-					style="width: 280px; border-radius: 15px;"
-					placeholder="키워드를 입력하세요."></td>
+				<td colspan="12"  style="color: lightgray;" height="0">
+				————————————————————————————————————————————————————————————</td>
+			<tr>
+			
+			<tr>
+				<td colspan="2">
+					<input type="text"
+						style="width: 280px; border-radius: 15px;"
+						placeholder="키워드를 입력하세요.">
+				</td>
 
-				<td style="width: 50px;"></td>
-				<td style="width: 100px;">정렬: <select>
+				<td colspan="7"></td>
+				<td></td>
+				<td>정렬: </td>
+				<td align="right" style="width: 100px;">
+					<select>
 						<option>추천순</option>
 						<option>최신순</option>
 						<option>제목순</option>
-				</select>
+					</select>
 				</td>
-				<td align="right" style="width: 100px;">
-				</td>
-				<td></td>
-
 			</tr>
 			<tr>
 				<td colspan="6"></td>
@@ -991,7 +982,8 @@ button {
 
 
 			</tr>
-
+			<!-- 게시글이 없는 경우 -->
+			<% if(list.isEmpty()) { %>
 			<tr>
 				<td rowspan="6" colspan="6">
 					<p>조회된 게시글이 없습니다.</p>
@@ -1000,11 +992,12 @@ button {
 			
 			<!-- 게시글이 있는 경우  -->
 			<% }else { %>
-			
-				<% for(Post po : list) { %>
+			<% for(Post po : list) { %>
+			<% if(po.getMemNo() != loginUser.getUserNo()) { %>
+			<% }else { %>
 			<tr class="reviewPostNo_img">
 				<td class="reviewTr_img1" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;" onclick="location.href='<%= contextPath %>/detail.po?bno='">
-					<% for(Image2 img : list1) { %>
+					<% for(Image2 img : po.getImages()) { %>
 						
 						<% if(po.getMemNo() == (img.getPostMem()) && po.getCreateDate() == img.getUploadDate()) { %>
 							<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
@@ -1093,10 +1086,19 @@ button {
 			<tr>
 				<td colspan="12" style="color: lightgray;">————————————————————————————————————————————————————————————</td>
 			</tr>
+				<% } %>
 			<% } %>
 		<% } %>
 
 		</table>
+		
+		<script>
+			$(function(){
+			    $(".reviewContent_btn2").on("click", function(){
+			    	alert("로그인을 해주세요.");
+		    	})
+			})
+		</script>
 		<script>
 			$(function(){
 				$("#review_content_thumnail").on("click", function(){
@@ -1120,11 +1122,11 @@ button {
 		<div class="paging-area" align="center">
 		<!-- 이전버튼 -->
 			<% if(currentPage == 1) { %>
-				<button type="button" onclick="location.href='<%= contextPath %>/post.list?'">
+				<button type="button" onclick="location.href='<%= contextPath %>/postMyList.po?'">
             		&lt;
            	 	</button>
             <% }else if(currentPage > 1){ %>
-           	 	<button type="button" onclick="location.href='<%= contextPath %>/post.list?cpage=<%= currentPage - 1 %>'">
+           	 	<button type="button" onclick="location.href='<%= contextPath %>/postMyList.po?cpage=<%= currentPage - 1 %>'">
             		&lt;
            	 	</button>
             <% } %>
@@ -1135,7 +1137,7 @@ button {
             			<%= i %>
            			</button>
            		<% }else { %>
-         			 <button type="button" onclick="location.href='<%= contextPath %>/post.list?cpage=<%= i %>'">
+         			 <button type="button" onclick="location.href='<%= contextPath %>/postMyList.po?cpage=<%= i %>'">
            				<%= i %>
            			</button>
            		<% } %>
@@ -1143,11 +1145,11 @@ button {
             
             <!-- 다음버튼 -->
             <% if(currentPage == maxPage) { %>
-            	<button type="button" onclick="location.href='<%= contextPath %>/post.list?cpage=<%= maxPage %>'">
+            	<button type="button" onclick="location.href='<%= contextPath %>/postMyList.po?cpage=<%= maxPage %>'">
             		&gt;
            	 	</button>
 			<% }else if(currentPage > 0){ %>
-				<button type="button" onclick="location.href='<%= contextPath %>/post.list?cpage=<%= currentPage + 1 %>'">
+				<button type="button" onclick="location.href='<%= contextPath %>/postMyList.po?cpage=<%= currentPage + 1 %>'">
             		&gt;
            	 	</button> 
            	<% } %>

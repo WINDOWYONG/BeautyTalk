@@ -406,6 +406,11 @@ img {
 	cursor: pointer;
 }
 
+.reviewPostNo_img img{
+	width: 280px;
+	height: 250px;
+}
+
 .review_CreateDate, .review_title1, .review_title2 {
 	font-size: 14px;
 	font-weight: 700;
@@ -542,29 +547,20 @@ img {
 					<% } %>
 				</td>
 			</tr>
-			
-			<script>
-				$(function(){
-				    $(".reviewContent_btn2").on("click", function(){
-				    	alert("로그인을 해주세요.");
-			    	})
-				})
-			</script>
-			
+
 			<!-- 게시글이 없는 경우 -->
 			<% if(list.isEmpty()) { %>
-
-			<tr>
-				<td rowspan="6" colspan="6">
-					<p>조회된 게시글이 없습니다.</p>
-				</td>
-			</tr>
-			
+				<tr>
+					<td rowspan="6" colspan="6">
+						<p>조회된 게시글이 없습니다.</p>
+					</td>
+				</tr>	
+				
 			<!-- 게시글이 있는 경우  -->
 			<% }else { %>
 			<% for(Post po : list) { %>
 			<tr class="reviewPostNo_img">
-				<% for(Image2 img: po.getImages()) { %> <!-- Post 객체에 추가된 이미지 목록 출력 -->
+				<% for(Image2 img: po.getImages()) { %>
 				<td class="reviewTr_img1" colspan="3" rowspan="5" align="center" style="width: 250px; height: 250px;">
 					<div>
 						<% if(img.getRefBno() == po.getMemNo()) { %>
@@ -657,8 +653,9 @@ img {
 			</tr>
 			<% } %>
 		<% } %>
-
 		</table>
+
+		
 		<script>
 			$(function(){
 				$("#review_content_thumnail").on("click", function(){
@@ -669,6 +666,12 @@ img {
 			$(function(){
 			    $(".reviewPostNo_img").on("click", function(){
 					location.href = '<%= contextPath %>/detail.po?bno=' + $(this).children().eq(3).text();
+		    	})
+			})
+			
+			$(function(){
+			    $(".reviewContent_btn2").on("click", function(){
+			    	alert("로그인을 해주세요.");
 		    	})
 			})
 		</script>
