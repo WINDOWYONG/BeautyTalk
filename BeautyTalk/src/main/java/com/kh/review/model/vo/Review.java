@@ -1,7 +1,14 @@
 package com.kh.review.model.vo;
 
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Date;
 
+import com.kh.member.model.vo.Member;
+
+/**
+ * @author HPVICTUS16
+ *
+ */
 public class Review {
 	
 	private String reviewNo;
@@ -9,17 +16,20 @@ public class Review {
 	private int memNo;
 	private String title;
 	private String content;
-	private String createDate;
+	private Date createDate;
 	private int pRating;
 	private int rRating;
 	private int prRating;
 	private int likeReview;
 	private String status;
 	
-	public Review () {}
+	private ArrayList<Image> images;
+	private int imgNo;
+	
+	public Review() {}
 
-	public Review(String reviewNo, String pcode, int memNo, String title, String content, String createDate, int pRating,
-			int rRating, int prRating, int likeReview, String status) {
+	public Review(String reviewNo, String pcode, int memNo, String title, String content, Date createDate, int pRating,
+			int rRating, int prRating, int likeReview, String status, ArrayList<Image> images, int imgNo) {
 		super();
 		this.reviewNo = reviewNo;
 		this.pcode = pcode;
@@ -32,6 +42,11 @@ public class Review {
 		this.prRating = prRating;
 		this.likeReview = likeReview;
 		this.status = status;
+<<<<<<< HEAD
+=======
+		this.images = images;
+		this.imgNo = imgNo;
+>>>>>>> post
 	}
 
 	public String getReviewNo() {
@@ -74,11 +89,11 @@ public class Review {
 		this.content = content;
 	}
 
-	public String getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 
@@ -122,11 +137,28 @@ public class Review {
 		this.status = status;
 	}
 
+	public ArrayList<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(ArrayList<Image> images) {
+		this.images = images;
+	}
+
+	public int getImgNo() {
+		return imgNo;
+	}
+
+	public void setImgNo(int imgNo) {
+		this.imgNo = imgNo;
+	}
+
 	@Override
 	public String toString() {
 		return "Review [reviewNo=" + reviewNo + ", pcode=" + pcode + ", memNo=" + memNo + ", title=" + title
 				+ ", content=" + content + ", createDate=" + createDate + ", pRating=" + pRating + ", rRating="
-				+ rRating + ", prRating=" + prRating + ", likeReview=" + likeReview + ", status=" + status + "]";
-	}
+				+ rRating + ", prRating=" + prRating + ", likeReview=" + likeReview + ", status=" + status + ", images="
+				+ images + ", imgNo=" + imgNo + "]";
+	};
 
 }

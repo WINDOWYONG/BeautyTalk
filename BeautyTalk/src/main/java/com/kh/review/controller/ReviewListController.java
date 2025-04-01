@@ -19,6 +19,7 @@ import javax.xml.crypto.dsig.Transform;
 
 import com.kh.common.model.vo.PageInfo;
 import com.kh.review.model.service.ReviewService;
+import com.kh.review.model.vo.Image;
 import com.kh.review.model.vo.Review;
 
 
@@ -41,8 +42,6 @@ public class ReviewListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		// ------------- 페이징 처리 -------------
 		
 		int listCount;		// 현재 총 게시글 개수
@@ -67,7 +66,7 @@ public class ReviewListController extends HttpServlet {
 		
 		pageLimit = 5;
 		
-		reviewLimit = 7;
+		reviewLimit = 5;
 		
 		maxPage = (int)Math.ceil((double)listCount / reviewLimit);
 		
@@ -79,50 +78,19 @@ public class ReviewListController extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		// com.kh.common.model.vo.PageInfo - jsp 가져가야해서 가방에 담아야함
-		// * jsp에서 페이징바를 만드려면 7개의 값이 필요한데
-		// 그걸 담기 위한 가방, 그릇! (vo)
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, reviewLimit, maxPage, startPage, endPage);
 		
 		
 		// * 현재 요청한 페이지(c)에 보여질 게시글 리스트 boardLimit 수만큼 조회
 		ArrayList<Review> list = new ReviewService().selectReviewArrayList(pi);
-				
+		ArrayList<Image> list1 = new ReviewService().selectImageArrayList(pi);
+		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
-		
+		request.setAttribute("list1", list1);
+
 		RequestDispatcher rd = request.getRequestDispatcher("views/review/reviewContentPost.jsp");
 		rd.forward(request, response);
-		
-//		String pageNum = request.getParameter("currentPage");
-//		if(pageNum == null) {
-//			pageNum = "1";
-//		}
-		
-//		int listCount = new ReviewService().selectReviewList();
-
-//		int pageLimit = 10;
-		
-//		int reviewLimit = 5;
-		
-//		int currentPage = Integer.parseInt(pageNum);
-		
-//		int maxPage =  (int)Math.ceil((double)listCount / reviewLimit);
-		
-//		int startPage = (currentPage - 1) / reviewLimit * reviewLimit + 1;
-		
-//		listCount == 게시글의 개수 (DB에서 추출해옴)  == cnt
-//		currentPage, == pageNum (jsp에서 request)
-//		pageLimit, == 페이징바의 최대 개수? 지정 == pageBlock
-//		reviewLimit, == 게시글의 최대 개수? 지정 == pageSize
-//		maxPage, == maxPage
-//		startPage, == startRow
-//		endPage == endPage
-		
-
-//		request.setAttribute("request","requestValue");
-//		response.sendRedirect("views/bodyTestLYH/reviewlyh.jsp");
-		
 	}
 
 	/**
