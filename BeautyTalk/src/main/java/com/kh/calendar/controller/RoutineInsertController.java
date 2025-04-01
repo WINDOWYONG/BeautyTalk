@@ -2,6 +2,7 @@ package com.kh.calendar.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,10 @@ public class RoutineInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json; charset=UTF-8");
+
+		
 		BufferedReader reader = request.getReader();
         StringBuilder sb = new StringBuilder();
         String line;
@@ -54,7 +59,7 @@ public class RoutineInsertController extends HttpServlet {
             return;
         }
 
-        String userId = loginUser.getUserId();
+        int userNo = loginUser.getUserNo();
         String title = req.getTitle();
         String memo = req.getMemo();
         List<Integer> weekdays = req.getWeekdays();
@@ -73,12 +78,11 @@ public class RoutineInsertController extends HttpServlet {
         CalendarService service = new CalendarService();
         for (LocalDate date : targetDates) {
             Todo todo = new Todo();
-//            todo.setUserId(userId);
-//            todo.setMemNo()
-//            todo.setTitle(title);
-//            todo.setTodoDate(Date.valueOf(date));
-//            todo.setMemo(memo);
-//            todo.setCheckYn("N");
+            todo.setMemNo(userNo);
+            todo.setCheckTitle(title);
+            todo.setCheckDate(Date.valueOf(date).toString());
+            todo.setCheckMemo(memo);
+            todo.setCheckYN("N");
 
             service.insertTodo(todo);
         }
