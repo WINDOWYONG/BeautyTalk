@@ -48,20 +48,12 @@
 					, IMG.UPLOAD_DATE
 					, IMG.FILE_LEVEL
 				FROM IMAGE IMG
-				JOIN POST PO ON (PO.STATUS = IMG.STATUS)
-				WHERE IMG.STATUS = 'Y'
-				AND PO.POST_NO = ?
-                AND IMG.UPLOAD_DATE = PO.CREATE_DATE
-				AND IMG.IMAGE_NO >= PO.POST_NO
-				AND IMG.FILE_LEVEL = 'P'
-				AND IMG.REF_BNO = PO.MEM_NO
-				OR IMG.REF_BNO = 0
-		        AND IMG.UPLOAD_DATE >= PO.CREATE_DATE
-				AND IMG.IMAGE_NO >= PO.POST_NO
-				AND IMG.FILE_LEVEL = 'P'
-				AND IMG.REF_BNO = PO.MEM_NO
-                ORDER
-                    BY IMG.IMAGE_NO
+				JOIN POST PO ON (IMG.REF_BNO = PO.MEM_NO)
+				WHERE PO.POST_NO = ?
+                AND IMG.STATUS = 'Y'
+                AND IMG.FILE_LEVEL = 'R'
+                AND IMG.IMAGE_NO >= PO.POST_NO
+                AND IMG.UPLOAD_DATE >= PO.CREATE_DATE
 		            ) A
 		        )
 		WHERE RNUM BETWEEN 1 AND 1
@@ -185,30 +177,19 @@
 		        (
 				SELECT
 					IMG.IMAGE_NO
-					, IMG.REF_BNO
 				    , IMG.ORIGIN_NAME
 				    , IMG.CHANGE_NAME
 				    , IMG.FILE_PATH
-					, IMG.UPLOAD_DATE
-					, IMG.FILE_LEVEL
 				FROM IMAGE IMG
-				JOIN POST PO ON (PO.STATUS = IMG.STATUS)
-				WHERE IMG.STATUS = 'Y'
-				AND PO.POST_NO = ?
-                AND IMG.UPLOAD_DATE = PO.CREATE_DATE
-				AND IMG.IMAGE_NO >= PO.POST_NO
-				AND IMG.FILE_LEVEL = 'P'
-				AND IMG.REF_BNO = PO.MEM_NO
-				OR IMG.REF_BNO = 0
-		        AND IMG.UPLOAD_DATE >= PO.CREATE_DATE
-				AND IMG.IMAGE_NO >= PO.POST_NO
-				AND IMG.FILE_LEVEL = 'P'
-				AND IMG.REF_BNO = PO.MEM_NO
-                ORDER
-                    BY IMG.IMAGE_NO
+				JOIN POST PO ON (IMG.REF_BNO = PO.MEM_NO)
+				WHERE PO.POST_NO = ?
+                AND IMG.STATUS = 'Y'
+                AND IMG.FILE_LEVEL = 'R'
+                AND IMG.IMAGE_NO >= PO.POST_NO
+                AND IMG.UPLOAD_DATE >= PO.CREATE_DATE
 		            ) A
 		        )
-		WHERE RNUM BETWEEN 1 AND 1
+		WHERE RNUM BETWEEN 1 AND 100
 	
 	</entry>
 	

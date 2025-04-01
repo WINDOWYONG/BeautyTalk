@@ -246,7 +246,7 @@ li {
 
 	<%@ include file="../common/menubar.jsp"%>
 
-	<!-- bestReview -->
+<!-- bestReview -->
 	<div align="center">
 		<form action="" id="form_bestReview1" method="">
 			<table id="table_bestReview">

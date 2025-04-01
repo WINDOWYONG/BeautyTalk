@@ -568,9 +568,10 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, img.getOriginName());
-			pstmt.setString(2, img.getChangeName());
-			pstmt.setString(3, img.getFilePath());
+			pstmt.setInt(1,img.getRefBno());
+			pstmt.setString(2, img.getOriginName());
+			pstmt.setString(3, img.getChangeName());
+			pstmt.setString(4, img.getFilePath());
 			
 			result = pstmt.executeUpdate();
 			

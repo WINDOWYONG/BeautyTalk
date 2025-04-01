@@ -87,14 +87,14 @@ public class ReviewInsertController extends HttpServlet {
 			// 성공 => /jsp/list.bo?cpage=1 url 재요청 => (목록페이지)
 
 			if(result > 0) {
-				response.sendRedirect(request.getContextPath() + "/review.li?cpage=1");
+				response.sendRedirect(request.getContextPath() + "/review.li?");
 				request.getSession().setAttribute("alertMsg", "일반게시판등록!");
 			}else {
 				// 실패 => 첨부파일 있었다면 업로드 된 파일 찾아서 삭제 시킨 후 에러페이지로
 				if(img != null) { // 첨부파일이 있었다면
 					new File(savePath + img.getChangeName()).delete();
 				}
-				response.sendRedirect(request.getContextPath() + "/review.li?cpage=1");
+				response.sendRedirect(request.getContextPath() + "/review.li?");
 				request.getSession().setAttribute("alertMsg", "등록실패!!");
 			}
 

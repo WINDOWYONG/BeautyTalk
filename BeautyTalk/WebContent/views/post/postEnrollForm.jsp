@@ -23,7 +23,7 @@
 #Content1{
     height: auto;
     width: 100%;
-    min-width: 1200px;
+    min-width: 1600px;
     margin: auto;
     margin-top: 50px;
 }
@@ -59,6 +59,7 @@
 }
 #Content5{
     width: 350px;
+    max-height: 750px;
     border: 1px solid #ddd;
     margin-right: 50px;
     
@@ -680,13 +681,13 @@ color: white;
 <body>
 
 	<%@ include file="../common/header.jsp"%>
+	
 	<br>
 
 	<div id="Content1">
 		<div id="Content2">
-			<div id="userImg">
-				<img id="userprofile"
-					src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
+			<div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+				<img id="userprofile" src="<%= contextPath %>/<%= loginUser.getFilePath() %>" alt="유저이미지" style="border-radius: 50%; cursor: pointer;">
 			</div>
 			<div id="userName">
 				<h2><%= loginUser.getUserName() %></h2>

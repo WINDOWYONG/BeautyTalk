@@ -22,8 +22,7 @@
             <div id="Content2">
                 <% if(loginUser.getFilePath() != null) { %>
                 <div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
-                    <img id="userprofile" src="<%= loginUser.getFilePath() %>" 
-                        alt="유저이미지" style="border-radius: 50%; cursor: pointer;">
+                    <img id="userprofile" src="<%= loginUser.getFilePath() %>" alt="유저이미지" style="border-radius: 50%; cursor: pointer;">
                     
                     <!-- 수정 아이콘 -->
                     <span id="openProfileModal" class="material-icons" 
