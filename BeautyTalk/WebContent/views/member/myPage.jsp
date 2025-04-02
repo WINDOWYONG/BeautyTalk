@@ -55,7 +55,7 @@
                                             <h2 style="color: #e8618c;">프로필 사진 변경</h2>
 
                                             <!-- ✅ form에 class 추가하여 스타일 영향 최소화 -->
-                                            <form id="profileForm" action="<%= contextPath %>/insert.img" method="POST"
+                                            <form id="profileForm" action="<%= contextPath %>/insert.img?userNo=<%= loginUser.getUserNo() %>" method="POST"
                                                 enctype="multipart/form-data" class="profile-form">
                                                 <input type="hidden" name="userNo" value="<%= loginUser.getUserNo() %>">
                                                 <input type="hidden" name="userId" value="<%= loginUser.getUserId() %>">
@@ -141,7 +141,7 @@
                         <div id="Content5">
                             <div>
                                 <span class="material-icons" style="font-size: 30px;">person<a
-                                        href="<%= contextPath %>/myPage.me" style="font-size:25px;">마이페이지</a></span>
+                                        href="<%= contextPath %>/myPage.me?userNo=<%= loginUser.getUserNo() %>" style="font-size:25px;">마이페이지</a></span>
                             </div>
 
                             <div>

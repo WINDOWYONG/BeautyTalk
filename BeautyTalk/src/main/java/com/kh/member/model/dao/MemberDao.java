@@ -360,7 +360,7 @@ public class MemberDao {
 
 	}
 
-	public ArrayList<Member> followList(Connection conn, String nickname) {
+	public ArrayList<Member> followList(Connection conn, String nickname, int userNo) {
 
 		ArrayList<Member> list = new ArrayList<Member>();
 
@@ -374,7 +374,8 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 
 			// 닉네임을 파라미터로 설정
-			pstmt.setString(1, "%" + nickname + "%");
+			pstmt.setInt(1, userNo);
+			pstmt.setString(2, "%" + nickname + "%");
 
 			rset = pstmt.executeQuery();
 
@@ -400,7 +401,7 @@ public class MemberDao {
 		return list;
 	}
 	
-	public ArrayList<Member> followerList(Connection conn, String nickname) {
+	public ArrayList<Member> followerList(Connection conn, String nickname, int userNo) {
 
 		ArrayList<Member> list = new ArrayList<Member>();
 
@@ -414,7 +415,8 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 
 			// 닉네임을 파라미터로 설정
-			pstmt.setString(1, "%" + nickname + "%");
+			pstmt.setInt(1, userNo);
+			pstmt.setString(2, "%" + nickname + "%");
 
 			rset = pstmt.executeQuery();
 

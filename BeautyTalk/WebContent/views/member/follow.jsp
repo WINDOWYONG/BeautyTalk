@@ -415,7 +415,7 @@
             followerListDiv.innerHTML = "";
 
             $.ajax({
-                url: "<%= contextPath %>/followselectlist.me",
+                url: "<%= contextPath %>/followselectlist.me?userNo=<%= loginUser.getUserNo() %>",
                 type: "GET",
                 data: { userNo: <%= loginUser.getUserNo() %> },
                 success: function (result) {
@@ -527,6 +527,7 @@
                                             this.classList.remove('follow');
                                             this.classList.add('following');
                                             this.textContent = "✔ 팔로잉";
+                                            console.log("성공")
                                         }
                                         loadFollowList(); // 목록 새로고침
                                     } else {
