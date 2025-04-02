@@ -154,7 +154,7 @@
             }
 
             $.ajax({
-                url: "<%= contextPath %>/followerlist.me",  // 팔로워 목록을 가져오는 URL
+                url: "<%= contextPath %>/followerlist.me?userNo=<%= loginUser.getUserNo() %>",  // 팔로워 목록을 가져오는 URL
                 type: "POST",
                 data: { nickname: nickname },
                 dataType: "json",
@@ -195,9 +195,7 @@
                                 \${result[i].userId}
                             </td>
                             <td style="width: 100px; text-align: center;">
-                                <button class="follow-btn \${followBtnClass}" data-userno="\${result[i].userNo}" style="background-color: #e8618c; color: white; width: 80px; height: 40px; border-radius: 7px; border: none; cursor: pointer; font-size: 13px; font-weight: 600;">
-                                    \${followBtnText}
-                                </button>
+
                             </td>
                         </tr>
                     </table>
@@ -231,7 +229,7 @@
             }
 
             $.ajax({
-                url: "<%= contextPath %>/followlist.me",  // 팔로잉 목록을 가져오는 URL
+                url: "<%= contextPath %>/followlist.me?userNo=<%= loginUser.getUserNo() %>",  // 팔로잉 목록을 가져오는 URL
                 type: "POST",
                 data: { nickname: nickname },
                 dataType: "json",
