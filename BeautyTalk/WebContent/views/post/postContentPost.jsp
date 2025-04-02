@@ -150,13 +150,6 @@
 
 	<%@ include file="../common/header.jsp" %>
 
-	<% if(alertMsg != null) { %>
-	<script>
-            alert("<%= alertMsg %>")			
-        </script>
-	<% session.removeAttribute("alertMsg"); %>
-	<% } %>
-
 	<div id="bnavigator">
 		<div id="navigator">
 			<a href="#" id="category">☰ 카테고리</a>

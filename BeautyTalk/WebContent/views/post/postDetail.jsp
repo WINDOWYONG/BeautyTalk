@@ -26,9 +26,10 @@
 </script>
 <style>
 #Content1{
-	height: auto;
 	width: 100%;
 	min-width: 1600px;
+	height: auto;
+	min-height: 2000px;
 	margin: auto;
 	margin-top: 50px;
 }
@@ -690,8 +691,8 @@ button {
 	}
 	
 	.review_DetailImg img{
-		width: 100%;
-		height: 100%;
+		width: 50%;
+		height: 50%;
 		box-sizing: border-box;
 		margin: auto;
 	}

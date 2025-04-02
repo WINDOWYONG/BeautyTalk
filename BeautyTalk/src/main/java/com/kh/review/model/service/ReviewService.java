@@ -43,13 +43,13 @@ public class ReviewService {
 		
 	}
 	
-	public ArrayList<Image> selectImageArrayList(PageInfo pi){
+	public Image selectImageArrayList(PageInfo pi){
 		Connection conn = getConnection();
 		
-		ArrayList<Image> list1 = new ReviewDao().selectImageArrayList(conn, pi);
+		Image img = new ReviewDao().selectImageArrayList(conn, pi);
 		
 		close(conn);
-		return list1;
+		return img;
 	}
 	
 	
@@ -100,10 +100,12 @@ public class ReviewService {
 		return rv;
 	}
 	
-	public Image selectImage(String refBno) {
+	public Image selectImage(String reviewNo) {
 		Connection conn = getConnection();
 		
-		Image img = new ReviewDao().selectImage(conn, refBno);
+		Image img = new ReviewDao().selectImage(conn, reviewNo);
+		
+		
 		
 		close(conn);
 		return img;

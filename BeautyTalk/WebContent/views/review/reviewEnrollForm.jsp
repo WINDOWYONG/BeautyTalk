@@ -1,9 +1,7 @@
 <%@page import="com.kh.review.model.vo.SubCategory"%>
-<%@page import="java.nio.file.attribute.UserPrincipalNotFoundException"%>
 <%@page import="com.kh.review.model.vo.Image"%>
 <%@page import="com.kh.review.model.vo.Review"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%

@@ -129,6 +129,7 @@ public class ReviewDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, reviewNo);
+			pstmt.setString(2, reviewNo);
 			
 			rset = pstmt.executeQuery();
 			
@@ -156,8 +157,8 @@ public class ReviewDao {
 
 	}
 	
-	public ArrayList<Image> selectImageArrayList(Connection conn, PageInfo pi) {
-		ArrayList<Image> list1 = new ArrayList<Image>(); // 초기화
+	public Image selectImageArrayList(Connection conn, PageInfo pi) {
+		Image img = null; // 초기화
 		
 		PreparedStatement pstmt = null; // 초기화
 		ResultSet rset = null;
@@ -176,7 +177,7 @@ public class ReviewDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				Image img = new Image();
+				img = new Image();
 				img.setImgNo(rset.getInt("IMAGE_NO"));
 				img.setRefBno(rset.getInt("REF_BNO"));
 				img.setOriginName(rset.getString("ORIGIN_NAME"));
@@ -192,7 +193,7 @@ public class ReviewDao {
 			close(rset);
 			close(pstmt);
 		}
-		return list1;
+		return img;
 	
 	}
 	
@@ -362,10 +363,9 @@ public class ReviewDao {
 
 	}
 	
-	public Image selectImage(Connection conn, String refBno) {
+	public Image selectImage(Connection conn, String reviewNo) {
 		// select 조회인데, 게시글 하나임
 		Image img = null;
-		Review rv = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -375,7 +375,8 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, refBno);
+			pstmt.setString(1, reviewNo);
+			pstmt.setString(2, reviewNo);
 
 			rset = pstmt.executeQuery();
 			

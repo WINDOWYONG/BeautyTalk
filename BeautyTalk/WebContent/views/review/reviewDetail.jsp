@@ -29,9 +29,10 @@
 </script>
 <style>
 #Content1{
-	height: auto;
 	width: 100%;
 	min-width: 1600px;
+	height: auto;
+	min-height: 2000px;
 	margin: auto;
 	margin-top: 50px;
 }
@@ -693,8 +694,8 @@ button {
 	}
 	
 	.review_DetailImg img{
-		width: 100%;
-		height: 100%;
+		width: 50%;
+		height: 50%;
 		box-sizing: border-box;
 		margin: auto;
 	}
@@ -995,6 +996,7 @@ button {
 <!-- ReviewEnrollForm -->
 	<div id="review_detailouter" class="review_detailouter">
 		<h2 align="center">리뷰 상세보기</h2>
+			<input type="hidden" name="REVIEW_NO" value="<%= rv1.getReviewNo() %>">
 			<input type="hidden" name="MEM_NO" value="<%= rv1.getMemNo() %>">
 			<table id="reviewDetail_table1">
 				<tr>

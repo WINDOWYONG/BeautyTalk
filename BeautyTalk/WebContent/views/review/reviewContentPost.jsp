@@ -10,7 +10,7 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
-	ArrayList<Image> list1 = (ArrayList<Image>)request.getAttribute("list1");
+	Image img = (Image)request.getAttribute("img");
 	
 	int reviewLimit = pi.getreviewLimit();
 	int currentPage = pi.getCurrentPage();
@@ -108,22 +108,24 @@
 	width: 120px;
 }
 
+#review_content_thumnail{
+	width: 280px;
+	height: 250px;
+	box-sizing: border-box;
+	cursor:pointer;
+}
+
 #review_content_thumnail img{
 	width: 280px;
 	height: 250px;
 	box-sizing: border-box;
-}
-
-#review_content_thumnail {
 	cursor:pointer;
 }
-.review_CreateDate{
+
+.review_title1, .review_title2, .review_CreateDate{
 	font-size: 14px;
 	font-weight: 700;
-}
-.review_title1, .review_title2{
-	font-size: 14px;
-	font-weight: 700;
+	cursor: pointer;
 }
 
 </style>
@@ -131,13 +133,6 @@
 <body>
 
 	<%@ include file="../common/header.jsp" %>
-
-	<% if(alertMsg != null) { %>
-	<script>
-            alert("<%= alertMsg %>")			
-        </script>
-	<% session.removeAttribute("alertMsg"); %>
-	<% } %>
 
 	<div id="bnavigator">
 		<div id="navigator">
@@ -215,21 +210,18 @@
 			<!-- 게시글이 있는 경우 -->
 			<% }else { %>
 			<% for(Review rv1 : list) { %>	
-
 			<tr class="reviewTr_img1">
 				<td id="review_content_thumnail" rowspan="6" align="center" style="width: 250px; height: 250px;">
 					<input type="hidden" name="MEM_NO" value="<%= rv1.getReviewNo() %>">
+					<% for(Image image : rv1.getImages()) { %>
 					<div>
-					 <!-- Review 객체에 추가된 이미지 목록 출력 -->
-		 			<% for(Image img : rv1.getImages()) { %>
-						<% if(img.getUploadDate().equals(rv1.getCreateDate())) { %>
-						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+						<% if(rv1.getImages().equals(list) == true) { %>
+							<img src="<%= contextPath %>/resources/images/kakao.png">
 						<% }else { %>
-						<img src="<%= contextPath %>/resources/images/LOGO.jpg">
+							<img src="<%= contextPath %>/<%= image.getFilePath() + image.getChangeName() %>">
 						<% } %>
-					<% } %>
 					</div>
-					
+					<% } %>		
 				</td>
 				<td colspan="3" class="review_CreateDate"><%= rv1.getCreateDate() %></td>
 
@@ -309,6 +301,11 @@
 		</script>
 		
 		<script>
+			$(function(){
+			    $(".reviewTr_img1").on("click", function(){
+					location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().children().eq(0).val();
+		    	})
+			})
 			$(function(){
 			    $(".reviewTr_img2").on("click", function(){
 					location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();

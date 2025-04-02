@@ -36,33 +36,57 @@
 	</entry>
 	
 	<entry key="selectImagesForReview">
-		SELECT *
-		FROM(
-		    SELECT
-		        ROWNUM RNUM, A.*
-		    FROM
-		        (
-				SELECT
-					IMG.IMAGE_NO
-					, IMG.REF_BNO
-				    , IMG.ORIGIN_NAME
-				    , IMG.CHANGE_NAME
-				    , IMG.FILE_PATH
-					, IMG.UPLOAD_DATE
-					, IMG.FILE_LEVEL
-				FROM IMAGE IMG
-				JOIN REVIEW RV ON (IMG.STATUS = RV.STATUS)
-				WHERE RV.REVIEW_NO = ?
-                AND IMG.STATUS = 'Y'
-                AND IMG.REF_BNO = RV.MEM_NO
-                AND IMG.UPLOAD_DATE >= RV.CREATE_DATE
-                AND IMG.IMAGE_NO >= RV.REVIEW_NO
-                AND IMG.FILE_LEVEL = 'R'
-                ORDER
-                    BY IMG.IMAGE_NO DESC
-		            ) A
-		        )
-		WHERE RNUM BETWEEN 1 AND 1
+SELECT
+    ROWNUM, C.*
+FROM
+    (
+    SELECT
+            A.*
+    FROM        
+        (
+		SELECT
+			IMG.IMAGE_NO
+			, IMG.REF_BNO
+		    , IMG.ORIGIN_NAME
+		    , IMG.CHANGE_NAME
+		    , IMG.FILE_PATH
+			, IMG.UPLOAD_DATE
+			, IMG.FILE_LEVEL
+		FROM IMAGE IMG
+		JOIN REVIEW RV ON (IMG.STATUS = RV.STATUS)
+		WHERE RV.REVIEW_NO = ?
+		AND IMG.STATUS = 'Y'
+		AND IMG.REF_BNO = RV.MEM_NO
+		AND IMG.UPLOAD_DATE = RV.CREATE_DATE
+		AND IMG.IMAGE_NO >= RV.REVIEW_NO
+		AND IMG.FILE_LEVEL = 'R'
+         ) A   
+UNION
+    SELECT
+            B.*
+    FROM
+        (
+        SELECT
+			IMG.IMAGE_NO
+			, IMG.REF_BNO
+		    , IMG.ORIGIN_NAME
+		    , IMG.CHANGE_NAME
+		    , IMG.FILE_PATH
+			, IMG.UPLOAD_DATE
+			, IMG.FILE_LEVEL
+		FROM IMAGE IMG
+		JOIN REVIEW RV ON (IMG.STATUS = RV.STATUS)
+		WHERE RV.REVIEW_NO = ?
+		AND IMG.STATUS = 'Y'
+		AND IMG.REF_BNO = 0
+		AND IMG.UPLOAD_DATE >= RV.CREATE_DATE
+		AND IMG.IMAGE_NO >= RV.REVIEW_NO
+		AND IMG.FILE_LEVEL = 'R'
+        ) B
+    ) C
+WHERE ROWNUM BETWEEN 1 AND 1
+ORDER
+    BY IMAGE_NO DESC
 	
 	</entry>
 	
@@ -185,33 +209,51 @@
 	</entry>
 	
 	<entry key="selectImage">
-		SELECT *
-		FROM(
-		    SELECT
-		        ROWNUM RNUM, A.*
-		    FROM
-		        (
-				SELECT
-					IMG.IMAGE_NO
-					, IMG.REF_BNO
-				    , IMG.ORIGIN_NAME
-				    , IMG.CHANGE_NAME
-				    , IMG.FILE_PATH
-					, IMG.UPLOAD_DATE
-					, IMG.FILE_LEVEL
-				FROM IMAGE IMG
-				JOIN REVIEW RV ON (IMG.STATUS = RV.STATUS)
-				WHERE RV.REVIEW_NO = ?
-                AND IMG.STATUS = 'Y'
-                AND IMG.REF_BNO = RV.MEM_NO
-                AND IMG.UPLOAD_DATE >= RV.CREATE_DATE
-                AND IMG.IMAGE_NO >= RV.REVIEW_NO
-                AND IMG.FILE_LEVEL = 'R'
-                ORDER
-                    BY IMG.IMAGE_NO DESC
-		            ) A
-		        )
-		WHERE RNUM BETWEEN 1 AND 1
+SELECT
+    ROWNUM, C.*
+FROM
+    (
+    SELECT
+            A.*
+    FROM        
+        (
+		SELECT
+		    IMG.IMAGE_NO
+		    , IMG.ORIGIN_NAME
+		    , IMG.CHANGE_NAME
+		    , IMG.FILE_PATH
+		FROM IMAGE IMG
+		JOIN REVIEW RV ON (IMG.STATUS = RV.STATUS)
+		WHERE RV.MEM_NO >= IMG.REF_BNO
+		AND IMG.STATUS = 'Y'
+		AND RV.REVIEW_NO = ?
+		AND IMG.UPLOAD_DATE >= RV.CREATE_DATE
+		AND IMG.IMAGE_NO >= RV.REVIEW_NO
+		AND IMG.FILE_LEVEL = 'R'
+         ) A
+UNION 
+    SELECT
+            B.*
+    FROM
+        (
+        SELECT
+		    IMG.IMAGE_NO
+		    , IMG.ORIGIN_NAME
+		    , IMG.CHANGE_NAME
+		    , IMG.FILE_PATH
+		FROM IMAGE IMG
+		JOIN REVIEW RV ON (IMG.STATUS = RV.STATUS)
+		WHERE IMG.REF_BNO = 0
+		AND IMG.STATUS = 'Y'
+		AND RV.REVIEW_NO = ?
+		AND IMG.UPLOAD_DATE > RV.CREATE_DATE
+		AND IMG.IMAGE_NO > RV.REVIEW_NO
+		AND IMG.FILE_LEVEL = 'R'
+        ) B
+    ) C
+WHERE ROWNUM BETWEEN 1 AND 1
+ORDER
+    BY IMAGE_NO DESC
 	
 	</entry>
 	
@@ -282,7 +324,7 @@
 		SET
 	        ORIGIN_NAME = ?
 	        , CHANGE_NAME = ?
-	        , FILE_PATH = ?
+	        , FILE_PATH = ? 
 		WHERE IMAGE_NO in ?
         AND IMG.REF_BNO in
                            (SELECT
