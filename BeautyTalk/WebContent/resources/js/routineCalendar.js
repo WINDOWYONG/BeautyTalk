@@ -120,7 +120,7 @@ function initRoutineCalendarPage() {
 
   // AJAX 요청
   $.ajax({
-    url: contextPath + "/insertRoutine.do",
+    url: contextPath + "/insertRoutine.ca",
     method: "POST",
     contentType: "application/json",
     data: JSON.stringify({
@@ -132,9 +132,19 @@ function initRoutineCalendarPage() {
     }),
     success: function() {
       alert("루틴 등록 성공!");
+      $("#check_title").val("");
+	  $("#repeat_startdate").val("");
+	  $("#repeat_enddate").val("");
+	  $(".week-btn").removeClass("active");
+	  $("#event-memo").val("");
     },
-    error: function() {
+    error: function(xhr, status, error) {
+      if (xhr.status === 401) {
+      alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+      location.href = contextPath + "/loginForm.me";
+    } else {
       alert("루틴 등록 실패!");
+    }
     }
   });
 });
