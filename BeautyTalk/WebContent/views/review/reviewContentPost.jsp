@@ -8,13 +8,9 @@
 <%@page import="java.awt.font.ImageGraphicAttribute"%>
 
 <%
-	String contextPath = request.getContextPath();
-	Member loginUser = (Member)session.getAttribute("loginUser");
-	String alertMsg = (String)session.getAttribute("alertMsg");
 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
-	ArrayList<Image> list1 = (ArrayList<Image>)request.getAttribute("list1");
 	
 	int reviewLimit = pi.getreviewLimit();
 	int currentPage = pi.getCurrentPage();
@@ -408,102 +404,12 @@ img {
 </head>
 <body>
 
-	<% if(alertMsg != null) { %>
-	<script>
-            alert("<%= alertMsg %>")			
-        </script>
-	<% session.removeAttribute("alertMsg"); %>
-	<% } %>
-
-	<div class="wrap">
-
-		<div id="header">
-
-			<div id="header1">
-				<img src="resources/images/현존최강로고.jpg" alt="로고">
-			</div>
-
-			<div id="header2">
-				<form action="" id="search_form">
-					<div id="search_text">
-						<input type="text" name="keyword" placeholder="검색 키워드를 입력하세요.">
-					</div>
-					<div id="search_btn">
-						<input type="submit" value="Search">
-					</div>
-				</form>
-			</div>
-
-			<div id="header3">
-				<% if(loginUser == null) { %>
-				<!-- case1. 로그인 전-->
-				<div id="header3_top">
-					<a href="<%= contextPath %>/loginForm.me">로그인</a> <span>|</span> <a
-						href="enrollForm.me">회원가입</a>
-				</div>
-
-
-
-				<% }else { %>
-				<!-- case2. 로그인 후 -->
-				<div id="header3_top">
-
-					<a href=""><img src="resources/images/2.PNG" alt="메시지"></a> <a
-						href=""><img src="resources/images/3.PNG" alt="알림"></a> <a
-						href="">로그아웃</a> <span>|</span> <a
-						href="<%= contextPath %>/views/member/memberEnrollForm.jsp">마이페이지</a>
-				</div>
-				<div id="header3_bottom">
-					<span class="username"><b><%= loginUser.getUserName() %></b><b>님</b>,</span>
-					<span>환영합니다!</span> <a href=""><img src="" alt="프로필 사진"></a>
-				</div>
-				<% } %>
-			</div>
-
-
-		</div>
-
-	</div>
-
-	<div id="bnavigator">
-		<div id="navigator">
-			<a href="#" id="category">☰ 카테고리</a>
-			<ul class="category-menu">
-				<li><a href="skincare.html">스킨케어</a></li>
-				<li><a href="makeup.html">메이크업</a></li>
-				<li><a href="haircare.html">헤어케어</a></li>
-			</ul>
-			<ul id="navi">
-				<li><a href="index.html">HOME</a></li>
-				<li><a href="<%= contextPath %>/review.li?">Reviews</a></li>
-				<li><a href="<%= contextPath %>/post.list">Posts</a></li>
-				<li><a href="people.html">People</a></li>
-				<li><a href="ranking.html">상품 랭킹</a></li>
-			</ul>
-		</div>
-	</div>
-
-
-	<script>
-        document.addEventListener("DOMContentLoaded", function () {
-        const categoryBtn = document.querySelector("#category");
-        const categoryMenu = document.querySelector(".category-menu");
-        
-        categoryBtn.addEventListener("click", function (event) {
-            event.preventDefault();
-            categoryMenu.style.display = categoryMenu.style.display === "block" ? "none" : "block";
-        });
-        
-        document.addEventListener("click", function (event) {
-            if (!categoryBtn.contains(event.target) && !categoryMenu.contains(event.target)) {
-            categoryMenu.style.display = "none";
-            }
-        });
-        });
-    </script>
-
+	<%@ include file="../common/headerNav.jsp" %>
 <!-- 리뷰 콘텐츠 -->
+
 	<form action="" id="reviewForm_CP1" method="get">
+	
+	
 		<table id="reviewTable_CP1">
 			<tr>
 				<td height="50"></td>
@@ -540,87 +446,12 @@ img {
 			
 			<!-- 게시글이 있는 경우 -->
 			<% }else { %>
-			<% for(Review rv1 : list) { %>	
-			<tr class="reviewTr_img1">
-				<td id="review_content_thumnail" rowspan="6" align="center" style="width: 250px; height: 250px;">
-					<input type="hidden" name="MEM_NO" value="<%= rv1.getReviewNo() %>">
-					<% for(Image img : rv1.getImages()) { %> <!-- Review 객체에 추가된 이미지 목록 출력 -->
-					<div>
-						<% if(img.getRefBno() == rv1.getMemNo()){ %>
-						<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
-						<% }else { %>
-						<img src="<%= contextPath %>/resources/images/LOGO.jpg">
-						<% } %>
-					</div>
-					<% } %>
-				</td>
-				<td colspan="3" class="review_CreateDate"><%= rv1.getCreateDate() %></td>
-
-				
-				<td></td>
-				<td></td>
-
-
-			</tr>
-				
-			<tr class="reviewTr_img2">
-				<td class="review_title1"><%= rv1.getReviewNo() %></td>
-				<td class="review_title2"><%= rv1.getTitle() %></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-
-				<td colspan="4" style="color: gray;">
-					———————————————————————————————————</td>
-
-
-				
-				<td></td>
-			</tr>
-			<tr>
-
-				<td colspan="4"><textarea cols="80" rows="10" style="resize: none; border-color: white;" disabled><%= rv1.getContent() %></textarea>
-				</td>
-
-
-
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td style="width: 50px;"></td>
-				<td class="review_rating" style="width: 100px;"
-					data-content="가격 : <%= rv1.getPrRating() %>">가격 : <%= rv1.getPrRating() %>
-				</td>
-				<td class="review_rating" style="width: 100px;"
-					data-content="성분 : <%= rv1.getpRating() %>">성분 : <%= rv1.getpRating() %>
-				</td>
-				<td class="review_rating" style="width: 100px;"
-					data-content="재구매 : <%= rv1.getrRating() %>">재구매 : <%= rv1.getrRating() %>
-				</td>
-				<td class="review_rating" style="width: 60px;"
-					data-content="👍 : <%= rv1.getLikeReview() %>">👍 : <%= rv1.getLikeReview() %>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="6" style="color: lightgray;">
-					————————————————————————————————————————————————————————————</td>
-
-
-
-
-
-			</tr>
+				<% for(Review rv : list) { %>
+					<tr>
+						<td><%= rv.getTitle() %></td>
+					</tr>
+				<% } %>
 			<% } %>
-		<% } %>
 
 		</table>
 		

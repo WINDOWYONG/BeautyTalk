@@ -287,10 +287,13 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, userNo);
+			System.out.println(userNo);
 
 			rset = pstmt.executeQuery();
+			System.out.println("💡 실행할 SQL: " + sql);
 
 			if (rset.next()) {
+				System.out.println("왔냐/" + m);
 				m = new Member(rset.getInt("MEM_NO"), // userNo
 						rset.getString("MEM_ID"), // userId
 						rset.getString("MEM_PWD"), // userPwd
@@ -305,7 +308,8 @@ public class MemberDao {
 						rset.getInt("REVIEW_COUNT"), // review
 						rset.getInt("POST_COUNT"), // post
 						rset.getString("PROFILE_IMAGE_PATH") != null ? rset.getString("PROFILE_IMAGE_PATH") : "", // filePath
-						rset.getInt("BF_NO"), rset.getString("SKIN_TYPE"), // skinType
+						rset.getInt("BF_NO"), 
+						rset.getString("SKIN_TYPE"), // skinType
 						rset.getString("BODY_TYPE"), // bodyType
 						rset.getString("SCALP_TYPE"), // scalpType
 						rset.getString("HAIR_TYPE"), // hairType
@@ -314,7 +318,9 @@ public class MemberDao {
 						rset.getString("BRANDLIST"), // brandList
 						rset.getString("MARKETING_AGREE"), // release (마케팅 정보 수신 여부)
 						rset.getString("PERSONAL_COLOR") // color
+						
 				);
+				System.out.println("왔냐/" + m);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -374,6 +380,7 @@ public class MemberDao {
 
 			while (rset.next()) {
 				// rset에서 닉네임과 파일 경로를 가져옴
+				int followUserNo = rset.getInt("MEM_NO");
 				String nicknameFromDB = rset.getString("NICKNAME");
 				String filePath = rset.getString("FILEPATH");
 
@@ -381,7 +388,7 @@ public class MemberDao {
 				System.out.println("Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
 
 				// 리스트에 추가
-				list.add(new Member(nicknameFromDB, filePath));
+				list.add(new Member(followUserNo, nicknameFromDB, filePath));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -413,6 +420,7 @@ public class MemberDao {
 
 			while (rset.next()) {
 				// rset에서 닉네임과 파일 경로를 가져옴
+				int followerUserNo = rset.getInt("MEM_NO");
 				String nicknameFromDB = rset.getString("NICKNAME");
 				String filePath = rset.getString("FILEPATH");
 
@@ -420,7 +428,7 @@ public class MemberDao {
 				System.out.println("Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
 
 				// 리스트에 추가
-				list.add(new Member(nicknameFromDB, filePath));
+				list.add(new Member(followerUserNo, nicknameFromDB, filePath));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -22,6 +22,7 @@ public class Review {
 	private int prRating;
 	private int likeReview;
 	private String status;
+	private String imagePath;
 	
 	private ArrayList<Image> images;
 	private int imgNo;
@@ -149,13 +150,25 @@ public class Review {
 	public void setImgNo(int imgNo) {
 		this.imgNo = imgNo;
 	}
+	
+	
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 
 	@Override
 	public String toString() {
 		return "Review [reviewNo=" + reviewNo + ", pcode=" + pcode + ", memNo=" + memNo + ", title=" + title
 				+ ", content=" + content + ", createDate=" + createDate + ", pRating=" + pRating + ", rRating="
-				+ rRating + ", prRating=" + prRating + ", likeReview=" + likeReview + ", status=" + status + ", images="
-				+ images + ", imgNo=" + imgNo + "]";
-	};
+				+ rRating + ", prRating=" + prRating + ", likeReview=" + likeReview + ", status=" + status
+				+ ", imagePath=" + imagePath + ", images=" + images + ", imgNo=" + imgNo + "]";
+	}
+
+	
 
 }

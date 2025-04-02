@@ -108,7 +108,7 @@
 <body>
 <%
 String clientId = "6VzT269VW306H2aC74fu";
-String redirectURI = "http://localhost:8123/beautyTalk/views/member/callback.jsp";
+String redirectURI = "http://192.168.20.44:8123/beautyTalk/views/member/callback.jsp";
 String encodedRedirectURI = URLEncoder.encode(redirectURI, "UTF-8");
 
 // ✅ state 값을 세션에 저장
