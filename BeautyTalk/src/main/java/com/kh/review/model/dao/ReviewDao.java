@@ -94,7 +94,6 @@ public class ReviewDao {
 			while(rset.next()) {
 				Review rv = new Review();
 				rv.setReviewNo(rset.getString("REVIEW_NO"));
-				rv.setMemNo(rset.getInt("MEM_NO"));
 				rv.setCreateDate(rset.getDate("CREATE_DATE"));
 				rv.setTitle(rset.getString("TITLE"));
 				rv.setContent(rset.getString("CONTENT"));
@@ -102,6 +101,7 @@ public class ReviewDao {
 				rv.setpRating(rset.getInt("P_RATING"));
 				rv.setrRating(rset.getInt("R_RATING"));
 				rv.setLikeReview(rset.getInt("LIKE_REVIEW"));
+				rv.setImagePath("IMG_PATH");
 				
 				list.add(rv);
 
@@ -273,10 +273,10 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql); // 미완성
 			
-			pstmt.setInt(1, img.getRefBno());
-			pstmt.setString(2, img.getOriginName());
-			pstmt.setString(3, img.getChangeName());
-			pstmt.setString(4, img.getFilePath());
+//			pstmt.setInt(1, img.getRefBno());
+			pstmt.setString(1, img.getOriginName());
+			pstmt.setString(2, img.getChangeName());
+			pstmt.setString(3, img.getFilePath());
 			// 리뷰는 Level R로
 			
 			result = pstmt.executeUpdate();

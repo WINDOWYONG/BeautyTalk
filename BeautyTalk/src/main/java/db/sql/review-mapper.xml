@@ -16,7 +16,6 @@
 				FROM (
 						SELECT
 							REVIEW_NO
-							, MEM_NO
 							, CREATE_DATE
 							, TITLE
 							, CONTENT
@@ -24,8 +23,11 @@
 							, P_RATING
 							, R_RATING
 							, LIKE_Review
+                            , FILE_PATH || CHANGE_NAME "IMG_PATH"
 						FROM REVIEW RV
-						WHERE STATUS = 'Y'
+                        JOIN IMAGE ON (REVIEW_NO = REF_BNO)
+						WHERE RV.STATUS = 'Y'
+                        AND FILE_LEVEL = 'R'
 						ORDER
 						BY CREATE_DATE DESC
 						, REVIEW_NO DESC
@@ -151,7 +153,7 @@
     VALUES
 	    (
 	      SEQ_I_NO.NEXTVAL
-	    , ?
+	    , SEQ_REVIEW.CURRVAL
 	    , ?
 	    , ?
 	    , ?
