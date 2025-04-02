@@ -42,8 +42,8 @@ public class ReviewInsertController extends HttpServlet {
 		// enctype이 multipart/form-data로 잘 전송되었을 경우
 		// 전반적인 내용들이 수행되도록 if문 수행해보자.
 		if(ServletFileUpload.isMultipartContent(request)) {
-			// 파일 업로드를 위한 라이브러리 : cos.jar(com.oreilly.servlet의 약자)
-			// http://www.servlet.com에서 다운로드
+		// 파일 업로드를 위한 라이브러리 : cos.jar(com.oreilly.servlet의 약자)
+		// http://www.servlet.com에서 다운로드
 
 			int maxSize = 10*1024*1024;
 			
