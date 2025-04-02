@@ -7,7 +7,6 @@
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	Profile userProfile = (Profile)session.getAttribute("userProfile");
 	String alertMsg = (String)session.getAttribute("alertMsg");
-	String contextPath = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html lang="en">
