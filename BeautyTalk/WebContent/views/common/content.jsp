@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%	String contextPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +16,7 @@
 				<li><a href="/beautyTalk/hairlist.pr">헤어케어</a></li>
 			</ul>
 			<ul id="navi">
-				<li><a href="<%= contextPath %>">HOME</a></li>
+				<li><a href="">HOME</a></li>
 				<li><a href="./review.li?">Reviews</a></li>
 				<li><a href="./post.list">Posts</a></li>
 				<li><a href="${pageContext.request.contextPath}/selectPeople.pe">People</a></li>
