@@ -4,7 +4,7 @@
 
 	<entry key="selectReviewList">
 		SELECT
-		COUNT(*) count
+			COUNT(*) count
 		FROM REVIEW RV
 		WHERE STATUS = 'Y'
 	</entry>
@@ -22,7 +22,7 @@
 							, PR_RATING
 							, P_RATING
 							, R_RATING
-							, LIKE_Review
+							, LIKE_REVIEW
                             , FILE_PATH || CHANGE_NAME "IMG_PATH"
 						FROM REVIEW RV
                         JOIN IMAGE ON (REVIEW_NO = REF_BNO)
