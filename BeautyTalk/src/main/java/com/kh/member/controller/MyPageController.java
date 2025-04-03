@@ -33,6 +33,7 @@ public class MyPageController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		System.out.println("1순서" +  userNo);
 		
 		
 		if(session.getAttribute("loginUser") == null) { // 로그인 전
@@ -41,6 +42,8 @@ public class MyPageController extends HttpServlet {
 		} else {
 			Member updateUser = new MemberService().selectMember(userNo);
 			session.setAttribute("loginUser", updateUser);
+			System.out.println("2번 순서" + updateUser.getUserNo());
+			//response.sendRedirect(request.getContextPath() + "/views/member/myPage.jsp");
 			request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
 		}
 	}
