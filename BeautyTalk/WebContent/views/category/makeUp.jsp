@@ -377,7 +377,7 @@
                                             $(".footer-text").text("스킨케어 카테고리 내 0개의 사용이 가능합니다.");  // 결과가 없을 경우 텍스트 업데이트
                                             return;  // 비어 있는 배열일 경우 "조회된 상품이 없습니다." 메시지 출력
                                         }
-                                        $(".footer-text").text("스킨케어 카테고리 내 " + products.length + "개의 사용이 가능합니다.");
+                                        $(".footer-text").text("메이크업 카테고리 내 " + products.length + "개의 사용이 가능합니다.");
                                         var contextPath = "<%= request.getContextPath() %>";
 
                                         products.forEach(p => {
