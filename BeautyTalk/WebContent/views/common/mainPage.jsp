@@ -13,11 +13,7 @@
     font-weight: normal;
     font-style: normal;
 }
-#form_bestReview1 {
-	width: 1000px;
-	height: 350px;
-	margin-top: 200px;
-}
+
 
 #table_bestReview {
 	/* background-color: black; */
@@ -77,11 +73,7 @@
 	cursor: pointer;
 }
 
-<!-- bestPost -->
-#form_bestPost {
-	width: 1100px;
-	height: 330px;
-}
+
 
 #table_bestPost {
 	/* background-color: black; */
@@ -112,7 +104,7 @@
 	font-weight: 700;
 }
 
-<!-- bestUser -->
+
 /* 초기화 */
 #bestUser_clear{
 	margin: 0px;
@@ -210,9 +202,7 @@ li {
 	transform: translateX(10px);
 }
 
-<!-- footer -->
-#footer_footer {
-}
+
 
 #form_footer {
 	background-color: black;
