@@ -464,11 +464,11 @@ li {
 				</tr>
 				<tr>
 					<td></td>
-					<td style="padding: 10px;">날짜, 좋아요 수</td>
+					<td style="padding: 10px;"></td>
 					<td></td>
-					<td style="padding: 10px;">날짜, 좋아요 수</td>
+					<td style="padding: 10px;"></td>
 					<td></td>
-					<td style="padding: 10px;">날짜, 좋아요 수</td>
+					<td style="padding: 10px;"></td>
 					<td></td>
 				</tr>
 				<tr>
