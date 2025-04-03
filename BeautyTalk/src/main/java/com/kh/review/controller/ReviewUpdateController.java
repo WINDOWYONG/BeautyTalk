@@ -116,7 +116,6 @@ public class ReviewUpdateController extends HttpServlet {
 				
 			}
 			
-			System.out.println("리뷰 이미지 업데이트 확인 : " + multiRequest.getOriginalFileName("upfile"));
 		}
 		
 	}

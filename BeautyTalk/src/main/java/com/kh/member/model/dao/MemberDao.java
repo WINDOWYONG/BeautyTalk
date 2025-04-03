@@ -287,13 +287,10 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, userNo);
-			System.out.println(userNo);
 
 			rset = pstmt.executeQuery();
-			System.out.println("💡 실행할 SQL: " + sql);
 
 			if (rset.next()) {
-				System.out.println("왔냐/" + m);
 				m = new Member(rset.getInt("MEM_NO"), // userNo
 						rset.getString("MEM_ID"), // userId
 						rset.getString("MEM_PWD"), // userPwd
@@ -320,7 +317,6 @@ public class MemberDao {
 						rset.getString("PERSONAL_COLOR") // color
 						
 				);
-				System.out.println("왔냐/" + m);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -386,7 +382,6 @@ public class MemberDao {
 				String filePath = rset.getString("FILEPATH");
 
 				// 콘솔에 출력
-				System.out.println("Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
 
 				// 리스트에 추가
 				list.add(new Member(followUserNo, nicknameFromDB, filePath));
@@ -427,7 +422,6 @@ public class MemberDao {
 				String filePath = rset.getString("FILEPATH");
 
 				// 콘솔에 출력
-				System.out.println("Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
 
 				// 리스트에 추가
 				list.add(new Member(followerUserNo, nicknameFromDB, filePath));
@@ -464,7 +458,6 @@ public class MemberDao {
 				String filePath = rset.getString("FILEPATH");
 
 				// 콘솔에 출력 (디버깅 용)
-				System.out.println("followUserNo: " + followUserNo + ", Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
 
 				// 리스트에 추가
 				list.add(new Member(followUserNo, nicknameFromDB, filePath));
@@ -502,7 +495,6 @@ public class MemberDao {
 				String filePath = rset.getString("FILEPATH");
 
 				// 콘솔에 출력 (디버깅 용)
-				System.out.println("followUserNo: " + followUserNo + ", Nickname: " + nicknameFromDB + ", FilePath: " + filePath);
 				// 리스트에 추가
 				list.add(new Member(followUserNo, nicknameFromDB, filePath));
 			}

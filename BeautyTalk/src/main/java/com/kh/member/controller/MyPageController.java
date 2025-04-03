@@ -33,7 +33,6 @@ public class MyPageController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
-		System.out.println("회원 번호" + userNo);
 		
 		
 		if(session.getAttribute("loginUser") == null) { // 로그인 전
@@ -41,7 +40,6 @@ public class MyPageController extends HttpServlet {
 			response.sendRedirect(request.getContextPath());
 		} else {
 			Member updateUser = new MemberService().selectMember(userNo);
-			System.out.println("도ㅒㅆ낭");
 			session.setAttribute("loginUser", updateUser);
 			request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
 		}
