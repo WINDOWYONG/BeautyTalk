@@ -182,8 +182,20 @@
                                 </div>
                                 <div class="filter-body">
                                     <div class="brand-checkbox">
-                                        <input type="checkbox" id="brand3">
-                                        <label for="brand3">미쟝센</label>
+                                        <input type="checkbox" id="brand28">
+                                        <label for="brand28">미쟝센</label>
+                                    </div>
+                                    <div class="brand-checkbox">
+                                        <input type="checkbox" id="brand29">
+                                        <label for="brand29">어노브</label>
+                                    </div>
+                                    <div class="brand-checkbox">
+                                        <input type="checkbox" id="brand30">
+                                        <label for="brand30">리엔</label>
+                                    </div>
+                                    <div class="brand-checkbox">
+                                        <input type="checkbox" id="brand31">
+                                        <label for="brand31">닥터포헤어</label>
                                     </div>
                                 </div>
                                 <div class="filter-footer">
@@ -203,7 +215,7 @@
                                         <!-- 상품 이미지 -->
                                         <td
                                             style="border-bottom: 1px solid #e0e0e0; border-left: 1px solid #e0e0e0; border-top: 1px solid #e0e0e0;">
-                                            <img src="<%= request.getContextPath() + p.getImagePath() %>" alt="상품 이미지"
+                                            <img src="<%= p.getImagePath() %>" alt="상품 이미지"
                                                 height="190">
                                         </td>
 
@@ -325,7 +337,7 @@
 
                                         products.forEach(p => {
                                             // contextPath와 imagePath 결합
-                                            let imagePath = contextPath + p.imagePath;
+                                            let imagePath = p.imagePath;
                                             console.log(imagePath);
                                             console.log(p);
 
