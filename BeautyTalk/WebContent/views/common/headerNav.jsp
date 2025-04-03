@@ -392,10 +392,10 @@ div, input {
 				<li><a href="/beautyTalk/hairlist.pr">헤어케어</a></li>
 			</ul>
 			<ul id="navi">
-				<li><a href="<%= contextPath %>">HOME</a></li>
-				<li><a href="./review.li?">Reviews</a></li>
-				<li><a href="posts.html">Posts</a></li>
-				<li><a href="${pageContext.request.contextPath}/selectPeople.pe">People</a></li>
+				<li><a href="<%= contextPath %>">홈</a></li>
+				<li><a href="./review.li?">리뷰</a></li>
+				<li><a href="posts.html">게시글</a></li>
+				<li><a href="${pageContext.request.contextPath}/selectPeople.pe">전체 회원</a></li>
 				<li><a href="ranking.html">상품 랭킹</a></li>
 			</ul>
 		</div>
