@@ -279,12 +279,17 @@
 
 	<entry key="updateImage">
 		UPDATE
-	       	IMAGE
+	       	IMAGE IMG
 		SET
-	        ORIGIN_NAME = ?
-	        , CHANGE_NAME = ?
-	        , FILE_PATH = ?
-        WHERE IMAGE_NO = ?
+	        IMG.ORIGIN_NAME = ?
+	        , IMG.CHANGE_NAME = ?
+	        , IMG.FILE_PATH = ?
+		WHERE IMG.IMAGE_NO = ?
+        AND IMG.REF_BNO in
+						(SELECT
+                               PO.POST_NO
+                           FROM POST PO
+                           WHERE PO.POST_NO = IMG.REF_BNO)
 	
 	</entry>
 	

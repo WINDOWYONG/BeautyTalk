@@ -140,15 +140,17 @@ public class PostService {
 		
 		int result1 = new PostDao().updatePost(conn, rv);
 		int result2 = 1;
-System.out.println("포스트 업뎃 서비스 result 1 : " + result1);
+System.out.println("포스트 Service 글 result1 : " + result1);
+
 		if(img != null) { // 이미지가 있으면
-			if(img.getImgNo() != 0) { // 있으면
+			if(img.getImgNo() != 0) { // 이미지가 있으면
 				result2 = new PostDao().updateImage2(conn, img);
-			}else { // 없으면
+			}else { // 이미지가 없으면
 				result2 = new PostDao().newInsertImage2(conn, img);
 			}
 		}
 		
+System.out.println("포스트 Service 이미지 result2 : " + result2);		
 		if(result1 > 0 && result2 > 0) {
 			commit(conn);
 		}else {

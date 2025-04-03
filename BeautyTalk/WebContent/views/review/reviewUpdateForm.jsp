@@ -688,6 +688,11 @@ color: white;
 		margin: auto;
 		margin-top: 20px;
 	}
+	
+	.image_container label{
+		margin: auto;
+		align-items: center;
+	}
 
 </style>
 
@@ -829,9 +834,9 @@ color: white;
 		<form id="review_update" action="<%= contextPath %>/updateReview2.up" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="MEM_NO" value="<%= rv1.getMemNo() %>">
 			<input type="hidden" name="bno" value="<%= rv1.getReviewNo() %>">
-			<table id="review_update_table1" align="center">
+			<table id="review_update_table1">
 				<tr>
-					<th width="75" height="50" align="left" class="review_update_th">
+					<th width="75" height="50" class="review_update_th">
 						제목
 					</th>
 					<td width="350">
@@ -845,7 +850,7 @@ color: white;
                             <% for(SubCategory cate : list1) { %>
                             	<option class="review_update_option1" value="<%= cate.getScId() %>"><%= cate.getScName() %></option>
                             <% } %>
-                        </select>  -->
+                        </select>  
                         <script>
                         	$(function(){
                         		$("#review_update review_update_option1").each(function(){
@@ -854,7 +859,7 @@ color: white;
                         			}
                         		})
                         	})
-                        </script>
+                        </script> -->
 					</td>
 				</tr>
 
@@ -903,56 +908,62 @@ color: white;
 	                	<% if(img != null) { %>
                     <!-- case1. 첨부파일이 있는 경우 -->
 	                    <input type="hidden" name="originFileNo" value="<%= img.getImgNo() %>">
-	                    	<br>
-							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);" required>
-							<div id="image_container"></div>
-							<br>
+
+							<div id="image_container">
 							<label for="review_upload">
 								<span class="material-icons">
-									<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#e8618c"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#E8618C"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z"/></svg>
 								</span>
 							</label>
+							</div>
+							
+							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);" required>
+							
 							<br>
+							
 							<a download="<%= img.getOriginName() %>" href="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>" onchange="setThumbnail(event);"><%= img.getOriginName() %></a>
-
+							
 						<% }else { %>
                     <!-- case2. 첨부파일이 없을 경우 -->
+
+							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);" required>
+							
+							<br>
+							<div id="image_container">
+							<label for="review_upload">
+								<span class="material-icons">
+									<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#E8618C"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z"/></svg>
+								</span>
+							</label>
+							</div>
+							
 							<br>
 	                        	<b>첨부파일이 없습니다</b>
 							<br>
-							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);" required>
-							<div id="image_container"></div>
-							<br>
-							<label for="review_upload" style="center";>
-								<span class="material-icons">
-									<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#e8618c"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-								</span>
-							</label>
+							
 	          			<% } %>
 
 						<br>
 					</td>
 				</tr>
-
-			</table>
-		
+			</table>	
 		<br>
 
 		<div class="reviewEnrollForm_btn" align="center">
 			<button type="button" onclick="location.href='<%= contextPath %>/detail.re?bno=<%= rv1.getReviewNo() %>'">
 				뒤로가기
 			</button>
-			<button type="submit" onclick=update() class="reviewDetail_btn">
+			<button type="submit" class="reviewDetail_btn">
 				수정
 			</button>
 		</div>
-		
+
 		</form>
-		</div>
 		
+		</div>
 		</div>
 			
-        <script>
+        <!-- <script>
 	       	$(function(){
 	       		$("#review_update review_update_option2").each(function(){
 	       			if($(this).text() == "<%= rv1.getPrRating()%>"){
@@ -970,7 +981,7 @@ color: white;
 	       			}
 	       		})
 	       	})
-        </script>
+         </script> -->
         
 		<script>
 			function setThumbnail(event){
@@ -987,6 +998,17 @@ color: white;
 		</script>
 		
 		<script>
+			$(function(){
+	       		$(".reviewDetail_btn").on("click", function(){
+			        if(!confirm("확인(수정) 또는 취소(수정 안 함).")) {
+				    	alert("취소합니다.");
+			        }else {
+						return true;
+			        }
+	       		})
+	       	})
+		</script>
+		<!-- 
 			function update(){
 
 		        if(!confirm("확인(수정) 또는 취소(수정 안 함).")) {
@@ -995,8 +1017,7 @@ color: white;
 					return true;
 		        }
 			}
-		</script>
-	
+		 -->
 </div>
 </body>
 </html>

@@ -689,8 +689,8 @@ button {
 	}
 	
 	.review_DetailImg img{
-		width: 100%;
-		height: 100%;
+		width: 50%;
+		height: 50%;
 		box-sizing: border-box;
 		margin: auto;
 	}
@@ -1018,7 +1018,9 @@ button {
 					<td colspan="3" class="reviewPost_category2">
 					</td>
 					<td>
-						<button type="button" id="review_DetailLikebtn" class="review_detail_like" name="LIKE_REVIEW" value="<%= po.getLikePost() %>"> 👍 : <%= po.getLikePost() %></button>
+						<!-- <button type="button" id="review_DetailLikebtn" class="review_detail_like" name="LIKE_REVIEW" value="<%= po.getLikePost() %>">
+						👍 : <%= po.getLikePost() %>
+						</button>  -->
 					</td>
 				</tr>
 				<tr>

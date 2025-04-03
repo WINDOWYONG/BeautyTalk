@@ -811,7 +811,7 @@ color: white;
 	<div class="review_Enrollouter">
 		<h2 align="center">포스트 작성</h2>
 		<% if(loginUser != null) { %>
-		<form action="<%= contextPath %>/post.wr" id="reviewEnroll_Form1" method="post" enctype="multipart/form-data">
+		<form action="<%= contextPath %>/post2.wr" id="reviewEnroll_Form1" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="MEM_NO" value="<%= loginUser.getUserNo() %>">
 			<input type="hidden" name="LIKE_POST" value="<%= po.getLikePost()  %>">
 			<table id="reviewPost_table1" align="center">
@@ -858,7 +858,7 @@ color: white;
 						<br>
 						<label for="review_upload" style="center";>
 							<span class="material-icons">
-								<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#e8618c"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#E8618C"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z"/></svg>
 							</span>
 						</label>
 					</td>

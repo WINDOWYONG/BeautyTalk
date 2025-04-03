@@ -451,7 +451,7 @@ img {
 			<div class="crossLine">──────────────────────────────────────────────────────────────────────</div>
 				<div class="reviewContent_div_btn">
 					<% if(loginUser != null) { %>
-					<button type="button" class="reviewContent_btn" onclick="location.href='<%= contextPath %>/post.wr'">
+					<button type="button" class="reviewContent_btn" onclick="location.href='<%= contextPath %>/postList.wr'">
 						+ 포스트 작성
 					</button>
 					<% }else { %>

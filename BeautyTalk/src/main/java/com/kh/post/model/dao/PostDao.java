@@ -512,6 +512,7 @@ public class PostDao {
 		} finally {
 			close(pstmt);
 		}
+		System.out.println("updatePost Dao result : " + result);
 		return result;
 
 	}
@@ -538,6 +539,7 @@ public class PostDao {
 		} finally {
 			close(pstmt);
 		}
+		System.out.println("update이미지2 Dao result : " + result);
 		return result;
 
 	}
@@ -564,6 +566,7 @@ public class PostDao {
 		} finally {
 			close(pstmt);
 		}
+		System.out.println("NewInsert이미지 Dao result : " + result);
 		return result;
 
 	}

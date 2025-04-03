@@ -820,7 +820,7 @@ button {
 			<tr>
 				<td colspan="10"></td>
 				<td colspan="2">
-					<button type="button" class="reviewContent_btn" onclick="location.href='<%= contextPath %>/post.wr'">+포스트 작성</button>
+					<button type="button" class="reviewContent_btn" onclick="location.href='<%= contextPath %>/post2.wr'">+포스트 작성</button>
 				</td>
 			</tr>
 			<tr>

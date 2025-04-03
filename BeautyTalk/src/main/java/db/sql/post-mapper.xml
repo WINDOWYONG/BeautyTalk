@@ -143,7 +143,7 @@
     VALUES
 	    (
 	      SEQ_I_NO.NEXTVAL
-	    , ?
+	    , SEQ_POST.CURRVAL
 	    , ?
 	    , ?
 	    , ?
@@ -259,15 +259,15 @@
 		UPDATE
 	       	IMAGE IMG
 		SET
-	        ORIGIN_NAME = ?
-	        , CHANGE_NAME = ?
-	        , FILE_PATH = ?
-		WHERE IMG.IMAGE_NO in ?
+	        IMG.ORIGIN_NAME = ?
+	        , IMG.CHANGE_NAME = ?
+	        , IMG.FILE_PATH = ?
+		WHERE IMG.IMAGE_NO = ?
         AND IMG.REF_BNO in
 						(SELECT
-                               PO.MEM_NO
+                               PO.POST_NO
                            FROM POST PO
-                           WHERE PO.MEM_NO = IMG.REF_BNO)
+                           WHERE PO.POST_NO = IMG.REF_BNO)
 	</entry>
 	
 	<entry key="newInsertImage">

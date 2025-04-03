@@ -16,16 +16,16 @@ import com.kh.post.model.vo.Post;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
- * Servlet implementation class postUpdateController
+ * Servlet implementation class PostUpdateController
  */
 @WebServlet("/updatePost1.wr")
-public class postUpdateController extends HttpServlet {
+public class PostUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public postUpdateController() {
+    public PostUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +34,6 @@ public class postUpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("utf-8");
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
@@ -45,17 +44,16 @@ public class postUpdateController extends HttpServlet {
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
-			String refBno = multiRequest.getParameter("bno"); // url용
-			String memNo = multiRequest.getParameter("MEM_NO");
+			String refBno = multiRequest.getParameter("bno"); // POST_NO
 			String postTitle = multiRequest.getParameter("TITLE");
 			String content = multiRequest.getParameter("CONTENT");
+			
 			String imgNo = multiRequest.getParameter("originFileNo");
 	System.out.println("포스트 업뎃 이미지넘버 : " + imgNo);		
 			Post po = new Post();
 			po.setTitle(postTitle);
 			po.setContent(content);
 			po.setPostNo(Integer.parseInt(refBno));
-			po.setMemNo(Integer.parseInt(refBno));
 			
 			Image2 img = null; // 처음에는 null로 초기화
 			img = new Image2();
@@ -63,9 +61,10 @@ public class postUpdateController extends HttpServlet {
 			img.setChangeName(multiRequest.getFilesystemName("upfile"));
 			img.setFilePath("resources/images/");
 	System.out.println("포스트 업뎃 이미지이름 : " + multiRequest.getOriginalFileName("upfile"));
+			
 			if(multiRequest.getOriginalFileName("upfile") != null) {
 				if(imgNo != null) {
-					// 기존의 첨부파일이 있었을 경우 => update attachment (기존의첨부파일번호 필요)
+					// 첨부파일 있음 => update (기존의첨부파일번호 필요)
 					img.setImgNo(Integer.parseInt(imgNo));
 
 					int result = new PostService().updatePost(po, img);
@@ -78,8 +77,8 @@ public class postUpdateController extends HttpServlet {
 						response.sendRedirect(request.getContextPath() + "/post.list?");
 					}
 				}else {
-					// 기존의 첨부파일이 없었을 경우
-					img.setRefBno(Integer.parseInt(memNo));
+					// 첨부파일 없음
+					img.setRefBno(Integer.parseInt(refBno));
 					
 					int result = new PostService().updatePost(po, img);
 			
@@ -94,8 +93,8 @@ public class postUpdateController extends HttpServlet {
 
 			}else {
 				// 새로운 첨부파일 없음
-			    img.setOriginName("첨부파일없음"); // 챗gpt 추천이긴한데, 완전 임시방편인데?
-			    img.setChangeName("첨부파일없음");
+				img.setRefBno(0);
+
 
 				int result = new PostService().updatePost(po, img);
 
