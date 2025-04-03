@@ -7,8 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
-<!-- bestReview -->
+@font-face {
+    font-family: 'Binggrae-Two';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 #form_bestReview1 {
 	width: 1000px;
 	height: 350px;

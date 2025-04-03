@@ -13,6 +13,18 @@
                         <meta charset="UTF-8">
                         <title>Beauty Talks</title>
                         <style>
+                            @font-face {
+                                font-family: 'Binggrae-Two';
+                                src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+                                font-weight: normal;
+                                font-style: normal;
+                            }
+
+                            body * {
+                                font-family: 'Binggrae-Two';
+                                color: rgb(70, 69, 69);
+                            }
+
                             body {
                                 font-family: Arial, sans-serif;
                                 margin: 0;

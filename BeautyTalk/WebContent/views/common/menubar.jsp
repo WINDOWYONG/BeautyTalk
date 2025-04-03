@@ -8,12 +8,23 @@
 	Profile userProfile = (Profile)session.getAttribute("userProfile");
 	String alertMsg = (String)session.getAttribute("alertMsg");
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	@font-face {
+    font-family: 'Binggrae-Two';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body *{
+    font-family: 'Binggrae-Two';
+    color: rgb(70, 69, 69);
+}
 div, input {
 	box-sizing: border-box;
 }

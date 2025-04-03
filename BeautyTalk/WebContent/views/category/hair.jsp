@@ -13,6 +13,18 @@
                         <meta charset="UTF-8">
                         <title>Beauty Talks</title>
                         <style>
+                            @font-face {
+                                font-family: 'Binggrae-Two';
+                                src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+                                font-weight: normal;
+                                font-style: normal;
+                            }
+
+                            body * {
+                                font-family: 'Binggrae-Two';
+                                color: rgb(70, 69, 69);
+                            }
+
                             body {
                                 font-family: Arial, sans-serif;
                                 margin: 0;
@@ -199,7 +211,8 @@
                                     </div>
                                 </div>
                                 <div class="filter-footer">
-                                    <span class="footer-text" style="color: #FF69B4;">헤어케어 카테고리 내 <%= list.size() %>개의 사용이 가능합니다.</span>
+                                    <span class="footer-text" style="color: #FF69B4;">헤어케어 카테고리 내 <%= list.size() %>개의
+                                            사용이 가능합니다.</span>
                                 </div>
                             </div>
 
@@ -215,8 +228,7 @@
                                         <!-- 상품 이미지 -->
                                         <td
                                             style="border-bottom: 1px solid #e0e0e0; border-left: 1px solid #e0e0e0; border-top: 1px solid #e0e0e0;">
-                                            <img src="<%= p.getImagePath() %>" alt="상품 이미지"
-                                                height="190">
+                                            <img src="<%= p.getImagePath() %>" alt="상품 이미지" height="190">
                                         </td>
 
                                         <!-- 상품 이름 -->
@@ -235,7 +247,8 @@
                                         <td
                                             style="border-bottom: 1px solid #e0e0e0; border-left: 1px solid #e0e0e0; border-top: 1px solid #e0e0e0; font-size: 20px;">
                                             <%= p.getLikeProduct() %>
-                                                <span  class="material-icons" style="vertical-align: -4px;">favorite_border</span>
+                                                <span class="material-icons"
+                                                    style="vertical-align: -4px;">favorite_border</span>
                                         </td>
 
                                         <!-- 평점 -->
