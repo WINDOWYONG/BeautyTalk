@@ -203,19 +203,13 @@
 				    , IMG.CHANGE_NAME
 				    , IMG.FILE_PATH
 				FROM IMAGE IMG
-				JOIN REVIEW RV ON (RV.STATUS = IMG.STATUS)
-				WHERE IMG.STATUS = 'Y'
-                AND RV.REVIEW_NO = ?
-                AND IMG.UPLOAD_DATE = RV.CREATE_DATE
-                AND IMG.IMAGE_NO >= RV.REVIEW_NO
-				AND IMG.FILE_LEVEL = 'R'
-                AND IMG.REF_BNO = RV.MEM_NO
-                OR IMG.REF_BNO = 0
+				JOIN REVIEW RV ON (RV.REVIEW_NO = IMG.REF_BNO)
+				WHERE RV.REVIEW_NO = ?
                 AND IMG.STATUS = 'Y'
+                AND IMG.FILE_LEVEL = 'R'
                 AND IMG.UPLOAD_DATE >= RV.CREATE_DATE
-                AND IMG.IMAGE_NO >= RV.REVIEW_NO
-				AND IMG.FILE_LEVEL = 'R'
-                AND IMG.REF_BNO = RV.MEM_NO
+                ORDER
+                    BY IMAGE_NO DESC
 		            ) A
 		        )
 		WHERE RNUM BETWEEN 1 AND 1
@@ -272,7 +266,7 @@
 	
 	<entry key="updateReview">
 		UPDATE
-	        REVIEW
+	        REVIEW RV
 		SET
 	          TITLE = ?
 	        , CONTENT = ?
@@ -285,17 +279,12 @@
 
 	<entry key="updateImage">
 		UPDATE
-	       	IMAGE IMG
+	       	IMAGE
 		SET
 	        ORIGIN_NAME = ?
 	        , CHANGE_NAME = ?
 	        , FILE_PATH = ?
-		WHERE IMAGE_NO in ?
-        AND IMG.REF_BNO in
-                           (SELECT
-                               RV.MEM_NO
-                           FROM REVIEW RV
-                           WHERE RV.MEM_NO = IMG.REF_BNO)
+        WHERE IMAGE_NO = ?
 	
 	</entry>
 	
@@ -316,7 +305,7 @@
 	    VALUES
 		    (
 		      SEQ_I_NO.NEXTVAL
-		    , 0
+		    , ?
 		    , ?
 		    , ?
 		    , ?

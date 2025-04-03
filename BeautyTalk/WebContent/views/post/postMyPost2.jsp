@@ -679,136 +679,11 @@ button {
 <!-- 대기중 -->
 	<%@ include file="../common/header.jsp"%> 
 	<br>
-	<% if(loginUser == null) { %>
 		<div id="Content1">
 			<div id="Content2">
-				<div id="userImg">
-					<img id="userprofile"
-						src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
-				</div>
-				<div id="userName">
-					<h2>비회원</h2>
-					<span style="font-size: x-small;">비회원</span>
-				</div>
-			</div>
-			<div id="Content3">
-				<table>
-					<tr>
-						<td><a href="<%= contextPath %>/postMyList.po" style="font-weight: 800; font-size: larger;">게시글
-								<br>0 <br></td>
-						<td><a href="<%= contextPath %>/review.my" style="font-weight: 800; font-size: larger;">리뷰
-								<br>0<br>
-						</a></td>
-						<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로우
-								<br>0<br>
-						</a></td>
-						<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로잉
-								<br>0<br>
-						</a></td>
-					</tr>
-				</table>
-				<div id="userBoard">
-					<div class="tab">post</div>
-					<div class="tab">
-						<a href="<%= contextPath %>/review.li">Review</a>
-					</div>
-					<div class="tab">Beauty Profile</div>
-					<div class="underline"></div>
-				</div>
-	
-			</div>
-			<div id="Content4">
-				<div id="Content5">
-					<div>
-						<span class="material-icons" style="font-size: 30px;">person<a
-							href="<%= contextPath %>/myPage.me" style="font-size: 25px;">마이페이지</a></span>
-					</div>
-	
-					<div></div>
-					<div>
-						<h2>내정보</h2>
-					</div>
-					<div>
-						<a href="">회원정보 수정</a>
-					</div>
-					<div>
-						<a href="#" id="openModal">회원탈퇴</a>
-					</div>
-					<div>
-						<a href="">왓츠인 마이백</a>
-					</div>
-					<div>
-						<a href="<%= contextPath %>/calendarMainpage.ca">뷰티캘린더</a>
-					</div>
-					<div>
-						<a href="">알림내역</a>
-					</div>
-					<div>
-						<a href=" "></a>
-					</div>
-					<br>
-					<div>
-						<h2>문의 / 공지사항</h2>
-					</div>
-					<div>
-						<a href="">문의 내역</a>
-					</div>
-					<div>
-						<a href="">1:1 문의하기</a>
-					</div>
-					<div>
-						<a href="">공지사항</a>
-					</div>
-					<br>
-					<div>
-						<h2>댓글</h2>
-					</div>
-					<div>
-						<a href="">댓글 내역</a>
-					</div>
-					<br>
-					<div>
-						<h2>신고내역</h2>
-					</div>
-					<div>
-						<a href="">신고내역</a>
-					</div>
-				</div>
-	
-		<br>
-		<br>
-	
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-					const tabs = document.querySelectorAll(".tab");
-					const underline = document.querySelector(".underline");
-	
-					function moveUnderline(element) {
-							underline.style.width = element.offsetWidth + "px";
-							underline.style.left = element.offsetLeft + "px";
-					}
-	
-					tabs.forEach(tab => {
-							tab.addEventListener("click", function () {
-									tabs.forEach(t => t.classList.remove("active"));
-									this.classList.add("active");
-	
-									moveUnderline(this);
-	
-							});
-					});
-	
-					// 페이지 로드 시 첫 번째 탭에 언더라인 설정
-					moveUnderline(tabs[0]);
-					tabs[0].classList.add("active");
-			});
-		</script>
-	<% }else { %>
-		<div id="Content1">
-			<div id="Content2">
-				<div id="userImg">
-					<img id="userprofile"
-						src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
+				<div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+					<img id="userprofile" src="<%= loginUser.getFilePath() %>" alt="유저이미지"
+							style="border-radius: 50%; cursor: pointer;">
 				</div>
 				<div id="userName">
 					<h2><%= loginUser.getUserName() %></h2>
@@ -927,7 +802,6 @@ button {
 					tabs[0].classList.add("active");
 			});
 		</script>
-	<% } %>
 	
 <!-- postMyPost2 -->
 

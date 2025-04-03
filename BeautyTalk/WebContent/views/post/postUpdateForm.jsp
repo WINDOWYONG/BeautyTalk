@@ -18,8 +18,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
 </script>
@@ -700,9 +707,9 @@ color: white;
 
 	<div id="Content1">
 		<div id="Content2">
-			<div id="userImg">
-				<img id="userprofile"
-					src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
+			<div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+				<img id="userprofile" src="<%= loginUser.getFilePath() %>" alt="유저이미지"
+						style="border-radius: 50%; cursor: pointer;">
 			</div>
 			<div id="userName">
 				<h2><%= loginUser.getUserName() %></h2>

@@ -51,22 +51,21 @@ public class postInsertController extends HttpServlet {
 					
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
+			String postNo = multiRequest.getParameter("POST_NO");
 			String memNo = multiRequest.getParameter("MEM_NO");
 			String reviewTitle = multiRequest.getParameter("TITLE");
 			String content = multiRequest.getParameter("CONTENT");
-			String likePost = multiRequest.getParameter("LIKE_POST");
 			
 			Post po = new Post();
 			po.setMemNo(Integer.parseInt(memNo));
 			po.setTitle(reviewTitle);
 			po.setContent(content);
-			po.setLikePost(Integer.parseInt(likePost));
 
 			Image2 img = null;
 			if(multiRequest.getOriginalFileName("upfile") != null) {
 				// if문을 타면, 넘어온 첨부파일이 있을 경우
 				img = new Image2();
-				img.setRefBno(po.getMemNo());
+				img.setRefBno(Integer.parseInt(postNo));
 				img.setOriginName(multiRequest.getOriginalFileName("upfile"));
 				img.setChangeName(multiRequest.getFilesystemName("upfile"));
 				img.setFilePath("resources/images/"); // /가 있어야 한다.

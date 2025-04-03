@@ -28,12 +28,12 @@ public class PostService {
 		
 		ArrayList<Post> list = new PostDao().selectPostArrayList(conn, pi);
 		
-	    for (Post po : list) {
-	        ArrayList<Image2> images = new PostDao().selectImagesForPost(conn, po.getPostNo());
-	        // 각 리뷰에 해당하는 이미지 리스트를 조회
-	        po.setImages(images);
-	        // Review 객체에 이미지 목록 추가
-	    }
+//	    for (Post po : list) {
+//	        ArrayList<Image2> images = new PostDao().selectImagesForPost(conn, po.getPostNo());
+//	        // 각 리뷰에 해당하는 이미지 리스트를 조회
+//	        po.setImages(images);
+//	        // Review 객체에 이미지 목록 추가
+//	    }
 		
 		close(conn);
 		return list;

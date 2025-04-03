@@ -684,9 +684,9 @@ color: white;
 
 	<div id="Content1">
 		<div id="Content2">
-			<div id="userImg">
-				<img id="userprofile"
-					src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
+			<div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+				<img id="userprofile" src="<%= loginUser.getFilePath() %>" alt="유저이미지"
+							style="border-radius: 50%; cursor: pointer;">
 			</div>
 			<div id="userName">
 				<h2><%= loginUser.getUserName() %></h2>
@@ -897,6 +897,5 @@ color: white;
 	</div>
 	</div>
 </div>
-
 </body>
 </html>

@@ -671,8 +671,8 @@ color: white;
 }
 
 #image_container img{
-	width: 100%;
-	height: 100%;
+	width: 50%;
+	height: 50%;
 	box-sizing: border-box;
 	margin: auto;
 }
@@ -686,9 +686,9 @@ color: white;
 
 	<div id="Content1">
 		<div id="Content2">
-			<div id="userImg">
-				<img id="userprofile"
-					src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
+			<div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+				<img id="userprofile" src="<%= loginUser.getFilePath() %>" alt="유저이미지"
+						style="border-radius: 50%; cursor: pointer;">
 			</div>
 			<div id="userName">
 				<h2><%= loginUser.getUserName() %></h2>
@@ -822,7 +822,7 @@ color: white;
 						제목
 					</th>
 					<td width="350">
-						<input type="text" name="TITLE" maxlength="33" required>
+						<input type="text" name="TITLE" maxlength="33" placeholder="제목을 입력해주세요" required>
 					</td>
 					<th width="75" class="review_EnrollTh2">
 					<!-- 카테고리  -->
@@ -844,7 +844,7 @@ color: white;
 					</th>
 					<!-- 높낮이를 고정시키기 위해서 style 부여 -->
 					<td colspan="3" style="height: 200px;"><textarea
-							id="reviewPost_textarea1" name="CONTENT" maxlength="1333" style="resize: none;" required></textarea>
+							id="reviewPost_textarea1" name="CONTENT" maxlength="1333" style="resize: none;" placeholder="내용과 첨부파일을 입력해주세요" required></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -877,7 +877,7 @@ color: white;
 					</th>
 					<td colspan="3" class="review_enroll_img">
 						<br>
-						<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
+						<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);" required>
 						<div id="image_container"></div>
 						<br>
 						<label for="review_upload" style="center";>
@@ -897,7 +897,7 @@ color: white;
 						var img = document.createElement("img");
 						img.setAttribute("src", event.target.result);
 						img.setAttribute("class", "col-lg-6");
-						document.querySelector("div#image_container").appendChild(img);
+						document.querySelector("div#image_container").append(img);
 					};
 					reader.readAsDataURL(event.target.files[0]);
 				}
@@ -909,7 +909,7 @@ color: white;
 				<button type="button" onclick="history.back()">
 					목록
 				</button>
-				<button type="submit">
+				<button type="submit" id="value">
 					작성
 				</button>
 				<button type="reset">

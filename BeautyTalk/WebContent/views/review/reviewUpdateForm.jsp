@@ -700,9 +700,9 @@ color: white;
 
 	<div id="Content1">
 		<div id="Content2">
-			<div id="userImg">
-				<img id="userprofile"
-					src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
+			<div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+				<img id="userprofile" src="<%= loginUser.getFilePath() %>" alt="유저이미지"
+						style="border-radius: 50%; cursor: pointer;">
 			</div>
 			<div id="userName">
 				<h2><%= loginUser.getUserName() %></h2>
@@ -826,7 +826,7 @@ color: white;
 
 	<div id="review_updateouter" class="review_updateouter">
 		<h2 align="center">리뷰 수정하기</h2>
-		<form id="review_update" action="<%= contextPath %>/updateReview.up" method="post" enctype="multipart/form-data">
+		<form id="review_update" action="<%= contextPath %>/updateReview2.up" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="MEM_NO" value="<%= rv1.getMemNo() %>">
 			<input type="hidden" name="bno" value="<%= rv1.getReviewNo() %>">
 			<table id="review_update_table1" align="center">
@@ -889,28 +889,9 @@ color: white;
 								<option class="review_update_option4"><%= i %></option>
 							<% } %>
 						</select>
-                        <script>
-                        	$(function(){
-                        		$("#review_update review_update_option2").each(function(){
-                        			if($(this).text() == "<%= rv1.getPrRating()%>"){
-                        				$(this).attr("selected", true);
-                        			}
-                        		})
-                        		$("#review_update review_update_option3").each(function(){
-                        			if($(this).text() == "<%= rv1.getpRating() %>"){
-                        				$(this).attr("selected", true);
-                        			}
-                        		})
-                  		        $("#review_update review_update_option4").each(function(){
-                        			if($(this).text() == "<%= rv1.getrRating() %>"){
-                        				$(this).attr("selected", true);
-                        			}
-                        		})
-                        	})
-                        </script>
 					</td>
 					<td>
-						<button type="button" id="review_UpLikebtn" class="review_update_like" name="LIKE_REVIEW" value="<%= rv1.getLikeReview() %>"> 👍 : <%= rv1.getLikeReview() %></button>
+						<!-- <button type="button" id="review_UpLikebtn" class="review_update_like" name="LIKE_REVIEW" value="<%= rv1.getLikeReview() %>"> 👍 : <%= rv1.getLikeReview() %></button>  -->
 					</td>
 				</tr>
 				<tr>
@@ -918,11 +899,12 @@ color: white;
 						첨부파일
 					</th>
 					<td colspan="3" class="review_update_img">
+					<input type="hidden" name="IMG_PATH" value="<%= rv1.getImagePath() %>">
 	                	<% if(img != null) { %>
                     <!-- case1. 첨부파일이 있는 경우 -->
 	                    <input type="hidden" name="originFileNo" value="<%= img.getImgNo() %>">
 	                    	<br>
-							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
+							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);" required>
 							<div id="image_container"></div>
 							<br>
 							<label for="review_upload">
@@ -938,7 +920,7 @@ color: white;
 							<br>
 	                        	<b>첨부파일이 없습니다</b>
 							<br>
-							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
+							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);" required>
 							<div id="image_container"></div>
 							<br>
 							<label for="review_upload" style="center";>
@@ -946,55 +928,75 @@ color: white;
 									<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#e8618c"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
 								</span>
 							</label>
-	                	<% } %>
+	          			<% } %>
 
 						<br>
 					</td>
 				</tr>
 
 			</table>
-			
-			<script>
-				function setThumbnail(event){
-					const reader = new FileReader();
-					
-					reader.onload = function(event){
-						var img = document.createElement("img");
-						img.setAttribute("src", event.target.result);
-						img.setAttribute("class", "col-lg-6");
-						document.querySelector("div#image_container").appendChild(img);
-					};
-					reader.readAsDataURL(event.target.files[0]);
-				}
-			</script>
-			
-			<br>
+		
+		<br>
 
-			<div class="reviewEnrollForm_btn" align="center">
-				<button type="button" onclick="location.href='<%= contextPath %>/detail.re?bno=<%= rv1.getReviewNo() %>'">
-					뒤로가기
-				</button>
-				<button type="submit" onclick=update() class="reviewDetail_btn">
-					수정
-				</button>
-
-			</div>
-			
-			<script>
-				function update(){
-			        if(!confirm("확인(수정) 또는 취소(수정 안 함).")) {
-				    	alert("취소합니다.");
-			        }else {
-			        	alert("수정 완료.");
-			        	return;
-			        }
-				}
-			</script>
-			
+		<div class="reviewEnrollForm_btn" align="center">
+			<button type="button" onclick="location.href='<%= contextPath %>/detail.re?bno=<%= rv1.getReviewNo() %>'">
+				뒤로가기
+			</button>
+			<button type="submit" onclick=update() class="reviewDetail_btn">
+				수정
+			</button>
+		</div>
+		
 		</form>
 		</div>
+		
 		</div>
-	</div>
+			
+        <script>
+	       	$(function(){
+	       		$("#review_update review_update_option2").each(function(){
+	       			if($(this).text() == "<%= rv1.getPrRating()%>"){
+	       				$(this).attr("selected", true);
+	       			}
+	       		})
+	       		$("#review_update review_update_option3").each(function(){
+	       			if($(this).text() == "<%= rv1.getpRating() %>"){
+	       				$(this).attr("selected", true);
+	       			}
+	       		})
+	 		        $("#review_update review_update_option4").each(function(){
+	       			if($(this).text() == "<%= rv1.getrRating() %>"){
+	       				$(this).attr("selected", true);
+	       			}
+	       		})
+	       	})
+        </script>
+        
+		<script>
+			function setThumbnail(event){
+				const reader = new FileReader();
+				
+				reader.onload = function(event){
+					var img = document.createElement("img");
+					img.setAttribute("src", event.target.result);
+					img.setAttribute("class", "col-lg-6");
+					document.querySelector("div#image_container").appendChild(img);
+				};
+				reader.readAsDataURL(event.target.files[0]);
+			}
+		</script>
+		
+		<script>
+			function update(){
 
+		        if(!confirm("확인(수정) 또는 취소(수정 안 함).")) {
+			    	alert("취소합니다.");
+		        }else {
+					return true;
+		        }
+			}
+		</script>
+	
+</div>
 </body>
 </html>

@@ -28,7 +28,6 @@ public class ReviewService {
 		Connection conn = getConnection();
 		
 		ArrayList<Review> list = new ReviewDao().selectReviewArrayList(conn, pi);
-		
 		// 각 리뷰에 대해 이미지 목록을 추가
 //	    for (Review rv : list) {
 //	        ArrayList<Image> images = new ReviewDao().selectImagesForReview(conn, rv.getReviewNo());
@@ -142,15 +141,16 @@ public class ReviewService {
 		Connection conn = getConnection();
 		
 		int result1 = new ReviewDao().updateReview2(conn, rv);
-		int result2 = 1;
+		int result2;
 		
 		if(img != null) { // 이미지가 있으면
-			if(img.getImgNo() != 0) { // 있으면
-				result2 = new ReviewDao().updateImage(conn, img);
-			}else { // 없으면
-				result2 = new ReviewDao().newInsertImage(conn, img);
-			}
+			result2 = new ReviewDao().updateImage(conn, img);
+		}else {
+			result2 = 1;
 		}
+		
+		System.out.println("글 업뎃 Service: " + result1);
+		System.out.println("이미지 업뎃 Service: " + result2);
 		
 		if(result1 > 0 && result2 > 0) {
 			commit(conn);
