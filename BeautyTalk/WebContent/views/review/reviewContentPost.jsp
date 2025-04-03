@@ -8,10 +8,6 @@
 <%@page import="java.awt.font.ImageGraphicAttribute"%>
 
 <%
-<<<<<<< HEAD
-
-=======
->>>>>>> post
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 	
@@ -327,8 +323,11 @@ img {
 	display: block;
 }
 
+<<<<<<< HEAD
+=======
 <!-- reviewContentPost -->
 
+>>>>>>> 8e04b055bc9bb67f5183a0f3f3ddb57f6633476e
 #reviewForm_CP1 {
 	margin: auto;
 }
