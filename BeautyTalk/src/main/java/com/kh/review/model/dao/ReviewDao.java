@@ -36,7 +36,7 @@ public class ReviewDao {
 	
 	public int selectReviewList(Connection conn) {
 		// 갯수로 처리하는 거니까 int 인줄 알았는데, 조회라서 ResultSet이래
-		int result = 0;
+		int listCount = 0;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -49,7 +49,7 @@ public class ReviewDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				result = rset.getInt("count");
+				listCount = rset.getInt("count");
 			}
 			
 		} catch (SQLException e) {
@@ -58,13 +58,13 @@ public class ReviewDao {
 			close(rset);
 			close(pstmt);
 		}
-		return result;
+		return listCount;
 		
 	}
 	
 	public ArrayList<Review> selectReviewArrayList(Connection conn, PageInfo pi){
 		// select 조회해야 하니까 ResultSet, 다행렬 조회
-		ArrayList<Review> list = new ArrayList<Review>(); // 초기화
+		ArrayList<Review> list = new ArrayList<>(); // 초기화
 		
 		PreparedStatement pstmt = null; // 초기화
 		ResultSet rset = null;
@@ -101,10 +101,9 @@ public class ReviewDao {
 				rv.setpRating(rset.getInt("P_RATING"));
 				rv.setrRating(rset.getInt("R_RATING"));
 				rv.setLikeReview(rset.getInt("LIKE_REVIEW"));
-				rv.setImagePath("IMG_PATH");
+				rv.setImagePath(rset.getString("IMG_PATH"));
 				
 				list.add(rv);
-
 			}
 			
 		} catch (SQLException e) {
@@ -645,7 +644,6 @@ public class ReviewDao {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println("조회된 댓글 수 확인 : " + list.size());
 		return list;
 
 	}
