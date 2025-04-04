@@ -362,11 +362,11 @@ input[type="password"] {
 						href="<%= contextPath %>/myPage.me?userNo=<%= loginUser.getUserNo() %>">마이페이지</a>
 				</div>
 				<div id="header3_bottom">
-					<span class="username"><b><%= loginUser.getUserName() %></b><b>님</b>,</span>
+					<span class="username"><b><%= loginUser.getUserName() %></b><b>님</b></span>
 					<% if(loginUser.getFilePath() != null && !loginUser.getFilePath().isEmpty()) { %>
-					<span>환영합니다!</span> <a href=""><img src="<%= contextPath %>/<%= loginUser.getFilePath() %>" alt="프로필 사진"></a>
+					<span>환영합니다!</span><a href=""><img src="<%= contextPath %>/<%= loginUser.getFilePath() %>" alt="프로필 사진"></a>
 					<% } else {%>
-					<span>환영합니다!</span> <a href=""><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="프로필 사진"></a>
+					<span>환영합니다!</span><a href=""><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="프로필 사진"></a>
 					<% } %>
 					
 				</div>

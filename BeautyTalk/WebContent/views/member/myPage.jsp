@@ -24,7 +24,8 @@
                 font-family: 'Binggrae-Two', sans-serif;
                 color: #000000;
                 /* 글자 색상 설정 */
-                font-size: 16px;
+                margin: 0 auto;
+                padding: 30px;
                 /* 글자 크기 설정 */
             }
         </style>
