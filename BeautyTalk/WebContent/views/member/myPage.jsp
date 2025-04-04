@@ -518,19 +518,19 @@
                                                         <div class="color-box">
                                                             <input type="checkbox" id="brand1" name="brand"
                                                                 class="color-input" value="브랜드 A">
-                                                            <label for="brand1" class="color-label">브랜드 A</label>
+                                                            <label for="brand1" class="color-label">닥터지</label>
 
                                                             <input type="checkbox" id="brand2" name="brand"
                                                                 class="color-input" value="브랜드 B">
-                                                            <label for="brand2" class="color-label">브랜드 B</label>
+                                                            <label for="brand2" class="color-label">클리오</label>
 
                                                             <input type="checkbox" id="brand3" name="brand"
                                                                 class="color-input" value="브랜드 C">
-                                                            <label for="brand3" class="color-label">브랜드 C</label>
+                                                            <label for="brand3" class="color-label">미쟝센</label>
 
                                                             <input type="checkbox" id="brand4" name="brand"
                                                                 class="color-input" value="브랜드 D">
-                                                            <label for="brand4" class="color-label">브랜드 D</label>
+                                                            <label for="brand4" class="color-label">미샤</label>
                                                         </div>
                                                     </td>
                                                     <td>
