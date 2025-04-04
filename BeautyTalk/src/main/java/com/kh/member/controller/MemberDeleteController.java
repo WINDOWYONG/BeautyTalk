@@ -30,6 +30,7 @@ public class MemberDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String userNo = request.getParameter("userNo");
 		String userPwd = request.getParameter("userPwd");
 		String userId = request.getParameter("userId");
 		
@@ -43,7 +44,7 @@ public class MemberDeleteController extends HttpServlet {
 			response.sendRedirect(request.getContextPath());
 		} else {
 			session.setAttribute("alertMsg", "회원탈퇴를 실패 하였습니다. 다시 시도해주세요.");
-			response.sendRedirect(request.getContextPath() + "/myPage.me");
+			response.sendRedirect(request.getContextPath() + "/myPage.me?userNo=" + userNo);
 		}
 		
 	}

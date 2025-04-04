@@ -1055,8 +1055,10 @@
                                 <br><br>
                                 <!-- 비밀번호 입력 -->
                                 <div class="userId-container">
-                                    <label for="userId">아이디 입력</label>
-                                    <input name="userId" type="text" placeholder="아이디 입력">
+                                    <label for="password">아이디 입력</label>
+                                    <input type="hidden" name="userNo"
+                                    value="<%= loginUser.getUserNo() %>">
+                                    <input name="userId" type="text" id="password" placeholder="아이디 입력">
                                 </div>
                                 <div class="password-container">
                                     <label for="password">비밀번호 입력</label>
