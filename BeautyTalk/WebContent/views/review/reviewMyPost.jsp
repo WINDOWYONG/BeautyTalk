@@ -928,7 +928,7 @@ button {
 			<div class="paging-area" align="center">
 				<% if(currentPage != 1) { %>
 				<!-- 이전버튼 -->
-					<button type="button" onclick="location.href='<%= contextPath %>/postMyList.po?cpage=<%= currentPage -1 %>'">
+					<button type="button" onclick="location.href='<%= contextPath %>/review.my?cpage=<%= currentPage -1 %>'">
 						&lt;
 					</button>
 				<% } %>
@@ -940,7 +940,7 @@ button {
 						</button>
 
 					<% }else { %>
-						<button type="button" onclick="location.href='<%= contextPath %>/postMyList.po?cpage=<%= i %>'">
+						<button type="button" onclick="location.href='<%= contextPath %>/review.my?cpage=<%= i %>'">
 							<%= i %>
 						</button>
 					<% } %>
@@ -948,7 +948,7 @@ button {
 							
 				<!-- 다음버튼 -->
 				<% if(currentPage != maxPage) { %>
-					<button type="button" onclick="location.href='<%= contextPath %>/postMyList.po?cpage=<%= currentPage +1 %>'">
+					<button type="button" onclick="location.href='<%= contextPath %>/review.my?cpage=<%= currentPage +1 %>'">
 						&gt;
 					</button>
 				<% } %>
