@@ -23,6 +23,7 @@
 body *{
     font-family: 'Binggrae-Two';
     color: rgb(70, 69, 69);
+	
 }
 div, input {
 	box-sizing: border-box;
@@ -301,7 +302,7 @@ div, input {
 	box-sizing: border-box;
 	position: absolute;
 	width: 100%;
-	height: 450px
+	height: 300px
 }
 
 .banner_link {
@@ -372,7 +373,7 @@ div, input {
 					<% if(loginUser.getFilePath() != null && !loginUser.getFilePath().isEmpty()) { %>
 					<span>환영합니다!</span><img src="<%= loginUser.getFilePath() %>" alt="프로필 사진">
 					<% } else {%>
-					<span>환영합니다!</span><img src="<%= contextPath %>/resources/images/account_circle_500dp_000000.png" alt="프로필 사진">
+					<span>환영합니다!</span><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="프로필 사진">
 					<% } %>
 				</div>
 				<% } %>

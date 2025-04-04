@@ -14,7 +14,11 @@
     font-style: normal;
 }
 
+body{
+	margin: 0 auto;
+	padding: 30px;
 
+}
 #table_bestReview {
 	/* background-color: black; */
 	width: 1000px;
