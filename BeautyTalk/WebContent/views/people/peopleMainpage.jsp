@@ -96,7 +96,13 @@
       object-fit: cover;
       border-radius: 6px;
       background-color: #ddd;
+      transition: transform 0.1s ease;
     }
+    
+    .photo:hover {
+	  transform: scale(1.05); 
+	  cursor: pointer; 
+	}
     
     .follow-btn.active {
 	  background-color: #ff69b4;  /* 진한 핑크 */
