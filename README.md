@@ -145,7 +145,7 @@ ERD CLOUD:
 - 인기 유저 조회
 <img src="BeautyTalk/WebContent/resources/gif/인기 유저 조회.gif" width="700" />  
 
-- 비로그인 시 로그인 창으로 리로딩
+- 비로그인 시 로그인 창으로 이동
 <img src="BeautyTalk/WebContent/resources/gif/비로그인 유저팔로우.gif" width="700" />  
 
 - 유저 팔로우/언팔로우
