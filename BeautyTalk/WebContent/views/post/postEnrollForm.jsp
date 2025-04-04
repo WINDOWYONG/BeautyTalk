@@ -50,7 +50,7 @@
 }
 #Content4{
     width: 1200px;
-		height: auto;
+	height: auto;
     min-height: 1200px;
     overflow: hidden;
     margin: auto;
@@ -59,6 +59,7 @@
 }
 #Content5{
     width: 350px;
+    max-height: 800px;
     border: 1px solid #ddd;
     margin-right: 50px;
     
@@ -696,15 +697,15 @@ color: white;
 		<div id="Content3">
 			<table>
 				<tr>
-					<td><a href="" style="font-weight: 800; font-size: larger;">게시글
+					<td><a href="<%= contextPath %>/postMyList.po" style="font-weight: 800; font-size: larger;">게시글
 							<br><%= loginUser.getPost() %></a> <br></td>
-					<td><a href="" style="font-weight: 800; font-size: larger;">리뷰
+					<td><a href="<%= contextPath %>/review.my" style="font-weight: 800; font-size: larger;">리뷰
 							<br><%= loginUser.getReview() %><br>
 					</a></td>
-					<td><a href="" style="font-weight: 800; font-size: larger;">팔로우
+					<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로우
 							<br><%= loginUser.getFollower() %><br>
 					</a></td>
-					<td><a href="" style="font-weight: 800; font-size: larger;">팔로잉
+					<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로잉
 							<br><%= loginUser.getFollowing() %><br>
 					</a></td>
 				</tr>
@@ -811,9 +812,9 @@ color: white;
 	<div class="review_Enrollouter">
 		<h2 align="center">포스트 작성</h2>
 		<% if(loginUser != null) { %>
-		<form action="<%= contextPath %>/post2.wr" id="reviewEnroll_Form1" method="post" enctype="multipart/form-data">
+		<form action="<%= contextPath %>/post3.wr" id="reviewEnroll_Form1" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="MEM_NO" value="<%= loginUser.getUserNo() %>">
-			<input type="hidden" name="LIKE_POST" value="<%= po.getLikePost()  %>">
+			<input type="hidden" name="bno" value="<%= po.getPostNo() %>">
 			<table id="reviewPost_table1" align="center">
 				<tr>
 					<th width="75" height="50" align="left" class="review_EnrollTh">

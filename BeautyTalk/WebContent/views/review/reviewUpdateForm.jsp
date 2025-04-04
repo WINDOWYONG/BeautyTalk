@@ -63,6 +63,7 @@
 }
 #Content5{
     width: 350px;
+    max-height: 800px;
     border: 1px solid #ddd;
     margin-right: 50px;
     
@@ -717,15 +718,15 @@ color: white;
 		<div id="Content3">
 			<table>
 				<tr>
-					<td><a href="" style="font-weight: 800; font-size: larger;">게시글
+					<td><a href="<%= contextPath %>/postMyList.po" style="font-weight: 800; font-size: larger;">게시글
 							<br><%= loginUser.getPost() %></a> <br></td>
-					<td><a href="" style="font-weight: 800; font-size: larger;">리뷰
+					<td><a href="<%= contextPath %>/review.my" style="font-weight: 800; font-size: larger;">리뷰
 							<br><%= loginUser.getReview() %><br>
 					</a></td>
-					<td><a href="" style="font-weight: 800; font-size: larger;">팔로우
+					<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로우
 							<br><%= loginUser.getFollower() %><br>
 					</a></td>
-					<td><a href="" style="font-weight: 800; font-size: larger;">팔로잉
+					<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로잉
 							<br><%= loginUser.getFollowing() %><br>
 					</a></td>
 				</tr>
@@ -917,7 +918,7 @@ color: white;
 							</label>
 							</div>
 							
-							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);" required>
+							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
 							
 							<br>
 							
@@ -926,7 +927,7 @@ color: white;
 						<% }else { %>
                     <!-- case2. 첨부파일이 없을 경우 -->
 
-							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);" required>
+							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);" >
 							
 							<br>
 							<div id="image_container">

@@ -17,8 +17,8 @@
 			</ul>
 			<ul id="navi">
 				<li><a href="">HOME</a></li>
-				<li><a href="./review.li?">Reviews</a></li>
-				<li><a href="./post.list">Posts</a></li>
+				<li><a href="./review.li?">리뷰</a></li>
+				<li><a href="./post.list">게시글</a></li>
 				<li><a href="${pageContext.request.contextPath}/selectPeople.pe">People</a></li>
 				<li><a href="ranking.html">상품 랭킹</a></li>
 			</ul>

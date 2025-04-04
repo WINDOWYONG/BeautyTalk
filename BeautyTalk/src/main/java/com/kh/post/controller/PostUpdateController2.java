@@ -16,16 +16,16 @@ import com.kh.post.model.vo.Post;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
- * Servlet implementation class PostUpdateController
+ * Servlet implementation class PostUpdateController2
  */
-@WebServlet("/updatePost1.wr")
-public class PostUpdateController extends HttpServlet {
+@WebServlet("/updatePost2.wr")
+public class PostUpdateController2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostUpdateController() {
+    public PostUpdateController2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,7 +47,7 @@ public class PostUpdateController extends HttpServlet {
 			String refBno = multiRequest.getParameter("bno"); // POST_NO
 			String postTitle = multiRequest.getParameter("TITLE");
 			String content = multiRequest.getParameter("CONTENT");
-			
+	System.out.println("POST_NO : " + refBno);
 			String imgNo = multiRequest.getParameter("originFileNo");
 	System.out.println("포스트 업뎃 이미지넘버 : " + imgNo);		
 			Post po = new Post();
@@ -60,28 +60,18 @@ public class PostUpdateController extends HttpServlet {
 			img.setOriginName(multiRequest.getOriginalFileName("upfile"));
 			img.setChangeName(multiRequest.getFilesystemName("upfile"));
 			img.setFilePath("resources/images/");
+			
 	System.out.println("포스트 업뎃 이미지이름 : " + multiRequest.getOriginalFileName("upfile"));
 			
 			if(multiRequest.getOriginalFileName("upfile") != null) {
-				if(imgNo != null) {
-					// 첨부파일 있음 => update (기존의첨부파일번호 필요)
-					img.setImgNo(Integer.parseInt(imgNo));
-
-					int result = new PostService().updatePost(po, img);
-					
-					if(result > 0) { // 성공
-						response.sendRedirect(request.getContextPath() + "/detail.po?bno=" + refBno);
-						
-					}else { // 실패
-						request.getSession().setAttribute("alertMsg", "오류 발생");
-						response.sendRedirect(request.getContextPath() + "/post.list?");
-					}
-				}else {
-					// 첨부파일 없음
+				if(imgNo == null) { // insert
 					img.setRefBno(Integer.parseInt(refBno));
-					
+					img.setOriginName(multiRequest.getOriginalFileName("upfile"));
+					img.setChangeName(multiRequest.getFilesystemName("upfile"));
+					img.setFilePath("resources/images/");
+
 					int result = new PostService().updatePost(po, img);
-			
+					
 					if(result > 0) { // 성공
 						response.sendRedirect(request.getContextPath() + "/detail.po?bno=" + refBno);
 						
@@ -89,13 +79,30 @@ public class PostUpdateController extends HttpServlet {
 						request.getSession().setAttribute("alertMsg", "오류 발생");
 						response.sendRedirect(request.getContextPath() + "/post.list?");
 					}
+					
+				}else { // IMAGE_NO 있음 == update
+					img.setOriginName(multiRequest.getOriginalFileName("upfile"));
+					img.setChangeName(multiRequest.getFilesystemName("upfile"));
+					img.setFilePath("resources/images/");
+					img.setImgNo(Integer.parseInt(imgNo));
+					
+					int result = new PostService().updatePost(po, img);
+					
+					if(result > 0) { // 성공
+						response.sendRedirect(request.getContextPath() + "/detail.po?bno=" + refBno);
+						
+					}else { // 실패
+						request.getSession().setAttribute("alertMsg", "오류 발생");
+						response.sendRedirect(request.getContextPath() + "/post.list?");
+					}
+					
 				}
-
-			}else {
-				// 새로운 첨부파일 없음
+			}else { // 게시글만
 				img.setRefBno(0);
-
-
+				img.setOriginName("게시글 전용 업로드");
+				img.setChangeName("게시글 전용 업로드");
+				img.setFilePath("resources/images/");
+				
 				int result = new PostService().updatePost(po, img);
 
 				if(result > 0) { // 성공
@@ -109,7 +116,6 @@ public class PostUpdateController extends HttpServlet {
 			}
 			
 		}
-		
 	}
 
 	/**

@@ -137,29 +137,62 @@ public class ReviewService {
 		return img;
 	}
 	
-	public int updateReview(Review rv, Image img) {
+	public int updateReview2(Review rv) {
+		Connection conn = getConnection();
+				
+		int result2 = new ReviewDao().updateReview2(conn, rv);
+		
+		if (result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result2;
+	}
+	
+	public int updateReview1(Review rv, Image img) {
+//		Connection conn = getConnection();
+//		
+//		int result1 = new ReviewDao().updateReview2(conn, rv);
+//		int result2;
+//		
+//		if(img != null) { // 이미지가 있으면
+//			result2 = new ReviewDao().updateImage(conn, img);
+//		}else {
+//			result2 = 1;
+//		}
+//		
+//		
+//		if(result1 > 0 && result2 > 0) {
+//			commit(conn);
+//		}else {
+//			rollback(conn);
+//		}
+//		close(conn);
+//		return result1 * result2;
+		
 		Connection conn = getConnection();
 		
 		int result1 = new ReviewDao().updateReview2(conn, rv);
-		int result2;
+		int result2 = 1;
 		
 		if(img != null) { // 이미지가 있으면
-			result2 = new ReviewDao().updateImage(conn, img);
-		}else {
-			result2 = 1;
+			if(img.getImgNo() != 0) { // 있으면
+				result2 = new ReviewDao().updateImage(conn, img);
+			}else { // 없으면
+				result2 = new ReviewDao().newInsertImage(conn, img);
+			}
 		}
-		
-		System.out.println("글 업뎃 Service: " + result1);
-		System.out.println("이미지 업뎃 Service: " + result2);
-		
+
 		if(result1 > 0 && result2 > 0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
+		System.out.println("글 업뎃 Service: " + result1);
+		System.out.println("이미지 업뎃 Service: " + result2);
 		close(conn);
 		return result1 * result2;
-		
 	}
 	
 	public int deleteNewReview(Review rv) {

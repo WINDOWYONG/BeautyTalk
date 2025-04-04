@@ -285,11 +285,6 @@
 	        , IMG.CHANGE_NAME = ?
 	        , IMG.FILE_PATH = ?
 		WHERE IMG.IMAGE_NO = ?
-        AND IMG.REF_BNO in
-						(SELECT
-                               PO.POST_NO
-                           FROM POST PO
-                           WHERE PO.POST_NO = IMG.REF_BNO)
 	
 	</entry>
 	

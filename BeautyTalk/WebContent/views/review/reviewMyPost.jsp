@@ -63,13 +63,13 @@
 	text-align: center;
 }
 #Content4{
-	width: 1200px;
+	width:1200px;
 	height: auto;
 	min-height: 1200px;
 	overflow: hidden;
 	margin: auto;
 	display: flex;
-
+	box-sizing: border-box;
 }
 #Content5{
 	width: 350px;
@@ -592,21 +592,38 @@ button {
 }
 
 <!-- reviewMyPost -->
-#reviewForm_CP1 {}
-
-#reviewTable_CP1{
-	width : 800px;
-	margin: auto;
-	margin-top: 10px;
+#reviewForm_CP1 {
+	width:auto;
+	max-width: 800px;
+	box-sizing: border-box;
 }
 
+/* #reviewTable_CP1 *{
+	border: 5px solid black;
+} */
+
 .reviewMP_td1 {
+	margin: auto;
+	margin-top: 50px;
+	margin-right: 400px;
 	color: palevioletred;
 	font-size: 25px;
 	font-weight: 900;
 }
 
+.crossLine{
+	text-align: center;
+	color: lightgray;
+}
+
+.reviewContent_div_btn{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 550px;
+}
+
 .review_rating {
+	
 	color: palevioletred;
 	font-size: 15px;
 	font-weight: 900;
@@ -647,22 +664,45 @@ button {
 	width: 120px;
 }
 
-#review_content_thumnail img{
-	width: 200px;
-	height: 180px;
+.review_CreateDate, .review_title1, .review_title2{
+	font: normal;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.paging-area{
+	margin-top: 20px;
+}
+
+.reviewTr_img1{
+	cursor:pointer;
+}
+
+.reviewTr_img1 td{
+	font: normal;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.reviewTr_img3 textarea{
+	font: message-box;
+	font-size: 22px;
+	font-weight: bold;
+	padding : 20px;
+}
+
+.reviewTd_img1{
+	cursor: pointer;
+	width: 280px;
+	height: 250px;
 	box-sizing: border-box;
 }
 
-#review_content_thumnail {
+.reviewTr_img1 img{
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
 	cursor:pointer;
-}
-.review_CreateDate{
-	font-size: 14px;
-	font-weight: 700;
-}
-.review_title1, .review_title2{
-	font-size: 14px;
-	font-weight: 700;
 }
 </style>
 </head>
@@ -796,123 +836,125 @@ button {
 	</script>
 
 <!-- reviewMyPost2 -->
-		<table id="reviewTable_CP1" align="center">
-		<!-- 게시글이 없는 경우 -->
-			<% if(list.isEmpty()) { %>
-			
-				<tr>
-					<td colspan="6" rowspan="4">
-						<p>조회된 게시글이 없습니다.</p>
-					</td>
-				</tr>
-
-		<!-- 게시글이 있는 경우 -->
-			<% }else { %>
-				<% for(Review rv : list) { %>
-				<% if(rv.getMemNo() != loginUser.getUserNo()) { %>
-				<tr>
-					<td colspan="6" rowspan="4">
-						<p>조회된 게시글이 없습니다.</p>
-					</td>
-				</tr>
+<form action="" id="reviewForm_CP1" method="get" align="center">			
+		<div class="reviewMP_td1">Review 리뷰</div>
+			<div class="crossLine">──────────────────────────────────────────────────────────────────────</div>
+				<div class="reviewContent_div_btn">
+					<button type="button" class="reviewContent_btn" onclick="location.href='<%= contextPath %>/review.wr'">
+						+ 리뷰 작성
+					</button>
+				</div>
+				
+				<table id="reviewTable_CP1" align="center">
+				<!-- 게시글이 없는 경우 -->
+				<% if(list.isEmpty()) { %>
+					<tr>
+						<td colspan="6" rowspan="4">
+							<p>조회된 게시글이 없습니다.</p>
+						</td>
+					</tr>
 				<% }else { %>
-				<tr class="reviewTr_img1">
-					<td class="reviewTd_img1" rowspan="4">
-						<input type="hidden" name="REVIEW_NO" value="<%= rv.getReviewNo() %>">
-						<% if(rv.getImagePath() != null) { %>
-						<img src="<%= contextPath %>/<%= rv.getImagePath() %>" alt="리뷰이미지">
-						<% }else { %>
-						<img src="<%= contextPath %>/resources/images/LOGO.jpg %>" alt="기본이미지">
-						<% } %>
-					</td>
-					<td class="review_CreateDate" colspan="3" align="left" style="margin-left: 10px;"><%= rv.getCreateDate() %></td>
+				<!-- 게시글이 있는 경우 -->
+					<% for(Review rv : list) { %>
+					<% if(rv.getMemNo() != loginUser.getUserNo()) { %>
+					<% }else { %>
+					<tr class="reviewTr_img1">
+						<td class="reviewTd_img1" rowspan="4">
+							<input type="hidden" name="REVIEW_NO" value="<%= rv.getReviewNo() %>">
+							<% if(rv.getImagePath() != null) { %>
+							<img src="<%= contextPath %>/<%= rv.getImagePath() %>" alt="리뷰이미지">
+							<% }else { %>
+							<img src="<%= contextPath %>/resources/images/LOGO.jpg %>" alt="기본이미지">
+							<% } %>
+						</td>
+						<td class="review_CreateDate" colspan="3" align="left" style="margin-left: 10px;"><%= rv.getCreateDate() %></td>
 
-					<td></td>
-				</tr>
-				<tr class="reviewTr_img2">
+						<td></td>
+					</tr>
+					<tr class="reviewTr_img2">
 
-					<td class="review_title1" align="left" style="margin-left: 10px;"><%= rv.getReviewNo() %></td>
-					<td class="review_title2" colspan="2"><%= rv.getTitle() %></td>
+						<td class="review_title1" align="left" style="margin-left: 10px;"><%= rv.getReviewNo() %></td>
+						<td class="review_title2" colspan="2"><%= rv.getTitle() %></td>
 
-					<td></td>
-				</tr>
+						<td></td>
+					</tr>
 
-				<tr class="reviewTr_img3">
+					<tr class="reviewTr_img3">
 
-					<td colspan="4"><textarea cols="60" rows="10" style="resize: none; border-color: white;" disabled><%= rv.getContent() %></textarea></td>
+						<td colspan="4"><textarea cols="60" rows="10" style="resize: none; border-color: white;" disabled><%= rv.getContent() %></textarea></td>
 
-				</tr>
-				<tr>
+					</tr>
+					<tr>
 
-					<td class="review_rating" style="width: 100px;"
-					data-content="">가격 : <%= rv.getPrRating() %></td>
-					<td class="review_rating" style="width: 100px;"
-					data-content="">성분 : <%= rv.getpRating() %></td>
-					<td class="review_rating" style="width: 100px;"
-					data-content="">재구매 : <%= rv.getrRating() %></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td colspan="4" style="height: 20px"></tr>
-				<tr>
+						<td class="review_rating" style="width: 100px;"
+						data-content="">가격 : <%= rv.getPrRating() %></td>
+						<td class="review_rating" style="width: 100px;"
+						data-content="">성분 : <%= rv.getpRating() %></td>
+						<td class="review_rating" style="width: 100px;"
+						data-content="">재구매 : <%= rv.getrRating() %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="4" style="height: 20px"></tr>
+					<tr>
+					<% } %>
+					<% } %>
 				<% } %>
-			<% } %>
-			<% } %>
-		</table>
+				</table>
+
 		
-		<script>
+			<script>
+					$(function(){
+						$(".reviewContent_btn2").on("click", function(){
+							alert("로그인을 해주세요.");
+						})
+					})
+			</script>
+			
+			<script>
 				$(function(){
-				    $(".reviewContent_btn2").on("click", function(){
-				    	alert("로그인을 해주세요.");
-			    	})
+					$(".reviewTr_img1").on("click", function(){
+						location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().children().eq(0).val();
+					})
 				})
-		</script>
-		
-		<script>
-			$(function(){
-			    $(".reviewTr_img2").on("click", function(){
-					location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
-		    	})
-			})
-		</script>
+			
+				$(function(){
+					$(".reviewTr_img2").on("click", function(){
+						location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();
+					})
+				})
+			</script>
 
-		<div class="paging-area" align="center">
-			<% if(currentPage == 1) { %>
-			<!-- 이전버튼 -->
-				<button type="button" onclick="location.href='<%= contextPath %>/review.my?'">
-            		&lt;
-           	 	</button>
-            <% }else if(currentPage > 1){ %>
-           	 	<button type="button" onclick="location.href='<%= contextPath %>/review.my?cpage=<%= currentPage - 1 %>'">
-            		&lt;
-           	 	</button>
-            <% } %>
-            
-			<% for(int i=startPage; i<=endPage; i++) { %>
-            	<% if(i == currentPage) { %>
-            		<button type="button" disabled>
-            			<%= i %>
-           			</button>
-           		<% }else { %>
-         			 <button type="button" onclick="location.href='<%= contextPath %>/review.my?cpage=<%= i %>'">
-           				<%= i %>
-           			</button>
-           		<% } %>
-            <% } %>
-            
-            <% if(currentPage == maxPage) { %>
-            <!-- 다음버튼 -->
-            	<button type="button" onclick="location.href='<%= contextPath %>/review.my?cpage=<%= maxPage %>'">
-            		&gt;
-           	 	</button>
-			<% }else if(currentPage > 0){ %>
-				<button type="button" onclick="location.href='<%= contextPath %>/review.my?cpage=<%= currentPage + 1 %>'">
-            		&gt;
-           	 	</button> 
-           	<% } %>
+			<div class="paging-area" align="center">
+				<% if(currentPage != 1) { %>
+				<!-- 이전버튼 -->
+					<button type="button" onclick="location.href='<%= contextPath %>/review.my?cpage=<%= currentPage -1 %>'">
+						&lt;
+					</button>
+				<% } %>
+							
+				<% for(int i=startPage; i<=endPage; i++) { %>
+            		<% if(i == currentPage) { %>
+						<button type="button" disabled>
+							<%= i %>
+						</button>
+
+					<% }else { %>
+						<button type="button" onclick="location.href='<%= contextPath %>/review.my?cpage=<%= i %>'">
+							<%= i %>
+						</button>
+					<% } %>
+				<% } %>
+							
+				<!-- 다음버튼 -->
+				<% if(currentPage != maxPage) { %>
+					<button type="button" onclick="location.href='<%= contextPath %>/review.my?cpage=<%= currentPage +1 %>'">
+						&gt;
+					</button>
+				<% } %>
+			</div>
+		</form>
 		</div>
-		
-	</form>
-
+	</div>
 </body>
 </html>

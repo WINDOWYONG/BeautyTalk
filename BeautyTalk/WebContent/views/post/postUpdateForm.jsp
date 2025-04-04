@@ -61,7 +61,7 @@
 }
 #Content4{
     width: 1200px;
-		height: auto;
+	height: auto;
     min-height: 1200px;
     overflow: hidden;
     margin: auto;
@@ -70,6 +70,7 @@
 }
 #Content5{
     width: 350px;
+    max-height: 800px;
     border: 1px solid #ddd;
     margin-right: 50px;
     
@@ -719,15 +720,15 @@ color: white;
 		<div id="Content3">
 			<table>
 				<tr>
-					<td><a href="" style="font-weight: 800; font-size: larger;">게시글
+					<td><a href="<%= contextPath %>/postMyList.po" style="font-weight: 800; font-size: larger;">게시글
 							<br><%= loginUser.getPost() %></a> <br></td>
-					<td><a href="" style="font-weight: 800; font-size: larger;">리뷰
+					<td><a href="<%= contextPath %>/review.my" style="font-weight: 800; font-size: larger;">리뷰
 							<br><%= loginUser.getReview() %><br>
 					</a></td>
-					<td><a href="" style="font-weight: 800; font-size: larger;">팔로우
+					<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로우
 							<br><%= loginUser.getFollower() %><br>
 					</a></td>
-					<td><a href="" style="font-weight: 800; font-size: larger;">팔로잉
+					<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로잉
 							<br><%= loginUser.getFollowing() %><br>
 					</a></td>
 				</tr>
@@ -832,7 +833,7 @@ color: white;
 <!-- ReviewEnrollForm -->
 	<div id="review_updateouter" class="review_updateouter">
 		<h2 align="center">포스트 수정하기</h2>
-		<form id="review_update" action="<%= contextPath %>/updatePost1.wr" method="post" enctype="multipart/form-data">
+		<form id="review_update" action="<%= contextPath %>/updatePost2.wr" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="bno" value="<%= po1.getPostNo() %>">
 			<table id="review_update_table1">
 				<tr>
@@ -886,9 +887,9 @@ color: white;
 						첨부파일
 					</th>
 					<td colspan="3" class="review_update_img">
-	                	<% if(img != null) { %>
-                    <!-- case1. 첨부파일이 있는 경우 -->
-	                    <input type="hidden" name="originFileNo" value="<%= img.getImgNo() %>">
+	                <!--	<% if(img != null) { %>
+                     case1. 첨부파일이 있는 경우 
+                    
 							<div id="image_container">
 							<label for="review_upload">
 								<span class="material-icons">
@@ -902,13 +903,10 @@ color: white;
 							<br>
 							
 							<a download="<%= img.getOriginName() %>" href="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>" onchange="setThumbnail(event);"><%= img.getOriginName() %></a>
-							
-						<% }else { %>
-                    <!-- case2. 첨부파일이 없을 경우 -->
+					-->		
+					<!--	<% }else { %> 
+                     case2. 첨부파일이 없을 경우
 
-							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
-							
-							<br>
 							<div id="image_container">
 							<label for="review_upload">
 								<span class="material-icons">
@@ -917,12 +915,47 @@ color: white;
 							</label>
 							</div>
 							
+							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
+
 							<br>
 	                        	<b>첨부파일이 없습니다</b>
 							<br>
 
 	                	<% } %>
-
+					 -->
+					 	<% if(img != null) { %>
+                    <!-- case1. 첨부파일이 있는 경우 -->
+	                    <input type="hidden" name="originFileNo" value="<%= img.getImgNo() %>">
+	                    <input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
+							<div id="image_container">
+							<br>
+							<label for="review_upload">
+								<span class="material-icons">
+									<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#e8618c"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+								</span>
+							</label>
+							<br>
+							
+							<br>
+							<a download="<%= img.getOriginName() %>" href="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>" onchange="setThumbnail(event);"><%= img.getOriginName() %></a>
+							</div>
+						<% }else { %>
+                    <!-- case2. 첨부파일이 없을 경우 -->
+							<div id="image_container">
+							<input type="file" id="review_upload" name="upfile" onchange="setThumbnail(event);">
+							<div id="image_container"></div>
+							<br>
+							<label for="review_upload" style="center";>
+								<span class="material-icons">
+									<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#e8618c"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+								</span>
+							</label>
+							<br>
+	                        	<b>첨부파일이 없습니다</b>
+							<br>
+							</div>
+	                	<% } %>
+					 
 						<br>
 					</td>
 				</tr>
