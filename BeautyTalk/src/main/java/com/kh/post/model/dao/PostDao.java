@@ -633,6 +633,7 @@ public class PostDao {
 			close(rset);
 			close(pstmt);
 		}
+		System.out.println("조회된 댓글 수 확인 : " + list.size());
 		return list;
 
 	}
