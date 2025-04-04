@@ -1,4 +1,4 @@
-![BeautyTalk](BeautyTalk/WebContent/resources/images/MainLogo.png)
+<img src="BeautyTalk/WebContent/resources/images/MainLogo.png" width="300" />
 # BeautyTalk
 <br>
 <br>
