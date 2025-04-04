@@ -26,7 +26,7 @@
 * 2025.03.31 ~ 2025.04.03 : 베타 테스트, 최종 발표자료 준비
 * 2025.04.04 : 프로젝트 최종 발표  
 
-<img src="BeautyTalk/WebContent/resources/images/devSchedule.png" width="700" />
+<img src="BeautyTalk/WebContent/resources/images/개발일정표_스프레드시트.png" width="700" />
 <br><br><br>
 
 # 👨‍💻 구성원 및 역할
@@ -87,7 +87,7 @@
 
 # 💾 설계
 ERD CLOUD:  
-<img src="BeautyTalk/WebContent/resources/images/ERD_CLOUD.png" width="700" />
+<img src="BeautyTalk/WebContent/resources/images/ERDCLOUD.png" width="700" />
 <br><br><br>
 
 # 🎀 프로젝트 구현
