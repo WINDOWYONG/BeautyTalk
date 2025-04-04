@@ -1,4 +1,4 @@
-![linear_BeautyTalk](linearBeautyTalk.jpg)
+![BeautyTalk](linearBeautyTalk.jpg)
 # BeautyTalk
 <br>
 <br>
