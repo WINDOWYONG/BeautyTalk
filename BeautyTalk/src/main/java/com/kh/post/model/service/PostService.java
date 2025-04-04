@@ -139,11 +139,9 @@ public class PostService {
 		Connection conn = getConnection();
 		
 		int result1 = new PostDao().updatePost(conn, rv);
-		int result2;
-System.out.println("포스트 Service 글 result1 : " + result1);
-
-		if(img != null) { // 기존 이미지가 있으면
-			if(img.getImgNo() == 0) { // 기존이미지, 기존 이미지가 없으면
+		int result2 = 1;
+		if(img != null) { // 이미지가 있으면
+			if(img.getImgNo() != 0) { // 있으면
 				result2 = new PostDao().newInsertImage2(conn, img);
 			}else { // 기존 이미지, 이미지가 있으면
 				result2 = new PostDao().updateImage2(conn, img);

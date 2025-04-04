@@ -74,7 +74,6 @@ public class ReviewListController extends HttpServlet {
 		    }
 		}
 		
-//		System.out.println(currentPage);
 		
 //		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		
@@ -98,7 +97,6 @@ public class ReviewListController extends HttpServlet {
 		// * 현재 요청한 페이지(c)에 보여질 게시글 리스트 boardLimit 수만큼 조회
 		ArrayList<Review> list = new ReviewService().selectReviewArrayList(pi);
 		
-		System.out.println("리뷰 배열 확인 : " + list);
 
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);

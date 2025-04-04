@@ -323,7 +323,6 @@ img {
 	display: block;
 }
 
-<!-- reviewContentPost -->
 
 #reviewForm_CP1 {
 	margin: auto;
