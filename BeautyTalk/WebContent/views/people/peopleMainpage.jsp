@@ -129,7 +129,7 @@
           	<% if(m.getFilePath() == null) { %>
           		<img class="profile-img" src="<%= contextPath %>/resources/images/account_circle_500dp_000000.png" alt="프로필 이미지">
           	<% }else { %>
-            	<img class="profile-img" src="<%= contextPath + "/" + m.getFilePath() %>" alt="프로필 이미지">
+            	<img class="profile-img" src="<%= contextPath %>/<%= m.getFilePath() %>" alt="프로필 이미지">
           	<% } %>
           <div class="user-info">
             <div class="user-name"><%= m.getUserName() %></div>
@@ -143,12 +143,12 @@
       </div>
 
       <div class="photos">
-        <img class="photo" src="img1.jpg">
-        <img class="photo" src="img2.jpg">
-        <img class="photo" src="img3.jpg">
-        <img class="photo" src="img4.jpg">
-        <img class="photo" src="img5.jpg">
-        <img class="photo" src="img6.jpg">
+        <img class="photo" src="<%= contextPath %>/resources/images/ppimg<%= rank * 6 - 5 %>.png">
+        <img class="photo" src="<%= contextPath %>/resources/images/ppimg<%= rank * 6 - 4 %>.png">
+        <img class="photo" src="<%= contextPath %>/resources/images/ppimg<%= rank * 6 - 3 %>.png">
+        <img class="photo" src="<%= contextPath %>/resources/images/ppimg<%= rank * 6 - 2 %>.png">
+        <img class="photo" src="<%= contextPath %>/resources/images/ppimg<%= rank * 6 - 1 %>.png">
+        <img class="photo" src="<%= contextPath %>/resources/images/ppimg<%= rank * 6 %>.png">
       </div>
     </div>
     <% rank++; %>
