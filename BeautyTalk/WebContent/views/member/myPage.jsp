@@ -242,7 +242,7 @@ body {
                                             </tr>
                                             <tr>
                                                 <td style="text-align: left;">비밀번호</td>
-                                                <td><input type="text" name="userPwd" class="userPwd" maxlength="16"
+                                                <td><input type="password" name="userPwd" class="userPwd" maxlength="16"
                                                         placeholder="비밀번호를 입력하세요." required
                                                         value="<%= loginUser.getUserPwd() %>"></td>
                                                 <td></td>
@@ -1047,6 +1047,8 @@ body {
                                 <!-- 비밀번호 입력 -->
                                 <div class="userId-container">
                                     <label for="password">아이디 입력</label>
+                                    <input type="hidden" name="userNo"
+                                    value="<%= loginUser.getUserNo() %>">
                                     <input name="userId" type="text" id="password" placeholder="아이디 입력">
                                 </div>
                                 <div class="password-container">
