@@ -1,4 +1,4 @@
-![BeautyTalk](BeautyTalk/resources/images/BeautyTalk.jpg)
+![BeautyTalk](WebContent/resources/images/BeautyTalk.jpg)
 # BeautyTalk
 <br>
 <br>
