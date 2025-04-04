@@ -64,7 +64,7 @@ public class PostDao {
 	
 	public ArrayList<Post> selectPostArrayList(Connection conn, PageInfo pi){
 		// select 조회해야 하니까 ResultSet, 다행렬 조회
-		ArrayList<Post> list = new ArrayList<Post>(); // 초기화
+		ArrayList<Post> list = new ArrayList<>(); // 초기화
 		
 		PreparedStatement pstmt = null; // 초기화
 		ResultSet rset = null;
@@ -272,7 +272,7 @@ public class PostDao {
 			pstmt.setString(2, img.getOriginName());
 			pstmt.setString(3, img.getChangeName());
 			pstmt.setString(4, img.getFilePath());
-			// 리뷰는 Level R로
+			// 리뷰는 Level P로
 			
 			result = pstmt.executeUpdate();
 			
@@ -512,6 +512,7 @@ public class PostDao {
 		} finally {
 			close(pstmt);
 		}
+		System.out.println("updatePost Dao result : " + result);
 		return result;
 
 	}
@@ -538,6 +539,7 @@ public class PostDao {
 		} finally {
 			close(pstmt);
 		}
+		System.out.println("update이미지2 Dao result : " + result);
 		return result;
 
 	}
@@ -564,6 +566,7 @@ public class PostDao {
 		} finally {
 			close(pstmt);
 		}
+		System.out.println("NewInsert이미지 Dao result : " + result);
 		return result;
 
 	}
@@ -630,6 +633,7 @@ public class PostDao {
 			close(rset);
 			close(pstmt);
 		}
+		System.out.println("조회된 댓글 수 확인 : " + list.size());
 		return list;
 
 	}

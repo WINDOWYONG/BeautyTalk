@@ -53,7 +53,8 @@
 	text-align: center;
 }
 #Content4{
-	width: 1200px;
+	width: auto;
+	min-width: 1200px;
 	height: auto;
 	min-height: 1200px;
 	overflow: hidden;
@@ -63,6 +64,7 @@
 }
 #Content5{
 	width: 350px;
+	max-height: 800px;
 	border: 1px solid #ddd;
 	margin-right: 50px;
     
@@ -689,8 +691,8 @@ button {
 	}
 	
 	.review_DetailImg img{
-		width: 100%;
-		height: 100%;
+		width: 50%;
+		height: 50%;
 		box-sizing: border-box;
 		margin: auto;
 	}
@@ -740,9 +742,8 @@ button {
 	<% if(loginUser == null) { %>
 		<div id="Content1">
 			<div id="Content2">
-				<div id="userImg">
-					<img id="userprofile"
-						src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
+				<div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+					<img id="userprofile" src="<%= contextPath %>/resources/images/account_circle_500dp_000000.png" alt="프로필 사진" alt="유저이미지" style="border-radius: 50%; cursor: pointer;">
 				</div>
 				<div id="userName">
 					<h2>비회원</h2>
@@ -752,15 +753,15 @@ button {
 			<div id="Content3">
 				<table>
 					<tr>
-						<td><a href="" style="font-weight: 800; font-size: larger;">게시글
+						<td><a href="<%= contextPath %>/postMyList.po" style="font-weight: 800; font-size: larger;">게시글
 								<br>0 <br></td>
-						<td><a href="" style="font-weight: 800; font-size: larger;">리뷰
+						<td><a href="<%= contextPath %>/review.my" style="font-weight: 800; font-size: larger;">리뷰
 								<br>0<br>
 						</a></td>
-						<td><a href="" style="font-weight: 800; font-size: larger;">팔로우
+						<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로우
 								<br>0<br>
 						</a></td>
-						<td><a href="" style="font-weight: 800; font-size: larger;">팔로잉
+						<td><a href="<%= contextPath %>/views/member/follow.jsp" style="font-weight: 800; font-size: larger;">팔로잉
 								<br>0<br>
 						</a></td>
 					</tr>
@@ -863,9 +864,9 @@ button {
 	<% }else { %>
 		<div id="Content1">
 			<div id="Content2">
-				<div id="userImg">
-					<img id="userprofile"
-						src="<%= contextPath %>/resources/userImage/변우석.jpg" alt="유저이미지">
+				<div id="userImg" style="position: relative; display: inline-block; width: 100px; height: 100%;">
+					<img id="userprofile" src="<%= loginUser.getFilePath() %>" alt="유저이미지"
+							style="border-radius: 50%; cursor: pointer;">
 				</div>
 				<div id="userName">
 					<h2><%= loginUser.getUserName() %></h2>
@@ -989,7 +990,7 @@ button {
 <!-- PostEnrollForm -->
 	<div id="review_detailouter" class="review_detailouter">
 		<h2 align="center">포스트 상세보기</h2>
-			<input type="hidden" name="MEM_NO" value="">
+			<input type="hidden" name="MEM_NO" value="<%= po.getMemNo() %>">
 			<table id="reviewDetail_table1">
 				<tr>
 					<th width="75" height="50" align="left" class="review_Detailth">
@@ -1019,7 +1020,9 @@ button {
 					<td colspan="3" class="reviewPost_category2">
 					</td>
 					<td>
-						<button type="button" id="review_DetailLikebtn" class="review_detail_like" name="LIKE_REVIEW" value="<%= po.getLikePost() %>"> 👍 : <%= po.getLikePost() %></button>
+						<!-- <button type="button" id="review_DetailLikebtn" class="review_detail_like" name="LIKE_REVIEW" value="<%= po.getLikePost() %>">
+						👍 : <%= po.getLikePost() %>
+						</button>  -->
 					</td>
 				</tr>
 				<tr>
@@ -1038,6 +1041,7 @@ button {
 						<!-- case2. 첨부파일이 있는 경우 -->
        						<br>
          					<img src="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>">
+         					<br>
 							<a download="<%= img.getOriginName() %>" href="<%= contextPath %>/<%= img.getFilePath() + img.getChangeName() %>"><%= img.getOriginName() %></a>
 							<br>
 

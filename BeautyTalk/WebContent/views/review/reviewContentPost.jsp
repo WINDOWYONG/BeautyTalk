@@ -323,6 +323,7 @@ img {
 	display: block;
 }
 
+<!-- reviewContentPost -->
 
 #reviewForm_CP1 {
 	margin: auto;
@@ -353,6 +354,7 @@ img {
 }
 
 .review_rating {
+	
 	color: palevioletred;
 	font-size: 15px;
 	font-weight: 900;
@@ -394,7 +396,8 @@ img {
 }
 
 .review_CreateDate, .review_title1, .review_title2{
-	font-size: 14px;
+	font: normal;
+	font-size: 18px;
 	font-weight: 700;
 }
 
@@ -406,9 +409,29 @@ img {
 	cursor:pointer;
 }
 
-.reviewTr_img1 img{
+.reviewTr_img1 td{
+	font: normal;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.reviewTr_img3 textarea{
+	font: message-box;
+	font-size: 22px;
+	font-weight: bold;
+	padding : 20px;
+}
+
+.reviewTd_img1{
+	cursor: pointer;
 	width: 280px;
 	height: 250px;
+	box-sizing: border-box;
+}
+
+.reviewTr_img1 img{
+	width: 100%;
+	height: 100%;
 	box-sizing: border-box;
 	cursor:pointer;
 }
@@ -421,7 +444,7 @@ img {
 <!-- 리뷰 콘텐츠 -->
 <form action="" id="reviewForm_CP1" method="get" align="center">			
 		<div class="reviewMP_td1">Review 리뷰</div>
-			<div class="crossLine">————————————————————————————————————————————————————————————</div>
+			<div class="crossLine">──────────────────────────────────────────────────────────────────────</div>
 				<div class="reviewContent_div_btn">
 					<% if(loginUser != null) { %>
 					<button type="button" class="reviewContent_btn" onclick="location.href='<%= contextPath %>/review.wr'">
@@ -448,8 +471,15 @@ img {
 				<% }else { %>
 					<% for(Review rv : list) { %>
 					<tr class="reviewTr_img1">
-						<td rowspan="4"><img src="<%= contextPath %>/<%= rv.getImagePath() %>" alt="리뷰이미지"></td>
-						<td colspan="3" align="left" style="margin-left: 10px;"><%= rv.getCreateDate() %></td>
+						<td class="reviewTd_img1" rowspan="4">
+							<input type="hidden" name="REVIEW_NO" value="<%= rv.getReviewNo() %>">
+							<% if(rv.getImagePath() != null) { %>
+							<img src="<%= contextPath %>/<%= rv.getImagePath() %>" alt="리뷰이미지">
+							<% }else { %>
+							<img src="<%= contextPath %>/resources/images/LOGO.jpg %>" alt="기본이미지">
+							<% } %>
+						</td>
+						<td class="review_CreateDate" colspan="3" align="left" style="margin-left: 10px;"><%= rv.getCreateDate() %></td>
 
 						<td></td>
 					</tr>
@@ -461,9 +491,9 @@ img {
 						<td></td>
 					</tr>
 
-					<tr>
+					<tr class="reviewTr_img3">
 
-						<td colspan="4"><textarea cols="80" rows="10" style="resize: none; border-color: white;" disabled><%= rv.getContent() %></textarea></td>
+						<td colspan="4"><textarea cols="60" rows="10" style="resize: none; border-color: white;" disabled><%= rv.getContent() %></textarea></td>
 
 					</tr>
 					<tr>
@@ -493,6 +523,12 @@ img {
 			</script>
 			
 			<script>
+				$(function(){
+					$(".reviewTr_img1").on("click", function(){
+						location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().children().eq(0).val();
+					})
+				})
+			
 				$(function(){
 					$(".reviewTr_img2").on("click", function(){
 						location.href = '<%= contextPath %>/detail.re?bno=' + $(this).children().eq(0).text();

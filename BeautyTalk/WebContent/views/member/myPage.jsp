@@ -12,6 +12,20 @@
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <link href="resources/css/mypage.css" rel="stylesheet">
         </head>
+        <style>
+            @font-face {
+    font-family: 'Binggrae-Two';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Binggrae-Two', sans-serif;
+    color: #000000;  /* 글자 색상 설정 */
+    font-size: 16px;  /* 글자 크기 설정 */
+}
+        </style>
 
         <body>
             <%@ include file="../common/header.jsp" %>

@@ -50,6 +50,7 @@ public class postUpdateController extends HttpServlet {
 			String postTitle = multiRequest.getParameter("TITLE");
 			String content = multiRequest.getParameter("CONTENT");
 			String imgNo = multiRequest.getParameter("originFileNo");
+	System.out.println("포스트 업뎃 이미지넘버 : " + imgNo);		
 			Post po = new Post();
 			po.setTitle(postTitle);
 			po.setContent(content);
@@ -61,6 +62,7 @@ public class postUpdateController extends HttpServlet {
 			img.setOriginName(multiRequest.getOriginalFileName("upfile"));
 			img.setChangeName(multiRequest.getFilesystemName("upfile"));
 			img.setFilePath("resources/images/");
+	System.out.println("포스트 업뎃 이미지이름 : " + multiRequest.getOriginalFileName("upfile"));
 			if(multiRequest.getOriginalFileName("upfile") != null) {
 				if(imgNo != null) {
 					// 기존의 첨부파일이 있었을 경우 => update attachment (기존의첨부파일번호 필요)

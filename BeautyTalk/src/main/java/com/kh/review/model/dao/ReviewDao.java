@@ -290,6 +290,7 @@ public class ReviewDao {
 		
 	}
 	
+	
 	public Review selectReviewTest(Connection conn, String refBno) {
 		// select 조회 => 대량으로 될 수도 있지 않나? 하나만인가?
 		Review rv = null;
@@ -364,7 +365,6 @@ public class ReviewDao {
 	public Image selectImage(Connection conn, String refBno) {
 		// select 조회인데, 게시글 하나임
 		Image img = null;
-		Review rv = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -547,12 +547,14 @@ public class ReviewDao {
 			pstmt.setInt(4, img.getImgNo());
 			
 			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
+		System.out.println("리뷰 업뎃 DAO : " + result);
 		return result;
 
 	}
@@ -567,9 +569,10 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, img.getOriginName());
-			pstmt.setString(2, img.getChangeName());
-			pstmt.setString(3, img.getFilePath());
+			pstmt.setInt(1, img.getRefBno());
+			pstmt.setString(2, img.getOriginName());
+			pstmt.setString(3, img.getChangeName());
+			pstmt.setString(4, img.getFilePath());
 			
 			result = pstmt.executeUpdate();
 			
@@ -644,6 +647,7 @@ public class ReviewDao {
 			close(rset);
 			close(pstmt);
 		}
+		System.out.println("조회된 댓글 수 확인 : " + list.size());
 		return list;
 
 	}
