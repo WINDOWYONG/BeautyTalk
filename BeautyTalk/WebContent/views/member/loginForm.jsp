@@ -99,7 +99,13 @@
 		margin: auto;
 		margin-top: 50px;
 	}
+<<<<<<< HEAD
 	.userPwd{}
+=======
+	.userPwd{
+		color: #000;
+	}
+>>>>>>> post
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
