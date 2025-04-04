@@ -27,12 +27,14 @@
 * 2025.04.04 : 프로젝트 최종 발표  
 
 <img src="BeautyTalk/WebContent/resources/images/devSchedule.png" width="700" />
+<br><br><br>
 
 # 👨‍💻 구성원 및 역할
 ### ❤️ 전창용 (조장)  
 
 ### 💛 주현수 (조원)
 ### 💜 이용훈 (조원)
+<br><br><br>
 
 # ⚙️ 개발 환경
 * OS : Windows10
@@ -41,6 +43,7 @@
 * DBMS : Oracle
 * Languages : Java, HTML, CSS, JavaScript, JQuery, JSP, SQL
 * Management : Git, GitHub, SourceTree
+<br><br><br>
 
 # 🛠️ 기술 스택 & 사용 라이브러리
 ### 🖥️ Front-End
@@ -64,14 +67,17 @@
 * 📂 파일 업로드: commons-fileupload, cos.jar
 * 🔄 JSON 처리: Gson, JSON-simple
 * 🗄 DB 연동: Oracle JDBC Driver (ojdbc6)
+<br><br><br>
 
 # 💾 설계
 ERD CLOUD:  
 <img src="BeautyTalk/WebContent/resources/images/ERD_CLOUD.png" width="700" />
+<br><br><br>
 
 # 🎀 프로젝트 구현
 ### ❤️ 전창용
 ### 💛 주현수
 ### 💜 이용훈
+<br><br><br>
 
 # 📚 최종 보고서
