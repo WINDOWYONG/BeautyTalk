@@ -26,12 +26,20 @@
 * 2025.03.31 ~ 2025.04.03 : 베타 테스트, 최종 발표자료 준비
 * 2025.04.04 : 프로젝트 최종 발표  
 
-<img src="BeautyTalk/WebContent/resources/images/devSchedule.png" width="700" />
+<img src="BeautyTalk/WebContent/resources/images/개발일정표_스프레드시트.png" width="700" />
 <br><br><br>
 
 # 👨‍💻 구성원 및 역할
 ### ❤️ 전창용 (조장)  
-<!-- 여기에 입력하심댑니다 -->
+* 회원정보 조회, 수정
+* 회원탈퇴
+* 뷰티 프로필 조회, 추가, 수정
+* 아이디 중복체크
+* 네이버 API 로그인
+* 상품 카테코리, 브랜드별 조회 
+* 유저 팔로우/ 팔로우 취소 기능
+* 사용자 팔로우, 팔로워 검색 및 조회
+
 <br>
 
 ### 💛 주현수 (조원)
@@ -87,14 +95,96 @@
 
 # 💾 설계
 ERD CLOUD:  
-<img src="BeautyTalk/WebContent/resources/images/ERD_CLOUD.png" width="700" />
+<img src="BeautyTalk/WebContent/resources/images/ERDCLOUD.png" width="700" />
 <br><br><br>
 
 # 🎀 프로젝트 구현
 ### ❤️ 전창용
+* 회원정보 조회, 수정
+<img src="BeautyTalk/WebContent/resources/gif/yong/회원정보 수정 최종.gif">
 
-### 💛 주현수
-### 💜 이용훈
+* 회원탈퇴
+<img src="BeautyTalk/WebContent/resources/gif/yong/회원탈퇴.gif">
+
+* 뷰티 프로필 조회, 추가, 수정
+<img src="BeautyTalk/WebContent/resources/gif/yong/뷰티프로필.gif">
+
+* 아이디 중복체크
+<img src="BeautyTalk/WebContent/resources/gif/yong/아이디중복체크.gif">
+
+* 네이버 API 로그인
+<img src="BeautyTalk/WebContent/resources/gif/yong/네이버API.gif">
+
+* 상품 카테코리, 브랜드별 조회 
+<img src="BeautyTalk/WebContent/resources/gif/yong/상품 조회, 및 검색.gif">
+
+* 유저 팔로우/ 팔로우 취소 기능
+<img src="BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색 및 팔로우 취소.gif">
+
+* 유저 팔로우, 팔로워 검색 및 조회
+<img src="BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색.gif">
+
+
+### 💛 주현수  
+- 일반회원 로그인
+<img src="BeautyTalk/WebContent/resources/gif/일반회원로그인.gif" width="700" />  
+
+- 아이디 저장
+<img src="BeautyTalk/WebContent/resources/gif/아이디저장.gif" width="700" />  
+
+- 카카오톡 API 로그인
+<img src="BeautyTalk/WebContent/resources/gif/카카오톡API로그인.gif" width="700" />  
+
+- 아이디 찾기
+<img src="BeautyTalk/WebContent/resources/gif/아이디찾기.gif" width="700" />  
+
+- 비밀번호 찾기 및 변경
+<img src="BeautyTalk/WebContent/resources/gif/비밀번호찾기및변경.gif" width="700" />  
+
+- 로그아웃
+<img src="BeautyTalk/WebContent/resources/gif/로그아웃.gif" width="700" />  
+
+- 뷰티캘린더 일정 조회
+<img src="BeautyTalk/WebContent/resources/gif/뷰티캘린더 일정 조회.gif" width="700" />  
+
+- 뷰티캘린더 일정 추가
+<img src="BeautyTalk/WebContent/resources/gif/뷰티캘린더 일정 추가.gif" width="700" />  
+
+- 뷰티캘린더 일정 삭제
+<img src="BeautyTalk/WebContent/resources/gif/뷰티캘린더 일정 삭제.gif" width="700" />  
+
+- 팔로잉 뷰티캘린더 조회(조회만 가능, 삭제 불가)
+<img src="BeautyTalk/WebContent/resources/gif/팔로잉 뷰티캘린더 조회.gif" width="700" />  
+
+- 팔로잉 투두리스트 조회(조회만 가능, 루틴 추가 불가)
+<img src="BeautyTalk/WebContent/resources/gif/팔로잉 투두리스트 조회.gif" width="700" />  
+
+- 투두리스트 추가
+<img src="BeautyTalk/WebContent/resources/gif/투두리스트 추가.gif" width="700" />  
+
+- 투두리스트 루틴 설정
+<img src="BeautyTalk/WebContent/resources/gif/투두리스트 루틴 설정.gif" width="700" />  
+
+- 투두리스트 완료
+<img src="BeautyTalk/WebContent/resources/gif/투두리스트 완료.gif" width="700" />  
+
+- 투두리스트 삭제
+<img src="BeautyTalk/WebContent/resources/gif/투두리스트 삭제.gif" width="700" />  
+
+- 전체보기 / 미완료 / 완료 / 전체삭제
+<img src="BeautyTalk/WebContent/resources/gif/투두리스트 기능.gif" width="700" />  
+
+- 인기 유저 조회
+<img src="BeautyTalk/WebContent/resources/gif/인기 유저 조회.gif" width="700" />  
+
+- 비로그인 시 로그인 창으로 이동
+<img src="BeautyTalk/WebContent/resources/gif/비로그인 유저팔로우.gif" width="700" />  
+
+- 유저 팔로우/언팔로우
+<img src="BeautyTalk/WebContent/resources/gif/유저 팔로우언팔로우.gif" width="700" />  
+
+### 💜 이용훈  
+
 <br><br><br>
 
 # 📚 최종 보고서

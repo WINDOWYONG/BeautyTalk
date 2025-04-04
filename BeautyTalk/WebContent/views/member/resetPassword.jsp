@@ -7,6 +7,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <style>
+    @font-face {
+    font-family: 'Binggrae-Two';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	font-family: 'Binggrae-Two';
+    color: rgb(70, 69, 69);
+    box-sizing: border-box;
+}
   body {
     font-family: 'Pretendard', sans-serif;
     background-color: #fff;

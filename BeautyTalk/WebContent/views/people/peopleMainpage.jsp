@@ -143,9 +143,11 @@
           </div>
         </div>
         
-        <div class="follow-btn <%= isFollowing ? "active" : "" %>" data-userno="<%= m.getUserNo() %>">
-      		<%= isFollowing ? "✔ 팔로잉" : "+ 팔로우" %>
-  		</div>
+        <% if(loginUser == null || loginUser.getUserNo() != m.getUserNo()) { %>
+		  <div class="follow-btn <%= isFollowing ? "active" : "" %>" data-userno="<%= m.getUserNo() %>">
+		    <%= isFollowing ? "✔ 팔로잉" : "+ 팔로우" %>
+		  </div>
+		<% } %>
       </div>
 
       <div class="photos">

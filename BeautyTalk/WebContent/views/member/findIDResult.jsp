@@ -9,11 +9,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Pretendard', sans-serif;
-    }
+  @font-face {
+    font-family: 'Binggrae-Two';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	font-family: 'Binggrae-Two';
+    color: rgb(70, 69, 69);
+    box-sizing: border-box;
+}
 
     body {
       margin: 0;
@@ -84,7 +93,7 @@
 
 </head>
 <body>
-
+<br>
 <%@ include file="../common/header.jsp" %>
 
   <div class="wrapper">
