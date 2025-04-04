@@ -22,6 +22,17 @@
 <title>Insert title here</title>
 <style>
 
+@font-face {
+    font-family: 'Binggrae-Two';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	font-family: 'Binggrae-Two';
+}
+
 	div{
       box-sizing: border-box;
       /* border: 1px solid lightblue; */
@@ -155,8 +166,8 @@
     }
 
     .profile-img {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       overflow: hidden; /* 이미지가 동그란 영역을 넘지 않도록 */
       display: flex;
@@ -171,6 +182,20 @@
       height: 100%;
       object-fit: cover; /* 이미지가 div를 꽉 채우면서 비율 유지 */
     }
+    
+    .profile-img a {
+	  display: block;
+	  width: 100%;
+	  height: 100%;
+	}
+	
+	.profile-img a img {
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	  border-radius: 50%;
+	}
+    
 
     .L3 {
       display: flex;

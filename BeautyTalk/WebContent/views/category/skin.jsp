@@ -27,8 +27,8 @@
 
                             body {
                                 font-family: Arial, sans-serif;
-                                margin: 0;
-                                padding: 20px;
+                                margin: 0 auto;
+                                padding: 30px;
                                 font-size: 14px;
                             }
 
@@ -189,14 +189,10 @@
                                 <div class="filter-header">
                                     <div class="header-left">
                                         <span class="brand-title">브랜드</span>
-                                        <span class="brand-count">Total 32</span>
+                                        <span class="brand-count">Total <%= list.size() %></span>
                                     </div>
                                     <div class="header-right">
-                                        <select>
-                                            <option>전체</option>
-                                            <option>가나다순</option>
-                                            <option>인기순</option>
-                                        </select>
+
                                     </div>
                                 </div>
                                 <div class="filter-body">
