@@ -732,7 +732,9 @@ color: white;
 				</tr>
 			</table>
 			<div id="userBoard">
-				<div class="tab">post</div>
+				<div class="tab">
+					<a href="<%= contextPath %>/post.list">post</a>
+				</div>
 				<div class="tab">
 					<a href="<%= contextPath %>/review.li">Review</a>
 				</div>

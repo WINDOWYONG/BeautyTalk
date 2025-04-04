@@ -27,9 +27,6 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
-</script>
 <style>
 #Content1{
     height: auto;
@@ -734,7 +731,9 @@ color: white;
 				</tr>
 			</table>
 			<div id="userBoard">
-				<div class="tab">post</div>
+				<div class="tab">
+					<a href="<%= contextPath %>/post.list">post</a>
+				</div>
 				<div class="tab">
 					<a href="<%= contextPath %>/review.li">Review</a>
 				</div>
