@@ -33,14 +33,14 @@
         <body>
             <%@ include file="../common/header.jsp" %>
                 <% String imagePath=(loginUser.getFilePath() !=null && !loginUser.getFilePath().isEmpty()) ?
-                    loginUser.getFilePath() : request.getContextPath()
-                    + "/resources/images/account_circle_500dp_000000.png" ; %>
+                    loginUser.getFilePath()
+                    : "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" ; %>
 
                     <br>
 
                     <div id="Content1">
                         <div id="Content2">
-                            <% if(loginUser.getFilePath() != null && !loginUser.getFilePath().isEmpty()) { %>
+                            <% if(loginUser.getFilePath() !=null && !loginUser.getFilePath().isEmpty()) { %>
                                 <div id="userImg"
                                     style="position: relative; display: inline-block; width: 100px; height: 100%;">
                                     <img id="userprofile" src="<%= imagePath %>" alt="유저이미지"
@@ -55,8 +55,9 @@
                                 <% } else {%>
                                     <div id="userImg"
                                         style="position: relative; display: inline-block; width: 100px; height: 100%;">
-                                        <img id="previewImage" src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="현재 프로필 이미지"
-                                            style="width: 100px; height: 100%; border-radius: 50%;">
+                                        <img id="previewImage"
+                                            src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+                                            alt="현재 프로필 이미지" style="width: 100px; height: 100%; border-radius: 50%;">
 
                                         <!-- 수정 아이콘 -->
                                         <span id="openProfileModal" class="material-icons"
@@ -84,11 +85,12 @@
                                                         value="<%= loginUser.getUserPwd() %>">
                                                     <!-- 현재 사용자 프로필 이미지 -->
                                                     <div class="profile-preview">
-                                                        <% if(loginUser.getFilePath() !="" ) { %>
-                                                            <img id="previewImage" src="<%= imagePath %>"
+                                                        <% if(loginUser.getFilePath() !=null &&
+                                                            !loginUser.getFilePath().isEmpty()) { %>
+                                                            <img id="previewImage1" src="<%= imagePath %>"
                                                                 alt="현재 프로필 이미지">
                                                             <% } else { %>
-                                                                <img id="previewImage" src="<%= imagePath %>"
+                                                                <img id="previewImage2" src="<%= imagePath %>"
                                                                     alt="현재 프로필 이미지">
                                                                 <% } %>
                                                     </div>
@@ -96,7 +98,7 @@
                                                     <!-- 이미지 업로드 버튼 -->
                                                     <div class="profile-button-container">
                                                         <input type="file" id="profileUpload" name="upfile"
-                                                            accept="image/*" style="display: none;">
+                                                            style="display: none;">
                                                         <label for="profileUpload" class="custom-file-upload">파일
                                                             선택</label>
                                                         <button type="submit" id="saveProfile"
@@ -108,13 +110,15 @@
 
                                         <script>
                                             document.getElementById('profileUpload').addEventListener('change', function (event) {
-                                                const file = event.target.files[0]; // 선택한 파일 가져오기
-                                                if (file) {
+                                                const file = event.target.files[0];
+                                                const previewImage = document.getElementById('previewImage2');  // 현재 프로필 이미지
+
+                                                if (file && previewImage) {
                                                     const reader = new FileReader();
                                                     reader.onload = function (e) {
-                                                        document.getElementById('previewImage').src = e.target.result; // 미리보기 이미지 변경
+                                                        previewImage.src = e.target.result; // 미리보기 이미지 변경
                                                     };
-                                                    reader.readAsDataURL(file); // 파일을 읽어서 Data URL 생성
+                                                    reader.readAsDataURL(file);
                                                 }
                                             });
                                         </script>

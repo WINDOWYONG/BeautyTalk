@@ -272,7 +272,7 @@ div, input {
 }
 
 .content {
-	width: 1020px;
+	width: 1120px;
 	height: 100%;
 	margin: 0 auto;
 }
@@ -294,7 +294,7 @@ div, input {
 	box-sizing: border-box;
 	position: absolute;
 	width: 100%;
-	height: 400px
+	height: 1100px
 }
 
 .banner_link {
