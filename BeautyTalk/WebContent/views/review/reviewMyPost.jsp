@@ -63,13 +63,12 @@
 	text-align: center;
 }
 #Content4{
-	width:1200px;
+	width: 1200px;
 	height: auto;
 	min-height: 1200px;
 	overflow: hidden;
 	margin: auto;
 	display: flex;
-	box-sizing: border-box;
 }
 #Content5{
 	width: 350px;

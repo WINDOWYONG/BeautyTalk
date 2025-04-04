@@ -53,8 +53,7 @@
 	text-align: center;
 }
 #Content4{
-	width: auto;
-	min-width: 1200px;
+	width: 1200px;
 	height: auto;
 	min-height: 1200px;
 	overflow: hidden;

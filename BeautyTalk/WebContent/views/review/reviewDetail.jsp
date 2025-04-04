@@ -862,8 +862,8 @@ button {
 					});
 	
 					// 페이지 로드 시 첫 번째 탭에 언더라인 설정
-					moveUnderline(tabs[0]);
-					tabs[0].classList.add("active");
+					moveUnderline(tabs[1]);
+					tabs[1].classList.add("active");
 			});
 		</script>
 	<% }else { %>
@@ -986,8 +986,8 @@ button {
 					});
 	
 					// 페이지 로드 시 첫 번째 탭에 언더라인 설정
-					moveUnderline(tabs[0]);
-					tabs[0].classList.add("active");
+					moveUnderline(tabs[1]);
+					tabs[1].classList.add("active");
 			});
 		</script>
 	<% } %>
