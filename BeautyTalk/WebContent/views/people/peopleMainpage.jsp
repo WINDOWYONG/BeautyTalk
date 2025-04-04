@@ -133,7 +133,7 @@
         <div class="user-left">
           <div class="rank-num"><%= rank %></div>
           	<% if(m.getFilePath() == null) { %>
-          		<img class="profile-img" src="<%= contextPath %>/resources/images/account_circle_500dp_000000.png" alt="프로필 이미지">
+          		<img class="profile-img" src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="프로필 이미지">
           	<% }else { %>
             	<img class="profile-img" src="<%= contextPath %>/<%= m.getFilePath() %>" alt="프로필 이미지">
           	<% } %>

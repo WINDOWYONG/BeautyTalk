@@ -282,7 +282,7 @@ img {
 }
 
 .content {
-	width: 1020px;
+	width: 1120px;
 	height: 100%;
 	margin: 0 auto;
 }

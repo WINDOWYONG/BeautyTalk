@@ -30,9 +30,9 @@
 <style>
 #Content1{
 	width: 100%;
-	min-width: 1600px;
+	min-width: 1200px;
 	height: auto;
-	min-height: 2000px;
+	min-height: 1200px;
 	margin: auto;
 	margin-top: 50px;
 }
@@ -57,7 +57,8 @@
 	text-align: center;
 }
 #Content4{
-	width: 1200px;
+	width: auto;
+	min-width: 1200px;
 	height: auto;
 	min-height: 1200px;
 	overflow: hidden;
