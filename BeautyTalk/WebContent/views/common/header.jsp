@@ -88,17 +88,39 @@ div, input {
 	overflow: hidden;
 }
 
-#search_text {
-	flex: 1;
+
+/* 부모 */
+#search_form {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  border: 2px solid rgb(232, 97, 140);
+  border-radius: 25px;
+  overflow: hidden;
 }
 
-#search_text input {
-	width: 100%;
-	height: 100%;
-	border: none;
-	padding: 0 15px;
-	outline: none;
+#search_text {
+  flex: 1;
 }
+
+/* 핵심 */
+#search_text input {
+  height: 100%;
+  width: 100%;
+  padding: 0px 15px 0 15px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center; /* 이건 무시돼도 일단 써놓고 */
+}
+
+/* 진짜 핵심 */
+#search_text input::placeholder {
+  font-size: 12px;
+
+}
+
 
 #search_btn {
 	width: 100px;
@@ -311,6 +333,8 @@ input[type="password"] {
     font-family: sans-serif !important; /* 기본 폰트로 설정 (시스템 폰트 사용) */
 	color: #666 !important;
 }
+
+
 </style>
 
 </head>

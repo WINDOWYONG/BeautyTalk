@@ -6,10 +6,33 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Pretendard', sans-serif;
-    }
+  @font-face {
+    font-family: 'Binggrae-Two';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	font-family: 'Binggrae-Two';
+    color: rgb(70, 69, 69);
+    box-sizing: border-box;
+}
+
+#search_text input {
+  height: 100%;
+  padding: 10px 15px 0 15px; /* ⬅ 여기가 핵심! 위쪽 padding */
+  font-size: 14px;
+  border: none;
+  outline: none;
+  display: block;
+}
+
+#search_text input::placeholder {
+  transform: translateY(2px); /* 또는 */
+  padding-top: 2px;
+}
+
   
     body {
       margin: 0;
@@ -26,7 +49,7 @@
     }
   
     .container {
-      width: 400px;
+      width: 430px;
       padding: 40px 20px;
       text-align: center;
     }
@@ -72,8 +95,8 @@
   </style>
 </head>
 <body>
-
-	<%@ include file="../common/header.jsp" %>
+<br>
+<%@ include file="../common/header.jsp" %>
 	
 	<div class="wrapper">
 	  <div class="container">

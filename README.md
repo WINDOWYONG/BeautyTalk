@@ -91,9 +91,68 @@ ERD CLOUD:
 <br><br><br>
 
 # 🎀 프로젝트 구현
-### ❤️ 전창용
-### 💛 주현수
-### 💜 이용훈
+### ❤️ 전창용  
+
+### 💛 주현수  
+- 일반회원 로그인
+<img src="BeautyTalk/WebContent/resources/gif/일반회원로그인.gif" width="700" />  
+
+- 아이디 저장
+<img src="BeautyTalk/WebContent/resources/gif/아이디저장.gif" width="700" />  
+
+- 카카오톡 API 로그인
+<img src="BeautyTalk/WebContent/resources/gif/카카오톡API로그인.gif" width="700" />  
+
+- 아이디 찾기
+<img src="BeautyTalk/WebContent/resources/gif/아이디찾기.gif" width="700" />  
+
+- 비밀번호 찾기 및 변경
+<img src="BeautyTalk/WebContent/resources/gif/비밀번호찾기및변경.gif" width="700" />  
+
+- 로그아웃
+<img src="BeautyTalk/WebContent/resources/gif/로그아웃.gif" width="700" />  
+
+- 뷰티캘린더 일정 조회
+<img src="BeautyTalk/WebContent/resources/gif/뷰티캘린더 일정 조회.gif" width="700" />  
+
+- 뷰티캘린더 일정 추가
+<img src="BeautyTalk/WebContent/resources/gif/뷰티캘린더 일정 추가.gif" width="700" />  
+
+- 뷰티캘린더 일정 삭제
+<img src="BeautyTalk/WebContent/resources/gif/뷰티캘린더 일정 삭제.gif" width="700" />  
+
+- 팔로잉 뷰티캘린더 조회(조회만 가능, 삭제 불가)
+<img src="BeautyTalk/WebContent/resources/gif/팔로잉 뷰티캘린더 조회.gif" width="700" />  
+
+- 팔로잉 투두리스트 조회(조회만 가능, 루틴 추가 불가)
+<img src="BeautyTalk/WebContent/resources/gif/팔로잉 투두리스트 조회.gif" width="700" />  
+
+- 투두리스트 추가
+<img src="BeautyTalk/WebContent/resources/gif/투두리스트 추가.gif" width="700" />  
+
+- 투두리스트 루틴 설정
+<img src="BeautyTalk/WebContent/resources/gif/투두리스트 루틴 설정.gif" width="700" />  
+
+- 투두리스트 완료
+<img src="BeautyTalk/WebContent/resources/gif/투두리스트 완료.gif" width="700" />  
+
+- 투두리스트 삭제
+<img src="BeautyTalk/WebContent/resources/gif/투두리스트 삭제.gif" width="700" />  
+
+- 전체보기 / 미완료 / 완료 / 전체삭제
+<img src="BeautyTalk/WebContent/resources/gif/투두리스트 기능.gif" width="700" />  
+
+- 인기 유저 조회
+<img src="BeautyTalk/WebContent/resources/gif/인기 유저 조회.gif" width="700" />  
+
+- 비로그인 시 로그인 창으로 리로딩
+<img src="BeautyTalk/WebContent/resources/gif/비로그인 유저팔로우.gif" width="700" />  
+
+- 유저 팔로우/언팔로우
+<img src="BeautyTalk/WebContent/resources/gif/유저 팔로우언팔로우.gif" width="700" />  
+
+### 💜 이용훈  
+
 <br><br><br>
 
 # 📚 최종 보고서

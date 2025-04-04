@@ -19,7 +19,7 @@
 	font-family: 'Binggrae-Two';
     color: rgb(70, 69, 69);
 }
-input[type="text"],
+#userId,
 input[type="password"] {
   font-family: system-ui, sans-serif;
 }
