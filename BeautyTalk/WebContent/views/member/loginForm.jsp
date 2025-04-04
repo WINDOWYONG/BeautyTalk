@@ -99,13 +99,21 @@
 		margin: auto;
 		margin-top: 50px;
 	}
-<<<<<<< HEAD
-	.userPwd{}
-=======
-	.userPwd{
-		color: #000;
-	}
->>>>>>> post
+	@font-face {
+    font-family: 'Binggrae-Two';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body *{
+    font-family: 'Binggrae-Two';
+    color: rgb(70, 69, 69);
+	
+}
+body{
+	padding: 30px;
+	margin: 0 auto;
+}
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

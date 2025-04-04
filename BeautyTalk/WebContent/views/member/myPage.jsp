@@ -14,17 +14,19 @@
         </head>
         <style>
             @font-face {
-    font-family: 'Binggrae-Two';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
+                font-family: 'Binggrae-Two';
+                src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+            }
 
-body {
-    font-family: 'Binggrae-Two', sans-serif;
-    color: #000000;  /* 글자 색상 설정 */
-    font-size: 16px;  /* 글자 크기 설정 */
-}
+            body {
+                font-family: 'Binggrae-Two', sans-serif;
+                color: #000000;
+                /* 글자 색상 설정 */
+                font-size: 16px;
+                /* 글자 크기 설정 */
+            }
         </style>
 
         <body>
@@ -37,7 +39,7 @@ body {
 
                     <div id="Content1">
                         <div id="Content2">
-                            <% if(loginUser.getFilePath() !="" ) { %>
+                            <% if(loginUser.getFilePath() != null && !loginUser.getFilePath().isEmpty()) { %>
                                 <div id="userImg"
                                     style="position: relative; display: inline-block; width: 100px; height: 100%;">
                                     <img id="userprofile" src="<%= imagePath %>" alt="유저이미지"
@@ -52,8 +54,8 @@ body {
                                 <% } else {%>
                                     <div id="userImg"
                                         style="position: relative; display: inline-block; width: 100px; height: 100%;">
-                                        <img id="previewImage" src="<%= imagePath %>" alt="현재 프로필 이미지"
-                                            style="width: 100px; height: 100%;">
+                                        <img id="previewImage" src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="현재 프로필 이미지"
+                                            style="width: 100px; height: 100%; border-radius: 50%;">
 
                                         <!-- 수정 아이콘 -->
                                         <span id="openProfileModal" class="material-icons"
@@ -227,7 +229,8 @@ body {
                                         <pre
                                             align="left">                                                                                                                                   </pre>
                                     </div>
-                                    <form action="<%= contextPath %>/update.me?userNo=<%= loginUser.getUserNo() %>" id="insert-form" method="post">
+                                    <form action="<%= contextPath %>/update.me?userNo=<%= loginUser.getUserNo() %>"
+                                        id="insert-form" method="post">
                                         <input type="hidden" name=userNo id="userNo" maxlength="16"
                                             value="<%= loginUser.getUserNo() %>">
                                         <table style="margin-top: 50px; margin-left: 50px;">
@@ -242,7 +245,7 @@ body {
                                             </tr>
                                             <tr>
                                                 <td style="text-align: left;">비밀번호</td>
-                                                <td><input type="text" name="userPwd" class="userPwd" maxlength="16"
+                                                <td><input type="password" name="userPwd" class="userPwd" maxlength="16"
                                                         placeholder="비밀번호를 입력하세요." required
                                                         value="<%= loginUser.getUserPwd() %>"></td>
                                                 <td></td>
@@ -277,7 +280,8 @@ body {
                                             </tr>
                                             <tr>
                                                 <td colspan="3">
-                                                <button type="submit" class="btn-insta-insert"style="font-size: large; font-weight: 600; margin-left: 11px;">회원정보수정</button>
+                                                    <button type="submit" class="btn-insta-insert"
+                                                        style="font-size: large; font-weight: 600; margin-left: 11px;">회원정보수정</button>
                                                 </td>
                                             </tr>
                                         </table>
@@ -568,7 +572,8 @@ body {
 
                                                 <tr>
                                                     <td colspan="3"><button type="submit" class="btn-insta-insert"
-                                                            style="font-size: large; font-weight: 600; margin-left: 11px;">뷰티프로필수정</button></td>
+                                                            style="font-size: large; font-weight: 600; margin-left: 11px;">뷰티프로필수정</button>
+                                                    </td>
                                                 </tr>
                                             </table>
                                             <script>
@@ -1015,7 +1020,8 @@ body {
                                                         <tr>
                                                             <td colspan="3"><button type="submit"
                                                                     class="btn-insta-insert"
-                                                                    style="font-size: large; font-weight: 600px; margin-left: 11px;">뷰티프로필저장</button></td>
+                                                                    style="font-size: large; font-weight: 600px; margin-left: 11px;">뷰티프로필저장</button>
+                                                            </td>
                                                         </tr>
                                                     </table>
                                             </form>
@@ -1044,12 +1050,12 @@ body {
                                 <br><br>
                                 <!-- 비밀번호 입력 -->
                                 <div class="userId-container">
-                                    <label for="password">아이디 입력</label>
-                                    <input name="userId" type="text" id="password" placeholder="아이디 입력">
+                                    <label for="userId">아이디 입력</label>
+                                    <input name="userId" type="text" placeholder="아이디 입력">
                                 </div>
                                 <div class="password-container">
                                     <label for="password">비밀번호 입력</label>
-                                    <input name="userPwd" type="password" id="userPwd" placeholder="비밀번호 입력">
+                                    <input name="userPwd" type="password" id="password" placeholder="비밀번호 입력">
                                 </div>
 
                                 <!-- 회원 탈퇴 버튼 -->
