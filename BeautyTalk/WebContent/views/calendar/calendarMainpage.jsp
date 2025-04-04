@@ -302,9 +302,7 @@
 	            <div class="menu-item" data-page="views/calendar/routineCalendar.jsp">
 	              <i class="fas fa-check-circle"><!--로고2--></i> 루틴 설정
 	            </div>
-	            <div class="menu-item" data-page="views/calendar/routineSetting.jsp">
-	              <i class="fas fa-chart-bar"><!--로고3--></i> 월간 분석
-	            </div>
+
 	          </nav>
 	      </div>
 	      <div class="L2"></div>
