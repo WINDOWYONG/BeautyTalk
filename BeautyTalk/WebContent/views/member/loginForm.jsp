@@ -8,6 +8,21 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <style>
+@font-face {
+    font-family: 'Binggrae-Two';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	font-family: 'Binggrae-Two';
+    color: rgb(70, 69, 69);
+}
+input[type="text"],
+input[type="password"] {
+  font-family: system-ui, sans-serif;
+}
 	.outer {
 		width: 100%;
 		height: 100%;
