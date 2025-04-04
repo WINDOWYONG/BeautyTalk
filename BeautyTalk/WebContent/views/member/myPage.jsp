@@ -554,8 +554,7 @@
 
                                                 <tr>
                                                     <td colspan="3"><button type="submit" class="btn-insta-insert"
-                                                            style="font-size: large; font-weight: 600; margin-left: 11px;">뷰티
-                                                            프로필 수정</button></td>
+                                                            style="font-size: large; font-weight: 600; margin-left: 11px;">뷰티프로필수정</button></td>
                                                 </tr>
                                             </table>
                                             <script>
@@ -1002,8 +1001,7 @@
                                                         <tr>
                                                             <td colspan="3"><button type="submit"
                                                                     class="btn-insta-insert"
-                                                                    style="font-size: large; font-weight: 600; margin-left: 11px;">뷰티
-                                                                    프로필 저장</button></td>
+                                                                    style="font-size: large; font-weight: 600px; margin-left: 11px;">뷰티프로필저장</button></td>
                                                         </tr>
                                                     </table>
                                             </form>
