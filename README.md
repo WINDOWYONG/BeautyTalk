@@ -183,7 +183,25 @@ ERD CLOUD:
 - 유저 팔로우/언팔로우
 <img src="BeautyTalk/WebContent/resources/gif/유저 팔로우언팔로우.gif" width="700" />  
 
-### 💜 이용훈  
+### 💜 이용훈
+
+- 리뷰 작성
+<img src="BeautyTalk/WebContent/resources/gif/lyh/리뷰 작성.gif" width="700" />  
+
+- 리뷰 수정
+<img src="BeautyTalk/WebContent/resources/gif/lyh/리뷰 수정.gif" width="700" />  
+
+- 리뷰 삭제
+<img src="BeautyTalk/WebContent/resources/gif/lyh/리뷰 삭제.gif" width="700" />  
+
+- 포스트 작성
+<img src="BeautyTalk/WebContent/resources/gif/lyh/포스트 작성.gif" width="700" />  
+
+- 댓글 작성
+<img src="BeautyTalk/WebContent/resources/gif/lyh/댓글 작성.gif" width="700" />  
+
+- 마이 리뷰/포스트 조회
+<img src="BeautyTalk/WebContent/resources/gif/lyh/마이 포스트.gif" width="700" />  
 
 <br><br><br>
 
