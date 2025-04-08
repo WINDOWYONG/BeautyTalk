@@ -31,7 +31,15 @@
 
 # 👨‍💻 구성원 및 역할
 ### ❤️ 전창용 (조장)  
-<!-- 여기에 입력하심댑니다 -->
+* 회원정보 조회, 수정
+* 회원탈퇴
+* 뷰티 프로필 조회, 추가, 수정
+* 아이디 중복체크
+* 네이버 API 로그인
+* 상품 카테코리, 브랜드별 조회 
+* 유저 팔로우/ 팔로우 취소 기능
+* 사용자 팔로우, 팔로워 검색 및 조회
+
 <br>
 
 ### 💛 주현수 (조원)
@@ -94,7 +102,31 @@ ERD CLOUD:
 <br><br><br>
 
 # 🎀 프로젝트 구현
-### ❤️ 전창용  
+### ❤️ 전창용
+* 회원정보 조회, 수정
+<img src="BeautyTalk/WebContent/resources/gif/yong/회원정보 수정 최종.gif">
+
+* 회원탈퇴
+<img src="BeautyTalk/WebContent/resources/gif/yong/회원탈퇴.gif">
+
+* 뷰티 프로필 조회, 추가, 수정
+<img src="BeautyTalk/WebContent/resources/gif/yong/뷰티프로필.gif">
+
+* 아이디 중복체크
+<img src="BeautyTalk/WebContent/resources/gif/yong/아이디중복체크.gif">
+
+* 네이버 API 로그인
+<img src="BeautyTalk/WebContent/resources/gif/yong/네이버API.gif">
+
+* 상품 카테코리, 브랜드별 조회 
+<img src="BeautyTalk/WebContent/resources/gif/yong/상품 조회, 및 검색.gif">
+
+* 유저 팔로우/ 팔로우 취소 기능
+<img src="BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색 및 팔로우 취소.gif">
+
+* 유저 팔로우, 팔로워 검색 및 조회
+<img src="BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색.gif">
+
 
 ### 💛 주현수  
 - 일반회원 로그인
@@ -154,7 +186,25 @@ ERD CLOUD:
 - 유저 팔로우/언팔로우
 <img src="BeautyTalk/WebContent/resources/gif/유저 팔로우언팔로우.gif" width="700" />  
 
-### 💜 이용훈  
+### 💜 이용훈
+
+- 리뷰 작성
+<img src="BeautyTalk/WebContent/resources/gif/lyh/리뷰 작성.gif" width="700" />  
+
+- 리뷰 수정
+<img src="BeautyTalk/WebContent/resources/gif/lyh/리뷰 수정.gif" width="700" />  
+
+- 리뷰 삭제
+<img src="BeautyTalk/WebContent/resources/gif/lyh/리뷰 삭제.gif" width="700" />  
+
+- 포스트 작성
+<img src="BeautyTalk/WebContent/resources/gif/lyh/포스트 작성.gif" width="700" />  
+
+- 댓글 작성
+<img src="BeautyTalk/WebContent/resources/gif/lyh/댓글 작성.gif" width="700" />  
+
+- 마이 리뷰/포스트 조회
+<img src="BeautyTalk/WebContent/resources/gif/lyh/마이 포스트.gif" width="700" />  
 
 <br><br><br>
 
