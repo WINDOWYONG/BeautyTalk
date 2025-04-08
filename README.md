@@ -104,28 +104,28 @@ ERD CLOUD:
 # 🎀 프로젝트 구현
 ### ❤️ 전창용
 * 회원정보 조회, 수정
-<img src="BeautyTalk/WebContent/resources/gif/yong/회원정보 수정 최종.gif">
+<img src="BeautyTalk/WebContent/resources/gif/yong/회원정보 수정 최종.gif" width="700"/>
 
 * 회원탈퇴
-<img src="BeautyTalk/WebContent/resources/gif/yong/회원탈퇴.gif">
+<img src="BeautyTalk/WebContent/resources/gif/yong/회원탈퇴.gif" width="700"/>
 
 * 뷰티 프로필 조회, 추가, 수정
-<img src="BeautyTalk/WebContent/resources/gif/yong/뷰티프로필.gif">
+<img src="BeautyTalk/WebContent/resources/gif/yong/뷰티프로필.gif" width="700"/>
 
 * 아이디 중복체크
-<img src="BeautyTalk/WebContent/resources/gif/yong/아이디중복체크.gif">
+<img src="BeautyTalk/WebContent/resources/gif/yong/아이디중복체크.gif" width="700"/>
 
 * 네이버 API 로그인
-<img src="BeautyTalk/WebContent/resources/gif/yong/네이버API.gif">
+<img src="BeautyTalk/WebContent/resources/gif/yong/네이버API.gif" width="700"/>
 
 * 상품 카테코리, 브랜드별 조회 
-<img src="BeautyTalk/WebContent/resources/gif/yong/상품 조회, 및 검색.gif">
+<img src="BeautyTalk/WebContent/resources/gif/yong/상품 조회, 및 검색.gif" width="700"/>
 
 * 유저 팔로우/ 팔로우 취소 기능
-<img src="BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색 및 팔로우 취소.gif">
+<img src="BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색 및 팔로우 취소.gif" width="700"/>
 
 * 유저 팔로우, 팔로워 검색 및 조회
-<img src="BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색.gif">
+<img src="BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색.gif" width="700"/>
 
 
 ### 💛 주현수  
