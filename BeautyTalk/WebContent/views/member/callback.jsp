@@ -23,9 +23,12 @@
     }
 
     // ✅ 네이버 API 요청 정보 설정
-		Dotenv dotenv = Dotenv.load();
-		String clientId = dotenv.get("CLIENT_ID");
-		String clientSecret = dotenv.get("CLIENT_SECRET");
+	Dotenv dotenv = Dotenv.configure()
+	                      .directory("WebContent")   // .env가 실제로 있는 위치!
+	                      .load();
+
+	String clientId = dotenv.get("CLIENT_ID");
+	String clientSecret = dotenv.get("CLIENT_SECRET");
     String redirectURI = URLEncoder.encode("http://192.168.20.44:8123/beautyTalk/views/member/callback.jsp", "UTF-8");
 
     // ✅ 1. Access Token 요청
