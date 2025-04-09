@@ -138,16 +138,9 @@ body{
 </head>
 <body>
 <%
-<<<<<<< HEAD
-Dotenv dotenv = Dotenv.configure()
-.directory("WebContent")   // .env가 실제로 있는 위치!
-.load();
-
-=======
+// WebContent 폴더 안에 있는 .env 파일 경로를 명시적으로 지정
 Dotenv dotenv = Dotenv.configure().directory("C:/BeautyTalk/BeautyTalk/WebContent").load();
->>>>>>> 4a9ea3164b5c683b30f2bc3067ab2a5312e5ed46
 String clientId = dotenv.get("CLIENT_ID");
-
 System.out.println("Client ID: " + clientId);
 String redirectURI = "http://192.168.20.44:8123/beautyTalk/views/member/callback.jsp";
 String encodedRedirectURI = URLEncoder.encode(redirectURI, "UTF-8");

@@ -23,12 +23,10 @@
     }
 
     // ✅ 네이버 API 요청 정보 설정
-	Dotenv dotenv = Dotenv.configure()
-	                      .directory("WebContent")   // .env가 실제로 있는 위치!
-	                      .load();
-
-	String clientId = dotenv.get("CLIENT_ID");
-	String clientSecret = dotenv.get("CLIENT_SECRET");
+            // WebContent 폴더 안에 있는 .env 파일 경로를 명시적으로 지정
+            Dotenv dotenv = Dotenv.configure().directory("C:/BeautyTalk/BeautyTalk/WebContent").load();
+            String clientId = dotenv.get("CLIENT_ID");
+		String clientSecret = dotenv.get("CLIENT_SECRET");
     String redirectURI = URLEncoder.encode("http://192.168.20.44:8123/beautyTalk/views/member/callback.jsp", "UTF-8");
 
     // ✅ 1. Access Token 요청
