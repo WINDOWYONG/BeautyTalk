@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="insertSchedule">
+		INSERT 
+		  INTO SCHEDULE 
+		 (
+		   SCH_NO
+		 , MEM_NO
+		 , SCH_TITLE
+		 , SCH_STARTDATE
+		 , SCH_ENDDATE
+		 )
+		 VALUES 
+		 (
+		   SEQ_SCH.NEXTVAL
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 )
+	</entry>
+	
+	<entry key="scheduleList">
+		SELECT
+			   SCH_NO
+		     , SCH_TITLE
+		     , SCH_STARTDATE
+		     , SCH_ENDDATE
+		  FROM SCHEDULE
+		 WHERE MEM_NO = ?
+	</entry>
+	
+	<entry key="deleteSchedule">
+		DELETE
+		  FROM SCHEDULE
+		 WHERE SCH_NO = ?
+	</entry>
+	
+	<entry key="selectFollowList">
+		SELECT 
+		       F.FOLLOWING,
+		       M.MEM_ID,
+		       M.MEM_NAME,
+		       I.FILE_PATH || I.CHANGE_NAME AS FILEPATH
+		  FROM FOLLOW F
+		  JOIN MEMBER M ON F.FOLLOWING = M.MEM_NO
+		  LEFT JOIN (
+		      SELECT *
+		        FROM IMAGE
+		       WHERE (IMAGE_NO, REF_BNO) IN (
+		         SELECT MAX(IMAGE_NO), REF_BNO
+		           FROM IMAGE
+		          GROUP BY REF_BNO
+		       )
+		  ) I ON M.MEM_NO = I.REF_BNO
+		 WHERE F.FOLLOWER = ?
+		   AND M.STATUS = 'Y'
+		
+	</entry>
+
+	<entry key="selectFollowUserName">
+		SELECT MEM_NAME
+		  FROM MEMBER
+		 WHERE MEM_ID = ?
+	</entry>
+	
+	<entry key="followingScheduleList">
+		SELECT
+		       SCH_NO
+		     , SCH_TITLE
+		     , SCH_STARTDATE
+		     , SCH_ENDDATE
+		  FROM SCHEDULE
+		  JOIN MEMBER USING (MEM_NO)
+		 WHERE MEM_ID = ?
+	</entry>
+	
+	<entry key="selectTodos">
+		SELECT 
+			   CHECK_NO
+			 , MEM_NO
+		     , CHECK_TITLE
+		     , CHECK_YN
+		  FROM CHECKLIST
+		 WHERE MEM_NO = ?
+		   AND CHECK_DATE = ?
+	</entry>
+	
+	<entry key="insertTodo">
+		INSERT 
+		  INTO CHECKLIST 
+		 (
+		   CHECK_NO
+		 , MEM_NO
+		 , CHECK_TITLE
+		 , CHECK_YN
+		 , CHECK_DATE
+		 )
+		 VALUES 
+		 (
+		   SEQ_CHECK.NEXTVAL
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 )
+	</entry>
+	
+	<entry key="updateTodo">
+		UPDATE CHECKLIST
+		   SET CHECK_YN = ?
+		 WHERE CHECK_NO = ?
+	</entry>
+	
+	<entry key="deleteTodo">
+		DELETE 
+		  FROM CHECKLIST
+		 WHERE CHECK_NO = ?
+	</entry>
+	
+	<entry key="deleteAllTodo">
+		DELETE 
+		  FROM CHECKLIST 
+		 WHERE CHECK_NO IN (#)
+	</entry>
+	
+	<entry key="selectFollowTodos">
+		SELECT
+		       CHECK_NO
+		     , MEM_NO
+			 , CHECK_TITLE
+			 , CHECK_YN
+		  FROM CHECKLIST
+		  JOIN MEMBER 
+		 USING (MEM_NO)
+		 WHERE MEM_ID = ?
+		   AND CHECK_DATE = ?
+	</entry>
+	
+</properties>
