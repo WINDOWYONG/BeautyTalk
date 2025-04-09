@@ -138,7 +138,8 @@ body{
 </head>
 <body>
 <%
-dotenv dotenv = Dotenv.configure().directory("C:/BeautyTalk/BeautyTalk/WebContent").load();
+// WebContent 폴더 안에 있는 .env 파일 경로를 명시적으로 지정
+Dotenv dotenv = Dotenv.configure().directory("C:/BeautyTalk/BeautyTalk/WebContent").load();
 String clientId = dotenv.get("CLIENT_ID");
 
 System.out.println("Client ID: " + clientId);
