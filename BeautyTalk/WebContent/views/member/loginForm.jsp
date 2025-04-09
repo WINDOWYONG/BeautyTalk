@@ -138,7 +138,7 @@ body{
 </head>
 <body>
 <%
-Dotenv dotenv = Dotenv.configure().directory("C:/BeautyTalk/BeautyTalk/WebContent").load();
+dotenv dotenv = Dotenv.configure().directory("C:/BeautyTalk/BeautyTalk/WebContent").load();
 String clientId = dotenv.get("CLIENT_ID");
 
 System.out.println("Client ID: " + clientId);
