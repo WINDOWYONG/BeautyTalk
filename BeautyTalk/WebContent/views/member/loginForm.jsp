@@ -138,8 +138,10 @@ body{
 </head>
 <body>
 <%
-Dotenv dotenv = Dotenv.load();
+Dotenv dotenv = Dotenv.configure().directory("C:/BeautyTalk/BeautyTalk/WebContent").load();
 String clientId = dotenv.get("CLIENT_ID");
+
+System.out.println("Client ID: " + clientId);
 String redirectURI = "http://192.168.20.44:8123/beautyTalk/views/member/callback.jsp";
 String encodedRedirectURI = URLEncoder.encode(redirectURI, "UTF-8");
 

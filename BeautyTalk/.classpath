@@ -15,5 +15,13 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.activation-1.2.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/java-dotenv-5.2.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/kotlin-stdlib-1.8.22.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/kotlin-stdlib-common-1.8.22.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/kotlin-annotations-jvm-1.8.22.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
