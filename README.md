@@ -209,4 +209,4 @@ ERD CLOUD:
 <br><br><br>
 
 # 📚 최종 보고서
-[BeautyTalk 최종보고서 🎈](./WebContent/resources/Beauty_Talk_complete.pdf)
+[BeautyTalk 최종보고서 🎈](https://drive.google.com/file/d/1kOtn__TMRBmBCC3bmQg25ulM2rtiX0R5/view?usp=drive_link)
