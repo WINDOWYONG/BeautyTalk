@@ -1,3 +1,4 @@
+<%@page import="io.github.cdimascio.dotenv.Dotenv"%>
 <%@page import="java.util.UUID"%>
 <%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -137,7 +138,10 @@ body{
 </head>
 <body>
 <%
-String clientId = "6VzT269VW306H2aC74fu";
+// WebContent 폴더 안에 있는 .env 파일 경로를 명시적으로 지정
+Dotenv dotenv = Dotenv.configure().directory("C:/BeautyTalk/BeautyTalk/WebContent").load();
+String clientId = dotenv.get("CLIENT_ID");
+System.out.println("Client ID: " + clientId);
 String redirectURI = "http://192.168.20.44:8123/beautyTalk/views/member/callback.jsp";
 String encodedRedirectURI = URLEncoder.encode(redirectURI, "UTF-8");
 

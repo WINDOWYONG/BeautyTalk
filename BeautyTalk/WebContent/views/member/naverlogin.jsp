@@ -1,3 +1,4 @@
+<%@page import="io.github.cdimascio.dotenv.Dotenv"%>
 <%@page import="java.util.UUID"%>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -8,7 +9,8 @@
   <body>
     <h1>네이버 로그인</h1>
 <%
-String clientId = "6VzT269VW306H2aC74fu";
+Dotenv dotenv = Dotenv.load();
+String clientId = dotenv.get("CLIENT_ID");
 String redirectURI = "http://192.168.20.44:8123/beautyTalk/views/member/callback.jsp";
 String encodedRedirectURI = URLEncoder.encode(redirectURI, "UTF-8");
 
