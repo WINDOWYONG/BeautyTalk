@@ -1,4 +1,5 @@
-<img src="BeautyTalk/WebContent/resources/images/MainLogo.png" width="300" />
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/resources/images/MainLogo.png" width="300" />
+
 
 
 # 🌸 프로젝트 소개
