@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/resources/images/MainLogo.png" width="300" />
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/resources/images/현존최강로고1.jpg" width="300">
 
 
 
