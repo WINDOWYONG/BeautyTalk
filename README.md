@@ -212,7 +212,6 @@ ERD CLOUD:
  
  # 📚 최종 보고서
  [BeautyTalk 최종보고서 🎈](https://drive.google.com/file/d/1kOtn__TMRBmBCC3bmQg25ulM2rtiX0R5/view?usp=drive_link) 1Has a comment. Original line has a comment.
- <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/투두리스트 기능.gif" width="700" />  
  
  # 📄 최종 스크립트
  [BeautyTalk 최종스크립트 🎈](https://drive.google.com/file/d/1oYFzYuDkXt5aw5cXwGPtld-1difSGdzE/view?usp=drive_link) 1Has a comment. Original line has a comment.
