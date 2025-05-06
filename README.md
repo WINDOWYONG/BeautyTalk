@@ -175,6 +175,7 @@ ERD CLOUD:
 
 - 전체보기 / 미완료 / 완료 / 전체삭제
 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/투두리스트 기능.gif" width="700" />
-[BeautyTalk 최종보고서 🎈](https://drive.google.com/file/d/1kOtn__TMRBmBCC3bmQg25ulM2rtiX0R5/view?usp=drive_link)
 
 - 인기 유저
+
+[BeautyTalk 최종보고서 🎈](https://drive.google.com/file/d/1kOtn__TMRBmBCC3bmQg25ulM2rtiX0R5/view?usp=drive_link)
