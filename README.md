@@ -117,7 +117,7 @@ ERD CLOUD:
 * 네이버 API 로그인
 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/네이버API.gif" width="700"/>
 
-* 상품 카테코리, 브랜드별 조회 
+* 상품 카테고리, 브랜드별 조회 
 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/상품 조회, 및 검색.gif" width="700"/>
 
 * 유저 팔로우/ 팔로우 취소 기능
