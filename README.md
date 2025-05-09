@@ -175,43 +175,41 @@ ERD CLOUD:
 
 - 전체보기 / 미완료 / 완료 / 전체삭제
 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/투두리스트 기능.gif" width="700" />
+ 
+- 인기 유저 조회  
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9D%B8%EA%B8%B0%20%EC%9C%A0%EC%A0%80%20%EC%A1%B0%ED%9A%8C.gif" width="700" />  
 
-- 전체보기 / 미완료 / 완료 / 전체삭제
- <img src="BeautyTalk/WebContent/resources/gif/투두리스트 기능.gif" width="700" />  
- 
- - 인기 유저 조회
- <img src="BeautyTalk/WebContent/resources/gif/인기 유저 조회.gif" width="700" />  
- 
- - 비로그인 시 로그인 창으로 이동
- <img src="BeautyTalk/WebContent/resources/gif/비로그인 유저팔로우.gif" width="700" />  
- 
- - 유저 팔로우/언팔로우
- <img src="BeautyTalk/WebContent/resources/gif/유저 팔로우언팔로우.gif" width="700" />  
- 
- ### 💜 이용훈
- 
- - 리뷰 작성
- <img src="BeautyTalk/WebContent/resources/gif/lyh/리뷰 작성.gif" width="700" />  
- 
- - 리뷰 수정
- <img src="BeautyTalk/WebContent/resources/gif/lyh/리뷰 수정.gif" width="700" />  
- 
- - 리뷰 삭제
- <img src="BeautyTalk/WebContent/resources/gif/lyh/리뷰 삭제.gif" width="700" />  
- 
- - 포스트 작성
- <img src="BeautyTalk/WebContent/resources/gif/lyh/포스트 작성.gif" width="700" />  
- 
- - 댓글 작성
- <img src="BeautyTalk/WebContent/resources/gif/lyh/댓글 작성.gif" width="700" />  
- 
- - 마이 리뷰/포스트 조회
- <img src="BeautyTalk/WebContent/resources/gif/lyh/마이 포스트.gif" width="700" />  
- 
- <br><br><br>
- 
- # 📚 최종 보고서
- [BeautyTalk 최종보고서 🎈](https://drive.google.com/file/d/1kOtn__TMRBmBCC3bmQg25ulM2rtiX0R5/view?usp=drive_link) 1Has a comment. Original line has a comment.
- 
- # 📄 최종 스크립트
- [BeautyTalk 최종스크립트 🎈](https://drive.google.com/file/d/1oYFzYuDkXt5aw5cXwGPtld-1difSGdzE/view?usp=drive_link) 1Has a comment. Original line has a comment.
+- 비로그인 시 로그인 창으로 이동  
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EB%B9%84%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9C%A0%EC%A0%80%ED%8C%94%EB%A1%9C%EC%9A%B0.gif" width="700" />  
+
+- 유저 팔로우/언팔로우  
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9C%A0%EC%A0%80%20%ED%8C%94%EB%A1%9C%EC%9A%B0%EC%96%B8%ED%8C%94%EB%A1%9C%EC%9A%B0.gif" width="700" />  
+
+### 💜 이용훈  
+
+- 리뷰 작성  
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%9E%91%EC%84%B1.gif" width="700" />  
+
+- 리뷰 수정  
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%88%98%EC%A0%95.gif" width="700" />  
+
+- 리뷰 삭제  
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%82%AD%EC%A0%9C.gif" width="700" />  
+
+- 포스트 작성  
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EC%9E%91%EC%84%B1.gif" width="700" />  
+
+- 댓글 작성  
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%8C%93%EA%B8%80%20%EC%9E%91%EC%84%B1.gif" width="700" />  
+
+- 마이 리뷰/포스트 조회  
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A7%88%EC%9D%B4%20%ED%8F%AC%EC%8A%A4%ED%8A%B8.gif" width="700" />  
+
+<br><br><br>
+
+# 📚 최종 보고서  
+[BeautyTalk 최종보고서 🎈](https://drive.google.com/file/d/1kOtn__TMRBmBCC3bmQg25ulM2rtiX0R5/view?usp=drive_link)  
+
+# 📄 최종 스크립트  
+[BeautyTalk 최종스크립트 🎈](https://drive.google.com/file/d/1oYFzYuDkXt5aw5cXwGPtld-1difSGdzE/view?usp=drive_link)  
+
