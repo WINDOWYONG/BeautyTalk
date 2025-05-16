@@ -1,23 +1,14 @@
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/images/MainLogo.png" width="300">ㅋㅋㅋㅋ
+<p><img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/images/MainLogo.png" width="300"></p>
 <h1>🌸 프로젝트 소개</h1>
 <p>오늘날에는 올리브영과 같은 H&B(헬스앤뷰티) 스토어와 온라인 쇼핑몰 덕분에
-
-누구나 손쉽게 다양한 화장품을 접할 수 있다.
-
-하지만 선택의 폭이 넓어진 만큼, <strong>어떤 제품이 자신에게 맞는지 고민하는 소비자들</strong>도 많아졌다.
-
-현대의 소비자들은 <strong>정보 공유를 통해 자신에게 최적화된 제품을 찾고자</strong> 하며,
-
-이에 따라 <strong>SNS 기능을 결합한 뷰티 커뮤니티 플랫폼</strong>의 필요성이 대두되고 있다.</p>
+</p><p>누구나 손쉽게 다양한 화장품을 접할 수 있다.</p>
+<p>하지만 선택의 폭이 넓어진 만큼, <strong>어떤 제품이 자신에게 맞는지 고민하는 소비자들</strong>도 많아졌다.</p>
+<p>현대의 소비자들은 <strong>정보 공유를 통해 자신에게 최적화된 제품을 찾고자</strong> 하며,</p>
+<p>이에 따라 <strong>SNS 기능을 결합한 뷰티 커뮤니티 플랫폼</strong>의 필요성이 대두되고 있다.</p><p></p>
 <p>본 프로젝트는 이러한 니즈를 반영하여 다음과 같은 기능을 제공한다:
-
-✔ <strong>사용자 리뷰와 SNS 기능(팔로우, 좋아요 등)을</strong> 통해 제품에 대한 신뢰 형성
-
-✔ <strong>화장품 사용 가이드 및 메이크업 영상을 제공</strong>하여 초보자도 쉽게 따라할 수 있도록 지원</p>
+</p><p>✔ <strong>사용자 리뷰와 SNS 기능(팔로우, 좋아요 등)을</strong> 통해 제품에 대한 신뢰 형성</p>
+<p>✔ <strong>화장품 사용 가이드 및 메이크업 영상을 제공</strong>하여 초보자도 쉽게 따라할 수 있도록 지원</p><p></p>
 <p>누구나 쉽고 간편하게 화장품을 접하고, 자신에게 맞는 뷰티 루틴을 찾아갈 수 있는 공간을 제공하는 것이 해당 프로젝트의 목표다.
-
-
-
 </p>
 <h1>📆 개발 기간</h1>
 <h4>2025.02.06 ~ 2025.04.04</h4>
@@ -32,10 +23,6 @@
 <li>2025.04.04 : 프로젝트 최종 발표</li>
 </ul>
 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/images/개발일정표_스프레드시트.png" width="700">
-
-
-
-
 <h1>👨‍💻 구성원 및 역할</h1>
 <h3>❤️ 전창용 (조장)</h3>
 <ul>
@@ -48,8 +35,6 @@
 <li>유저 팔로우/ 팔로우 취소 기능</li>
 <li>사용자 팔로우, 팔로워 검색 및 조회</li>
 </ul>
-
-
 <h3>💛 주현수 (조원)</h3>
 <ul>
 <li>일반회원 로그인</li>
@@ -62,7 +47,6 @@
 <li>투두리스트 조회/추가/완료/삭제</li>
 <li>인기 유저 조회</li>
 <li>유저 팔로우/언팔로우
-
 </li>
 </ul>
 <h3>💜 이용훈 (조원)</h3>
@@ -73,8 +57,6 @@
 <li>마이 리뷰/포스트 조회</li>
 </ul>
 <p>
-
-
 </p>
 <h1>⚙️ 개발 환경</h1>
 <ul>
@@ -84,9 +66,6 @@
 <li>DBMS : Oracle</li>
 <li>Languages : Java, HTML, CSS, JavaScript, JQuery, JSP, SQL</li>
 <li>Management : Git, GitHub, SourceTree
-
-
-
 </li>
 </ul>
 <h1>🛠️ 기술 스택 & 사용 라이브러리</h1>
@@ -115,19 +94,11 @@
 <li>📂 파일 업로드: commons-fileupload, cos.jar</li>
 <li>🔄 JSON 처리: Gson, JSON-simple</li>
 <li>🗄 DB 연동: Oracle JDBC Driver (ojdbc6)
-
-
-
 </li>
 </ul>
 <h1>💾 설계</h1>
 <p>ERD CLOUD:
-
 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/images/ERDCLOUD.png" width="700">
-
-
-
-
 </p>
 <h1>🎀 프로젝트 구현</h1>
 <h3>❤️ 전창용</h3>
@@ -233,56 +204,45 @@
 </li>
 <li>
 <p>인기 유저 조회
-
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9D%B8%EA%B8%B0%20%EC%9C%A0%EC%A0%80%20%EC%A1%B0%ED%9A%8C.gif" width="700"></p>
+</p><p><img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9D%B8%EA%B8%B0%20%EC%9C%A0%EC%A0%80%20%EC%A1%B0%ED%9A%8C.gif" width="700"></p><p></p>
 </li>
 <li>
 <p>비로그인 시 로그인 창으로 이동
-
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EB%B9%84%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9C%A0%EC%A0%80%ED%8C%94%EB%A1%9C%EC%9A%B0.gif" width="700"></p>
+</p><p><img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EB%B9%84%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9C%A0%EC%A0%80%ED%8C%94%EB%A1%9C%EC%9A%B0.gif" width="700"></p><p></p>
 </li>
 <li>
 <p>유저 팔로우/언팔로우
-
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9C%A0%EC%A0%80%20%ED%8C%94%EB%A1%9C%EC%9A%B0%EC%96%B8%ED%8C%94%EB%A1%9C%EC%9A%B0.gif" width="700"></p>
+</p><p><img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9C%A0%EC%A0%80%20%ED%8C%94%EB%A1%9C%EC%9A%B0%EC%96%B8%ED%8C%94%EB%A1%9C%EC%9A%B0.gif" width="700"></p><p></p>
 </li>
 </ul>
 <h3>💜 이용훈</h3>
 <ul>
 <li>
 <p>리뷰 작성
-
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%9E%91%EC%84%B1.gif" width="700"></p>
+</p><p><img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%9E%91%EC%84%B1.gif" width="700"></p><p></p>
 </li>
 <li>
 <p>리뷰 수정
-
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%88%98%EC%A0%95.gif" width="700"></p>
+</p><p><img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%88%98%EC%A0%95.gif" width="700"></p><p></p>
 </li>
 <li>
 <p>리뷰 삭제
-
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%82%AD%EC%A0%9C.gif" width="700"></p>
+</p><p><img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%82%AD%EC%A0%9C.gif" width="700"></p><p></p>
 </li>
 <li>
 <p>포스트 작성
-
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EC%9E%91%EC%84%B1.gif" width="700"></p>
+</p><p><img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EC%9E%91%EC%84%B1.gif" width="700"></p><p></p>
 </li>
 <li>
 <p>댓글 작성
-
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%8C%93%EA%B8%80%20%EC%9E%91%EC%84%B1.gif" width="700"></p>
+</p><p><img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%8C%93%EA%B8%80%20%EC%9E%91%EC%84%B1.gif" width="700"></p><p></p>
 </li>
 <li>
 <p>마이 리뷰/포스트 조회
-
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A7%88%EC%9D%B4%20%ED%8F%AC%EC%8A%A4%ED%8A%B8.gif" width="700"></p>
+</p><p><img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A7%88%EC%9D%B4%20%ED%8F%AC%EC%8A%A4%ED%8A%B8.gif" width="700"></p><p></p>
 </li>
 </ul>
 <p>
-
-
 </p>
 <h1>📚 최종 보고서</h1>
 <p><a href="https://drive.google.com/file/d/1kOtn__TMRBmBCC3bmQg25ulM2rtiX0R5/view?usp=drive_link">BeautyTalk 최종보고서 🎈</a></p>
