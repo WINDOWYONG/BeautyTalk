@@ -1,6 +1,4 @@
-<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/images/MainLogo.png" width="300">
-ㅋㅋ
-# 🌸 프로젝트 소개
+<img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/images/MainLogo.png" width="300">  # 🌸 프로젝트 소개
 
 오늘날에는 올리브영과 같은 H&B(헬스앤뷰티) 스토어와 온라인 쇼핑몰 덕분에
 
@@ -167,42 +165,33 @@ ERD CLOUD: <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/mai
 *   인기 유저 조회
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9D%B8%EA%B8%B0%20%EC%9C%A0%EC%A0%80%20%EC%A1%B0%ED%9A%8C.gif" width="700">
-    
 *   비로그인 시 로그인 창으로 이동
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EB%B9%84%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9C%A0%EC%A0%80%ED%8C%94%EB%A1%9C%EC%9A%B0.gif" width="700">
-    
 *   유저 팔로우/언팔로우
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9C%A0%EC%A0%80%20%ED%8C%94%EB%A1%9C%EC%9A%B0%EC%96%B8%ED%8C%94%EB%A1%9C%EC%9A%B0.gif" width="700">
-    
 
 ### 💜 이용훈
 
 *   리뷰 작성
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%9E%91%EC%84%B1.gif" width="700">
-    
 *   리뷰 수정
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%88%98%EC%A0%95.gif" width="700">
-    
 *   리뷰 삭제
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A6%AC%EB%B7%B0%20%EC%82%AD%EC%A0%9C.gif" width="700">
-    
 *   포스트 작성
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EC%9E%91%EC%84%B1.gif" width="700">
-    
 *   댓글 작성
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%8C%93%EA%B8%80%20%EC%9E%91%EC%84%B1.gif" width="700">
-    
 *   마이 리뷰/포스트 조회
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A7%88%EC%9D%B4%20%ED%8F%AC%EC%8A%A4%ED%8A%B8.gif" width="700">
-    
 
 # 📚 최종 보고서
 
