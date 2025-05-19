@@ -1,7 +1,7 @@
 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/images/MainLogo.png" width="300">
 
-# 🌸 프로젝트 소개
-<br>
+# 🌸 프로젝트 소개 <br>
+
 오늘날에는 올리브영과 같은 H&B(헬스앤뷰티) 스토어와 온라인 쇼핑몰 덕분에 누구나 손쉽게 다양한 화장품을 접할 수 있다. 하지만 선택의 폭이 넓어진 만큼, \*\*어떤 제품이 자신에게 맞는지 고민하는 소비자들\*\*도 많아졌다. 현대의 소비자들은 \*\*정보 공유를 통해 자신에게 최적화된 제품을 찾고자\*\* 하며, 이에 따라 \*\*SNS 기능을 결합한 뷰티 커뮤니티 플랫폼\*\*의 필요성이 대두되고 있다.
 
 본 프로젝트는 이러한 니즈를 반영하여 다음과 같은 기능을 제공한다:  
@@ -9,10 +9,10 @@
 ✔ **화장품 사용 가이드 및 메이크업 영상을 제공**하여 초보자도 쉽게 따라할 수 있도록 지원
 
 누구나 쉽고 간편하게 화장품을 접하고, 자신에게 맞는 뷰티 루틴을 찾아갈 수 있는 공간을 제공하는 것이 해당 프로젝트의 목표다.
-<br>
+
 # 📆 개발 기간
-<br>
-#### 2025.02.06 ~ 2025.04.04
+
+/#### 2025.02.06 ~ 2025.04.04
 
 *   2025.02.06 ~ 2025.02.12 : 주제 선정, 팀장 선출, 진행 방향 논의
 *   2025.02.12 ~ 2025.02.19 : 기획 의도, 유사사이트 분석, 클라이언트 요구사항 분석, UseCase Diagram 작성, 구현 목표 및 세부 기능, 작업 일정표
@@ -24,9 +24,9 @@
 *   2025.04.04 : 프로젝트 최종 발표
 
 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/images/개발일정표_스프레드시트.png" width="700">
-<br>
+
 # 👨‍💻 구성원 및 역할
-<br>
+
 ### ❤️ 전창용 (조장)
 
 *   회원정보 조회, 수정
@@ -37,7 +37,7 @@
 *   상품 카테코리, 브랜드별 조회
 *   유저 팔로우/ 팔로우 취소 기능
 *   사용자 팔로우, 팔로워 검색 및 조회
-<br>
+
 ### 💛 주현수 (조원)
 
 *   일반회원 로그인
@@ -50,14 +50,14 @@
 *   투두리스트 조회/추가/완료/삭제
 *   인기 유저 조회
 *   유저 팔로우/언팔로우
-<br>
+
 ### 💜 이용훈 (조원)
 
 *   리뷰 작성/수정/삭제
 *   포스트 작성
 *   댓글 작성
 *   마이 리뷰/포스트 조회
-<br>
+
 # ⚙️ 개발 환경
 
 *   OS : Windows10
@@ -66,27 +66,27 @@
 *   DBMS : Oracle
 *   Languages : Java, HTML, CSS, JavaScript, JQuery, JSP, SQL
 *   Management : Git, GitHub, SourceTree
-<br>
+
 # 🛠️ 기술 스택 & 사용 라이브러리
-<br>
+
 ### 🖥️ Front-End
 
 *   HTML5, CSS3, JavaScript
 *   jQuery, AJAX, JSON
 *   FullCalendar.js (캘린더 UI 라이브러리)
-<br>
+
 ### ⚙️ Back-End
 
 *   Java 11
 *   JSP & Servlet
 *   Oracle DB (JDBC: ojdbc6 사용)
-<br>
+
 ### 🌐 API / 외부 연동
 
 *   네이버 로그인 API (OAuth 기반 소셜 로그인)
 *   카카오 로그인 API (OAuth 기반 소셜 로그인)
 *   Google 이메일 인증 (JavaMail API 사용)
-<br>
+
 ### 📦 주요 기능별 사용 라이브러리
 
 *   🔐 소셜 로그인: 네이버, 카카오 API
@@ -94,14 +94,14 @@
 *   📂 파일 업로드: commons-fileupload, cos.jar
 *   🔄 JSON 처리: Gson, JSON-simple
 *   🗄 DB 연동: Oracle JDBC Driver (ojdbc6)
-<br>
+
 # 💾 설계
 
 ERD CLOUD:  
 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/images/ERDCLOUD.png" width="700">
-<br>
+
 # 🎀 프로젝트 구현
-<br>
+
 ### ❤️ 전창용
 
 *   회원정보 조회, 수정
@@ -128,7 +128,7 @@ ERD CLOUD:
 *   유저 팔로우, 팔로워 검색 및 조회
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/%ED%8C%94%EB%A1%9C%EC%9A%B0%2C%20%ED%8C%94%EB%A1%9C%EC%9B%8C%20%EA%B2%80%EC%83%89.gif" width="700">
-<br>
+
 ### 💛 주현수
 
 *   일반회원 로그인
@@ -173,7 +173,7 @@ ERD CLOUD:
 *   유저 팔로우/언팔로우
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9C%A0%EC%A0%80%20%ED%8C%94%EB%A1%9C%EC%9A%B0%EC%96%B8%ED%8C%94%EB%A1%9C%EC%9A%B0.gif" width="700">
-<br>
+
 ### 💜 이용훈
 
 *   리뷰 작성
@@ -194,7 +194,7 @@ ERD CLOUD:
 *   마이 리뷰/포스트 조회
     
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/lyh/%EB%A7%88%EC%9D%B4%20%ED%8F%AC%EC%8A%A4%ED%8A%B8.gif" width="700">
-<br>
+
 # 📚 최종 보고서
 
 [BeautyTalk 최종보고서 🎈](https://drive.google.com/file/d/1kOtn__TMRBmBCC3bmQg25ulM2rtiX0R5/view?usp=drive_link)
