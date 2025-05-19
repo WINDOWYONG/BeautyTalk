@@ -149,6 +149,8 @@ ERD CLOUD:
 *   유저 팔로우, 팔로워 검색 및 조회 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색.gif" width="700">
     
 
+
+
 ### 💛 주현수
 
 *   일반회원 로그인 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/일반회원로그인.gif" width="700">
