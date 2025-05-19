@@ -1,8 +1,7 @@
 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/images/MainLogo.png" width="300">
 
 # 🌸 프로젝트 소개
-
-  
+<br>
 오늘날에는 올리브영과 같은 H&B(헬스앤뷰티) 스토어와 온라인 쇼핑몰 덕분에 누구나 손쉽게 다양한 화장품을 접할 수 있다. 하지만 선택의 폭이 넓어진 만큼, \*\*어떤 제품이 자신에게 맞는지 고민하는 소비자들\*\*도 많아졌다. 현대의 소비자들은 \*\*정보 공유를 통해 자신에게 최적화된 제품을 찾고자\*\* 하며, 이에 따라 \*\*SNS 기능을 결합한 뷰티 커뮤니티 플랫폼\*\*의 필요성이 대두되고 있다.
 
 본 프로젝트는 이러한 니즈를 반영하여 다음과 같은 기능을 제공한다:  
