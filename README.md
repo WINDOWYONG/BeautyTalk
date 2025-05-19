@@ -132,55 +132,56 @@ ERD CLOUD:
 
 ### ❤️ 전창용
 
-*   회원정보 조회, 수정 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/%ED%9A%8C%EC%9B%90%EC%A0%95%EB%B3%B4%20%EC%88%98%EC%A0%95%20%EC%B5%9C%EC%A2%85.gif" width="700">
+*   회원정보 조회, 수정 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/회원정보 수정 최종.gif" width="700">
     
-*   회원탈퇴 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/%ED%9A%8C%EC%9B%90%ED%83%88%ED%87%B4.gif" width="700">
+*   회원탈퇴 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/회원탈퇴.gif" width="700">
     
-*   뷰티 프로필 조회, 추가, 수정 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/%EB%B7%B0%ED%8B%B0%ED%94%84%EB%A1%9C%ED%95%84.gif" width="700">
+*   뷰티 프로필 조회, 추가, 수정 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/뷰티프로필.gif" width="700">
     
-*   아이디 중복체크 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/%EC%95%84%EC%9D%B4%EB%94%94%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC.gif" width="700">
+*   아이디 중복체크 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/아이디중복체크.gif" width="700">
     
-*   네이버 API 로그인 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/%EB%84%A4%EC%9D%B4%EB%B2%84API.gif" width="700">
+*   네이버 API 로그인 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/네이버API.gif" width="700">
     
-*   상품 카테고리, 브랜드별 조회 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/%EC%83%81%ED%92%88%20%EC%A1%B0%ED%9A%8C%2C%20%EB%B0%8F%20%EA%B2%80%EC%83%89.gif" width="700">
+*   상품 카테고리, 브랜드별 조회 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/상품 조회, 및 검색.gif" width="700">
     
-*   유저 팔로우/ 팔로우 취소 기능 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/%ED%8C%94%EB%A1%9C%EC%9A%B0%2C%20%ED%8C%94%EB%A1%9C%EC%9B%8C%20%EA%B2%80%EC%83%89%20%EB%B0%8F%20%ED%8C%94%EB%A1%9C%EC%9B%8C%20%EC%B7%A8%EC%86%8C.gif" width="700">
+*   유저 팔로우/ 팔로우 취소 기능 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색 및 팔로우 취소.gif" width="700">
     
-*   유저 팔로우, 팔로워 검색 및 조회 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/%ED%8C%94%EB%A1%9C%EC%9A%B0%2C%20%ED%8C%94%EB%A1%9C%EC%9B%8C%20%EA%B2%80%EC%83%89.gif" width="700">
+*   유저 팔로우, 팔로워 검색 및 조회 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/yong/팔로우, 팔로워 검색.gif" width="700">
     
 
 ### 💛 주현수
 
-*   일반회원 로그인 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9D%BC%EB%B0%98%ED%9A%8C%EC%9B%90%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif" width="700">
+*   일반회원 로그인 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/일반회원로그인.gif" width="700">
     
-*   아이디 저장 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%95%84%EC%9D%B4%EB%94%94%EC%A0%80%EC%9E%A5.gif" width="700">
+*   아이디 저장 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/아이디저장.gif" width="700">
     
-*   카카오톡 API 로그인 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1API%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif" width="700">
+*   카카오톡 API 로그인 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/카카오톡API로그인.gif" width="700">
     
-*   아이디 찾기 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%95%84%EC%9D%B4%EB%94%94%EC%B0%BE%EA%B8%B0.gif" width="700">
+*   아이디 찾기 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/아이디찾기.gif" width="700">
     
-*   비밀번호 찾기 및 변경 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%20%EC%B0%BE%EA%B8%B0%EB%B0%8F%20%EB%B3%80%EA%B2%BD.gif" width="700">
+*   비밀번호 찾기 및 변경 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/비밀번호찾기및변경.gif" width="700">
     
-*   로그아웃 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EB%A1%9C%EA%B7%B8%EC%95%84%EC%9B%83.gif" width="700">
+*   로그아웃 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/로그아웃.gif" width="700">
     
-*   뷰티캘린더 일정 조회 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EB%B7%B0%ED%8B%B0%EC%BA%BC%EB%A6%B0%EB%8D%94%20%EC%9D%BC%EC%A0%95%20%EC%A1%B0%ED%9A%8C.gif" width="700">
+*   뷰티캘린더 일정 조회 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/뷰티캘린더 일정 조회.gif" width="700">
     
-*   뷰티캘린더 일정 추가 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EB%B7%B0%ED%8B%B0%EC%BA%BC%EB%A6%B0%EB%8D%94%20%EC%9D%BC%EC%A0%95%20%EC%B6%94%EA%B0%80.gif" width="700">
+*   뷰티캘린더 일정 추가 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/뷰티캘린더 일정 추가.gif" width="700">
     
-*   뷰티캘린더 일정 삭제 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EB%B7%B0%ED%8B%B0%EC%BA%BC%EB%A6%B0%EB%8D%94%20%EC%9D%BC%EC%A0%95%20%EC%82%AD%EC%A0%9C.gif" width="700">
+*   뷰티캘린더 일정 삭제 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/뷰티캘린더 일정 삭제.gif" width="700">
     
-*   팔로잉 뷰티캘린더 조회(조회만 가능, 삭제 불가) <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%ED%8C%94%EB%A1%9C%EC%9D%B9%20%EB%B7%B0%ED%8B%B0%EC%BA%BC%EB%A6%B0%EB%8D%94%20%EC%A1%B0%ED%9A%8C.gif" width="700">
+*   팔로잉 뷰티캘린더 조회(조회만 가능, 삭제 불가) <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/팔로잉 뷰티캘린더 조회.gif" width="700">
     
-*   팔로잉 투두리스트 조회(조회만 가능, 루틴 추가 불가) <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%ED%8C%94%EB%A1%9C%EC%9D%B9%20%ED%88%AC%EB%91%90%EB%A6%AC%EC%8A%A4%ED%8A%B8%20%EC%A1%B0%ED%9A%8C.gif" width="700">
+*   팔로잉 투두리스트 조회(조회만 가능, 루틴 추가 불가) <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/팔로잉 투두리스트 조회.gif" width="700">
     
-*   투두리스트 추가 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%ED%88%AC%EB%91%90%EB%A6%AC%EC%8A%A4%ED%8A%B8%20%EC%B6%94%EA%B0%80.gif" width="700">
+*   투두리스트 추가 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/투두리스트 추가.gif" width="700">
     
-*   투두리스트 루틴 설정 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%ED%88%AC%EB%91%90%EB%A6%AC%EC%8A%A4%ED%8A%B8%20%EB%A3%A8%ED%8B%B4%20%EC%84%A4%EC%A0%95.gif" width="700">
+*   투두리스트 루틴 설정 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/투두리스트 루틴 설정.gif" width="700">
     
-*   투두리스트 완료 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%ED%88%AC%EB%91%90%EB%A6%AC%EC%8A%A4%ED%8A%B8%20%EC%99%84%EB%A3%8C.gif" width="700">
+*   투두리스트 완료 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/투두리스트 완료.gif" width="700">
     
-*   투두리스트 삭제 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%ED%88%AC%EB%91%90%EB%A6%AC%EC%8A%A4%ED%8A%B8%20%EC%82%AD%EC%A0%9C.gif" width="700">
+*   투두리스트 삭제 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/투두리스트 삭제.gif" width="700">
     
+*   전체보기 / 미완료 / 완료 / 전체삭제 <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/투두리스트 기능.gif" width="700">
     
 *   인기 유저 조회  
     <img src="https://raw.githubusercontent.com/WINDOWYONG/BeautyTalk/main/BeautyTalk/WebContent/resources/gif/%EC%9D%B8%EA%B8%B0%20%EC%9C%A0%EC%A0%80%20%EC%A1%B0%ED%9A%8C.gif" width="700">
