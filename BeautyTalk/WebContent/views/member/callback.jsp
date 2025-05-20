@@ -1,5 +1,11 @@
+<%@page import="org.json.simple.parser.JSONParser"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.io.BufferedReader"%>
 <%@page import="io.github.cdimascio.dotenv.Dotenv"%>
-<%@ page import="java.io.*, java.net.*, javax.servlet.http.*, java.net.URLEncoder, org.json.simple.JSONObject, org.json.simple.parser.JSONParser" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%
